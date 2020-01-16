@@ -1,14 +1,14 @@
 <template lang="html">
     <section>
         Home
-        <!-- {{$t('pageName')}} -->
+        {{$t('name', {msg:'你妹'})}}
     </section>
 </template>
 
 <script>
 export default {
     mounted() {
-        console.log(this.$t());
+        console.log(this.$t('lang.pageName'));
     }
 }
 </script>

@@ -2,10 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from '@/router';
 import store from '@/store';
-import lang from '@/lang'
+import i18n from '@/lang'
 new Vue({
   router,
-  lang,
+  i18n,
   store,
   render: h => h(App),
 }).$mount('#app')

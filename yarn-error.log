@@ -1,5 +1,5 @@
 Arguments: 
-  D:\soft\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js add @vue/cli-plugin-babel/preset --dev
+  D:\soft\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js add @babel/plugin-runtime --dev
 
 PATH: 
   D:\Program Files\cmder\bin;D:\Program Files\cmder\vendor\bin;D:\Program Files\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\Program Files\cmder\vendor\conemu-maximus5;D:\Program Files\cmder\vendor\conemu-maximus5\ConEmu;D:\ProgramData\Anaconda3;D:\ProgramData\Anaconda3\Library\mingw-w64\bin;D:\ProgramData\Anaconda3\Library\usr\bin;D:\ProgramData\Anaconda3\Library\bin;D:\ProgramData\Anaconda3\Scripts;D:\soft\Scripts\;D:\soft\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\Git\cmd;D:\Program Files (x86)\Yarn\bin\;D:\Program Files\TortoiseSVN\bin;D:\soft\nvm;D:\soft\nodejs;D:\angular\node_modules\.bin;C:\Java\jdk\bin;C:\Java\jdk\jre\bin;D:\MyData\EX_XIEKX1\AppData\Local\Microsoft\WindowsApps;D:\MyData\EX_XIEKX1\AppData\Local\Yarn\bin;D:\Program Files\nvm;C:\Program Files\nodejs;D:\MyData\EX_XIEKX1\AppData\Local\GitHubDesktop\bin;D:\Program Files\Microsoft VS Code\bin;D:\MyData\EX_XIEKX1\AppData\Local\atom\bin;D:\soft\nvm;D:\soft\nodejs;D:\Program Files\Git\cmd;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;D:\Program Files\cmder
@@ -14,8 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: http://npm.midea.com:7001/@vue%2fcli-plugin-babel/preset: Request "http://npm.midea.com:7001/@vue%2fcli-plugin-babel/preset" returned a 405
-      at Request.params.callback [as _callback] (D:\Program Files (x86)\Yarn\lib\cli.js:65176:18)
+  Error: http://npm.midea.com:7001/@babel%2fplugin-runtime: Not found
+      at Request.params.callback [as _callback] (D:\Program Files (x86)\Yarn\lib\cli.js:65167:18)
       at Request.self.callback (D:\Program Files (x86)\Yarn\lib\cli.js:129541:22)
       at Request.emit (events.js:197:13)
       at Request.<anonymous> (D:\Program Files (x86)\Yarn\lib\cli.js:130513:10)
