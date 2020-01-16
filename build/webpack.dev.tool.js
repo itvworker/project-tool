@@ -5,6 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
 }
@@ -13,7 +14,7 @@ module.exports = {
     mode:'development',
     context: resolve(''),
     entry: {
-        app: ['babel-polyfill', './src/entry/main.js'],
+        app: ['@babel/polyfill', './src/entry/main.js'],
     },
     output: {
         path: resolve('dist'),
@@ -33,11 +34,6 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-                // use:[{
-                //      loader: 'vue-loader',
-                //      options: loader
-                //     }
-                // ]
             },
             {
                 test: /\.css$/,
@@ -74,7 +70,7 @@ module.exports = {
                 test: /\.js$/,
                 use:[
                     {
-                    loader:'babel-loader',
+                    loader:'babel-loader'
                     }
                 ],
                 include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
