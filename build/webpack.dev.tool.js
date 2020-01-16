@@ -15,12 +15,18 @@ module.exports = {
     entry: {
         app: ['babel-polyfill', './src/entry/main.js'],
     },
-
     output: {
         path: resolve('dist'),
         filename: '[name].[hash:4].js', // [name]打包后的文件名称,进入是什么名字出来也是
         chunkFilename: '[name].[hash].js',
-        publicPath: './',
+        publicPath: '/',
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            vue$: 'vue/dist/vue.esm.js',
+            '@': resolve('src'),
+        },
     },
     module: {
         rules: [

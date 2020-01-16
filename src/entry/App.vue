@@ -1,7 +1,5 @@
 <template lang="html">
-    <section id="app">
-        Home
-    </section>
+       <router-view />
 </template>
 
 <script>
