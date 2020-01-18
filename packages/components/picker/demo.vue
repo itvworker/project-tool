@@ -1,46 +1,48 @@
 <template>
-  <div class="demo-list">
+  <itv-container>
+      <itv-header/>
+      <itv-main>
+      <picker
+        :is-visible="isVisible0"
+        :list-data="listData0"
+        title="请选择年月"
+        :default-value-data="defaultValueData0"
+        @close="switchPicker('isVisible0')"
+        @confirm="setChooseValue0"
+      ></picker>
+      <!-- demo 城市选择(联动)-->
+      <picker
+        :is-visible="isVisible"
+        title="请选择城市"
+        :list-data="listData"
+        :default-value-data="defaultValueData"
+        @close="switchPicker('isVisible')"
+        @confirm="setChooseValue"
+        @choose="updateChooseValue"
+        @close-update="closeUpdateChooseValue"
+      ></picker>
+      <!-- demo 年选择-->
+      <picker
+        :is-visible="isVisible1"
+        :default-value-data="defaultValueData1"
+        :list-data="listData1"
+        @close="switchPicker('isVisible1')"
+        @confirm="setYearValue"
+      ></picker>
+      <!-- demo 城市选择(联动) 自定义-->
+      <picker
+        :is-visible="isVisible2"
+        title="请选择城市"
+        :default-value-data="defaultValueData"
+        :list-data="custmerCityData"
+        @close="switchPicker('isVisible2')"
+        @confirm="setChooseValueCustmer"
+        @choose="updateChooseValueCustmer"
+        @close-update="closeUpdateChooseValueCustmer"
+      ></picker>
+  </itv-main>
+  </itv-container>
 
-    <!-- demo 年月选择(不联动)-->
-    <picker
-      :is-visible="isVisible0"
-      :list-data="listData0"
-      title="请选择年月"
-      :default-value-data="defaultValueData0"
-      @close="switchPicker('isVisible0')"
-      @confirm="setChooseValue0"
-    ></picker>
-    <!-- demo 城市选择(联动)-->
-    <picker
-      :is-visible="isVisible"
-      title="请选择城市"
-      :list-data="listData"
-      :default-value-data="defaultValueData"
-      @close="switchPicker('isVisible')"
-      @confirm="setChooseValue"
-      @choose="updateChooseValue"
-      @close-update="closeUpdateChooseValue"
-    ></picker>
-    <!-- demo 年选择-->
-    <picker
-      :is-visible="isVisible1"
-      :default-value-data="defaultValueData1"
-      :list-data="listData1"
-      @close="switchPicker('isVisible1')"
-      @confirm="setYearValue"
-    ></picker>
-    <!-- demo 城市选择(联动) 自定义-->
-    <picker
-      :is-visible="isVisible2"
-      title="请选择城市"
-      :default-value-data="defaultValueData"
-      :list-data="custmerCityData"
-      @close="switchPicker('isVisible2')"
-      @confirm="setChooseValueCustmer"
-      @choose="updateChooseValueCustmer"
-      @close-update="closeUpdateChooseValueCustmer"
-    ></picker>
-  </div>
 </template>
 
 <script>

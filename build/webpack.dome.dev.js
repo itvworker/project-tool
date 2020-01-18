@@ -12,10 +12,10 @@ module.exports = {
     mode: 'development',
     context: resolve(''),
     entry: {
-        app: ['@babel/polyfill', './src/entry/main.js']
+        app: ['@babel/polyfill', './packages/main.js']
     },
     output: {
-        path: resolve('dist'),
+        path: resolve('components'),
         filename: '[name].[hash:4].js', // [name]打包后的文件名称,进入是什么名字出来也是
         chunkFilename: '[name].[hash].js',
         publicPath: '/'
@@ -24,8 +24,7 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
-            $p: resolve('packages'),
-            '@': resolve('src')
+            '@': resolve('packages')
         }
     },
     module: {
@@ -81,7 +80,7 @@ module.exports = {
                         loader: 'sass-resources-loader',
                         options: {
                             sourceMap: true,
-                            resources: [resolve('src/assets/css/const.less'), resolve('packages/assets/css/theme.less')]
+                            resources: [resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
                         }
                     },
                     {
@@ -113,7 +112,7 @@ module.exports = {
                         }
                     }
                 ],
-                include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+                include: [resolve('packages'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
