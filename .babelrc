@@ -13,6 +13,7 @@
         "@babel/plugin-transform-block-scoping",
         "@babel/plugin-transform-runtime",
         "@vue/babel-plugin-transform-vue-jsx",
-        "@babel/plugin-transform-classes"
+        "@babel/plugin-transform-classes",
+
     ]
 }

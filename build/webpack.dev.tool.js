@@ -4,12 +4,11 @@ const loader = require('./loader')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const vuxLoader = require('vux-loader')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
 }
-
 module.exports = {
     mode:'development',
     context: resolve(''),
@@ -26,6 +25,7 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
+            '$p': resolve('packages'),
             '@': resolve('src'),
         },
     },
@@ -33,47 +33,112 @@ module.exports = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                use:[
+                    {loader:'vue-loader'},
+                    {
+                        loader: 'units-loader',
+                        options: {
+                            unit: "rem",
+                            divisor: 37.5,
+                            accuracy: 6,
+                            raw: "ipx"
+                        }
+                    }
+                ],
+
             },
             {
                 test: /\.css$/,
                 use: [
                     'vue-style-loader',
-                    "css-loader",
+                    "css-loader"
                 ]
 
             },
             {
               test: /\.less$/,
               use: [
-                'vue-style-loader',
-                'css-loader',
-                'less-loader',
+
                 {
-                    loader: "sass-resources-loader",
+                    loader:'vue-style-loader',
                     options: {
-                        resources: [resolve('src/assets/css/const.less')]
+                        sourceMap: true
                     }
                 },
                 {
-                    loader: "units-loader",
+                    loader:'css-loader',
+                    options: {
+                        sourceMap: true,
+                        importLoaders: 1
+                    }
+                },
+                {
+                    loader:'less-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                {
+                    loader: "sass-resources-loader",
+                    options: {
+                        sourceMap: true,
+                        resources: [resolve('src/assets/css/const.less'),resolve('packages/assets/css/theme.less')]
+                    }
+                },
+                {
+                    loader: 'units-loader',
                     options: {
                         unit: "rem",
                         divisor: 37.5,
                         accuracy: 6,
-                        raw: "rpx"
+                        raw: "ipx"
                     }
+                },{
+                    loader:'postcss-loader'
                 }
-              ]
+
+            ],
+            exclude: /node_modules/
             },
             {
                 test: /\.js$/,
                 use:[
-                    {
-                    loader:'babel-loader'
+                { loader:'babel-loader'},
+                {
+                    loader: 'units-loader',
+                    options: {
+                        unit: "rem",
+                        divisor: 37.5,
+                        accuracy: 6,
+                        raw: "ipx"
                     }
-                ],
+                }
+            ],
                 include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: resolve('dist/static/img/[name].[hash:7].[ext]'),
+                },
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: resolve('dist/static/media/[name].[hash:7].[ext]'),
+                },
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 1000000,
+                    name: resolve('dist/static/font/[name].[hash:7].[ext]'),
+                },
             }
         ]
     },
@@ -98,7 +163,7 @@ module.exports = {
             filename: 'index.html',
             template: 'public/index.dev.html',
             inject: true,
-        }),
+        })
         // new CopyWebpackPlugin([
         //     {
         //         from: path.resolve(__dirname, '../public'),
