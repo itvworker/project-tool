@@ -32,16 +32,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: [
-                    { loader: 'vue-loader' },
-                    {
-                        loader: 'units-loader',
-                        options: {
-                            unit: 'rem',
-                            divisor: 37.5,
-                            accuracy: 6,
-                            raw: 'ipx'
-                        }
-                    }
+                    { loader: 'vue-loader' }
                 ]
 
             },
@@ -64,11 +55,18 @@ module.exports = {
                         }
                     },
                     {
+                       loader:'style-loader'
+                    },
+
+                    {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
-                            importLoaders: 1
+                            importLoaders: 4
                         }
+                    },
+                    {
+                        loader: 'postcss-loader'
                     },
                     {
                         loader: 'less-loader',
@@ -91,17 +89,22 @@ module.exports = {
                             accuracy: 6,
                             raw: 'ipx'
                         }
-                    }, {
-                        loader: 'postcss-loader'
                     }
+
 
                 ],
                 exclude: /node_modules/
             },
+
             {
                 test: /\.js$/,
                 use: [
-                    { loader: 'babel-loader' },
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            sourceMap: true,
+                        }
+                    },
                     {
                         loader: 'units-loader',
                         options: {
@@ -139,6 +142,7 @@ module.exports = {
                 }
             }
         ]
+
     },
     devServer: {
         // 设置基本结构

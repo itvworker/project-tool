@@ -14,13 +14,22 @@ export default new Router({
             }
         },
         {
-        path: '/picker',
+        path: '/packages/picker',
         name: 'itv_picker',
         component: () => import ('@/components/picker/demo.vue'),
         meta: {
             keepAlive: false,
-            title: '课程分类'
+            title: 'picker'
+            }
+        },
+        {
+        path: '/packages/cliper',
+        name: 'itv_cliper',
+        component: () => import ('@/components/cliper/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'cliper'
+            }
         }
-    }
     ]
 })

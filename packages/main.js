@@ -5,7 +5,8 @@ import store from '@/store';
 import i18n from '@/lang'
 import 'lib-flexible'
 import '@/layout'
-import '@/assets/css/global.less';
+import '@/assets/css/index.less';
+
 // import LoadingPlugin  from 'vux/src/plugins/loading'
 // Vue.use(LoadingPlugin)
 new Vue({

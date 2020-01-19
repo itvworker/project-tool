@@ -1,7 +1,7 @@
 <template lang="html">
         <div class="itv-header">
             <div class="itv-icon-arrow" @click="back"></div>
-            头部
+            <slot></slot>
         </div>
 </template>
 

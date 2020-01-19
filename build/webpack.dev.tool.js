@@ -47,23 +47,21 @@ module.exports = {
 
             },
             {
-                test: /\.css$/,
+                test: /\.(less|css)$/,
                 use: [
-                    'vue-style-loader',
-                    'css-loader'
-                ]
-
-            },
-            {
-                test: /\.less$/,
-                use: [
-
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
                     {
                         loader: 'vue-style-loader',
                         options: {
                             sourceMap: true
                         }
                     },
+
                     {
                         loader: 'css-loader',
                         options: {
@@ -71,10 +69,21 @@ module.exports = {
                             importLoaders: 1
                         }
                     },
+
+                    {
+                        loader: 'units-loader',
+                        options: {
+                            unit: 'rem',
+                            divisor: 37.5,
+                            accuracy: 6,
+                            raw: 'ipx'
+                        }
+                    },
                     {
                         loader: 'less-loader',
                         options: {
-                            sourceMap: true
+                          
+                            javascriptEnabled:true
                         }
                     },
                     {
@@ -83,18 +92,8 @@ module.exports = {
                             sourceMap: true,
                             resources: [resolve('src/assets/css/const.less'), resolve('packages/assets/css/theme.less')]
                         }
-                    },
-                    {
-                        loader: 'units-loader',
-                        options: {
-                            unit: 'rem',
-                            divisor: 37.5,
-                            accuracy: 6,
-                            raw: 'ipx'
-                        }
-                    }, {
-                        loader: 'postcss-loader'
                     }
+
 
                 ],
                 exclude: /node_modules/
@@ -102,18 +101,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: [
-                    { loader: 'babel-loader' },
-                    {
-                        loader: 'units-loader',
-                        options: {
-                            unit: 'rem',
-                            divisor: 37.5,
-                            accuracy: 6,
-                            raw: 'ipx'
-                        }
-                    }
+                    { loader: 'babel-loader' }
                 ],
-                include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+                include: [resolve('src'), resolve('packages'). resolve('test'), resolve('node_modules/webpack-dev-server/client')]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
