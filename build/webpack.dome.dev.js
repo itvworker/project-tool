@@ -46,7 +46,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [
+                use: [ //loader从后向前执行，顺序不能乱，会不能编译
 
                     {
                         loader: 'vue-style-loader',
@@ -91,7 +91,6 @@ module.exports = {
                             resources: [resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
                         }
                     }
-
 
                 ],
                 include: [resolve('packages')],
