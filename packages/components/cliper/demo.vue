@@ -2,12 +2,20 @@
     <itv-container>
         <itv-header>Cliper</itv-header>
         <itv-main>
-            <div class="itv-demo-btn">
+          <img :src="url" />
+            <div class="itv-demo-btn btn-content" @click="openToggle">
                 方形裁剪
             </div>
+            <div class="itv-demo-btn btn-content">
+                圆形
+            </div>
+
         </itv-main>
         <itv-container class="cliper-main-box" v-show="toggle">
-            <itv-header>Cliper</itv-header>
+            <itv-header :showArrow="false">
+              <div class="btn-close">关闭</div>
+              Cliper截图
+            </itv-header>
             <itv-main>
                 <itv-cliper ref="cliper" :clipType="clipType"></itv-cliper>
             </itv-main>
@@ -36,12 +44,15 @@ export default {
     data() {
         return {
             clipType: 'square',
+            url:'',
             toggle: false
         }
     },
     methods: {
+        openToggle(event) {
+            this.toggle = true;
+        },
         open(event) {
-
             var files = event.target.files || event.dataTransfer.files
             var reader = new FileReader()
             reader.readAsDataURL(files[0])
@@ -51,7 +62,9 @@ export default {
             }
         },
         done() {
-            let result = this.$refs.cliper.done()
+            let result = this.$refs.cliper.done();
+            this.url = result;
+            this.toggle = false;
 
         }
     }
@@ -60,6 +73,24 @@ export default {
 
 <style lang="less">
    @import 'cliper.less';
+   .btn-content{
+      margin: 10ipx;
+   }
+   .btn-close{
+     position: absolute;
+     left: 0px;
+     height: 44ipx;
+     line-height: 44ipx;
+     padding: 0px 10ipx;
+     font-size: 14ipx;
+   }
+   .cliper-main-box {
+     position: absolute;
+     left: 0px;
+     right: 0px;
+     bottom: 0px;
+     top: 0px;
+   }
    .item {
        text-align: center;
        line-height: 44ipx;

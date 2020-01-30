@@ -49,6 +49,19 @@ module.exports = {
             {
                 test: /\.(less|css)$/,
                 use: [
+
+                    {
+                        loader: 'vue-style-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -56,17 +69,10 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'vue-style-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-
-                    {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
-                            importLoaders: 1
+                            importLoaders: 10
                         }
                     },
 
@@ -82,10 +88,11 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options: {
-                          
+                            importLoaders: 10,
                             javascriptEnabled:true
                         }
                     },
+
                     {
                         loader: 'sass-resources-loader',
                         options: {
@@ -93,8 +100,6 @@ module.exports = {
                             resources: [resolve('src/assets/css/const.less'), resolve('packages/assets/css/theme.less')]
                         }
                     }
-
-
                 ],
                 exclude: /node_modules/
             },
@@ -125,7 +130,7 @@ module.exports = {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 1000000,
+                    limit: 10000,
                     name: resolve('dist/static/font/[name].[hash:7].[ext]')
                 }
             }

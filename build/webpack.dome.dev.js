@@ -62,23 +62,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
-                            importLoaders: 4
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    },
-                    {
-                        loader: 'less-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'sass-resources-loader',
-                        options: {
-                            sourceMap: true,
-                            resources: [resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
+                            importLoaders: 1
                         }
                     },
                     {
@@ -89,10 +73,28 @@ module.exports = {
                             accuracy: 6,
                             raw: 'ipx'
                         }
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            sourceMap: true
+
+                        }
+                    },
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            sourceMap: true,
+                            resources: [resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
+                        }
                     }
 
 
                 ],
+                include: [resolve('packages')],
                 exclude: /node_modules/
             },
 
@@ -103,15 +105,6 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             sourceMap: true,
-                        }
-                    },
-                    {
-                        loader: 'units-loader',
-                        options: {
-                            unit: 'rem',
-                            divisor: 37.5,
-                            accuracy: 6,
-                            raw: 'ipx'
                         }
                     }
                 ],
