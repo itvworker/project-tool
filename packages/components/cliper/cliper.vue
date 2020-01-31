@@ -205,15 +205,15 @@ export default {
 
             const body = document.documentElement || document.body
 
-            let cw = this.$refs.clipic.clientWidth;
+            let cw = this.$refs.clipic.clientWidth-60;
 
             // if(this.clipType !== 'orthogon') {
             //     cw = cw - 60
             // }
-            cw = cw - 60
+            // cw = cw - 60
 
 
-            const ch = this.$refs.clipic.clientHeight;
+            const ch = this.$refs.clipic.clientHeight-60;
             this.frame1Width = cw
             this.frame1Height = cw / this.ratio
             this.frame2Width = cw

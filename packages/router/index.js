@@ -30,6 +30,24 @@ export default new Router({
             keepAlive: false,
             title: 'cliper'
             }
+        },
+        // {
+        // path: '/packages/toast',
+        // name: 'itv_toast',
+        // component: () => import ('@/components/toast/demo.vue'),
+        // meta: {
+        //     keepAlive: false,
+        //     title: 'cliper'
+        //     }
+        // },
+        {
+        path: '/packages/cell',
+        name: 'itv_cell',
+        component: () => import ('@/components/cell/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'cliper'
+            }
         }
     ]
 })
