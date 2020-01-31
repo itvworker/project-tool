@@ -114,12 +114,14 @@ export default {
                 this.ratio = this.width / this.height
                 this.initSize()
                 if (this.ratio > this.originRatio) {
+
                     this.imgWidth = this.frame2Width;
                     this.imgHeight = this.frame2Width/this.originRatio;
                     this.translateY = -(this.frame2Width/this.originRatio-this.frame2Height)/2
                     this.initVal.translateY = this.translateY;
                     this.initVal.translateX = 0;
                 } else {
+
                     this.imgHeight = this.frame2Height;
                     this.imgWidth =  this.frame2Height*this.originRatio;
                     this.translateX = -(this.frame2Height*this.originRatio-this.frame2Width)/2
@@ -203,24 +205,27 @@ export default {
 
             const body = document.documentElement || document.body
 
-            let cw = body.clientWidth;
+            let cw = this.$refs.clipic.clientWidth;
 
-            if(this.clipType !== 'orthogon') {
-                cw = cw - 60
-            }
+            // if(this.clipType !== 'orthogon') {
+            //     cw = cw - 60
+            // }
+            cw = cw - 60
 
 
-            const ch = body.clientHeight - 80
-         
+            const ch = this.$refs.clipic.clientHeight;
             this.frame1Width = cw
             this.frame1Height = cw / this.ratio
             this.frame2Width = cw
             this.frame2Height = cw / this.ratio
+
+
+
             if (cw / this.ratio > ch) {
                 this.frame1Height = ch
                 this.frame1Width = ch * this.ratio
                 this.frame2Height = ch
-                this.frame2Height = ch * this.ratio
+                this.frame2Width = ch * this.ratio
             }
         },
         reset() {
