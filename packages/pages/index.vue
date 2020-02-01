@@ -1,7 +1,7 @@
 <template lang="html">
-    <section>
-        home
-    </section>
+    <itv-container>
+        index
+    </itv-container>
 </template>
 
 <script>
@@ -9,5 +9,6 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="less" scoped>
+  
 </style>

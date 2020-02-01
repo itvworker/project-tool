@@ -48,7 +48,7 @@ export default {
 
         outputFormat: {
             type: String,
-            default: 'jpeg'
+            default: 'png'
         },
         quality: {
             type: Number,

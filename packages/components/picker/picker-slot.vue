@@ -52,7 +52,7 @@ export default {
             transformY: 0,
             scrollDistance: 0,
             lineSpacing: 44,
-            rotation: 20,
+            rotation: 24,
             timer: null
         }
     },
@@ -175,7 +175,11 @@ export default {
         },
 
         modifyStatus (type, defaultValue) {
-            this.lineSpacing = this.$refs.height.clientHeight;
+            let style = window.getComputedStyle(this.$refs.roller)
+           
+            this.lineSpacing = parseFloat(style.height);
+            this.rotation = this.lineSpacing/2+2;
+            // console.log(this.lineSpacing)
             defaultValue = defaultValue ? defaultValue : this.defaultValue;
             let index = this.listData.indexOf(defaultValue);
             this.currIndex = index === -1 ? 1 : (index + 1);
@@ -187,6 +191,7 @@ export default {
 
     mounted() {
          this.lineSpacing = this.$refs.height.clientHeight;
+
          console.log(this.lineSpacing);
 
         this.$nextTick(() => {

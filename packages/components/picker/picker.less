@@ -4,14 +4,14 @@
 }
 .itv-picker-control{
     display: flex;
-    height: 40px;
+    height: 40ipx;
     border-bottom: 1px solid @light-color;
     text-align: center;
-    line-height: 40px;
+    line-height: 40ipx;
     font-size: @font-size-base;
     .itv-picker-cancel-btn,
     .itv-picker-confirm-btn{
-        width: 60px;
+        width: 60ipx;
         color: @primary-color;
     }
     .itv-picker-title{
@@ -49,19 +49,20 @@
     }
     .itv-picker-indicator{
         position: absolute;
-        top: 108px;
+        top: 104ipx;
         width: 100%;
         height: 44ipx;
-        border-top: 1px solid @dark-color;
-        border-bottom: 1px solid @dark-color;
-        z-index: 3;
+        border-top: 1ipx solid @dark-color;
+        border-bottom: 1ipx solid @dark-color;
+        z-index: 3; 
+        box-sizing: border-box;
     }
 
     .itv-picker-content, .itv-picker-roller{
         position: absolute;
-        top: 108px;
+        top: 104ipx;
         width: 100%;
-        height: 46ipx;
+        height: 44ipx;
     }
     .itv-picker-content{
         background: #FFF;
@@ -72,13 +73,14 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        line-height: 46ipx;
+        line-height: 44ipx;
         color: @title-color;
-        font-size: @font-size-base;
+        font-size: 14ipx;
+        height: 44ipx;
         text-align: center;
     }
     .itv-picker-item{
-        font-size: 15px;
+        font-size: 15ipx;
         background: #FFF;
     }
     .itv-picker-roller{
@@ -90,6 +92,7 @@
             top: 0;
             width: 100%;
             color: @text-color;
+            height: 44ipx;
         }
         .itv-picker-roller-item-hidden {
             visibility: hidden;

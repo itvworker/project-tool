@@ -8,6 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
+
+
+
 module.exports = {
     mode: 'development',
     context: resolve(''),
@@ -18,7 +21,7 @@ module.exports = {
         path: resolve('components'),
         filename: '[name].[hash:4].js', // [name]打包后的文件名称,进入是什么名字出来也是
         chunkFilename: '[name].[hash].js',
-        publicPath: '/'
+        publicPath: './'
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
@@ -113,24 +116,27 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 1000000,
-                    name: resolve('dist/static/img/[name].[hash:7].[ext]')
+                    limit: 1000,
+                    esModule: false,
+                    name: 'static/img/[name].[hash:7].[ext]'
                 }
             },
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000,
-                    name: resolve('dist/static/media/[name].[hash:7].[ext]')
+                    esModule: false,
+                    limit: 1000,
+                    name: 'static/media/[name].[hash:7].[ext]'
                 }
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 1000000,
-                    name: resolve('dist/static/font/[name].[hash:7].[ext]')
+                    esModule: false,
+                    limit: 1000,
+                    name: 'static/font/[name].[hash:7].[ext]'
                 }
             }
         ]
@@ -138,7 +144,7 @@ module.exports = {
     },
     devServer: {
         // 设置基本结构
-        contentBase: resolve('dist'),
+        contentBase: resolve('components'),
         host: '0.0.0.0', // 服务器IP地址,可以是localhost
         compress: true, // 服务端压缩是否开启
         open: false, // 自动打开浏览器

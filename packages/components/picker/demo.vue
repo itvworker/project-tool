@@ -1,6 +1,6 @@
 <template>
   <itv-container>
-      <itv-header/>
+      <itv-header>Picker</itv-header>
       <itv-main>
       <picker
         :is-visible="isVisible0"
