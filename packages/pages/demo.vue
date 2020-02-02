@@ -2,6 +2,8 @@
     <section>
         <div class="home-header">
             <img class="icon" src="@/assets/img/github.jpeg" />
+            
+            <itv-cell>-----</itv-cell>
         </div>
     </section>
 </template>

@@ -3,14 +3,12 @@ import App from './App.vue'
 import router from '@/router';
 import store from '@/store';
 import i18n from '@/lang'
-// ;
+
 import 'lib-flexible'
 import '@/layout'
-import '@/components'
+import '@/components/index.js'
 import '@/assets/css/index.less';
 
-// import LoadingPlugin  from 'vux/src/plugins/loading'
-// Vue.use(LoadingPlugin)
 new Vue({
   router,
   i18n,

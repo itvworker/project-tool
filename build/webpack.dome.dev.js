@@ -91,7 +91,7 @@ module.exports = {
                         loader: 'sass-resources-loader',
                         options: {
                             sourceMap: true,
-                            resources: [resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
+                            resources: [resolve('packages/assets/css/animate.less'),resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
                         }
                     }
 
