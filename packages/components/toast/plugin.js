@@ -24,6 +24,7 @@ const plugin = {
 
     const toast = {
       show (options = {}) {
+          // debugger
         // destroy watcher
         watcher && watcher()
         if (typeof options === 'string') {
@@ -39,7 +40,7 @@ const plugin = {
         }
         $vm.show = true
       },
-      text (text, position = 'default') {
+      text (text, position = 'middle') {
         this.show({
           type: 'text',
           width: 'auto',

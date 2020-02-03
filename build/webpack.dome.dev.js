@@ -21,7 +21,7 @@ module.exports = {
         path: resolve('components'),
         filename: '[name].[hash:4].js', // [name]打包后的文件名称,进入是什么名字出来也是
         chunkFilename: '[name].[hash].js',
-        publicPath: './'
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
@@ -96,10 +96,8 @@ module.exports = {
                     }
 
                 ],
-                include: [resolve('packages')],
-                exclude: /node_modules/
+                include: [resolve('packages')]
             },
-
             {
                 test: /\.js$/,
                 use: [

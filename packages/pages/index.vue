@@ -1,6 +1,6 @@
 <template lang="html">
     <itv-container>
-        index
+        index------
     </itv-container>
 </template>
 
@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+
 
 </style>

@@ -40,15 +40,15 @@ export default new Router({
             title: 'cliper'
             }
         },
-        // {
-        // path: '/demo/toast',
-        // name: 'itv_toast',
-        // component: () => import ('@/components/toast/demo.vue'),
-        // meta: {
-        //     keepAlive: false,
-        //     title: 'cliper'
-        //     }
-        // },
+        {
+        path: '/demo/toast',
+        name: 'itv_toast',
+        component: () => import ('@/components/toast/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'toast'
+            }
+        },
         {
         path: '/demo/cell',
         name: 'itv_cell',
