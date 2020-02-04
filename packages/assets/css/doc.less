@@ -1,0 +1,71 @@
+
+
+.doc-page{
+    color: #333;
+    padding: 10px;
+    table{
+        border-spacing: 0;
+        border-collapse: collapse;
+        width: 100%;
+        thead{
+            background-color: #eee;
+            th{
+                border:#ddd solid 1px;
+                padding: 10px;
+            }
+        }
+        td{
+            border:#ddd solid 1px;
+            text-align: center;
+            padding: 10px;
+        }
+    }
+    h1{
+        font-size: 28px;
+        color: @itv-page-main;
+    }
+    h2{
+        font-size: 26px;
+    }
+    h3 {
+        font-size: 24px;
+
+    }
+    h4{
+        font-size: 20px;
+    }
+    h5 {
+        font-size: 18px;
+    }
+    h6 {
+        font-size: 16px;
+    }
+    .doc-tab{
+        .doc-tab-group{
+            display: flex;
+            border-bottom: #ddd solid 1px;
+            .tab-item-btn{
+                font-size: 16px;
+                padding: 10px;
+                cursor: pointer;
+                &.active{
+                    border-bottom:@itv-page-main solid 2px;
+                }
+            }
+        }
+        .doc-tab-content{
+            .doc-tab-item{
+                display: none;
+                &:first-child {
+                    display: block;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+//

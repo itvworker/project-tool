@@ -1,0 +1,1 @@
+(this.lizardLocaleMessages = this.lizardLocaleMessages || []).push({"@shimo/lizard-service-sheet":{},"@shimo/lc-utils":{},"@shimo/ui":{},"@shimo/lc-collab-panel":{},"@shimo/lizard-components":{},"@shimo/lc-file-loader":{}})

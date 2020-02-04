@@ -13,7 +13,6 @@
         "@babel/plugin-transform-block-scoping",
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime",
-        "@vue/babel-plugin-transform-vue-jsx",
-        "@babel/plugin-transform-classes",
+        "@vue/babel-plugin-transform-vue-jsx"
     ]
 }

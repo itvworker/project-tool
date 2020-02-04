@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="itv-ui">
 
-        <div class="itv-bg" v-show="showBg">
+        <div class="itv-bg" v-show="showBg" >
 
         </div>
         <transition :name="currentTransition">
@@ -88,6 +88,7 @@ export default {
           clearTimeout(this.timeout)
           this.timeout = setTimeout(() => {
             this.show = false
+            this.showBg = false
             this.$emit('input', false)
             this.$emit('hide')
           }, this.time)
@@ -102,7 +103,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.tiv-bg {
+.itv-bg {
     position: fixed;
     top: 0px;
     right: 0px;

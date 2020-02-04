@@ -4,6 +4,7 @@ const loader = require('./loader')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
@@ -111,6 +112,17 @@ module.exports = {
                 include: [resolve('packages'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
             },
             {
+                test: /\.md$/,
+                use:[
+                    {
+                        loader: 'html-loader'
+                    },
+                    {
+                        loader: "markdown-loader"
+                    }
+                ]
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
@@ -161,7 +173,8 @@ module.exports = {
             filename: 'index.html',
             template: 'public/index.dev.html',
             inject: true
-        })
+        }),
+        // new CleanWebpackPlugin()
         // new CopyWebpackPlugin([
         //     {
         //         from: path.resolve(__dirname, '../public'),
