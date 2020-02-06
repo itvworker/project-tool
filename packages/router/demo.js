@@ -61,5 +61,14 @@ export default [
         keepAlive: false,
         title: 'cliper'
         }
+    },
+    {
+    path: '/demo/slider',
+    name: 'itv_slider',
+    component: () => import ('@/components/slider/demo.vue'),
+    meta: {
+        keepAlive: false,
+        title: 'slider'
+        }
     }
 ]
