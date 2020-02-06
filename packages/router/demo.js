@@ -52,5 +52,14 @@ export default [
         keepAlive: false,
         title: 'cliper'
         }
+    },
+    {
+    path: '/demo/elevator',
+    name: 'itv_elevator',
+    component: () => import ('@/components/elevator/demo.vue'),
+    meta: {
+        keepAlive: false,
+        title: 'cliper'
+        }
     }
 ]

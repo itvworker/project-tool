@@ -1,3 +1,39 @@
+# Cliper
+
+Cliper是一个可以自定义截图方式的软件
+
+## 安装
+----
+$#div.class=doc-tab_doc-contet.id=page
+    $#div.class=doc-tab-group
+        $#div.class=tab-item-btn_active 全局注册 $#/div
+        $#div.class=tab-item-btn 局部注册 $#/div
+    $#/div
+    $#div.class=doc-tab-content
+$#div.class=doc-tab-item
+```
+// 在入口处引入
+import Vue from 'vue';
+import ItvCliper from 'itv/packages/cliper/index'
+Vue.use(tvCliper)
+
+```
+$#/div
+$#div.class=doc-tab-item
+```
+
+import ItvCliper from 'itv/packages/cliper/index'
+export default {
+  components: {
+    ItvCliper
+  }
+}
+
+```
+$#/div
+$#/div
+$#/div
+```html
 <template lang="html">
     <itv-container>
         <itv-header>Cliper</itv-header>
@@ -58,16 +94,11 @@
 </template>
 
 <script>
-
-import ItvCliper from './cliper.vue'
 import img from '@/assets/img/header.jpeg';
 export default {
-    components: {
-        ItvCliper
-    },
     data() {
         return {
-            clipType: 'orthogon',
+            clipType: 'square',
             url:'',
             w:100,
             h:200,
@@ -85,6 +116,7 @@ export default {
     methods: {
         reset() {
             this.$refs.cliper.reset()
+
         },
         openToggle(event) {
             this.toggle = true;
@@ -104,7 +136,8 @@ export default {
             var reader = new FileReader()
             reader.readAsDataURL(files[0])
             reader.onload = e => {
-                this.$refs.cliper.insertImage(e.target.result);
+                this.$refs.cliper.getImage(e.target.result);
+
             }
         },
         done() {
@@ -118,7 +151,6 @@ export default {
 </script>
 
 <style lang="less">
-   @import 'cliper.less';
    .section-box {
      height: 120ipx;
      margin: 20ipx 0px;
@@ -183,3 +215,23 @@ export default {
 
    }
 </style>
+
+```
+
+
+
+### 属性
+
+|名字|类型|默认值|说明|版本要求|
+|-|-|-|-|-|
+|width|number|200|裁剪的宽度||
+|height|number|200|裁剪的高度||
+|clipType|string|orthogon|可选值 orthogon(矩形裁前), circle(圆形裁剪) width与height必须设置为同一数值;||
+|outputFormat|string|png|输出图片类型||
+
+### 方法
+|名字|参数|说明|版本要求|
+|-|-|-|-|
+|insertImage|value图片路径|参数是图片url|
+|reset|--|重置操作的图片||
+|done|--|返回base64图片||

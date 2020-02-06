@@ -1,6 +1,7 @@
 <template lang="html">
     <itv-container class="doc-page">
         <div v-html="doc"></div>
+        <iframe src="/#/demo/cliper"></iframe>
     </itv-container>
 </template>
 

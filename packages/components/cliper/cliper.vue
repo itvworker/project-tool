@@ -9,10 +9,7 @@
           ref="frame2"  >
           <img ref="img2"
           :style="{width: imgWidth+'px',height: imgHeight+'px',transform:'translate('+translateX+'px, '+translateY+'px) scale('+scale+') rotate('+rotate+'deg)'}"   :src="src" /></div>
-        <!-- <div class="itv-cliper-clipic-operation-bar">
-          <div :style="{'background-color': styles.cancalBtnColor, 'color': styles.cancelTextColor}" @click="cancel" class="itv-cliper-clipic-cancel" >{{styles.cancelText}}</div>
-          <div :style="{'background-color': styles.confirmBtnColor, 'color': styles.confirmTextColor}" @click="done" class="itv-cliper-clipic-confirm'" >{{styles.confirmText}}</div>
-        </div> -->
+
     </div>
 </template>
 
@@ -23,11 +20,11 @@ export default {
     props: {
         width: {
             type: Number,
-            default: 100
+            default: 200
         },
         height: {
             type: Number,
-            default: 100
+            default: 200
         },
         styles: {
             type: Object,
@@ -56,7 +53,7 @@ export default {
         },
         clipType: {
             type: String,
-            default: 'square' //square circle orthogon
+            default: 'orthogon' //square circle orthogon
         }
     },
     data() {
@@ -96,7 +93,7 @@ export default {
     },
 
     methods: {
-        getImage(url) {
+        insertImage(url) {
         // 初始化参数
             this.scale = 1 // 缩放
             this.rotate = 0 // 旋转
@@ -296,3 +293,6 @@ export default {
     }
 }
 </script>
+<style lang="less" scoped>
+@import "./cliper.less"
+/style>
