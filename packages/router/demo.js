@@ -70,5 +70,23 @@ export default [
         keepAlive: false,
         title: 'slider'
         }
+    },
+    {
+    path: '/demo/dialog',
+    name: 'itv_dialog',
+    component: () => import ('@/components/dialog/demo.vue'),
+    meta: {
+        keepAlive: false,
+        title: 'dialog'
+        }
+    },
+    {
+    path: '/demo/popup',
+    name: 'itv_popup',
+    component: () => import ('@/components/popup/demo.vue'),
+    meta: {
+        keepAlive: false,
+        title: 'popup'
+        }
     }
 ]

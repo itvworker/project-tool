@@ -1,7 +1,6 @@
 <template>
     <div class="itv-picker-panel">
-        <template v-for="(item, index) of listData" >
-            <picker-slot :ref="`picer-slot-${(index)}`"
+            <picker-slot v-for="(item, index) of listData" :ref="`picer-slot-${(index)}`"
                 :default-value="chooseValueData[index]"
                 :is-update="isUpdate"
                 :list-data="item"
@@ -9,7 +8,6 @@
                 :key="index"
                 :key-index="index"
             ></picker-slot>
-        </template>
     </div>
 </template>
 <script>
@@ -55,6 +53,10 @@ export default {
             this.$emit('confirm', this.cacheValueData);
         }
     },
+    mounted() {
+        console.log(this.defaultValueData);
+
+    },
     methods: {
         updateChooseValue(self, index, value) {
             self.cacheValueData.splice(index, 1, value);
@@ -77,8 +79,7 @@ export default {
         },
 
         chooseItem(value, index) {
-            console.log(this.listData);
-            console.log(this.cacheValueData);
+
             if (this.cacheValueData[index] !== value) {
                 this.cacheValueData[index] = value;
                 this.$emit('choose', this, index, value, this.cacheValueData);

@@ -2,11 +2,43 @@
 
 提供多个选项集合供用户选择其中一项。
 
+## 安装
+----
+$#div.class=doc-tab_doc-contet.id=page
+    $#div.class=doc-tab-group
+        $#div.class=tab-item-btn_active 全局注册 $#/div
+        $#div.class=tab-item-btn 局部注册 $#/div
+    $#/div
+    $#div.class=doc-tab-content
+$#div.class=doc-tab-item
+```
+// 在入口处引入
+import Vue from 'vue';
+import ItvPicker from 'itv/packages/picker/index'
+Vue.use(ItvPicker)
+
+```
+$#/div
+$#div.class=doc-tab-item
+```
+
+import ItvPicker from 'itv/packages/picker/index'
+export default {
+  components: {
+    ItvPicker
+  }
+}
+
+```
+$#/div
+$#/div
+$#/div
+
 ## 基本用法
 
 ```html
-<itv-picker 
-    :is-visible="isVisible1" 
+<itv-picker
+    :is-visible="isVisible1"
     :default-value-data="defaultValueData1"
     :list-data="listData1"
     @close="switchPicker('isVisible1')"
@@ -17,8 +49,8 @@
 ## 多列用法
 
 ```html
-<itv-picker 
-    :is-visible="isVisible0" 
+<itv-picker
+    :is-visible="isVisible0"
     :list-data="listData0"
     title="请选择年月"
     :default-value-data="defaultValueData0"
@@ -31,8 +63,8 @@
 ## 联动（省市区）
 
 ```html
-<itv-picker 
-    :is-visible="isVisible" 
+<itv-picker
+    :is-visible="isVisible"
     title="请选择城市"
     :list-data="listData"
     :default-value-data="defaultValueData"
@@ -163,15 +195,15 @@ export default {
                 return false;
             }
             switch(index) {
-                case 1: 
+                case 1:
                     let i = this.listData[0].indexOf(value);
                     this.listData.splice(index, 1, [...this.data[this.listData[0][i]]]);
                     chooseValue = chooseValue ? chooseValue : this.listData[index][0];
                     self && self.updateChooseValue(self, index, chooseValue);
                     this.updateLinkage(self, chooseValue, 2, (cacheValueData && cacheValueData[2] ? cacheValueData[2] : null));
                     break;
-                case 2: 
-                    let areaData = this.dataSub[value] ? this.dataSub[value] : []; 
+                case 2:
+                    let areaData = this.dataSub[value] ? this.dataSub[value] : [];
                     this.listData.splice(index, 1, [...areaData]);
                     chooseValue = chooseValue ? chooseValue : this.listData[index][0];
                     self && self.updateChooseValue(self, index, chooseValue);
@@ -218,7 +250,7 @@ export default {
 ## Prop
 
 | 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
+|----- | ----- | ----- | -----
 | isVisible | 是否可见 | Boolean | false
 | customClassName | 自定义class | String | null
 | title | 设置标题 | String | null
@@ -227,8 +259,8 @@ export default {
 
 ## Event
 
-| 字段 | 说明 | 回调参数 
-|----- | ----- | ----- 
+| 字段 | 说明 | 回调参数
+|----- | ----- | -----
 | confirm | 点击确认按钮时候回调 | 返回选中值
 | choose | 每一列值变更时调用 | 依次返回this、改变的列数，改变值，当前选中值
 | chclose-update | 联动时，关闭时回调 | 依次返回this、当前选中值

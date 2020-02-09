@@ -176,7 +176,7 @@ export default {
 
         modifyStatus (type, defaultValue) {
             let style = window.getComputedStyle(this.$refs.roller)
-           
+
             this.lineSpacing = parseFloat(style.height);
             this.rotation = this.lineSpacing/2+2;
             // console.log(this.lineSpacing)
@@ -191,8 +191,6 @@ export default {
 
     mounted() {
          this.lineSpacing = this.$refs.height.clientHeight;
-
-         console.log(this.lineSpacing);
 
         this.$nextTick(() => {
             this.modifyStatus(true);
