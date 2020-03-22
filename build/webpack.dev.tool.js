@@ -5,9 +5,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
+
 module.exports = {
     mode: 'development',
     context: resolve(''),
@@ -33,7 +34,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: [
-                    { loader: 'vue-loader' },
+                    {loader: 'vue-loader'},
                     {
                         loader: 'units-loader',
                         options: {
@@ -51,31 +52,11 @@ module.exports = {
                 use: [
 
                     {
-                        loader: 'vue-style-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true
-                        }
+                        loader: 'vue-style-loader'
                     },
                     {
                         loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                            importLoaders: 10
-                        }
                     },
-
                     {
                         loader: 'units-loader',
                         options: {
@@ -86,10 +67,13 @@ module.exports = {
                         }
                     },
                     {
+                        loader: 'postcss-loader'
+                    },
+                    {
                         loader: 'less-loader',
                         options: {
-                            importLoaders: 10,
-                            javascriptEnabled:true
+                            importLoaders: 5,
+                            javascriptEnabled: true
                         }
                     },
 
@@ -106,9 +90,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: [
-                    { loader: 'babel-loader' }
+                    {loader: 'babel-loader'}
                 ],
-                include: [resolve('src'), resolve('packages'). resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+                include: [resolve('src'), resolve('packages'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -6,10 +6,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
-
 
 
 module.exports = {
@@ -36,7 +35,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: [
-                    { loader: 'vue-loader' }
+                    {loader: 'vue-loader'}
                 ]
 
             },
@@ -51,23 +50,11 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [ //loader从后向前执行，顺序不能乱，会不能编译
-
                     {
-                        loader: 'vue-style-loader',
-                        options: {
-                            sourceMap: true
-                        }
+                        loader: 'vue-style-loader'
                     },
-                    {
-                       loader:'style-loader'
-                    },
-
                     {
                         loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                            importLoaders: 1
-                        }
                     },
                     {
                         loader: 'units-loader',
@@ -84,15 +71,14 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options: {
-                            sourceMap: true
-
+                            importLoaders: 5,
+                            javascriptEnabled: true
                         }
                     },
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                            sourceMap: true,
-                            resources: [resolve('packages/assets/css/animate.less'),resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
+                            resources: [resolve('packages/assets/css/animate.less'), resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
                         }
                     }
 
@@ -113,7 +99,7 @@ module.exports = {
             },
             {
                 test: /\.md$/,
-                use:[
+                use: [
                     {
                         loader: 'html-loader'
                     },
