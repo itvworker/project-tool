@@ -97,5 +97,23 @@ export default [
             keepAlive: false,
             title: 'scroller'
         }
+    },
+    {
+        path: '/demo/slideout',
+        name: 'itv_slideout',
+        component: () => import ('@/components/slideout/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'scroller'
+        }
     }
+    // {
+    //     path: '/demo/form',
+    //     name: 'itv_popup',
+    //     component: () => import ('@/components/form/demo.vue'),
+    //     meta: {
+    //         keepAlive: false,
+    //         title: 'scroller'
+    //     }
+    // }
 ]

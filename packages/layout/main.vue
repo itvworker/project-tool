@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="itv-page-content"><slot></slot></div>
+    <div class="itv-page-content"><slot /></div>
 </template>
 <script>
 

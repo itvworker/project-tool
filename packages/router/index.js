@@ -7,6 +7,7 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        ...demo,...doc
+        ...demo,
+        ...doc
     ]
 })

@@ -231,6 +231,7 @@ export default {
             this.$el.addEventListener('touchmove', this.touchMove);
             this.$el.addEventListener('touchend', this.touchEnd);
         });
+        console.log(this.$slots)
     },
     beforeDestroy() {
         // 移除监听
