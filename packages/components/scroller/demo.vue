@@ -2,21 +2,13 @@
     <itv-container class="page-dialog">
         <itv-header>Scroller</itv-header>
         <itv-main>
-            <nut-scroller
-                type="vertical"
-                @pulldown="pulldown"
-                @loadMore="loadmore"
-                :is-un-more="ismore"
-                :is-loading="isloading"
-            >
-                <div slot="list" class="nut-vert-list-panel">
+            <nut-scroller>
+                <div  class="nut-vert-list-panel">
                     <div class="item" v-for="(item, index) in list">
-                        {{item.name}}{{index}}---
+                        {{item.name}}{{index}}
                     </div>
                 </div>
-                <div slot="more" class="more">
-                        无有更多
-                </div>
+
 
             </nut-scroller>
         </itv-main>
@@ -40,7 +32,6 @@ export default {
     },
     methods: {
         createList(value) {
-
             for(let i = 0; i < value; i++) {
                 this.list.push({
                     name:'我是新闻哥'
@@ -51,7 +42,7 @@ export default {
             this.isloading = true;
             setTimeout(() => {
                 this.list = [];
-                this.createList(20);
+                this.createList(100);
                 this.isloading  = false;
             }, 3000);
         },
@@ -64,7 +55,7 @@ export default {
         }
     },
     mounted() {
-        this.createList(20)
+        this.createList(100)
     }
 
 };
