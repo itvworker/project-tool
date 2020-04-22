@@ -34,7 +34,9 @@ export default {
             default: true
         }
     },
-
+    mounted() {
+        this.calc(100);
+    },
     data() {
         return  {
             initialX: 0, //开始接触屏幕时的接触点

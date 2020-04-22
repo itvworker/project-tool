@@ -30,13 +30,7 @@ export default {
             }
 
 
-            if(this.bounching) {
-                if(y > this.contentList[this.index].maxScrollY && y < this.contentList[this.index].y) {
-                    if(this.contentList[this.index].y-y <=0.3) {
-                        y =  this.contentList[this.index].maxScrollY
-                    }
-                }
-            }
+
 
             this.contentList[this.index].y = y;
 
@@ -50,8 +44,8 @@ export default {
             this.calcDecelerationVelocity();
         },
         calcDecelerationVelocity() {
-            console.log(this.decelerationVelocityY);
-
+            let maxX = this.contentList[this.index].maxScrollX
+            let maxY  = this.contentList[this.index].maxScrollY
             let x = this.contentList[this.index].x;
             let y = this.contentList[this.index].y;
             if (!this.bounching) {
@@ -74,7 +68,17 @@ export default {
 
             // 只有在弹动时才有效
 
+            if (this.bounching) {
+                if (this.decelerationVelocityY < 0 && y > maxY) {
+                    this.decelerationVelocityY *= 0.85;
+                }
 
+                if (this.decelerationVelocityY > 0 && y < 0) {
+                    this.decelerationVelocityY *= 0.85;
+                }
+            }
+
+            return
             if (this.bounching) {
                 let scrollOutsideX = 0
                 let scrollOutsideY = 0
@@ -115,9 +119,15 @@ export default {
                     }
                 }
             }
-
-
-
+        },
+        calc(height) {
+            let dis = 0.3;
+            let l = 0
+            while (height > l) {
+                dis = dis / 0.95;
+                l += dis;
+            }
+            return dis;
         }
     }
 
