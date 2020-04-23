@@ -29,13 +29,36 @@ export default {
                 }
             }
 
+            if (this.bounching) {
+                if (y < maxY && this.contentList[this.index].y > maxY) {
+                    this.decelerationVelocityY = 0
+                    y = maxY;
+                }
 
+                if (y > 0 && this.contentList[this.index].y < 0 ) {
+                    this.decelerationVelocityY = 0
+                    y = 0
+                }
+            }
 
 
             this.contentList[this.index].y = y;
 
             this.render(0, y, 1);
             if (Math.abs(this.decelerationVelocityY) <= 0.3) {
+                if (y > maxY) {
+                    let dis = y - maxY;
+                    this.decelerationVelocityY = this.calc(dis);
+                    window.requestAnimationFrame(this.step)
+                    return;
+                }
+
+                if (y < 0 ) {
+                    this.decelerationVelocityY = this.calc(Math.abs(y), true);
+                    window.requestAnimationFrame(this.step);
+                    return;
+                }
+
                 this.isAnimating = false;
                 return;
             } else {
@@ -120,14 +143,23 @@ export default {
                 }
             }
         },
-        calc(height) {
+        calc(height, value) {
+            let speed = 0.9;
             let dis = 0.3;
-            let l = 0
+            let l = 0;
             while (height > l) {
-                dis = dis / 0.95;
+                dis = dis / speed ;
                 l += dis;
+                if (l >  height) {
+                    dis *= speed ;
+                }
             }
-            return dis;
+            if(value) {
+               return -dis
+            }else{
+                return dis;
+            }
+
         }
     }
 

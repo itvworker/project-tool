@@ -139,9 +139,14 @@ export default {
 
                 let x = this.contentList[this.index].x;
                 let y = this.contentList[this.index].y;
+                let maxY = this.contentList[this.index].maxScrollY;
 
-                if(this.enableScrollY && this.scrollY) {
+                if (this.enableScrollY && this.scrollY) {
+                    if((y < 0 && moveY>0)||(y > maxY && moveY<0)) {
 
+                        moveY = moveY/2
+                    }
+                    console.log(y+ '-' + maxY)
                     y -= moveY * this.speedMultiplier;
                     this.contentList[this.index].y = y;
                 }
