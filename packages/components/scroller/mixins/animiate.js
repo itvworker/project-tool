@@ -2,7 +2,6 @@ export default {
     methods: {
         animate() {
             this.isAnimating = true;
-
             this.minDecelerationScrollX = 0
             this.minDecelerationScrollY = 0
             this.maxDecelerationScrollX = this.contentList[this.index].maxScrollX
@@ -11,13 +10,12 @@ export default {
         },
         step() {
 
-            if(!this.isAnimating) return;
+            if (!this.isAnimating) return;
             let x = this.contentList[this.index].x;
             let y = this.contentList[this.index].y;
             let maxX = this.contentList[this.index].maxScrollX
             let maxY  = this.contentList[this.index].maxScrollY
             y -= this.decelerationVelocityY;
-
 
             //如果没有弹动时
             if(!this.bounching) {
@@ -30,6 +28,13 @@ export default {
             }
 
             if (this.bounching) {
+                if (this.refreshStatus && this.pullDown) {
+                    if (this.contentList[this.index].y < -44 && y > -44) {
+                        y = -44
+                        this.decelerationVelocityY = 0;
+                        this.refresh();
+                    }
+                }
                 if (y < maxY && this.contentList[this.index].y > maxY) {
                     this.decelerationVelocityY = 0
                     y = maxY;
@@ -46,17 +51,23 @@ export default {
 
             this.render(0, y, 1);
             if (Math.abs(this.decelerationVelocityY) <= 0.3) {
-                if (y > maxY) {
-                    let dis = y - maxY;
-                    this.decelerationVelocityY = this.calc(dis);
-                    window.requestAnimationFrame(this.step)
+                if(this.refreshStatus) {
                     return;
-                }
+                }else{
 
-                if (y < 0 ) {
-                    this.decelerationVelocityY = this.calc(Math.abs(y), true);
-                    window.requestAnimationFrame(this.step);
-                    return;
+                    if (y > maxY) {
+                        let dis = y - maxY;
+                        this.decelerationVelocityY = this.calc(dis);
+                        window.requestAnimationFrame(this.step)
+                        return;
+                    }
+
+                    if (y < 0 ) {
+                        this.decelerationVelocityY = this.calc(Math.abs(y), true);
+                        window.requestAnimationFrame(this.step);
+                        return;
+                    }
+
                 }
 
                 this.isAnimating = false;
@@ -101,47 +112,12 @@ export default {
                 }
             }
 
-            return
-            if (this.bounching) {
-                let scrollOutsideX = 0
-                let scrollOutsideY = 0
-
-                // This configures the amount of change applied to deceleration/acceleration when reaching boundaries
-                let penetrationDeceleration = this.penetrationDeceleration;
-                let penetrationAcceleration = this.penetrationAcceleration;
-
-
-                if (x < this.minDecelerationScrollX) {
-                    scrollOutsideX = this.minDecelerationScrollX - x
-                } else if (x > this.maxDecelerationScrollX) {
-                    scrollOutsideX = this.maxDecelerationScrollX - x
-                }
-                console.log(this.maxDecelerationScrollY)
-                if (y < this.minDecelerationScrollY) {
-                    scrollOutsideY = this.minDecelerationScrollY + y
-                } else if (y > this.maxDecelerationScrollY) {
-                    scrollOutsideY = this.maxDecelerationScrollY + y
-                }
-
-                if (scrollOutsideX !== 0) {
-                    if (scrollOutsideX * this.decelerationVelocityX <= 0) {
-                        this.decelerationVelocityX += scrollOutsideX * penetrationDeceleration
-                    } else {
-                        this.decelerationVelocityX = scrollOutsideX * penetrationAcceleration
-                    }
-                }
-
-                if (scrollOutsideY !== 0) {
-
-                    if (scrollOutsideY * this.decelerationVelocityY <= 0) {
-                        this.decelerationVelocityY += scrollOutsideY * penetrationDeceleration
-
-                    } else {
-
-                        this.decelerationVelocityY = scrollOutsideY * penetrationAcceleration
-                    }
-                }
-            }
+        },
+        restartRefresh() {
+            if(!this.refreshStatus) return;
+            this.decelerationVelocityY = -6;
+            this.refreshStatus =false;
+            this.animate()
         },
         calc(height, value) {
             let speed = 0.9;

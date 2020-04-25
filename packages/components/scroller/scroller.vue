@@ -2,6 +2,9 @@
     <div class="itv-scroller" ref="out" @touchstart="touchstart($event)" @touchmove="touchmove($event)" @touchend="touchend($event)" >
         <div class="itv-scroller-silde" ref="slide"  :style="{width: allWidth+'px'}">
             <div class="itv-scroller-content" ref="main">
+                <div class="itv-scroller-refresh">
+                    下拉刷新
+                </div>
                 <slot />
             </div>
         </div>
@@ -30,6 +33,10 @@ export default {
             default: true
         },
         bounching: {
+            type: Boolean,
+            default: true
+        },
+        pullDown:{
             type: Boolean,
             default: true
         }
@@ -75,6 +82,8 @@ export default {
             penetrationDeceleration: 0.03,
             penetrationAcceleration: 0.08,
 
+            refreshStatus: false,
+
             //-----
             allWidth: '',
             outerWidth: ''
@@ -85,6 +94,7 @@ export default {
 
         touchstart(e) {
             this.render = render(this.$refs.slide.children[this.index]);
+            this.refreshStatus = false;
             this.calcMax();
             this.isAnimating = false;
             if (e.target.tagName.match(/input|textarea|select/i)) {
@@ -146,7 +156,6 @@ export default {
 
                         moveY = moveY/2
                     }
-                    console.log(y+ '-' + maxY)
                     y -= moveY * this.speedMultiplier;
                     this.contentList[this.index].y = y;
                 }
@@ -167,6 +176,7 @@ export default {
                 let distanceX = Math.abs(currentTouchLeft - this.initialX);
                 let distanceY = Math.abs(currentTouchTop - this.initialY);
                 this.enableScrollY =  distanceY >= this.minimumTrackingForScroll;
+
 
 
                 if(this.enableScrollY){
@@ -191,6 +201,27 @@ export default {
             this.isMove = false;
             let timeStamp = e.timeStamp;
             let lastMoveTime =  this.moveList[this.moveList.length-1].timeStamp;
+            let dom = this.contentList[this.index];
+            if(dom.y < 0 ) {
+                if(dom.y <= -44) {
+                    this.decelerationVelocityY = -20
+                    this.refreshStatus = true;
+                    this.animate();
+                    return
+                }
+                if(dom.y < 0 && dom.y > -44) {
+                    this.decelerationVelocityY = -10
+                    this.animate();
+                    return;
+                }
+            }
+
+            if(dom.y > dom.maxScrollY ) {
+                this.decelerationVelocityY = 18;
+                this.animate();
+                return;
+            }
+
 
             if(timeStamp-lastMoveTime < 100) {
                 let positions = this.moveList;
@@ -211,13 +242,18 @@ export default {
                     // Based on 50ms compute the movement to apply for each render step
                     this.decelerationVelocityX = movedLeft / timeOffset * (1000 / 60);
                     this.decelerationVelocityY = movedTop / timeOffset * (1000 / 60);
-                    console.log(this);
+
                     this.animate()
 
                 }
 
             }
 
+        },
+        refresh() {
+            setTimeout(()=>{
+                this.restartRefresh()
+            },3000)
         }
     }
 }

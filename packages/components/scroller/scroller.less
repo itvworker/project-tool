@@ -7,14 +7,22 @@
         height: 100%;
     }
 
-    .itv-scroller-content{
-        width: 100%;
 
-    }
 }
 
 
+.itv-scroller-content{
+    width: 100%;
+    position: relative;
+    .itv-scroller-refresh{
+        position: absolute;
+        transform: translate(0,-100%);
+        left: 0px;
+        right: 0px;
+        text-align: center;
+    }
 
+}
 
 
 
