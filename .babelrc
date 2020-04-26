@@ -1,0 +1,25 @@
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "modules": false,
+            "targets": {
+                "browsers": ["> 1%", "last 10 versions", "not ie <= 8"]
+            }
+        }]
+    ],
+    "plugins": [
+        "@babel/plugin-transform-arrow-functions",
+        "@babel/plugin-transform-block-scoped-functions",
+        "@babel/plugin-transform-block-scoping",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-transform-runtime",
+        "@vue/babel-plugin-transform-vue-jsx",
+        "babel-plugin-remove-vconsole",
+        ["babel-plugin-load-module", {
+            "cssPath": "@midea/pix-h5-components/dist/components/{key}/styles/{key}.css", //必须css路径
+            "jsPath": "@midea/pix-h5-components/dist/components/{key}", //js路径必须
+            "public": "@midea/pix-h5-components/dist/assets/fonts/iconfont.css", //公用css,可不传
+            "name": "@midea/pix-h5-components" //包名
+        }]
+    ]
+}

@@ -1,0 +1,110 @@
+
+.page-door{
+    padding-top: 50rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.btn{
+    height: 48rpx;
+    width: 90%;
+    background-color: @color-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: @color-white;
+    font-size: @fs-large;
+    border-radius: 24rpx;
+    margin-bottom: 30rpx;
+    
+    
+    >img{
+        width: 20rpx;
+        margin-right: 10rpx;
+
+    }
+}
+
+.page-confirm-bg{
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    .page-confirm{
+        width: 75%;
+        background-color: @color-white;
+        border-radius: 10rpx;
+        padding-top: 26rpx;
+        .title{
+            font-size: @fs-large;
+            color: @color-text-primary;
+            text-align: center;
+        }
+        .text{
+            color: @color-text-regular;
+            font-size: @fs-medium;
+            margin-top: 14rpx;
+            margin-bottom: 14rpx;
+            text-align: center;
+        }
+        .btn-confirm,.btn-unnormal{
+            height: 49rpx;
+            border-top: 1px solid #cecece;
+            font-size: @fs-medium;
+            text-align: center;
+            line-height: 46rpx;
+        }
+        .btn-confirm{
+            color: @color-primary;   
+        }
+        .btn-unnormal{
+            color: @color-text-secondary;
+        }
+    }
+}
+
+
+.tip-box {
+  
+    margin-top: 3rem;
+    /*margin-top: 16rem;*/
+    width:89.4%;
+    display: none;
+
+    border:0.5px solid #FCB23C ;
+    margin-left:5.3%;
+    background: rgba(252,178,60,0.05);
+    border-radius: 6px;
+    img{
+        width: 18px;
+        height: 18px;
+        margin-right: 9px;
+    }
+}
+.tip-content {
+    span{
+        display: inline-block;
+        width:.4rem;
+        height: .4rem;
+        border-radius: 1rem;
+        background: #E8E8E8;
+        margin-right: 14px;
+    }
+    div{
+        margin: 11px 14px;
+        font-size: 14px;
+    }
+}
+.tips-title{
+    margin: 16px 9px;
+    font-size: 18px;
+    label{
+        display: inline-block;
+    }
+}

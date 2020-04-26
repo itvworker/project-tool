@@ -1,0 +1,45 @@
+{
+    "environment": {
+        "test": {
+            "mx5Emp": {
+                "build": 22,
+                "version": "1.0.22",
+                "name": "物资出厂员工端",
+                "identifier": "com.midea.msd.materialsFactoryEmp",
+                "releaseNote": "物资出厂员工端"
+            },
+            "mx5Door": {
+                "build": 28,
+                "version": "1.0.28",
+                "name": "物资出厂门卫端",
+                "identifier": "com.midea.msd.materialsFactoryDoor",
+                "releaseNote": "物资出厂门卫端"
+            }
+        },
+        "pro": {
+            "mx5Emp": {
+                "build": 1,
+                "version": "1.0.0",
+                "name": "物资出厂员工端",
+                "identifier": "com.midea.msd.materialsFactoryEmp",
+                "releaseNote": "物资出厂员工端"
+            },
+            "mx5Door": {
+                "build": 2,
+                "version": "1.0.1",
+                "name": "物资出厂门卫端",
+                "identifier": "com.midea.msd.materialsFactoryDoor",
+                "releaseNote": "物资出厂门卫端"
+            }
+        }
+    },
+    "api": {
+        "testMx5": {
+            "baseUrl": "https://mapnew5sit.midea.com/mas/v5/app/restful/materials_factory",
+            "mesUrl": "http://10.16.12.167:8996"
+        },
+        "mx5": {
+            "baseUrl": "https://mapnew5.midea.com/mas/v5/app/restful/materials_factory"
+        }
+    }
+}

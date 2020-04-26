@@ -1,0 +1,6679 @@
+
+#app {
+  padding-top: 1.1733rem;
+  background-color: #F5F5F5;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.header[data-v-5dfa4ed2] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1.1733rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #ffffff;
+}
+.header .left[data-v-5dfa4ed2] {
+  margin-left: 0.4373rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.header .left img[data-v-5dfa4ed2] {
+  width: 0.2747rem;
+  height: 0.464rem;
+  margin: auto;
+}
+.header .left .word[data-v-5dfa4ed2] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #011829;
+  letter-spacing: 0;
+  line-height: 1.1733rem;
+  margin-left: 0.1413rem;
+  width: 0.8533rem;
+}
+.header .center[data-v-5dfa4ed2] {
+  width: 6.1333rem;
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #011829;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 1.1733rem;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  width: 4rem;
+  padding: 0 1.0667rem;
+}
+.header .right[data-v-5dfa4ed2] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.header .right .left_img[data-v-5dfa4ed2] {
+  width: 0.5333rem;
+  height: 0.5333rem;
+  margin: auto;
+}
+.header .right .right_img[data-v-5dfa4ed2] {
+  height: 0.48rem;
+  width: 0.48rem;
+  margin: auto;
+  margin-left: 1.2rem;
+}
+.header .right .center_div[data-v-5dfa4ed2] {
+  opacity: 0.5;
+  background: #919CA3;
+  border-radius: 0.5px;
+  width: 0.0267rem;
+  height: 0.5333rem;
+  margin: auto 0.32rem;
+}
+
+.title[data-v-e2779f7e] {
+  height: 3.36rem;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: url(../../static/img/createTitleBg@2x.02ecee6.png) no-repeat;
+  background-size: 100%;
+}
+.title .word[data-v-e2779f7e] {
+  margin-top: 0.8533rem;
+  font-size: 0.48rem;
+  background-image: -webkit-gradient(linear, left top, right top, from(#FBEDE4), color-stop(48%, #FACFAF), to(#FDF7F3));
+  background-image: -webkit-linear-gradient(left, #FBEDE4 0%, #FACFAF 48%, #FDF7F3 100%);
+  background-image: -o-linear-gradient(left, #FBEDE4 0%, #FACFAF 48%, #FDF7F3 100%);
+  background-image: linear-gradient(90deg, #FBEDE4 0%, #FACFAF 48%, #FDF7F3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.template[data-v-e2779f7e] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  width: 9.1467rem;
+  position: absolute;
+  top: 2.1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.template .template_title[data-v-e2779f7e] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #333333;
+  text-align: start;
+  margin: 0.4267rem;
+  margin-bottom: 0;
+}
+.customerForm[data-v-e2779f7e] {
+  position: absolute;
+  top: 12.65rem;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 9.1467rem;
+}
+
+.list[data-v-865df118] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 0.5333rem;
+}
+.list img[data-v-865df118] {
+  width: 1.1733rem;
+  height: 1.1733rem;
+  margin: 0 0.4267rem;
+}
+.list .list_word[data-v-865df118] {
+  text-align: start;
+  padding-bottom: 0.56rem;
+  width: 4.16rem;
+}
+.list .list_word .word_title[data-v-865df118] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+}
+.list .list_word .word_tips[data-v-865df118] {
+  margin-top: 0.1333rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #999999;
+  line-height: 0.4533rem;
+}
+.list .list_right[data-v-865df118] {
+  padding-left: 1.1467rem;
+  padding-bottom: 0.8267rem;
+  padding-top: 0.2667rem;
+}
+.list .list_right .btn[data-v-865df118] {
+  background: #FC9153;
+  border-radius: 0.32rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3467rem;
+  color: #FFFFFF;
+  padding: 0.08rem 0.3467rem;
+}
+.list .bottom_line[data-v-865df118] {
+  border-bottom: 1px solid #EDEDED;
+}
+
+.my .bg_white[data-v-3a60d8a2] {
+  background-color: #fff;
+  padding-bottom: 0.2667rem;
+}
+.my .tab[data-v-3a60d8a2] {
+  width: 6.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+}
+.my .tab .tab_item[data-v-3a60d8a2] {
+  width: 3.2rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  text-align: center;
+  line-height: 1.3867rem;
+}
+.my .tab .tab_item .tab_line[data-v-3a60d8a2] {
+  background: #FC9153;
+  border-radius: 3px 3px 0 0;
+  height: 3px;
+  width: 1.3867rem;
+  margin: auto;
+}
+.my .tab .choose_item[data-v-3a60d8a2] {
+  color: #FC9153;
+}
+.my .search[data-v-3a60d8a2] {
+  background: #F5F5F5;
+  border-radius: 0.2667rem;
+  width: 9.1467rem;
+  height: 0.96rem;
+  margin: auto;
+  margin-top: 0.2667rem;
+}
+.my .search .search_input[data-v-3a60d8a2] {
+  background: #F5F5F5;
+  border: none;
+  outline: none;
+  width: 7.44rem;
+  height: 0.5867rem;
+  margin-top: 0.16rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #888888;
+}
+.my .search img[data-v-3a60d8a2] {
+  width: 0.4267rem;
+  height: 0.4267rem;
+  vertical-align: text-top;
+  margin-right: 0.2133rem;
+}
+.my .data_list[data-v-3a60d8a2] {
+  position: absolute;
+  top: 4.2667rem;
+  bottom: 1.3333rem;
+  width: 100%;
+  left: 0;
+}
+.my .no_data[data-v-3a60d8a2] {
+  margin-top: 1.9733rem;
+}
+.my .no_data img[data-v-3a60d8a2] {
+  width: 4.8rem;
+  height: 3.7333rem;
+}
+.my .no_data .howToCreate[data-v-3a60d8a2] {
+  width: 6.0267rem;
+  height: 4.4rem;
+}
+.my .no_data .no_data_word[data-v-3a60d8a2] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #919CA3;
+  text-align: center;
+  line-height: 0.3733rem;
+}
+.my .no_data .howToCreateWord[data-v-3a60d8a2] {
+  margin-top: 1.0933rem;
+}
+.my .no_data .howToCreateWord .big[data-v-3a60d8a2] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.5333rem;
+  color: #333333;
+  text-align: center;
+}
+.my .no_data .howToCreateWord .small[data-v-3a60d8a2] {
+  margin-top: 4px;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #999999;
+  text-align: center;
+}
+.my .bottom[data-v-3a60d8a2] {
+  background: #FC9153;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.4rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 99;
+}
+.margin_bottom[data-v-3a60d8a2] {
+  margin-bottom: 0.2667rem !important;
+}
+
+.myListItem[data-v-4b56e826] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  width: 9.1467rem;
+  margin: auto;
+  margin-top: 0.2667rem;
+  padding-top: 0.48rem;
+}
+.myListItem .item_title[data-v-4b56e826] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #333333;
+  line-height: 0.6667rem;
+  text-align: start;
+  margin: 0 0.5333rem;
+}
+.myListItem .create_content[data-v-4b56e826] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0.2667rem 0.5067rem 0 0.5067rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #888888;
+  line-height: 0.5333rem;
+  padding-bottom: 0.5333rem;
+}
+.myListItem .create_content .item_status[data-v-4b56e826] {
+  border-radius: 10px;
+  width: 1.4933rem;
+  height: 0.5333rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.2933rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+.myListItem .create_content .statusBkOrigin[data-v-4b56e826] {
+  background: #FC9153;
+}
+.myListItem .create_content .statusBkGreen[data-v-4b56e826] {
+  background: #2DE07B;
+}
+.myListItem .create_content .statusBkGray[data-v-4b56e826] {
+  background: #CCCCCC;
+}
+.myListItem .create_content .line[data-v-4b56e826] {
+  background: #D8D8D8;
+  width: 1px;
+  height: 0.4267rem;
+  margin: auto 16px;
+}
+.myListItem .create_content .end_time[data-v-4b56e826] {
+  text-align: right;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.myListItem .in_content[data-v-4b56e826] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #AAAAAA;
+  line-height: 0.32rem;
+}
+.myListItem .in_content .submit_time[data-v-4b56e826] {
+  text-align: left;
+  margin: 0.2667rem 0.5067rem 0 0.5067rem;
+  padding-bottom: 0.4267rem;
+}
+.myListItem .in_content .bottom[data-v-4b56e826] {
+  background: #F9F9FA;
+  border-radius: 0 0 8px 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 0.96rem;
+}
+.myListItem .in_content .bottom .bottom_item[data-v-4b56e826] {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #666666;
+  line-height: 0.4533rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.myListItem .in_content .bottom .bottom_item img[data-v-4b56e826] {
+  width: 0.4267rem;
+  height: 0.4267rem;
+  margin: auto;
+  margin-left: 0.9333rem;
+  margin-right: 0.1067rem;
+}
+.myListItem .in_content .bottom .bottom_item div[data-v-4b56e826] {
+  margin: auto 0;
+}
+
+.bottom_content[data-v-206d8dd2] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 12px 12px 0 0;
+  position: absolute;
+  z-index: 101;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.bottom_content .imgs[data-v-206d8dd2] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0.6667rem 0.4267rem 0.8267rem 0.4267rem;
+}
+.bottom_content .sec_imgs[data-v-206d8dd2] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0.5333rem 0.4267rem 0.8267rem 0.4267rem;
+}
+.bottom_content .img_item[data-v-206d8dd2] {
+  width: 3.04rem;
+  height: 3.2rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+  text-align: center;
+}
+.bottom_content .img_item img[data-v-206d8dd2] {
+  width: 1.1733rem;
+  height: 1.1733rem;
+  margin-top: 0.6933rem;
+  margin-bottom: 8px;
+}
+.bottom_content .close_img[data-v-206d8dd2] {
+  margin-bottom: 0.8267rem;
+}
+.bottom_content .close_img img[data-v-206d8dd2] {
+  width: 0.4533rem;
+  height: 0.4533rem;
+}
+.bottom_content .back_img[data-v-206d8dd2] {
+  margin: 0.64rem;
+  margin-bottom: 0;
+  text-align: start;
+}
+.bottom_content .back_img img[data-v-206d8dd2] {
+  width: 10.3px;
+}
+
+.mxLoadMore[data-v-4e9d04e4] {
+  height: 100%;
+  overflow: auto;
+}
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+.weui-loading {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+          animation: weuiLoading 1s steps(12, end) infinite;
+  background: transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=") no-repeat;
+  background-size: 100%;
+}
+.weui-loading.weui-loading_transparent {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMjAnIGhlaWdodD0nMTIwJyB2aWV3Qm94PScwIDAgMTAwIDEwMCc+PHBhdGggZmlsbD0nbm9uZScgZD0nTTAgMGgxMDB2MTAwSDB6Jy8+PHJlY3QgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjU2KScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgwIC0zMCknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjUpJyByeD0nNScgcnk9JzUnIHRyYW5zZm9ybT0ncm90YXRlKDMwIDEwNS45OCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjQzKScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSg2MCA3NS45OCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjM4KScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSg5MCA2NSA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjMyKScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSgxMjAgNTguNjYgNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4yOCknIHJ4PSc1JyByeT0nNScgdHJhbnNmb3JtPSdyb3RhdGUoMTUwIDU0LjAyIDY1KScvPjxyZWN0IHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyB4PSc0Ni41JyB5PSc0MCcgZmlsbD0ncmdiYSgyNTUsMjU1LDI1NSwuMjUpJyByeD0nNScgcnk9JzUnIHRyYW5zZm9ybT0ncm90YXRlKDE4MCA1MCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjIpJyByeD0nNScgcnk9JzUnIHRyYW5zZm9ybT0ncm90YXRlKC0xNTAgNDUuOTggNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4xNyknIHJ4PSc1JyByeT0nNScgdHJhbnNmb3JtPSdyb3RhdGUoLTEyMCA0MS4zNCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjE0KScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSgtOTAgMzUgNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4xKScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSgtNjAgMjQuMDIgNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4wMyknIHJ4PSc1JyByeT0nNScgdHJhbnNmb3JtPSdyb3RhdGUoLTMwIC01Ljk4IDY1KScvPjwvc3ZnPgo=");
+}
+@-webkit-keyframes weuiLoading {
+0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+}
+100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+            transform: rotate3d(0, 0, 1, 360deg);
+}
+}
+@keyframes weuiLoading {
+0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+}
+100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+            transform: rotate3d(0, 0, 1, 360deg);
+}
+}
+.weui-loadmore {
+  width: 65%;
+  margin: 1.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+.weui-loadmore__tips {
+  display: inline-block;
+  vertical-align: middle;
+}
+.weui-loadmore_line {
+  border-top: 1px solid #E5E5E5;
+  margin-top: 2.4em;
+}
+.weui-loadmore_line .weui-loadmore__tips {
+  position: relative;
+  top: -0.9em;
+  padding: 0 0.55em;
+  color: #999999;
+}
+.weui-loadmore_dot .weui-loadmore__tips {
+  padding: 0 0.16em;
+}
+.weui-loadmore_dot .weui-loadmore__tips:before {
+  content: " ";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #E5E5E5;
+  display: inline-block;
+  position: relative;
+  vertical-align: 0;
+  top: -0.16em;
+}
+.vux-loadmore.weui-loadmore_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 0;
+}
+.vux-loadmore.weui-loadmore_line:before,
+.vux-loadmore.weui-loadmore_line:after {
+  position: relative;
+  top: -1px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  content: '';
+  border-top: 1px solid #E5E5E5;
+}
+
+.headBk[data-v-2dcb4659] {
+  width: 100%;
+  height: 5.6rem;
+}
+.content[data-v-2dcb4659] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 3px 14px 0 rgba(102, 102, 102, 0.08);
+          box-shadow: 0 3px 14px 0 rgba(102, 102, 102, 0.08);
+  border-radius: 8px;
+  width: 9.1467rem;
+  position: absolute;
+  top: 6.08rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  text-align: start;
+}
+.content .title[data-v-2dcb4659] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #222222;
+  margin: 0.32rem 0.4267rem 0.2133rem 0.3467rem;
+}
+.content .tips[data-v-2dcb4659] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+  margin: 0 0.4267rem;
+  padding-bottom: 0.4267rem;
+}
+.content .bottom[data-v-2dcb4659] {
+  margin-top: 0.4267rem;
+  background: #F9F9FA;
+  border-radius: 0 0 8px 8px;
+  height: 0.96rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #666666;
+}
+.content .bottom .img_word[data-v-2dcb4659] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  line-height: 0.96rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.content .bottom img[data-v-2dcb4659] {
+  width: 0.4267rem;
+  height: 0.4267rem;
+  margin: auto;
+  margin-right: 4px;
+}
+.big_btn[data-v-2dcb4659] {
+  background: #FC9153;
+  border-radius: 8px;
+  height: 1.0667rem;
+  width: 9.1467rem;
+  margin: auto;
+  margin-top: 3.76rem;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.0667rem;
+}
+.look_bottom[data-v-2dcb4659] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.look_bottom .bottom_img[data-v-2dcb4659] {
+  width: 0.8533rem;
+  margin-top: 0.4267rem;
+}
+.look_bottom .big_word[data-v-2dcb4659] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #333333;
+  margin-top: 0.2133rem;
+}
+.look_bottom .bottom_time[data-v-2dcb4659] {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #AAAAAA;
+  margin-top: 0.08rem;
+}
+.look_bottom .last_word[data-v-2dcb4659] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  margin-top: 0.1333rem;
+  margin-bottom: 0.4267rem;
+}
+.look_bottom .last_word .o_color[data-v-2dcb4659] {
+  color: #FC9153;
+}
+
+.look_bottom[data-v-2dfe013d] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3.9467rem;
+}
+.look_bottom .bottom_img[data-v-2dfe013d] {
+  width: 0.8533rem;
+  margin-top: 0.4267rem;
+}
+.look_bottom .big_word[data-v-2dfe013d] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #333333;
+  margin-top: 0.2133rem;
+}
+.look_bottom .bottom_time[data-v-2dfe013d] {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #AAAAAA;
+  margin-top: 0.08rem;
+}
+.look_bottom .last_word[data-v-2dfe013d] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  margin-top: 0.1333rem;
+  margin-bottom: 0.4267rem;
+}
+.look_bottom .last_word .o_color[data-v-2dfe013d] {
+  color: #FC9153;
+}
+.content[data-v-2dfe013d] {
+  overflow: auto;
+}
+.content .questions_class[data-v-2dfe013d] {
+  background-color: #FFFFFF;
+  padding-bottom: 0.5333rem;
+}
+.content .big_btn[data-v-2dfe013d] {
+  margin: 0.8rem 0.4267rem;
+  background: #FC9153;
+  border-radius: 8px;
+  height: 1.0667rem;
+  line-height: 1.0667rem;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+.answer_content[data-v-2dfe013d] {
+  height: -webkit-fill-available;
+}
+.look_content[data-v-2dfe013d] {
+  position: absolute;
+  bottom: 3.9467rem;
+  top: 1.1733rem;
+  width: 100%;
+  left: 0;
+}
+.line[data-v-2dfe013d] {
+  margin: 0 0.4267rem;
+  height: 1px;
+  background: #ededed;
+}
+.error_tips[data-v-2dfe013d] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #F10039;
+  margin-bottom: 0.2667rem;
+  text-align: left;
+  margin-left: 0.4267rem;
+}
+
+.subject_class[data-v-338f7304] {
+  padding: 0.5333rem 0;
+  margin: 0 0.4267rem;
+  text-align: start;
+  border-bottom: 1px solid #EDEDED;
+  position: relative;
+}
+.subject_class .discard_img[data-v-338f7304] {
+  width: 1.6533rem;
+  height: 1.6533rem;
+  position: absolute;
+  right: 0.8267rem;
+  top: 0.4267rem;
+}
+.subject_class .subject_title[data-v-338f7304] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.4267rem;
+}
+.subject_class .subject_title .discard_word[data-v-338f7304] {
+  color: red;
+}
+.subject_class .inputText[data-v-338f7304] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  line-height: 0.5333rem;
+  color: #666666;
+  width: 9.1467rem;
+  outline: none;
+  margin-top: 0.4rem;
+  min-height: 0.5333rem;
+  max-height: 2.1333rem;
+  overflow: auto;
+}
+.subject_class .inputImg[data-v-338f7304] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.subject_class .inputImg .img_item[data-v-338f7304] {
+  margin-top: 0.24rem;
+}
+.subject_class .inputImg .img_item img[data-v-338f7304] {
+  width: 1.5467rem;
+  height: 1.1733rem;
+  margin-right: 0.4267rem;
+}
+.subject_class .inputImg .lookImg[data-v-338f7304] {
+  margin-top: 1rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #FC9153;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.createFill[data-v-76abdd4e] {
+  padding: 0.5333rem 0;
+  text-align: left;
+  margin: 0 0.4267rem;
+  position: relative;
+}
+.createFill .fillTitle[data-v-76abdd4e] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+}
+.createFill .fillTitle .star[data-v-76abdd4e] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #F10039;
+  line-height: 0.5867rem;
+}
+.createFill .fillContent[data-v-76abdd4e] {
+  border: 1px solid #D8D8D8;
+  border-radius: 8px;
+  padding: 0.32rem;
+  margin-top: 0.3733rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.5867rem;
+  width: 92%;
+  outline: 0;
+}
+
+.subject_class[data-v-f5264c58] {
+  padding: 0.5333rem 0;
+  margin: 0 0.4267rem;
+  text-align: start;
+  position: relative;
+}
+.subject_class .subject_title[data-v-f5264c58] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.4267rem;
+}
+.subject_class .subject_title .discard_word[data-v-f5264c58] {
+  color: red;
+}
+.subject_class .option_class[data-v-f5264c58] {
+  margin-top: 0.4267rem;
+}
+.subject_class .option_class .choose_val[data-v-f5264c58] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.subject_class .option_class .icon[data-v-f5264c58] {
+  width: 0.5333rem;
+  height: 0.5333rem;
+  margin-right: 0.24rem;
+}
+.subject_class .option_class .option_value[data-v-f5264c58] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  line-height: 0.5333rem;
+  z-index: 50;
+}
+.subject_class .option_class .inputText[data-v-f5264c58] {
+  font-family: PingFangSC-Regular;
+  border: 1px solid #D8D8D8;
+  border-radius: 8px;
+  font-size: 0.4267rem;
+  line-height: 0.5867rem;
+  padding: 0.32rem;
+  color: #666666;
+  width: 92%;
+  outline: none;
+  margin-top: 0.4rem;
+  max-height: 2.1333rem;
+  overflow: auto;
+}
+.imgs_class[data-v-f5264c58] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 9px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.imgs_class img[data-v-f5264c58] {
+  width: 2.6667rem;
+  height: 1.4933rem;
+  margin-right: 5px;
+}
+
+.createSelect[data-v-ddab5452] {
+  padding: 0.5333rem 0;
+  text-align: left;
+  margin: 0 0.4267rem;
+  position: relative;
+}
+.createSelect .fillTitle[data-v-ddab5452] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+}
+.createSelect .fillTitle .star[data-v-ddab5452] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #F10039;
+  line-height: 0.5867rem;
+}
+.createSelect .fillContent[data-v-ddab5452] {
+  border: 1px solid #D8D8D8;
+  border-radius: 8px;
+  padding: 0.32rem;
+  margin-top: 0.3733rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  line-height: 0.5867rem;
+  position: relative;
+}
+.createSelect .fillContent img[data-v-ddab5452] {
+  width: 0.3733rem;
+  height: 0.3733rem;
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.4267rem;
+}
+.createSelect .select_bottom .optionsClass[data-v-ddab5452] {
+  position: fixed;
+  z-index: 101;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ededed;
+}
+.createSelect .select_bottom .optionsClass .option_item[data-v-ddab5452] {
+  background: #FFFFFF;
+  line-height: 1.3333rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  text-align: center;
+}
+.createSelect .select_bottom .optionsClass .cancle_btn[data-v-ddab5452] {
+  margin-top: 0.2667rem;
+}
+.font_color_select[data-v-ddab5452] {
+  color: #666666;
+}
+.font_color_unselect[data-v-ddab5452] {
+  color: #CCCCCC;
+}
+
+.textAreaInput[data-v-5ea48473] {
+  background: #ffffff;
+  position: relative;
+  padding: 0.5333rem 0;
+  text-align: left;
+  margin: 0 0.4267rem;
+}
+.textAreaInput .title[data-v-5ea48473] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+  margin-bottom: 0.3733rem;
+}
+.textAreaInput .text[data-v-5ea48473] {
+  height: 1.1733rem;
+}
+.textAreaInput .showNum[data-v-5ea48473] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #CCCCCC;
+  line-height: 0.3733rem;
+  position: absolute;
+  bottom: 0.9333rem;
+  right: 0.3733rem;
+}
+.textAreaInput .input[data-v-5ea48473] {
+  border: 0.0267rem solid #D8D8D8;
+  border-radius: 0.2133rem;
+  margin: auto;
+}
+.textAreaInput .input textarea[data-v-5ea48473] {
+  outline: 0;
+  width: 92%;
+  margin: 0.2667rem 0.32rem;
+  height: 2.6667rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.5867rem;
+}
+
+.scoring[data-v-800f95e4] {
+  text-align: left;
+  margin: 0 0.4267rem;
+  padding: 0.5333rem 0;
+  position: relative;
+}
+.scoring .title[data-v-800f95e4] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+  margin-bottom: 0.3733rem;
+}
+.scoring .star_list[data-v-800f95e4] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.scoring .star_list .star_item[data-v-800f95e4] {
+  margin-right: 0.32rem;
+}
+.scoring .star_list .star_item img[data-v-800f95e4] {
+  width: 0.5333rem;
+  height: 0.5333rem;
+}
+
+.subject_class[data-v-a30703f2] {
+  padding: 0.5333rem 0;
+  margin: 0 0.4267rem;
+  text-align: start;
+  position: relative;
+}
+.subject_class .discard_img[data-v-a30703f2] {
+  width: 1.6533rem;
+  height: 1.6533rem;
+  position: absolute;
+  right: 0.8267rem;
+  top: 0.4267rem;
+}
+.subject_class .subject_title[data-v-a30703f2] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.4267rem;
+}
+.subject_class .subject_title .discard_word[data-v-a30703f2] {
+  color: red;
+}
+.subject_class .option_class[data-v-a30703f2] {
+  margin-top: 0.4267rem;
+}
+.subject_class .option_class .choose_val[data-v-a30703f2] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.subject_class .option_class .icon[data-v-a30703f2] {
+  width: 0.5333rem;
+  height: 0.5333rem;
+  margin-right: 0.24rem;
+}
+.subject_class .option_class .option_value[data-v-a30703f2] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  line-height: 0.5333rem;
+  z-index: 50;
+}
+.subject_class .option_class .inputText[data-v-a30703f2] {
+  font-family: PingFangSC-Regular;
+  border: 1px solid #D8D8D8;
+  border-radius: 8px;
+  font-size: 0.4267rem;
+  line-height: 0.5867rem;
+  padding: 0.32rem;
+  color: #666666;
+  width: 92%;
+  outline: none;
+  margin-top: 0.4rem;
+  max-height: 2.1333rem;
+  overflow: auto;
+}
+
+.subject_class[data-v-6c165e4e] {
+  padding: 0.5333rem 0;
+  margin: 0 0.4267rem;
+  text-align: start;
+  position: relative;
+}
+.subject_class .discard_img[data-v-6c165e4e] {
+  width: 1.6533rem;
+  height: 1.6533rem;
+  position: absolute;
+  right: 0.8267rem;
+  top: 0.4267rem;
+}
+.subject_class .subject_title[data-v-6c165e4e] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.4267rem;
+}
+.subject_class .subject_title .discard_word[data-v-6c165e4e] {
+  color: red;
+}
+.subject_class .tips[data-v-6c165e4e] {
+  margin: 0.2667rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #CCCCCC;
+  line-height: 0.5867rem;
+}
+.subject_class .choose_img_array[data-v-6c165e4e] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.subject_class .choose_img_array img[data-v-6c165e4e] {
+  width: 1.9733rem;
+  height: 1.9733rem;
+  border: 0 solid #DFE3E6;
+  border-radius: 10px;
+}
+.subject_class .choose_img_array .img_item[data-v-6c165e4e] {
+  margin-right: 0.4rem;
+  margin-bottom: 0.4267rem;
+  position: relative;
+}
+.subject_class .choose_img_array .img_item .deleteClass[data-v-6c165e4e] {
+  width: 0.48rem;
+  height: 0.48rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.headBg[data-v-d478f752] {
+  width: 100%;
+  height: 3.12rem;
+}
+.statisticsData[data-v-d478f752] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  width: 9.1467rem;
+  height: 125px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 1.6rem;
+}
+.statisticsData .title[data-v-d478f752] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #333333;
+  line-height: 0.48rem;
+  margin: 0.5333rem;
+  text-align: start;
+}
+.statisticsData .content[data-v-d478f752] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.statisticsData .content .data_item[data-v-d478f752] {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+.statisticsData .content .data_item .num[data-v-d478f752] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.5867rem;
+  color: #FC9153;
+}
+.statisticsData .content .data_item .item_name[data-v-d478f752] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #888888;
+}
+.tab[data-v-d478f752] {
+  background: #FFFFFF;
+  height: 1.3867rem;
+  margin-top: 0.9067rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 1.8133rem;
+}
+.tab .tab_item[data-v-d478f752] {
+  width: 3.2rem;
+  color: #666666;
+}
+.tab .line[data-v-d478f752] {
+  width: 1.3867rem;
+  height: 3px;
+  background: #FC9153;
+  border-radius: 3px 3px 0 0;
+  margin: auto;
+}
+.tab .tab_word[data-v-d478f752] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  text-align: center;
+  line-height: 1.3867rem;
+}
+.tab .choose_tab[data-v-d478f752] {
+  color: #FC9153;
+}
+.dataStatistics .data_content[data-v-d478f752] {
+  background: #FFFFFF;
+  overflow: auto;
+  position: absolute;
+  bottom: 1.3333rem;
+  top: 7rem;
+}
+.dataStatistics .data_content .choice_type[data-v-d478f752] {
+  margin: 0 0.4267rem;
+  padding: 0.5333rem 0;
+  position: relative;
+}
+.dataStatistics .data_content .choice_type .average[data-v-d478f752] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  line-height: 0.4267rem;
+  text-align: start;
+  margin-bottom: 0.4267rem;
+}
+.dataStatistics .data_content .fill_type[data-v-d478f752] {
+  margin: 0 0.4267rem;
+  padding: 0.5333rem 0;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  line-height: 0.4267rem;
+  text-align: start;
+  position: relative;
+}
+.dataStatistics .data_content .fill_type .detail_btn[data-v-d478f752] {
+  border: 1px solid #FC9153;
+  border-radius: 8px;
+  width: 3.6267rem;
+  height: 1.0667rem;
+  margin: auto;
+  margin-top: 0.4267rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #FC9153;
+  line-height: 1.0667rem;
+  text-align: center;
+}
+.dataStatistics .data_content .borderBottom[data-v-d478f752] {
+  border-bottom: 1px solid #EDEDED;
+}
+.dataStatistics .data_content .data_title[data-v-d478f752] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.4267rem;
+  margin-bottom: 0.4267rem;
+  text-align: start;
+}
+.dataStatistics .dataStatistics_bottom[data-v-d478f752] {
+  background: #FC9153;
+  height: 1.3333rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.3333rem;
+}
+.dataStatistics .discard_word[data-v-d478f752] {
+  color: red;
+}
+.dataStatistics .discard_img[data-v-d478f752] {
+  width: 1.6533rem;
+  height: 1.6533rem;
+  position: absolute;
+  right: 0.48rem;
+  top: 1.0667rem;
+}
+.submit_detail .data_content[data-v-d478f752] {
+  background: #FFFFFF;
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  top: 7rem;
+  width: 100%;
+}
+.whiteBk[data-v-d478f752] {
+  height: 0.7467rem;
+  background: #FFFFFF;
+}
+
+.form[data-v-5852d2d2] {
+  width: 9.1467rem;
+  margin: auto;
+  border: 1px solid #EDEDED;
+}
+.form .head[data-v-5852d2d2] {
+  background: #F8F8F8;
+  height: 1.1733rem;
+  font-family: PingFangSC-Semibold;
+  font-size: 0.3733rem;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.1733rem;
+  border-bottom: 1px solid #EDEDED;
+}
+.form .form_content[data-v-5852d2d2] {
+  background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #333333;
+  line-height: 0.5333rem;
+  border-bottom: 1px solid #EDEDED;
+}
+.form .form_content .option_value[data-v-5852d2d2] {
+  text-align: start;
+}
+.form .form_content .option_value .option_word[data-v-5852d2d2] {
+  padding: 0.32rem 0.4267rem;
+}
+.form .form_content .option_value .option_word .word_detail[data-v-5852d2d2] {
+  color: #FC9153;
+}
+.form .form_content .word_center[data-v-5852d2d2] {
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  width: 100%;
+}
+.form .form_bottom[data-v-5852d2d2] {
+  background: #F8F8F8;
+  font-family: PingFangSC-Semibold;
+  font-size: 0.3733rem;
+  color: #333333;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.1733rem;
+}
+.form .optionsClass[data-v-5852d2d2] {
+  width: 5.76rem;
+  border-right: 1px solid #EDEDED;
+}
+.form .subtotalClass[data-v-5852d2d2] {
+  width: 1.7067rem;
+  border-right: 1px solid #EDEDED;
+  position: relative;
+}
+.form .proportionClass[data-v-5852d2d2] {
+  width: 1.7067rem;
+  position: relative;
+}
+
+.submitDetailItem[data-v-3377a3cc] {
+  height: 1.3867rem;
+  background: #ffffff;
+  padding: 0.5867rem 0.4267rem;
+  text-align: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+.submitDetailItem .detail_num[data-v-3377a3cc] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #FC9153;
+  line-height: 1.3867rem;
+}
+.submitDetailItem img[data-v-3377a3cc] {
+  height: 1.0667rem;
+  width: 1.0667rem;
+  margin: auto;
+  margin-left: 0.4267rem;
+  margin-right: 0.5333rem;
+  border-radius: 50%;
+}
+.submitDetailItem .detail_msg[data-v-3377a3cc] {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto 0;
+}
+.submitDetailItem .detail_msg .detail_name[data-v-3377a3cc] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.4267rem;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 0.48rem;
+}
+.submitDetailItem .detail_msg .detail_time[data-v-3377a3cc] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #888888;
+  line-height: 0.32rem;
+  margin-top: 0.2667rem;
+}
+.submitDetailItem .look_btn[data-v-3377a3cc] {
+  background: #FC9153;
+  border-radius: 0.32rem;
+  width: 1.3867rem;
+  height: 0.64rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3467rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 0.64rem;
+  margin: auto 0;
+  margin-left: auto;
+}
+.show_bottom[data-v-3377a3cc] {
+  height: 1px;
+  background: #EDEDED;
+  width: 335px;
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+}
+
+.lookDetail[data-v-12462d82] {
+  background: #ffffff;
+}
+.lookDetail .table[data-v-12462d82] {
+  margin: 0 0.4267rem;
+  padding: 0.5333rem 0;
+  font-size: 0.3733rem;
+  color: #333333;
+}
+.lookDetail .table .table_title[data-v-12462d82] {
+  font-family: PingFangSC-Semibold;
+  background: #F8F8F8;
+  height: 1.1733rem;
+  color: #333333;
+  text-align: center;
+  line-height: 1.1733rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #EDEDED;
+}
+.lookDetail .table .table_content[data-v-12462d82] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: PingFangSC-Regular;
+  border: 1px solid #EDEDED;
+}
+.lookDetail .table .table_content .text_right[data-v-12462d82] {
+  padding: 0.32rem 0.4267rem;
+  text-align: start;
+}
+.lookDetail .table .table_content .text_left[data-v-12462d82] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.lookDetail .table .table_content .img_right[data-v-12462d82] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.32rem 0.4267rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.lookDetail .table .table_content .img_right .img_item[data-v-12462d82] {
+  border: 0 solid #DFE3E6;
+  border-radius: 10px;
+}
+.lookDetail .table .table_content .img_right .img_item img[data-v-12462d82] {
+  width: 1.1733rem;
+  height: 1.1733rem;
+  margin-right: 0.2667rem;
+}
+.lookDetail .table .table_left[data-v-12462d82] {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-right: 1px solid #EDEDED;
+  position: relative;
+}
+.lookDetail .table .table_right[data-v-12462d82] {
+  -webkit-box-flex: 3.9;
+      -ms-flex: 3.9;
+          flex: 3.9;
+}
+.lookDetail .table .no_bottom_top[data-v-12462d82] {
+  border-top: 0px solid #EDEDED;
+}
+
+.question_data[data-v-e82bba4a] {
+  background: #ffffff;
+  position: absolute;
+  top: 2.8rem;
+  bottom: 0;
+  overflow: auto;
+  margin-top: 0.2667rem;
+}
+
+.content[data-v-647fef4c] {
+  background: #ffffff;
+}
+.content .name[data-v-647fef4c] {
+  position: relative;
+}
+.content .name .text[data-v-647fef4c] {
+  height: 1.1733rem;
+}
+.content .explain[data-v-647fef4c] {
+  position: relative;
+}
+.content .explain .text[data-v-647fef4c] {
+  height: 1.76rem;
+  outline: 0;
+  width: 8.4533rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.5867rem;
+}
+.content .addImg[data-v-647fef4c] {
+  position: relative;
+  padding-bottom: 0.5333rem;
+}
+.content .addImg .addImgTips[data-v-647fef4c] {
+  color: #CCCCCC;
+}
+.content .addImg .switch[data-v-647fef4c] {
+  position: absolute;
+  right: 0.4267rem;
+  top: 0.3733rem;
+}
+.content .addImg .switch img[data-v-647fef4c] {
+  width: 1.0667rem;
+  height: 0.64rem;
+}
+.content .addImg .addContent[data-v-647fef4c] {
+  position: relative;
+  text-align: left;
+  margin-left: 0.4267rem;
+  border-radius: 10px;
+}
+.content .addImg .addContent img[data-v-647fef4c] {
+  width: 2.6667rem;
+}
+.content .addImg .addContent .tips[data-v-647fef4c] {
+  opacity: 0.4;
+  background: #000000;
+  font-family: PingFangSC-Regular;
+  font-size: 0.2667rem;
+  color: #FFFFFF;
+  position: absolute;
+  bottom: 0;
+  width: 2.6667rem;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+}
+.content .title[data-v-647fef4c] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+  text-align: start;
+  padding: 0.3733rem 0.4267rem;
+  margin-left: 1px;
+}
+.content .input[data-v-647fef4c] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.5867rem;
+  border: 0.0267rem solid #D8D8D8;
+  border-radius: 0.2133rem;
+  padding: 0.2667rem 0.32rem;
+  width: 8.4533rem;
+  outline: 0;
+  margin: auto;
+  height: 2.6667rem;
+}
+.content .star[data-v-647fef4c] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #F10039;
+  line-height: 0.5867rem;
+}
+.content .showNum[data-v-647fef4c] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #CCCCCC;
+  line-height: 0.3733rem;
+  position: absolute;
+  bottom: 0.3733rem;
+  right: 0.8533rem;
+}
+.comfirm_btn[data-v-647fef4c] {
+  background: #FC9153;
+  border-radius: 8px;
+  margin: 0.9067rem 0.4267rem;
+  height: 1.0667rem;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.0667rem;
+}
+
+.middle .subjects_content[data-v-30df73a2] {
+  margin-bottom: 0.4267rem;
+  background: #ffffff;
+  padding-top: 0.48rem;
+}
+.middle .subjects_content .subject_item .subject_item_bottom[data-v-30df73a2] {
+  background: #ededed;
+  margin: 0 0.4267rem;
+  margin-bottom: 0.2667rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 0.8rem;
+  text-align: center;
+  font-size: 0.32rem;
+}
+.middle .subjects_content .subject_item .subject_item_bottom .imgClass[data-v-30df73a2] {
+  margin-left: auto;
+}
+.middle .subjects_content .subject_item .subject_item_bottom img[data-v-30df73a2] {
+  width: 0.4267rem;
+  height: 0.4267rem;
+  margin-top: 0.1867rem;
+  margin-right: 5px;
+}
+.middle .subjects_content .subject_item .subject_item_bottom .bottom_item[data-v-30df73a2] {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.middle .subjects_content .chooseBorder[data-v-30df73a2] {
+  border: 1px dashed #FC9153;
+  border-radius: 8px;
+  margin: 0.2133rem;
+}
+.middle .subjects_content .bottomBorder[data-v-30df73a2] {
+  border-bottom: 1px solid #EDEDED;
+}
+.middle .no_subject[data-v-30df73a2] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #888888;
+  text-align: center;
+  line-height: 0.6933rem;
+  margin-top: 5.8933rem;
+}
+.middle .no_subject img[data-v-30df73a2] {
+  width: 0.5333rem;
+  vertical-align: middle;
+}
+.line[data-v-30df73a2] {
+  margin: 0 0.4267rem;
+  height: 1px;
+  background: #ededed;
+}
+.bottom_btn[data-v-30df73a2] {
+  background: #FC9153;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.3333rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 99;
+}
+
+.bottom_content[data-v-68ee2325] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 12px 12px 0 0;
+  position: absolute;
+  z-index: 101;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.bottom_content .imgs[data-v-68ee2325] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0.6667rem 0.4267rem 0.8267rem 0.4267rem;
+}
+.bottom_content .sec_imgs[data-v-68ee2325] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0.5333rem 0.4267rem 0.8267rem 0.4267rem;
+}
+.bottom_content .img_item[data-v-68ee2325] {
+  width: 3.04rem;
+  height: 3.2rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+  text-align: center;
+}
+.bottom_content .img_item img[data-v-68ee2325] {
+  width: 1.1733rem;
+  height: 1.1733rem;
+  margin-top: 0.6933rem;
+  margin-bottom: 8px;
+}
+.bottom_content .close_img[data-v-68ee2325] {
+  margin-bottom: 0.8267rem;
+}
+.bottom_content .close_img img[data-v-68ee2325] {
+  width: 0.4533rem;
+  height: 0.4533rem;
+}
+.bottom_content .back_img[data-v-68ee2325] {
+  margin: 0.64rem;
+  margin-bottom: 0;
+  text-align: start;
+}
+.bottom_content .back_img img[data-v-68ee2325] {
+  width: 10.3px;
+}
+
+.publishForm[data-v-6445c91a] .vux-datetime p {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  font-size: 0.4267rem;
+  line-height: 0.5867rem;
+}
+.publishForm[data-v-6445c91a] .weui-cells:after {
+  border-bottom: 0px;
+  border-top: 0px;
+}
+.first[data-v-6445c91a] .weui-cells:before {
+  border-bottom: 0px;
+  border-top: 0px;
+}
+.publishForm[data-v-6445c91a] .weui-cells {
+  margin-top: 0;
+}
+.publishForm[data-v-6445c91a] {
+  margin-top: 0.32rem;
+}
+.publishForm .first[data-v-6445c91a] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ffffff;
+  padding: 10px 15px;
+  font-size: 0.4267rem;
+  line-height: 0.5867rem;
+  position: relative;
+}
+.publishForm .first .title_left[data-v-6445c91a] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.publishForm .first .title_left .questionMarkImg[data-v-6445c91a] {
+  width: 0.56rem;
+  height: 0.56rem;
+  margin-left: 7.5px;
+}
+.publishForm .first .swtitch_img[data-v-6445c91a] {
+  width: 1.0667rem;
+  height: 0.64rem;
+  position: absolute;
+  right: 15px;
+}
+.publishForm .publishBtn[data-v-6445c91a] {
+  margin: 0.8rem 0.4267rem;
+  line-height: 1.0667rem;
+  background: #FC9153;
+  border-radius: 8px;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+.dp-container.vux-datetime-view {
+  position: static;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.dp-container.vux-datetime-view .dp-header {
+  display: none;
+}
+.vux-datetime-clear {
+  text-align: center;
+}
+.scroller-component {
+  display: block;
+  position: relative;
+  height: 238px;
+  overflow: hidden;
+  width: 100%;
+}
+.scroller-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+.scroller-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.95)), to(rgba(255, 255, 255, 0.6))), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.95)), to(rgba(255, 255, 255, 0.6)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), -o-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  background-position: top, bottom;
+  background-size: 100% 102px;
+  background-repeat: no-repeat;
+}
+.scroller-item {
+  text-align: center;
+  font-size: 16px;
+  height: 34px;
+  line-height: 34px;
+  color: #000;
+}
+.scroller-indicator {
+  width: 100%;
+  height: 34px;
+  position: absolute;
+  left: 0;
+  top: 102px;
+  z-index: 3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d0d0d0), color-stop(#d0d0d0), color-stop(transparent), to(transparent)), -webkit-gradient(linear, left bottom, left top, from(#d0d0d0), color-stop(#d0d0d0), color-stop(transparent), to(transparent));
+  background-image: -webkit-linear-gradient(top, #d0d0d0, #d0d0d0, transparent, transparent), -webkit-linear-gradient(bottom, #d0d0d0, #d0d0d0, transparent, transparent);
+  background-image: -o-linear-gradient(top, #d0d0d0, #d0d0d0, transparent, transparent), -o-linear-gradient(bottom, #d0d0d0, #d0d0d0, transparent, transparent);
+  background-image: linear-gradient(to bottom, #d0d0d0, #d0d0d0, transparent, transparent), linear-gradient(to top, #d0d0d0, #d0d0d0, transparent, transparent);
+  background-position: top, bottom;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+.dp-container {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 10000;
+  background-color: #fff;
+  display: none;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+}
+.dp-mask {
+  z-index: 998;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  background-color: #000;
+  z-index: 9999;
+}
+.dp-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), color-stop(#e7e7e7), color-stop(transparent), to(transparent));
+  background-image: -webkit-linear-gradient(top, #e7e7e7, #e7e7e7, transparent, transparent);
+  background-image: -o-linear-gradient(top, #e7e7e7, #e7e7e7, transparent, transparent);
+  background-image: linear-gradient(to bottom, #e7e7e7, #e7e7e7, transparent, transparent);
+  background-position: bottom;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+.dp-header .dp-item {
+  color: #333333;
+  font-size: 16px;
+  height: 44px;
+  line-height: 44px;
+  cursor: pointer;
+}
+.dp-header .dp-item.dp-left {
+  color: #828282;
+}
+.dp-header .dp-item.dp-right {
+  color: #FC9153;
+}
+.dp-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  box-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0;
+}
+.dp-header .dp-item,
+.dp-content .dp-item {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.vux-datetime-cancel {
+  text-align: left;
+  padding-left: 15px;
+}
+.vux-datetime-confirm {
+  text-align: right;
+  padding-right: 15px;
+}
+.vux-datetime {
+  color: #000;
+  text-decoration: none;
+}
+.vux-datetime .vux-input-icon {
+  float: right;
+}
+.vux-cell-primary {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "weui";
+  src: url('data:application/octet-stream;base64,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') format('truetype');
+}
+[class^="weui-icon-"],
+[class*=" weui-icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  font: normal normal normal 14px/1 "weui";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+[class^="weui-icon-"]:before,
+[class*=" weui-icon-"]:before {
+  display: inline-block;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+.weui-icon-circle:before {
+  content: "\EA01";
+}
+/* '' */
+.weui-icon-download:before {
+  content: "\EA02";
+}
+/* '' */
+.weui-icon-info:before {
+  content: "\EA03";
+}
+/* '' */
+.weui-icon-safe-success:before {
+  content: "\EA04";
+}
+/* '' */
+.weui-icon-safe-warn:before {
+  content: "\EA05";
+}
+/* '' */
+.weui-icon-success:before {
+  content: "\EA06";
+}
+/* '' */
+.weui-icon-success-circle:before {
+  content: "\EA07";
+}
+/* '' */
+.weui-icon-success-no-circle:before {
+  content: "\EA08";
+}
+/* '' */
+.weui-icon-waiting:before {
+  content: "\EA09";
+}
+/* '' */
+.weui-icon-waiting-circle:before {
+  content: "\EA0A";
+}
+/* '' */
+.weui-icon-warn:before {
+  content: "\EA0B";
+}
+/* '' */
+.weui-icon-info-circle:before {
+  content: "\EA0C";
+}
+/* '' */
+.weui-icon-cancel:before {
+  content: "\EA0D";
+}
+/* '' */
+.weui-icon-search:before {
+  content: "\EA0E";
+}
+/* '' */
+.weui-icon-clear:before {
+  content: "\EA0F";
+}
+/* '' */
+.weui-icon-back:before {
+  content: "\EA10";
+}
+/* '' */
+.weui-icon-delete:before {
+  content: "\EA11";
+}
+/* '' */
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+[class^="weui-icon_"]:before,
+[class*=" weui-icon_"]:before {
+  margin: 0;
+}
+.weui-icon-success {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-waiting {
+  font-size: 23px;
+  color: #10AEFF;
+}
+.weui-icon-warn {
+  font-size: 23px;
+  color: #F43530;
+}
+.weui-icon-info {
+  font-size: 23px;
+  color: #10AEFF;
+}
+.weui-icon-success-circle {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-success-no-circle {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-waiting-circle {
+  font-size: 23px;
+  color: #10AEFF;
+}
+.weui-icon-circle {
+  font-size: 23px;
+  color: #C9C9C9;
+}
+.weui-icon-download {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-info-circle {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-safe-success {
+  color: #09BB07;
+}
+.weui-icon-safe-warn {
+  color: #FFBE00;
+}
+.weui-icon-cancel {
+  color: #F43530;
+  font-size: 22px;
+}
+.weui-icon-search {
+  color: #B2B2B2;
+  font-size: 14px;
+}
+.weui-icon-clear {
+  color: #B2B2B2;
+  font-size: 14px;
+}
+.weui-icon-delete.weui-icon_gallery-delete {
+  color: #FFFFFF;
+  font-size: 22px;
+}
+.weui-icon_msg {
+  font-size: 93px;
+}
+.weui-icon_msg.weui-icon-warn {
+  color: #F76260;
+}
+.weui-icon_msg-primary {
+  font-size: 93px;
+}
+.weui-icon_msg-primary.weui-icon-warn {
+  color: #FFBE00;
+}
+/**
+following styles will be removed after v3.0.0
+*/
+.icon-big:before {
+  font-size: 93px;
+}
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+.weui-cell_access {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: inherit;
+}
+.weui-cell_access:active {
+  background-color: #ECECEC;
+}
+.weui-cell_access .weui-cell__ft {
+  padding-right: 13px;
+  position: relative;
+}
+.weui-cell_access .weui-cell__ft:after {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 2px;
+}
+.weui-cell_link {
+  color: #586C94;
+  font-size: 14px;
+}
+.weui-cell_link.weui-cell:first-child:before {
+  display: block;
+}
+.weui-cell_access.vux-cell-box {
+  padding-right: 13px;
+  position: relative;
+}
+.weui-cell_access.vux-cell-box:after {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 17px;
+}
+.weui-cells {
+  margin-top: 1.17647059em;
+  background-color: #FFFFFF;
+  line-height: 1.41176471;
+  font-size: 17px;
+  overflow: hidden;
+  position: relative;
+}
+.weui-cells:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui-cells:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+      -ms-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui-cells__title {
+  margin-top: 0.77em;
+  margin-bottom: 0.3em;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #999999;
+  font-size: 14px;
+}
+.weui-cells__title + .weui-cells {
+  margin-top: 0;
+}
+.weui-cells__tips {
+  margin-top: 0.3em;
+  color: #999999;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+}
+.weui-cell {
+  padding: 10px 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.weui-cell:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+  left: 15px;
+}
+.weui-cell:first-child:before {
+  display: none;
+}
+.weui-cell_primary {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.weui-cell__bd {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.weui-cell__ft {
+  text-align: right;
+  color: #999999;
+}
+.vux-cell-justify {
+  height: 1.41176471em;
+}
+.vux-cell-justify.vux-cell-justify:after {
+  content: ".";
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  height: 0;
+}
+/**
+* http://www.zhangxinxu.com/wordpress/2015/01/tips-blank-character-chinese-align/
+*/
+.vux-blank-half:before {
+  content: '\2002';
+  speak: none;
+}
+.vux-blank-full:before {
+  content: '\2003';
+  speak: none;
+}
+.vux-no-group-title {
+  margin-top: 0.77em;
+}
+.vux-group-footer-title.weui-cells__title {
+  margin-top: 0.3em;
+  margin-bottom: 0.77em;
+  padding-top: 0;
+  font-size: 12px;
+}
+/* global config for group items */
+.vux-cell-value {
+  color: #999;
+}
+.vux-cell-placeholder {
+  color: #999;
+}
+
+.vux-label-desc {
+  font-size:14px;
+  color:#666;
+}
+
+.result[data-v-55ebf581] {
+  background: #ffffff;
+  height: -webkit-fill-available;
+}
+.result .result_icon[data-v-55ebf581] {
+  width: 2.6667rem;
+  height: 2.6667rem;
+  margin-top: 1.3333rem;
+}
+.result .publish_result[data-v-55ebf581] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.5333rem;
+  color: #000000;
+  margin-top: 0.32rem;
+}
+.result .division[data-v-55ebf581] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 1.0667rem;
+}
+.result .division .line[data-v-55ebf581] {
+  height: 1px;
+  width: 2.4rem;
+  background: #EDEDED;
+  margin-top: 0.24rem;
+}
+.result .division .text[data-v-55ebf581] {
+  line-height: 0.5333rem;
+  font-size: 0.3733rem;
+  margin: 0 0.4267rem;
+  color: #000000;
+}
+.result .share_icon[data-v-55ebf581] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1.3067rem 2.1rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+}
+.result .share_icon img[data-v-55ebf581] {
+  width: 1.1733rem;
+  height: 1.1733rem;
+}
+.result .share_icon .icon_item[data-v-55ebf581] {
+  margin-right: 1.1733rem;
+}
+
+.choiceCreate[data-v-3789f709] {
+  overflow: auto;
+  height: -webkit-fill-available;
+}
+.choiceCreate .choice_title[data-v-3789f709] {
+  padding: 0.5333rem 0.4267rem;
+  background: #ffffff;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+  text-align: left;
+}
+.choiceCreate .choice_title .title_input[data-v-3789f709] {
+  position: relative;
+  margin-top: 0.3733rem;
+}
+.choiceCreate .choice_title .title_input .text[data-v-3789f709] {
+  height: 1.76rem;
+}
+.choiceCreate .choice_title .input[data-v-3789f709] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.5867rem;
+  border: 0.0267rem solid #D8D8D8;
+  border-radius: 0.2133rem;
+  padding: 0.2667rem 0.32rem;
+  width: 8.4533rem;
+  outline: 0;
+  margin: auto;
+  height: 2.6667rem;
+}
+.choiceCreate .choice_title .showNum[data-v-3789f709] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #CCCCCC;
+  line-height: 0.3733rem;
+  position: absolute;
+  bottom: 0.3733rem;
+  right: 0.8533rem;
+}
+.choiceCreate .choice_options .options[data-v-3789f709] {
+  background: #ffffff;
+}
+.choiceCreate .choice_options .options .option_item[data-v-3789f709] {
+  color: #333333;
+  position: relative;
+  border-bottom: 1px solid #EDEDED;
+}
+.choiceCreate .choice_options .options .option_item .deleteImg[data-v-3789f709] {
+  width: 0.48rem;
+  height: 0.48rem;
+  margin: auto 0;
+}
+.choiceCreate .choice_options .options .option_item .option_input[data-v-3789f709] {
+  font-size: 0.4267rem;
+  color: #333333;
+  outline: 0;
+  line-height: 1.3333rem;
+}
+.choiceCreate .choice_options .options .option_item .moreImg[data-v-3789f709] {
+  width: 0.64rem;
+  height: 0.64rem;
+}
+.choiceCreate .choice_options .options .add_option[data-v-3789f709] {
+  font-family: PingFangSC-Regular;
+  color: #FC9153;
+  text-align: left;
+}
+.choiceCreate .choice_options .options .add_option img[data-v-3789f709] {
+  width: 0.48rem;
+  height: 0.48rem;
+  margin: auto 0;
+  margin-right: 8px;
+}
+.choiceCreate .choice_setting .setting_items[data-v-3789f709] {
+  background: #ffffff;
+}
+.choiceCreate .choice_setting .swtitch_img[data-v-3789f709] {
+  width: 1.0667rem;
+  height: 0.64rem;
+}
+.choiceCreate .choice_setting .arrow_right[data-v-3789f709] {
+  width: 12px;
+}
+.choiceCreate .options_title[data-v-3789f709] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+  text-align: left;
+  line-height: 20px;
+  margin: 0.32rem 0 0.16rem 0.4267rem;
+}
+.select_option[data-v-3789f709] .weui-cells:before,
+.select_option[data-v-3789f709] .weui-cells:after {
+  border: 0;
+}
+.select_option[data-v-3789f709] .weui-cells {
+  margin: 0;
+}
+.select_option[data-v-3789f709] .weui-label {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.line[data-v-3789f709] {
+  margin-left: 0.4267rem;
+  height: 1px;
+  background: #EDEDED;
+}
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+.weui-cell_access {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: inherit;
+}
+.weui-cell_access:active {
+  background-color: #ECECEC;
+}
+.weui-cell_access .weui-cell__ft {
+  padding-right: 13px;
+  position: relative;
+}
+.weui-cell_access .weui-cell__ft:after {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 2px;
+}
+.weui-cell_link {
+  color: #586C94;
+  font-size: 14px;
+}
+.weui-cell_link.weui-cell:first-child:before {
+  display: block;
+}
+.weui-cell_access.vux-cell-box {
+  padding-right: 13px;
+  position: relative;
+}
+.weui-cell_access.vux-cell-box:after {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 17px;
+}
+.weui-cells {
+  margin-top: 1.17647059em;
+  background-color: #FFFFFF;
+  line-height: 1.41176471;
+  font-size: 17px;
+  overflow: hidden;
+  position: relative;
+}
+.weui-cells:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui-cells:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+      -ms-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui-cells__title {
+  margin-top: 0.77em;
+  margin-bottom: 0.3em;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #999999;
+  font-size: 14px;
+}
+.weui-cells__title + .weui-cells {
+  margin-top: 0;
+}
+.weui-cells__tips {
+  margin-top: 0.3em;
+  color: #999999;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+}
+.weui-cell {
+  padding: 10px 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.weui-cell:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+  left: 15px;
+}
+.weui-cell:first-child:before {
+  display: none;
+}
+.weui-cell_primary {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.weui-cell__bd {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.weui-cell__ft {
+  text-align: right;
+  color: #999999;
+}
+.vux-cell-justify {
+  height: 1.41176471em;
+}
+.vux-cell-justify.vux-cell-justify:after {
+  content: ".";
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  height: 0;
+}
+.weui-label {
+  display: block;
+  width: 105px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.weui-input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: 1.41176471em;
+  line-height: 1.41176471;
+}
+.weui-input::-webkit-outer-spin-button,
+.weui-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.weui-textarea {
+  display: block;
+  border: 0;
+  resize: none;
+  width: 100%;
+  color: inherit;
+  font-size: 1em;
+  line-height: inherit;
+  outline: 0;
+}
+.weui-textarea-counter {
+  color: #B2B2B2;
+  text-align: right;
+}
+.weui-cell_warn .weui-textarea-counter {
+  color: #E64340;
+}
+.weui-toptips {
+  display: none;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  color: #FFF;
+  z-index: 5000;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.weui-toptips_warn {
+  background-color: #E64340;
+}
+.weui-cells_form .weui-cell__ft {
+  font-size: 0;
+}
+.weui-cells_form .weui-icon-warn {
+  display: none;
+}
+.weui-cells_form input,
+.weui-cells_form textarea,
+.weui-cells_form label[for] {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.weui-cell_warn {
+  color: #E64340;
+}
+.weui-cell_warn .weui-icon-warn {
+  display: inline-block;
+}
+.weui-cell_select {
+  padding: 0;
+}
+.weui-cell_select .weui-select {
+  padding-right: 30px;
+}
+.weui-cell_select .weui-cell__bd:after {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -4px;
+}
+.weui-select {
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  width: 100%;
+  font-size: inherit;
+  height: 44px;
+  line-height: 44px;
+  position: relative;
+  z-index: 1;
+  padding-left: 15px;
+}
+.weui-cell_select-before {
+  padding-right: 15px;
+}
+.weui-cell_select-before .weui-select {
+  width: 105px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.weui-cell_select-before .weui-cell__hd {
+  position: relative;
+}
+.weui-cell_select-before .weui-cell__hd:after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-right: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 100% 0;
+      -ms-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+      -ms-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.weui-cell_select-before .weui-cell__hd:before {
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      -ms-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -4px;
+}
+.weui-cell_select-before .weui-cell__bd {
+  padding-left: 15px;
+}
+.weui-cell_select-before .weui-cell__bd:after {
+  display: none;
+}
+.weui-cell_select-after {
+  padding-left: 15px;
+}
+.weui-cell_select-after .weui-select {
+  padding-left: 0;
+}
+.vux-selector-no-padding {
+  padding-left: 0;
+}
+.vux-selector.weui-cell_select {
+  padding: 0;
+}
+.vux-selector.weui-cell_select-after {
+  padding-left: 15px;
+}
+.vux-selector-readonly {
+  width: 100%;
+}
+
+.choiceOptionCreate .choose_can_input[data-v-271cebfb] {
+  background: #ffffff;
+  margin-top: 0.32rem;
+}
+.choiceOptionCreate .choose_can_input img[data-v-271cebfb] {
+  width: 0.48rem;
+  height: 0.48rem;
+}
+.choiceOptionCreate .choose_can_input .not_choose[data-v-271cebfb] {
+  width: 0.4267rem;
+  height: 0.4267rem;
+  border: 1px solid #B0B9BF;
+  border-radius: 50%;
+}
+.choiceOptionCreate .choose_can_input .can_not_choose[data-v-271cebfb] {
+  color: #CCCCCC;
+}
+.choiceOptionCreate .choose_img[data-v-271cebfb] {
+  background: #ffffff;
+  margin-top: 0.32rem;
+}
+.choiceOptionCreate .choose_img .choose_img_array[data-v-271cebfb] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0.4267rem;
+  margin-top: 0.4267rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.choiceOptionCreate .choose_img .choose_img_array img[data-v-271cebfb] {
+  width: 1.9733rem;
+  height: 1.9733rem;
+  border: 0 solid #DFE3E6;
+  border-radius: 10px;
+  margin-bottom: 0.4267rem;
+}
+.choiceOptionCreate .choose_img .choose_img_array .img_item[data-v-271cebfb] {
+  margin-right: 0.4rem;
+  position: relative;
+}
+.choiceOptionCreate .choose_img .choose_img_array .img_item .deleteClass[data-v-271cebfb] {
+  width: 0.48rem;
+  height: 0.48rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.choice_title[data-v-17ba05d0] {
+  padding: 0.5333rem 0.4267rem;
+  background: #ffffff;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  line-height: 0.5867rem;
+  text-align: left;
+}
+.choice_title .title_input[data-v-17ba05d0] {
+  position: relative;
+  margin-top: 0.3733rem;
+}
+.choice_title .title_input .text[data-v-17ba05d0] {
+  height: 1.76rem;
+}
+.choice_title .input[data-v-17ba05d0] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #000000;
+  line-height: 0.5867rem;
+  border: 0.0267rem solid #D8D8D8;
+  border-radius: 0.2133rem;
+  padding: 0.2667rem 0.32rem;
+  width: 8.4533rem;
+  outline: 0;
+  margin: auto;
+  height: 2.6667rem;
+}
+.input_content .choose_input_size[data-v-17ba05d0] {
+  background: #ffffff;
+  padding-bottom: 0.5333rem;
+}
+.input_content .choose_input_size .input_size[data-v-17ba05d0] {
+  margin-left: 0.4267rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 0.8rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #333333;
+  position: relative;
+  padding-top: 0.3733rem;
+  padding-bottom: 0.2667rem;
+}
+.input_content .choose_input_size .input_size .choose_size[data-v-17ba05d0] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.input_content .choose_input_size .input_size .choose_size .choose_size_item[data-v-17ba05d0] {
+  background: #FC9153;
+  border-radius: 8px;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 0.8rem;
+  padding: 0 0.32rem;
+}
+.input_content .choose_input_size .input_size .choose_size .no_choose[data-v-17ba05d0] {
+  color: #CCCCCC;
+  background-color: #ffffff;
+  border: 1px solid #CCCCCC;
+}
+.input_content .choose_input_size .single_input[data-v-17ba05d0] {
+  border: 1px solid #D8D8D8;
+  border-radius: 8px;
+  margin: 0 0.4267rem;
+  text-align: left;
+  position: relative;
+}
+.input_content .choose_input_size .single_input input[data-v-17ba05d0] {
+  outline: 0;
+  height: 1.1733rem;
+  font-size: 0.4267rem;
+  border-radius: 8px;
+  border: 0;
+  width: 6.9333rem;
+}
+.input_content .choose_input_size .single_input textarea[data-v-17ba05d0] {
+  outline: 0;
+  height: 3.0933rem;
+  font-size: 0.4267rem;
+  border-radius: 8px;
+  border: 0;
+}
+.showNum[data-v-17ba05d0] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #CCCCCC;
+  line-height: 0.3733rem;
+  position: absolute;
+  bottom: 0.3733rem;
+  right: 0.4267rem;
+}
+.input_title[data-v-17ba05d0] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+  line-height: 1.0133rem;
+  text-align: left;
+  margin-left: 0.4267rem;
+}
+.swtitch_img[data-v-17ba05d0] {
+  width: 1.0667rem;
+  height: 0.64rem;
+}
+
+.headBk[data-v-d2d74060] {
+  width: 100%;
+  height: 5.6rem;
+}
+.content[data-v-d2d74060] {
+  position: absolute;
+  top: 6.08rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.content .frame[data-v-d2d74060] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 3px 14px 0 rgba(102, 102, 102, 0.08);
+          box-shadow: 0 3px 14px 0 rgba(102, 102, 102, 0.08);
+  border-radius: 8px;
+  width: 9.1467rem;
+  text-align: start;
+}
+.content .frame .title[data-v-d2d74060] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #222222;
+  padding: 0.32rem 0.4267rem 0.2133rem 0.3467rem;
+}
+.content .frame .tips[data-v-d2d74060] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #666666;
+  margin: 0 0.4267rem;
+}
+.content .frame .bottom[data-v-d2d74060] {
+  margin-top: 0.4267rem;
+  background: #F9F9FA;
+  border-radius: 0 0 8px 8px;
+  height: 0.96rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.32rem;
+  color: #666666;
+}
+.content .frame .bottom .img_word[data-v-d2d74060] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  line-height: 0.96rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.content .frame .bottom img[data-v-d2d74060] {
+  width: 0.4267rem;
+  height: 0.4267rem;
+  margin: auto;
+  margin-right: 4px;
+}
+.big_btn[data-v-d2d74060] {
+  background: #FC9153;
+  border-radius: 8px;
+  height: 1.0667rem;
+  width: 9.1467rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  font-family: PingFangSC-Medium;
+  font-size: 0.4267rem;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.0667rem;
+}
+.look_bottom[data-v-d2d74060] {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.look_bottom .bottom_img[data-v-d2d74060] {
+  width: 0.8533rem;
+  margin-top: 0.4267rem;
+}
+.look_bottom .big_word[data-v-d2d74060] {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.48rem;
+  color: #333333;
+  margin-top: 0.2133rem;
+}
+.look_bottom .bottom_time[data-v-d2d74060] {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #AAAAAA;
+  margin-top: 0.08rem;
+}
+.look_bottom .last_word[data-v-d2d74060] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #666666;
+  margin-top: 0.1333rem;
+  margin-bottom: 0.4267rem;
+}
+.look_bottom .last_word .o_color[data-v-d2d74060] {
+  color: #FC9153;
+}
+.bottom_nav {
+  font-family: PingFangSC-Regular;
+  font-size: 0.2667rem;
+  color: #888888;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  height: 1.3333rem;
+  line-height: 1.3333rem;
+  box-shadow: 0 -1px 6px 0 rgba(0, 25, 40, 0.1);
+  display: flex;
+}
+.bottom_nav .bottom_left {
+  flex: 1;
+}
+.bottom_nav .bottom_right {
+  flex: 1;
+}
+.bottom_nav img {
+  width: 0.5333rem;
+  height: 0.5333rem;
+}
+.bottom_nav .bottom_word {
+  margin-top: -1rem;
+  font-family: PingFangSC-Regular;
+  font-size: 10px;
+  color: #888888;
+}
+.bottom_nav .choose_word {
+  color: #FC9153;
+}
+.border_bottom {
+  border-bottom: 1px solid #EDEDED;
+}
+.menban {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.6;
+  background: #000000;
+  z-index: 100;
+}
+.autoFlowContent {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 1.3333rem;
+  top: 1.1733rem;
+  overflow: auto;
+}
+.star {
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #F10039;
+  line-height: 0.5867rem;
+}
+.base_cell {
+  display: flex;
+  position: relative;
+  margin-left: 0.4267rem;
+  line-height: 1.3333rem;
+  font-size: 0.4267rem;
+}
+.absoult_right {
+  position: absolute;
+  right: 0.4267rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.confirm_btn {
+  line-height: 1.0667rem;
+  margin: 0.4267rem;
+  background: #FC9153;
+  border-radius: 8px;
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #CCCCCC;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #CCCCCC;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #CCCCCC;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #CCCCCC;
+}
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #CCCCCC;
+}
+.discard_word {
+  color: red;
+}
+.discard_img {
+  width: 1.6533rem;
+  height: 1.6533rem;
+  position: absolute;
+  right: 0.8267rem;
+  top: 0.4267rem;
+}
+
+.menban[data-v-4eec0f30] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.6;
+  background: #000000;
+  z-index: 100;
+}
+.alert[data-v-4eec0f30] {
+  background: #F9F9FA;
+  border-radius: 0.3733rem;
+  width: 7.3333rem;
+  z-index: 101;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.alert .content_word[data-v-4eec0f30] {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3733rem;
+  color: #000000;
+  text-align: center;
+  margin: 0.64rem 0.48rem;
+}
+.alert .bottom[data-v-4eec0f30] {
+  background: #FFFFFF;
+  border-radius: 0 0 0.3733rem 0.3733rem;
+  height: 1.2rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.4267rem;
+  color: #FC9153;
+  letter-spacing: -0.39px;
+  text-align: center;
+  line-height: 1.2rem;
+}
+.alert .bottom .confirm[data-v-4eec0f30] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.alert .bottom .confirm .cancle_word[data-v-4eec0f30] {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-right: 1px solid #EDF0F2;
+  color: #666666;
+}
+.alert .bottom .confirm .ok[data-v-4eec0f30] {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+.weui-mask {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.weui-mask_transparent {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.weui-toast {
+  position: fixed;
+  z-index: 5001;
+  width: 7.6em;
+  min-height: 7.6em;
+  top: 180px;
+  left: 50%;
+  margin-left: -3.8em;
+  background: rgba(17, 17, 17, 0.7);
+  text-align: center;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+.weui-icon_toast {
+  margin: 22px 0 0;
+  display: block;
+}
+.weui-icon_toast.weui-icon-success-no-circle:before {
+  color: #FFFFFF;
+  font-size: 55px;
+}
+.weui-icon_toast.weui-loading {
+  margin: 30px 0 0;
+  width: 38px;
+  height: 38px;
+  vertical-align: baseline;
+}
+.weui-toast__content {
+  margin: 0 0 15px;
+}
+.weui-loading {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+          animation: weuiLoading 1s steps(12, end) infinite;
+  background: transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=") no-repeat;
+  background-size: 100%;
+}
+.weui-loading.weui-loading_transparent {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMjAnIGhlaWdodD0nMTIwJyB2aWV3Qm94PScwIDAgMTAwIDEwMCc+PHBhdGggZmlsbD0nbm9uZScgZD0nTTAgMGgxMDB2MTAwSDB6Jy8+PHJlY3QgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjU2KScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgwIC0zMCknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjUpJyByeD0nNScgcnk9JzUnIHRyYW5zZm9ybT0ncm90YXRlKDMwIDEwNS45OCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjQzKScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSg2MCA3NS45OCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjM4KScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSg5MCA2NSA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjMyKScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSgxMjAgNTguNjYgNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4yOCknIHJ4PSc1JyByeT0nNScgdHJhbnNmb3JtPSdyb3RhdGUoMTUwIDU0LjAyIDY1KScvPjxyZWN0IHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyB4PSc0Ni41JyB5PSc0MCcgZmlsbD0ncmdiYSgyNTUsMjU1LDI1NSwuMjUpJyByeD0nNScgcnk9JzUnIHRyYW5zZm9ybT0ncm90YXRlKDE4MCA1MCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjIpJyByeD0nNScgcnk9JzUnIHRyYW5zZm9ybT0ncm90YXRlKC0xNTAgNDUuOTggNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4xNyknIHJ4PSc1JyByeT0nNScgdHJhbnNmb3JtPSdyb3RhdGUoLTEyMCA0MS4zNCA2NSknLz48cmVjdCB3aWR0aD0nNycgaGVpZ2h0PScyMCcgeD0nNDYuNScgeT0nNDAnIGZpbGw9J3JnYmEoMjU1LDI1NSwyNTUsLjE0KScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSgtOTAgMzUgNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4xKScgcng9JzUnIHJ5PSc1JyB0cmFuc2Zvcm09J3JvdGF0ZSgtNjAgMjQuMDIgNjUpJy8+PHJlY3Qgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHg9JzQ2LjUnIHk9JzQwJyBmaWxsPSdyZ2JhKDI1NSwyNTUsMjU1LC4wMyknIHJ4PSc1JyByeT0nNScgdHJhbnNmb3JtPSdyb3RhdGUoLTMwIC01Ljk4IDY1KScvPjwvc3ZnPgo=");
+}
+@-webkit-keyframes weuiLoading {
+0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+}
+100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+            transform: rotate3d(0, 0, 1, 360deg);
+}
+}
+@keyframes weuiLoading {
+0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+}
+100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+            transform: rotate3d(0, 0, 1, 360deg);
+}
+}
+.vux-loading .weui-toast {
+  z-index: 5001;
+}
+.weui-icon_toast.weui-loading {
+  margin: 30px 0 0;
+  width: 38px;
+  height: 38px;
+  vertical-align: baseline;
+  display: inline-block;
+}
+.vux-mask-enter,
+.vux-mask-leave-active,
+.vux-mask-leave-active,
+.vux-mask-enter-active {
+  position: relative;
+  z-index: 1;
+}
+.vux-mask-enter,
+.vux-mask-leave-active {
+  opacity: 0;
+}
+.vux-mask-leave-active,
+.vux-mask-enter-active {
+  -webkit-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  transition: opacity 300ms;
+}
+.vux-loading-no-text .weui-toast {
+  min-height: 98px;
+}
+
+.vux-fade-enter-active,
+.vux-fade-leave-active {
+  opacity: 1;
+  -webkit-transition: opacity linear 0.2s;
+  -o-transition: opacity linear 0.2s;
+  transition: opacity linear 0.2s;
+}
+.vux-fade-enter,
+.vux-fade-leave-to {
+  opacity: 0;
+}
+.vux-dialog-enter-active {
+  -webkit-animation: vux-dialog-in 0.5s;
+          animation: vux-dialog-in 0.5s;
+}
+.vux-dialog-leave-active {
+  -webkit-animation: vux-dialog-out 0.3s;
+          animation: vux-dialog-out 0.3s;
+}
+@-webkit-keyframes vux-dialog-in {
+0% {
+    -webkit-transform: scale(1.185);
+            transform: scale(1.185);
+    opacity: 0;
+}
+100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+}
+}
+@keyframes vux-dialog-in {
+0% {
+    -webkit-transform: scale(1.185);
+            transform: scale(1.185);
+    opacity: 0;
+}
+100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+}
+}
+@-webkit-keyframes vux-dialog-out {
+0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+}
+100% {
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+    opacity: 0;
+}
+}
+@keyframes vux-dialog-out {
+0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+}
+100% {
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+    opacity: 0;
+}
+}
+.vux-mask-enter,
+.vux-mask-leave-active {
+  opacity: 0;
+}
+.vux-mask-leave-active,
+.vux-mask-enter-active {
+  -webkit-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  transition: opacity 300ms;
+}
+/**
+* actionsheet
+*/
+/**
+* en: primary type text color of menu item
+* zh-CN: 菜单项primary类型的文本颜色
+*/
+/**
+* en: warn type text color of menu item
+* zh-CN: 菜单项warn类型的文本颜色
+*/
+/**
+* en: default type text color of menu item
+* zh-CN: 菜单项default类型的文本颜色
+*/
+/**
+* en: disabled type text color of menu item
+* zh-CN: 菜单项disabled类型的文本颜色
+*/
+/**
+* datetime
+*/
+/**
+* tabbar
+*/
+/**
+* tab
+*/
+/**
+* dialog
+*/
+/**
+* en: title and content's padding-left and padding-right
+* zh-CN: 标题及内容区域的 padding-left 和 padding-right
+*/
+/**
+* x-number
+*/
+/**
+* checkbox
+*/
+/**
+* check-icon
+*/
+/**
+* Cell
+*/
+/**
+* Mask
+*/
+/**
+* Range
+*/
+/**
+* Tabbar
+*/
+/**
+* Header
+*/
+/**
+* Timeline
+*/
+/**
+* Switch
+*/
+/**
+* Button
+*/
+/**
+* en: border radius
+* zh-CN: 圆角边框
+*/
+/**
+* en: font color
+* zh-CN: 字体颜色
+*/
+/**
+* en: margin-top value between previous button, not works when there is only one button
+* zh-CN: 与相邻按钮的 margin-top 间隙，只有一个按钮时不生效
+*/
+/**
+* en: button height
+* zh-CN: 按钮高度
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: the font color in disabled
+* zh-CN: disabled状态下的字体颜色
+*/
+/**
+* en: font size
+* zh-CN: 字体大小
+*/
+/**
+* en: the font size of the mini type
+* zh-CN: mini类型的字体大小
+*/
+/**
+* en: the line height of the mini type
+* zh-CN: mini类型的行高
+*/
+/**
+* en: the background color of the warn type
+* zh-CN: warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in active
+* zh-CN: active状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the warn type in disabled
+* zh-CN: disabled状态下，warn类型的背景颜色
+*/
+/**
+* en: the background color of the default type
+* zh-CN: default类型的背景颜色
+*/
+/**
+* en: the font color of the default type
+* zh-CN: default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in active
+* zh-CN: active状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in disabled
+* zh-CN: disabled状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the default type in disabled
+* zh-CN: disabled状态下，default类型的背景颜色
+*/
+/**
+* en: the font color of the default type in active
+* zh-CN: active状态下，default类型的字体颜色
+*/
+/**
+* en: the background color of the primary type
+* zh-CN: primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in active
+* zh-CN: active状态下，primary类型的背景颜色
+*/
+/**
+* en: the background color of the primary type in disabled
+* zh-CN: disabled状态下，primary类型的背景颜色
+*/
+/**
+* en: the font color of the plain primary type
+* zh-CN: plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type
+* zh-CN: plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的字体颜色
+*/
+/**
+* en: the border color of the plain primary type in active
+* zh-CN: active状态下，plain的primary类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type
+* zh-CN: plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type
+* zh-CN: plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的字体颜色
+*/
+/**
+* en: the border color of the plain default type in active
+* zh-CN: active状态下，plain的default类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type
+* zh-CN: plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type
+* zh-CN: plain的warn类型的边框颜色
+*/
+/**
+* en: the font color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的字体颜色
+*/
+/**
+* en: the border color of the plain warn type in active
+* zh-CN: active状态下，plain的warn类型的边框颜色
+*/
+/**
+* swipeout
+*/
+/**
+* Cell
+*/
+/**
+* Badge
+*/
+/**
+* en: badge background color
+* zh-CN: badge的背景颜色
+*/
+/**
+* Popover
+*/
+/**
+* Button tab
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: border radius color
+* zh-CN: 圆角边框的半径
+*/
+/**
+* en: border color
+* zh-CN: 边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 默认状态下圆角边框的颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default background color
+* zh-CN: 默认状态下的背景颜色
+*/
+/**
+* en: selected background color
+* zh-CN: 选中状态下的背景颜色
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/* alias */
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* en: default text color
+* zh-CN: 默认状态下的文本颜色
+*/
+/**
+* en: height
+* zh-CN: 元素高度
+*/
+/**
+* en: line height
+* zh-CN: 元素行高
+*/
+/**
+* Swiper
+*/
+/**
+* checklist
+*/
+/**
+* popup-picker
+*/
+/**
+* popup
+*/
+/**
+* popup-header
+*/
+/**
+* form-preview
+*/
+/**
+* sticky
+*/
+/**
+* group
+*/
+/**
+* en: margin-top of title
+* zh-CN: 标题的margin-top
+*/
+/**
+* en: margin-bottom of title
+* zh-CN: 标题的margin-bottom
+*/
+/**
+* en: margin-top of footer title
+* zh-CN: 底部标题的margin-top
+*/
+/**
+* en: margin-bottom of footer title
+* zh-CN: 底部标题的margin-bottom
+*/
+/**
+* toast
+*/
+/**
+* en: text size of content
+* zh-CN: 内容文本大小
+*/
+/**
+* en: default top
+* zh-CN: 默认状态下距离顶部的高度
+*/
+/**
+* en: position top
+* zh-CN: 顶部显示的高度
+*/
+/**
+* en: position bottom
+* zh-CN: 底部显示的高度
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+/**
+* icon
+*/
+/**
+* calendar
+*/
+/**
+* en: forward and backward arrows color
+* zh-CN: 前进后退的箭头颜色
+*/
+/**
+* en: text color of week highlight
+* zh-CN: 周末高亮的文本颜色
+*/
+/**
+* en: background color when selected
+* zh-CN: 选中时的背景颜色
+*/
+/**
+* en: text color when disabled
+* zh-CN: 禁用时的文本颜色
+*/
+/**
+* en: text color of today
+* zh-CN: 今天的文本颜色
+*/
+/**
+* en: font size of cell
+* zh-CN: 单元格的字号
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: size of date cell
+* zh-CN: 日期单元格尺寸大小
+*/
+/**
+* en: line height of date cell
+* zh-CN: 日期单元格的行高
+*/
+/**
+* en: text color of header
+* zh-CN: 头部的文本颜色
+*/
+/**
+* week-calendar
+*/
+/**
+* search
+*/
+/**
+* en: text color of cancel button
+* zh-CN: 取消按钮文本颜色
+*/
+/**
+* en: background color
+* zh-CN: 背景颜色
+*/
+/**
+* en: text color of placeholder
+* zh-CN: placeholder文本颜色
+*/
+/**
+* radio
+*/
+/**
+* en: checked icon color
+* zh-CN: 选中状态的图标颜色
+*/
+/**
+* loadmore
+*/
+/**
+* en: not used
+* zh-CN: 未被使用
+*/
+/**
+* loading
+*/
+/**
+* en: z-index
+* zh-CN: z-index
+*/
+.weui-mask {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.weui-mask_transparent {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "weui";
+  src: url('data:application/octet-stream;base64,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') format('truetype');
+}
+[class^="weui-icon-"],
+[class*=" weui-icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  font: normal normal normal 14px/1 "weui";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+[class^="weui-icon-"]:before,
+[class*=" weui-icon-"]:before {
+  display: inline-block;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+.weui-icon-circle:before {
+  content: "\EA01";
+}
+/* '' */
+.weui-icon-download:before {
+  content: "\EA02";
+}
+/* '' */
+.weui-icon-info:before {
+  content: "\EA03";
+}
+/* '' */
+.weui-icon-safe-success:before {
+  content: "\EA04";
+}
+/* '' */
+.weui-icon-safe-warn:before {
+  content: "\EA05";
+}
+/* '' */
+.weui-icon-success:before {
+  content: "\EA06";
+}
+/* '' */
+.weui-icon-success-circle:before {
+  content: "\EA07";
+}
+/* '' */
+.weui-icon-success-no-circle:before {
+  content: "\EA08";
+}
+/* '' */
+.weui-icon-waiting:before {
+  content: "\EA09";
+}
+/* '' */
+.weui-icon-waiting-circle:before {
+  content: "\EA0A";
+}
+/* '' */
+.weui-icon-warn:before {
+  content: "\EA0B";
+}
+/* '' */
+.weui-icon-info-circle:before {
+  content: "\EA0C";
+}
+/* '' */
+.weui-icon-cancel:before {
+  content: "\EA0D";
+}
+/* '' */
+.weui-icon-search:before {
+  content: "\EA0E";
+}
+/* '' */
+.weui-icon-clear:before {
+  content: "\EA0F";
+}
+/* '' */
+.weui-icon-back:before {
+  content: "\EA10";
+}
+/* '' */
+.weui-icon-delete:before {
+  content: "\EA11";
+}
+/* '' */
+[class^="weui-icon_"]:before,
+[class*=" weui-icon_"]:before {
+  margin: 0;
+}
+.weui-icon-success {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-waiting {
+  font-size: 23px;
+  color: #10AEFF;
+}
+.weui-icon-warn {
+  font-size: 23px;
+  color: #F43530;
+}
+.weui-icon-info {
+  font-size: 23px;
+  color: #10AEFF;
+}
+.weui-icon-success-circle {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-success-no-circle {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-waiting-circle {
+  font-size: 23px;
+  color: #10AEFF;
+}
+.weui-icon-circle {
+  font-size: 23px;
+  color: #C9C9C9;
+}
+.weui-icon-download {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-info-circle {
+  font-size: 23px;
+  color: #09BB07;
+}
+.weui-icon-safe-success {
+  color: #09BB07;
+}
+.weui-icon-safe-warn {
+  color: #FFBE00;
+}
+.weui-icon-cancel {
+  color: #F43530;
+  font-size: 22px;
+}
+.weui-icon-search {
+  color: #B2B2B2;
+  font-size: 14px;
+}
+.weui-icon-clear {
+  color: #B2B2B2;
+  font-size: 14px;
+}
+.weui-icon-delete.weui-icon_gallery-delete {
+  color: #FFFFFF;
+  font-size: 22px;
+}
+.weui-icon_msg {
+  font-size: 93px;
+}
+.weui-icon_msg.weui-icon-warn {
+  color: #F76260;
+}
+.weui-icon_msg-primary {
+  font-size: 93px;
+}
+.weui-icon_msg-primary.weui-icon-warn {
+  color: #FFBE00;
+}
+.weui-toast {
+  position: fixed;
+  z-index: 5001;
+  width: 7.6em;
+  min-height: 7.6em;
+  top: 180px;
+  left: 50%;
+  margin-left: -3.8em;
+  background: rgba(17, 17, 17, 0.7);
+  text-align: center;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+.weui-icon_toast {
+  margin: 22px 0 0;
+  display: block;
+}
+.weui-icon_toast.weui-icon-success-no-circle:before {
+  color: #FFFFFF;
+  font-size: 55px;
+}
+.weui-icon_toast.weui-loading {
+  margin: 30px 0 0;
+  width: 38px;
+  height: 38px;
+  vertical-align: baseline;
+}
+.weui-toast__content {
+  margin: 0 0 15px;
+}
+.weui-toast.vux-toast-top {
+  top: 10px;
+}
+.weui-toast.vux-toast-bottom {
+  top: auto;
+  bottom: 10px;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.weui-toast.vux-toast-middle {
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+.vux-slide-from-top-enter,
+.vux-slide-from-top-leave-active {
+  opacity: 0;
+  -webkit-transform: translateX(-50%) translateY(-100%) !important;
+      -ms-transform: translateX(-50%) translateY(-100%) !important;
+          transform: translateX(-50%) translateY(-100%) !important;
+}
+.vux-slide-from-bottom-enter,
+.vux-slide-from-bottom-leave-active {
+  opacity: 0;
+  -webkit-transform: translateX(-50%) translateY(100%) !important;
+      -ms-transform: translateX(-50%) translateY(100%) !important;
+          transform: translateX(-50%) translateY(100%) !important;
+}
+.vux-slide-from-top-enter-active,
+.vux-slide-from-top-leave-active,
+.vux-slide-from-bottom-enter-active,
+.vux-slide-from-bottom-leave-active {
+  -webkit-transition: all 400ms cubic-bezier(0.36, 0.66, 0.04, 1);
+  -o-transition: all 400ms cubic-bezier(0.36, 0.66, 0.04, 1);
+  transition: all 400ms cubic-bezier(0.36, 0.66, 0.04, 1);
+}
+.weui-toast {
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-left: 0!important;
+}
+.weui-toast.weui-toast_forbidden {
+  color: #F76260;
+}
+.weui-toast.weui-toast_forbidden .weui-toast__content {
+  margin-top: 10px;
+}
+.weui-toast.weui-toast_text {
+  min-height: 0;
+}
+.weui-toast_text .weui-toast__content {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+.weui-toast__content {
+  font-size: 16px;
+}
+.weui-loading_toast .weui-toast__content {
+  margin-top: 0;
+}
+.weui-toast_success .weui-icon_toast:before {
+  content: "\EA08";
+}
+.weui-toast_cancel .weui-icon_toast:before {
+  content: "\EA0D";
+}
+.weui-toast_forbidden .weui-icon_toast.weui-icon-success-no-circle:before {
+  content: "\EA0B";
+  color: #F76260;
+}
