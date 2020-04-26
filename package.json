@@ -79,19 +79,19 @@
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "import-loader": "^1.0.1",
+    "imports-loader": "^0.8.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
-    "@midea/pix-h5-components": "^1.1.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "axios": "^0.19.2",
     "browserify-sign": "^4.0.4",
     "crypto-js": "^4.0.0",
+    "element-ui": "^2.13.1",
     "fastclick": "^1.0.6",
     "highlight.js": "^9.18.1",
-    "import-loader": "^1.0.1",
-    "imports-loader": "^0.8.0",
     "jquery": "^3.4.1",
     "lib-flexible": "^0.3.2",
     "qs": "^6.9.1",

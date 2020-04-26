@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from '@/router/door';
+import router from '@/router/index';
 import store from '@/store';
 import i18n from '@/lang'
 import 'lib-flexible'

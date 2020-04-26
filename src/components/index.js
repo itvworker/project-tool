@@ -3,24 +3,14 @@ import PageContainer from './page-container';
 import PageHeader from './page-header';
 import PageMain from './page-main';
 import Scroller from './vue-scroll/components/Scroller'
-
-import {toast, loading, confirm} from '@midea/pix-h5-components'
-
-
-
-// import '@midea/pix-h5-components/dist/assets/fonts/iconfont.css'
-// import loading from '@midea/pix-h5-components/dist/components/loading';
-// import toast from '@midea/pix-h5-components/dist/components/toast';
-// import '@midea/pix-h5-components/dist/components/loading/styles/loading.css';
-// import '@midea/pix-h5-components/dist/components/toast/styles/toast.css';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 
-const components = [PageContainer, PageHeader, PageMain,Scroller];
 
-Vue.use(loading);
-Vue.use(toast);
-Vue.use(confirm)
+const components = [PageContainer, PageHeader, PageMain, Scroller];
 
+Vue.use(ElementUI)
 components.forEach((item)=>{
     Vue.component(item.name, item)
 });
