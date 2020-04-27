@@ -1,12 +1,13 @@
 <template>
     <div class="itv-scroller" ref="out" @touchstart="touchstart($event)" @touchmove="touchmove($event)" @touchend="touchend($event)" >
-        <div class="itv-scroller-silde" ref="slide"  :style="{width: allWidth+'px'}">
-            <div class="itv-scroller-content" ref="main">
+        <div class="itv-scroller-silde" :class="{'itv-scroller-animate': !isTouch }" ref="slide"  >
+            <slot />
+            <!-- <div class="itv-scroller-content" ref="main">
                 <div class="itv-scroller-refresh">
                     下拉刷新
                 </div>
                 <slot />
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -26,7 +27,7 @@ export default {
         },
         scrollX:{
             type: Boolean,
-            default: false
+            default: true
         },
         scrollY:{
             type: Boolean,
@@ -42,10 +43,18 @@ export default {
         }
     },
     mounted() {
-        this.calc(100);
+        this.landscapeRender = render(this.$refs.slide)
+        this.initOpt()   
+    },
+    updated() {
+        this.initOpt(); 
     },
     data() {
         return  {
+            opt: {
+                outerWidth: 0,
+                childrenlenth: 0
+            },
             initialX: 0, //开始接触屏幕时的接触点
             initialY: 0, //开始接触屏幕时的接触点
             isAnimating: false, //是否在执行滚动动画
@@ -66,6 +75,7 @@ export default {
                 }
             ],
             render: [],
+            landscapeRender:[],
             //滚动动画下一步走的距离
             decelerationVelocityX:0,
             decelerationVelocityY:0,
@@ -73,7 +83,7 @@ export default {
             minDecelerationVelocityY:0.3,
             maxDecelerationVelocityX:0.3,
             maxDecelerationVelocityY:0.3,
-
+            
             minDecelerationScrollX: 0,
             minDecelerationScrollY: 0,
             maxDecelerationScrollX: 0,
@@ -86,14 +96,26 @@ export default {
 
             //-----
             allWidth: '',
-            outerWidth: ''
+            outerWidth: '',
+            x:0,
+            maxScollerX: 0,
+            isTouch: false
         }
 
     },
     methods: {
-
+        initOpt() {
+            this.opt={
+                outerWidth: this.$refs.out.clientWidth ,
+                childrenlenth: this.$children.length
+            }      
+        },    
         touchstart(e) {
-            this.render = render(this.$refs.slide.children[this.index]);
+            this.enableScrollY = false;
+            this.enableScrollX = false;
+            this.isTouch = true;
+            this.maxScollerX = Math.max((this.opt.childrenlenth-1)*this.opt.outerWidth, 0);
+            this.render = render(this.$children[this.index].$el.children[0]);
             this.refreshStatus = false;
             this.calcMax();
             this.isAnimating = false;
@@ -128,7 +150,6 @@ export default {
         touchmove(e) {
 
             e.preventDefault();
-
             let touches = e.touches;
             let timeStamp = e.timeStamp;
             var currentTouchLeft, currentTouchTop;
@@ -146,19 +167,35 @@ export default {
             if(this.isMove) {
                 let moveX = currentTouchLeft - this.lastMoveX;
                 let moveY = currentTouchTop - this.lastMoveY;
-
-                let x = this.contentList[this.index].x;
-                let y = this.contentList[this.index].y;
-                let maxY = this.contentList[this.index].maxScrollY;
-
+                let y = this.$children[this.index].y;
+                let maxY = this.$children[this.index].maxScrollY;
+                let x = this.x;
                 if (this.enableScrollY && this.scrollY) {
                     if((y < 0 && moveY>0)||(y > maxY && moveY<0)) {
 
                         moveY = moveY/2
                     }
                     y -= moveY * this.speedMultiplier;
-                    this.contentList[this.index].y = y;
+                    this.$children[this.index].y = y;
+                    this.render(0, y,1);
                 }
+
+                if (this.enableScrollX && this.scrollX) {
+                    x -= moveX * this.speedMultiplier;
+                
+                    
+                    if(x < 0) {
+                        this.x -= moveX/2 * this.speedMultiplier;
+                        x = this.x;   
+                    }
+
+                   
+                    
+                    this.x = x;
+                    this.landscapeRender(x, 0 , 1);
+                }
+
+                
                 this.lastMoveX = currentTouchLeft;
                 this.lastMoveY = currentTouchTop;
 
@@ -168,7 +205,7 @@ export default {
                     timeStamp: e.timeStamp
                 });
 
-                this.render(0, y,1);
+              
 
             }
             //当还未处于滑动情况时
@@ -176,12 +213,25 @@ export default {
                 let distanceX = Math.abs(currentTouchLeft - this.initialX);
                 let distanceY = Math.abs(currentTouchTop - this.initialY);
                 this.enableScrollY =  distanceY >= this.minimumTrackingForScroll;
+                this.enableScrollX =  distanceX >= this.minimumTrackingForScroll;
 
+                if(Math.abs(distanceX) >= Math.abs(distanceY)) {
+                    this.enableScrollY = false
+                     this.isMove = true;  
 
-
-                if(this.enableScrollY){
-                    this.isMove = true;
+                }else{
+                     this.isMove = true;
+                    this.enableScrollX = false  
                 }
+
+                // if(this.enableScrollY){
+                //     this.isMove = true;
+                //     this.enableScrollX = false;
+                // }
+                // if(this.enableScrollX){
+                //     this.isMove = true;
+                //     this.enableScrollY = false;
+                // }
 
                 this.moveList.push({
                     x: currentTouchLeft,
@@ -198,10 +248,68 @@ export default {
 
         },
         touchend(e) {
+            this.isTouch  =false;
             this.isMove = false;
+            if(this.moveList.length<=0) return
             let timeStamp = e.timeStamp;
             let lastMoveTime =  this.moveList[this.moveList.length-1].timeStamp;
-            let dom = this.contentList[this.index];
+
+            if(this.enableScrollX) {
+                if(this.x < 0) {
+                    this.landscapeRender(0,0,1);
+                    this.x = 0;
+                    this.index = 0;
+                    return
+                }
+
+                if(this.x > this.maxScollerX) {
+                    this.landscapeRender(this.maxScollerX, 0 ,1);
+                    this.x = this.maxScollerX;
+                    
+                    return
+                }
+                
+                let closeDis = this.x - this.opt.outerWidth*this.index;
+                
+                
+                       
+                if(closeDis>0 && closeDis >= 60) {
+                    this.index = this.index+1;
+                    this.x = this.index*this.opt.outerWidth
+                    this.landscapeRender(this.x, 0 ,1);
+                    this.$emit('ontab', this.index)
+                    return
+                }
+
+                if(closeDis>0 && closeDis < 60) {
+                    this.x = this.index*this.opt.outerWidth
+                    this.landscapeRender(this.x, 0 ,1);
+                    return
+                }
+
+
+                if(closeDis<0 && closeDis <= -60) {
+                    this.index = this.index-1;
+                    this.x = this.index*this.opt.outerWidth
+                    this.landscapeRender(this.x, 0 ,1);
+                    this.$emit('ontab', this.index)
+                    return
+                }
+
+                if(closeDis< 0 && closeDis > -60) {
+                    this.x = this.index*this.opt.outerWidth
+                    this.landscapeRender(this.x, 0 ,1);
+                    return
+                }
+
+
+                
+                return
+            }
+            
+
+            
+            let dom = this.$children[this.index];
             if(dom.y < 0 ) {
                 if(dom.y <= -44) {
                     this.decelerationVelocityY = -20
@@ -235,6 +343,7 @@ export default {
                 }
 
                 if (startPos !== endPos) {
+                    
                     var timeOffset = positions[endPos].timeStamp - positions[startPos].timeStamp ;
                     var movedLeft = positions[endPos].x - positions[startPos].x;
                     var movedTop = positions[endPos].y - positions[startPos].y;

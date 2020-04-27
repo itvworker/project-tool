@@ -4,17 +4,17 @@ export default {
             this.isAnimating = true;
             this.minDecelerationScrollX = 0
             this.minDecelerationScrollY = 0
-            this.maxDecelerationScrollX = this.contentList[this.index].maxScrollX
-            this.maxDecelerationScrollY = this.contentList[this.index].maxScrollY
+            this.maxDecelerationScrollX = this.$children[this.index].maxScrollX
+            this.maxDecelerationScrollY = this.$children[this.index].maxScrollY
             window.requestAnimationFrame(this.step)
         },
         step() {
 
             if (!this.isAnimating) return;
-            let x = this.contentList[this.index].x;
-            let y = this.contentList[this.index].y;
-            let maxX = this.contentList[this.index].maxScrollX
-            let maxY  = this.contentList[this.index].maxScrollY
+            let x = this.$children[this.index].x;
+            let y = this.$children[this.index].y;
+            let maxX = this.$children[this.index].maxScrollX
+            let maxY  = this.$children[this.index].maxScrollY
             y -= this.decelerationVelocityY;
 
             //如果没有弹动时
@@ -29,25 +29,25 @@ export default {
 
             if (this.bounching) {
                 if (this.refreshStatus && this.pullDown) {
-                    if (this.contentList[this.index].y < -44 && y > -44) {
+                    if (this.$children[this.index].y < -44 && y > -44) {
                         y = -44
                         this.decelerationVelocityY = 0;
                         this.refresh();
                     }
                 }
-                if (y < maxY && this.contentList[this.index].y > maxY) {
+                if (y < maxY && this.$children[this.index].y > maxY) {
                     this.decelerationVelocityY = 0
                     y = maxY;
                 }
 
-                if (y > 0 && this.contentList[this.index].y < 0 ) {
+                if (y > 0 && this.$children[this.index].y < 0 ) {
                     this.decelerationVelocityY = 0
                     y = 0
                 }
             }
 
 
-            this.contentList[this.index].y = y;
+            this.$children[this.index].y = y;
 
             this.render(0, y, 1);
             if (Math.abs(this.decelerationVelocityY) <= 0.3) {
@@ -78,10 +78,10 @@ export default {
             this.calcDecelerationVelocity();
         },
         calcDecelerationVelocity() {
-            let maxX = this.contentList[this.index].maxScrollX
-            let maxY  = this.contentList[this.index].maxScrollY
-            let x = this.contentList[this.index].x;
-            let y = this.contentList[this.index].y;
+            let maxX = this.$children[this.index].maxScrollX
+            let maxY  = this.$children[this.index].maxScrollY
+            let x = this.$children[this.index].x;
+            let y = this.$children[this.index].y;
             if (!this.bounching) {
                 let scrollLeftFixed = Math.max(Math.min(this.maxDecelerationScrollX, x), this.minDecelerationScrollX);
                 if (scrollLeftFixed !== x) {

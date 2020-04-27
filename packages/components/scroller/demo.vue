@@ -3,13 +3,28 @@
         <itv-header>Scroller</itv-header>
         <itv-main>
             <nut-scroller>
-                <div  class="nut-vert-list-panel">
-                    <div class="item" v-for="(item, index) in list">
-                        {{item.name}}{{index}}
+                <scroller-content>
+                    <div  class="nut-vert-list-panel">
+                        <div class="item" v-for="(item, index) in list" @click="alert(item, index)">
+                            {{item.name}}{{index}}
+                        </div>
                     </div>
-                </div>
+                </scroller-content>
+                <scroller-content>
+                    <div  class="nut-vert-list-panel">
+                        <div class="item" v-for="(item, index) in other" @click="alert(item, index)">
+                            {{item.name}}{{index}}
+                        </div>
+                    </div>
+                </scroller-content>
 
-
+                <scroller-content>
+                    <div  class="nut-vert-list-panel">
+                        <div class="item" v-for="(item, index) in news" @click="alert(item, index)">
+                            {{item.name}}{{index}}
+                        </div>
+                    </div>
+                </scroller-content>
             </nut-scroller>
         </itv-main>
 
@@ -18,23 +33,36 @@
 
 <script>
 import nutScroller from './scroller'
+import scrollerContent from '../scroller-content'
 import "./scroller.less";
 export default {
     components: {
-        nutScroller
+        nutScroller,
+        scrollerContent
     },
     data() {
         return {
             list:[],
+            other: [],
+            news: [],
             ismore: false,
             isloading: false
         }
     },
     methods: {
+        alert(item, index) {
+            alert(item.name+index,)
+        },
         createList(value) {
             for(let i = 0; i < value; i++) {
                 this.list.push({
                     name:'我是新闻哥'
+                })
+                this.other.push({
+                    name:'你是什么人'
+                })
+                this.news.push({
+                    name:'你想看什么'
                 })
             }
         },
