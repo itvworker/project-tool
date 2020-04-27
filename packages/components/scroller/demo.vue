@@ -1,8 +1,13 @@
 <template>
     <itv-container class="page-dialog">
         <itv-header>Scroller</itv-header>
+        <div class="tab-meun">
+            <div class="tab-btn" :class="{'active': index===0}">新闻哥</div>
+            <div class="tab-btn" :class="{'active': index===1}">什么人</div>
+            <div class="tab-btn" :class="{'active': index===2}">看什么</div>
+        </div>
         <itv-main>
-            <nut-scroller>
+            <nut-scroller @ontab="change">
                 <scroller-content>
                     <div  class="nut-vert-list-panel">
                         <div class="item" v-for="(item, index) in list" @click="alert(item, index)">
@@ -46,10 +51,14 @@ export default {
             other: [],
             news: [],
             ismore: false,
-            isloading: false
+            isloading: false,
+            index:0
         }
     },
     methods: {
+        change(index) {
+            this.index = index;
+        },
         alert(item, index) {
             alert(item.name+index,)
         },
@@ -97,6 +106,23 @@ export default {
     padding: 15ipx;
     box-sizing: border-box;
     font-size: 18ipx;
+}
+
+.tab-meun{
+    height: 44rpx;
+    display: flex;
+    .tab-btn{
+        height: 44ipx;
+        flex: 1;
+        text-align: center;
+        line-height: 44ipx;
+        font-size: 16ipx;
+        border-bottom: #ddd solid 1px;
+        &.active {
+            color: @itv-page-main;
+            border-bottom: @itv-page-main solid 2px;
+        }
+    }
 }
 </style>
 
