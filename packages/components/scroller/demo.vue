@@ -2,12 +2,12 @@
     <itv-container class="page-dialog">
         <itv-header>Scroller</itv-header>
         <div class="tab-meun">
-            <div class="tab-btn" :class="{'active': index===0}">新闻哥</div>
-            <div class="tab-btn" :class="{'active': index===1}">什么人</div>
-            <div class="tab-btn" :class="{'active': index===2}">看什么</div>
+            <div class="tab-btn" :class="{'active': index===0}" @click="tabIndex(0)">新闻哥</div>
+            <div class="tab-btn" :class="{'active': index===1}" @click="tabIndex(1)">什么人</div>
+            <div class="tab-btn" :class="{'active': index===2}" @click="tabIndex(2)">看什么</div>
         </div>
         <itv-main>
-            <nut-scroller @ontab="change">
+            <nut-scroller @ontab="change" ref="scroller">
                 <scroller-content>
                     <div  class="nut-vert-list-panel">
                         <div class="item" v-for="(item, index) in list" @click="alert(item, index)">
@@ -56,6 +56,10 @@ export default {
         }
     },
     methods: {
+        tabIndex(index) {
+            this.index = index;
+            this.$refs.scroller.changeTab(index)
+        },
         change(index) {
             this.index = index;
         },

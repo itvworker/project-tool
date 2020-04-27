@@ -104,6 +104,11 @@ export default {
 
     },
     methods: {
+        changeTab(index) {
+            this.index = index;
+            this.x =  this.index*this.opt.outerWidth;
+            this.landscapeRender(this.x, 0 , 1);
+        },
         initOpt() {
             this.opt={
                 outerWidth: this.$refs.out.clientWidth ,
@@ -184,10 +189,11 @@ export default {
                     x -= moveX * this.speedMultiplier;
                 
                     
-                    if(x < 0) {
+                    if(x < 0 || x > this.maxScollerX) {
                         this.x -= moveX/2 * this.speedMultiplier;
                         x = this.x;   
                     }
+
 
                    
                     
