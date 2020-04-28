@@ -106,6 +106,15 @@ export default [
             keepAlive: false,
             title: 'scroller'
         }
+    },
+    {
+        path: '/demo/drawer',
+        name: 'itv_drawer',
+        component: () => import ('@/components/drawer/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'scroller'
+        }
     }
     // {
     //     path: '/demo/form',
