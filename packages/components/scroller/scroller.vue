@@ -1,5 +1,5 @@
 <template>
-    <div class="itv-scroller" ref="out" @touchstart="touchstart($event)" @touchmove="touchmove($event)" @touchend="touchend($event)" >
+    <div class="itv-scroller" ref="out" @touchstart="touchstart($event)" @touchmove="touchmove($event)" @touchend="touchend($event)" @touchcancel="touchend($event)" >
         <div class="itv-scroller-silde" :class="{'itv-scroller-animate': !isTouch }" ref="slide"  >
             <slot />
             <!-- <div class="itv-scroller-content" ref="main">
@@ -40,6 +40,10 @@ export default {
         pullDown:{
             type: Boolean,
             default: true
+        },
+        pullHeight: {
+            type: Number,
+            default: 60
         }
     },
     mounted() {
@@ -317,13 +321,13 @@ export default {
             
             let dom = this.$children[this.index];
             if(dom.y < 0 ) {
-                if(dom.y <= -44) {
+                if(dom.y <= -this.pullHeight) {
                     this.decelerationVelocityY = -20
                     this.refreshStatus = true;
                     this.animate();
                     return
                 }
-                if(dom.y < 0 && dom.y > -44) {
+                if(dom.y < 0 && dom.y > -this.pullHeight) {
                     this.decelerationVelocityY = -10
                     this.animate();
                     return;

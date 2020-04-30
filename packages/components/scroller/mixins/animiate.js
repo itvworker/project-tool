@@ -29,8 +29,8 @@ export default {
 
             if (this.bounching) {
                 if (this.refreshStatus && this.pullDown) {
-                    if (this.$children[this.index].y < -44 && y > -44) {
-                        y = -44
+                    if (this.$children[this.index].y < -this.pullHeight && y > -this.pullHeight) {
+                        y = -this.pullHeight
                         this.decelerationVelocityY = 0;
                         this.refresh();
                     }
