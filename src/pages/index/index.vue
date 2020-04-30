@@ -53,7 +53,7 @@
     </el-container>
 </template>
 <script>
-
+import address  from '@/libs/address.json';
 export default {
     data() {
         return {
