@@ -65,7 +65,7 @@
                 }
 
 
-                if(currentTouchLeft > this.winWidth*2/3 && !this.bg){
+                if(currentTouchLeft > this.maxWidth && !this.bg){
                     this.isClose = true;
                 }
 
@@ -99,8 +99,8 @@
                     let x = this.x;
                     if (this.enableScrollX) {
                         x += moveX;
-                        if(x > this.winWidth*2/3) {
-                            x = this.winWidth*2/3
+                        if(x > this.maxWidth) {
+                            x = this.maxWidth
                         }
                         this.render(-x, 0 , 1);
                     }
