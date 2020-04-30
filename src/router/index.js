@@ -7,7 +7,30 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: () => import ('@/pages/index/index.vue'),
+            component: () => import ('@/pages/layout/index'),
+            redirect: '/index',
+            meta: {
+                keepAlive: true,
+                title: '物资放行'
+            },
+            children: [
+                {
+                    path: '/index',
+                    name: 'index',
+                    component: () => import ('@/pages/index'),
+                    meta: {
+                        keepAlive: true,
+                        title: '物资放行'
+                    }
+                }
+            ]
+        },
+
+
+        {
+            path: '/login',
+            name: 'login',
+            component: () => import ('@/pages/login'),
             meta: {
                 keepAlive: true,
                 title: '物资放行'

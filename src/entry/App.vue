@@ -1,14 +1,8 @@
 <template lang="html">
-    <page-container>
-        <keep-alive>
-            <router-view />
-        </keep-alive>
-    </page-container>
-    
+    <router-view />
 </template>
 
 <script>
-    import platform from '@/libs/platform'
     import config from '@/config'
     export default {
         data() {
