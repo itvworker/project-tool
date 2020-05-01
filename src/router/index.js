@@ -22,6 +22,24 @@ export default new Router({
                         keepAlive: true,
                         title: '物资放行'
                     }
+                },
+                {
+                    path: '/school/index',
+                    name: 'school_index',
+                    component: () => import ('@/pages/school/index'),
+                    meta: {
+                        keepAlive: true,
+                        title: '学校管理'
+                    }
+                },
+                {
+                    path: '/school/grade',
+                    name: 'school_grade',
+                    component: () => import ('@/pages/school/index'),
+                    meta: {
+                        keepAlive: true,
+                        title: '班级管理'
+                    }
                 }
             ]
         },

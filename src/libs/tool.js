@@ -42,3 +42,19 @@ export function formatDate(arg, format) {
 }
 
 
+export function getJsonStore (key) {
+    let res = localStorage.getItem(key);
+    if (res) {
+        return JSON.parse(res);
+    }
+    return ''
+}
+
+export function setStore (key, msg) {
+    if ((typeof msg).toLocaleLowerCase() === 'object') {
+        msg = JSON.stringify(msg)
+    }
+    localStorage.setItem(key, msg);
+    return ''
+}
+

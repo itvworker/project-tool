@@ -6,6 +6,7 @@ import i18n from '@/lang'
 import 'lib-flexible'
 import '@/model';//服务数据层
 import '@/components';
+import '@/assets/css/index.less'
 import FastClick from 'fastclick'
 // import vconsole from 'vconsole'
 // new vconsole();

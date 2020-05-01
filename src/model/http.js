@@ -15,22 +15,22 @@ import URL from './url';
  * @param urlTailStr
  */
 /** ***************************** TODO 根据自己项目需求拼接url参数 ********************************************* */
-function getRequestUrl (params) {
-    if(typeof params === "string") {
-         return URL.baseUrl+params;
+function getRequestUrl(params) {
+    if (typeof params === "string") {
+        return URL.baseUrl + params;
     }
-    if(params.prefix) {
-        return URL[params.prefix]+params.url;
+    if (params.prefix) {
+        return URL[params.prefix] + params.url;
     }
     return URL.baseUrl = params.url
 }
+
 /** ***************************** TODO 根据自己项目需求拼接url参数 ********************************************* */
 // 'https://newimtest.midea.com/mas-api/restful/acWorkingHoursFill/pjts/searchByUser?token=T2344189819503616'
 
-function request (url, params, option) {
+function request(url, params, option) {
     params = params || {}
     option = option || {}
-
 
 
     let config = {}
@@ -154,10 +154,20 @@ function request (url, params, option) {
     let reqData = {}
     let headers = option.headers || {}
     switch (option.method) {
+        case "POST_FILE":
+            headers['Content-Type'] = 'application/octet-stream;charset=utf-8';
+            reqData = {
+                url,
+                headers,
+                data: params
+            }
+            config = extend(config, reqData)
+            return post(config).then(res => res.data)
+            break;
         case 'POST_JSON':
             headers['Content-Type'] = 'application/json'
             params = JSON.stringify(params)
-            
+
             reqData = {
                 url,
                 headers,
@@ -167,7 +177,7 @@ function request (url, params, option) {
             return post(config).then(res => res.data)
             break
         case 'POST':
-            params = QS.stringify(params, { allowDots: true })
+            params = QS.stringify(params, {allowDots: true})
             reqData = {
                 url,
                 headers: {
@@ -190,7 +200,7 @@ function request (url, params, option) {
             return get(config).then(res => res.data)
             break
         case 'DELETE':
-            params = QS.stringify(params, { allowDots: true })
+            params = QS.stringify(params, {allowDots: true})
             reqData = {
                 url,
                 headers: {
@@ -205,7 +215,7 @@ function request (url, params, option) {
             return getJsonpData(url, params, null).then(res => res)
             break
         case 'PUT':
-            params = QS.stringify(params, { allowDots: true })
+            params = QS.stringify(params, {allowDots: true})
             reqData = {
                 url,
                 headers: {

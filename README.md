@@ -1,6 +1,9 @@
 ### 物资出厂
-产品：李超（lichao13） 前端:谢克械（xiekx2）
-后端：周炽铭
+Hiro:
+https://org.modao.cc/app/ddc132de05bf4c6f48766dab9c6f663daf69e4eb?simulator_type=device&sticky
+
+Hiro:
+https://org.modao.cc/app/58d4e004700b70157d9a507c16527d2bc93face2?simulator_type=device&sticky
 
 
 [接口文档](http://yapi.midea.com/project/870/interface/api/55567)

@@ -5,8 +5,6 @@
     * @update:2017-08-16
     * @version
     */
-    export default {
-    "baseUrl": "https://mapnew5sit.midea.com/mas/v5/app/restful/materials_factory",
-    "mesUrl": "http://10.16.12.167:8996"
+export default {
+    "baseUrl": "https://api.itvwork.com"
 }
-    

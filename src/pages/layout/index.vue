@@ -11,20 +11,42 @@
                 @close="handleClose"
                 background-color="#011829"
                 text-color="#fff"
+                :router="true"
                 active-text-color="#ffd04b">
                 
-                <el-menu-item index="2">
+                <el-menu-item index="1">
                     <i class="el-icon-menu"></i>
-                    <span slot="title">导航二</span>
+                    <span slot="title">统计分析</span>
                 </el-menu-item>
-                <el-menu-item index="3" disabled>
-                    <i class="el-icon-document"></i>
-                    <span slot="title">导航三</span>
+                <el-menu-item index="2" >
+                    <i class="el-icon-unlock"></i>
+                    <span slot="title">权限设置</span>
                 </el-menu-item>
-                <el-menu-item index="4">
-                    <i class="el-icon-setting"></i>
-                    <span slot="title">导航四</span>
-                </el-menu-item>
+
+                <el-submenu index="3">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">系统设置</span>
+                    </template>
+                    <el-menu-item-group>
+                        <el-menu-item index="3-1">备份数据库</el-menu-item>
+                        <el-menu-item index="3-2">小程序设置</el-menu-item>
+                        <el-menu-item index="3-3">轮播图</el-menu-item>
+                    </el-menu-item-group>
+                </el-submenu>
+
+                <el-submenu index="school">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">学校管理</span>
+                    </template>
+                    <el-menu-item-group>
+                        <el-menu-item index="/school/index">学校列表</el-menu-item>
+                        <el-menu-item index="/school/grade">班级管理</el-menu-item>
+
+                    </el-menu-item-group>
+                </el-submenu>
+
                 </el-menu>
 
 
