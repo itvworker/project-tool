@@ -1,14 +1,6 @@
 <template lang="html">
     <el-container>
-
-        <el-header class="list-header" style="height:100px">
-            <el-row class="list-page-path">
-                <el-breadcrumb separator-class="el-icon-arrow-right">
-                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item>学校管理</el-breadcrumb-item>
-                    <el-breadcrumb-item>学校列表</el-breadcrumb-item>
-                </el-breadcrumb>
-            </el-row>
+        <el-header class="list-header">
             <el-row :gutter="10">
                 <el-col :xs="8" :sm="7" :md="6" :lg="5" :xl="5">
                     <el-input type="text" placeholder="学校名称" v-model="key" size="small"/>
@@ -59,14 +51,14 @@
         </div>
 
 
-       <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="pages.current"
-            :page-sizes="pages.pageSizes"
-            :page-size="pages.pageSize"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="pages.total"/>
+        <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="pages.current"
+                :page-sizes="pages.pageSizes"
+                :page-size="pages.pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="pages.total"/>
 
         <el-dialog title="导入学校" :visible.sync="showStatus.dialog" width="600px" :close-on-click-modal="false">
             <el-row>
@@ -85,7 +77,7 @@
         </el-dialog>
 
         <el-dialog title="添加学校" :visible.sync="showStatus.school" width="900px" :close-on-click-modal="false">
-          <vuemap @add="openAddBox"/>
+            <vuemap @add="openAddBox"/>
         </el-dialog>
 
         <el-dialog title="添加学校" :modal="false" :visible.sync="showStatus.edit" width="400px" :close-on-click-modal="false">
@@ -162,7 +154,7 @@
                     lng: e.lng || '',
                     latlng: e.lat+','+e.lng
                 },
-                this.showStatus.edit = true;
+                    this.showStatus.edit = true;
             },
             calc(obj, pid, arr ) {
                 if(!arr) {
@@ -198,7 +190,7 @@
                     this.showStatus.uploadBtnText = '导入数据';
                     this.showStatus.uploading = false;
                     console.log(2);
-                 }
+                }
 
 
             },
@@ -237,6 +229,6 @@
 </script>
 
 <style lang="less" scoped>
-@import './less/index.less';
+    @import 'less/index.less';
 
 </style>

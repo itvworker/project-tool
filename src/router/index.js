@@ -40,6 +40,15 @@ export default new Router({
                         keepAlive: true,
                         title: '班级管理'
                     }
+                },
+                {
+                    path: '/school/students',
+                    name: 'school_students',
+                    component: () => import ('@/pages/school/students'),
+                    meta: {
+                        keepAlive: true,
+                        title: '学生管理'
+                    }
                 }
             ]
         },

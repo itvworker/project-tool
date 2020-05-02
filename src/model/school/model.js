@@ -6,5 +6,11 @@ export default {
         return request(url, params, {
             method: 'POST_FILE'
         })
+    },
+    add(params) {
+        let url = getRequestUrl(api.add);
+        return request(url, params, {
+            method: 'POST'
+        })
     }
 }

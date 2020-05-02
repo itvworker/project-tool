@@ -90,7 +90,8 @@ export default {
 
                 if(res.status === 0 && res.data.length>0) {
                     this.markers.forEach((item)=>{
-                        this.item.marker.setMap(null);
+                        debugger
+                        item.marker.setMap(null);
                     })
 
                     this.markers = res.data.map((item, index)=>{
@@ -105,6 +106,7 @@ export default {
                         if(index === 0) {
                             this.map.panTo(new qq.maps.LatLng(item.location.lat, item.location.lng));
                         }
+                        return item
                     })
 
                 }
@@ -162,7 +164,7 @@ export default {
 
             this.map = new qq.maps.Map(this.$refs.main,{
                 center: new qq.maps.LatLng(cache.location.lat, cache.location.lng),
-                zoom: 13
+                zoom: 15
             });
 
             this.message.address = cache.address?cache.address:`${cache.ad_info.province}${cache.ad_info.city}${cache.ad_info.district}`;

@@ -93,6 +93,7 @@
     "fastclick": "^1.0.6",
     "highlight.js": "^9.18.1",
     "jquery": "^3.4.1",
+    "js-xlsx": "^0.8.22",
     "lib-flexible": "^0.3.2",
     "qs": "^6.9.1",
     "vue": "^2.6.11",

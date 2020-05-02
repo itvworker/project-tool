@@ -35,7 +35,7 @@
                     </el-menu-item-group>
                 </el-submenu>
 
-                <el-submenu index="school">
+                <el-submenu index="/school">
                     <template slot="title">
                         <i class="el-icon-location"></i>
                         <span slot="title">学校管理</span>
@@ -43,6 +43,7 @@
                     <el-menu-item-group>
                         <el-menu-item index="/school/index">学校列表</el-menu-item>
                         <el-menu-item index="/school/grade">班级管理</el-menu-item>
+                        <el-menu-item index="/school/students">学生管理</el-menu-item>
 
                     </el-menu-item-group>
                 </el-submenu>
