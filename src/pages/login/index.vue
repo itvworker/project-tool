@@ -12,7 +12,7 @@
                             <el-input type="password" v-model="pageData.password"  placeholder="密码"></el-input>
                         </el-form-item>  
                         <el-form-item>
-                            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                            <el-button type="primary" :loading="loading" @click="submit">提交</el-button>
                         </el-form-item>
                     </el-form>
 
@@ -21,7 +21,9 @@
     </div>
 </template>
 <script>
-
+import md5 from 'md5';
+import {setSession} from "../../libs/tool";
+import config from '@/config'
 export default {
     data() {
         return {
@@ -36,18 +38,57 @@ export default {
                     { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
                 ],
                 password:[
-                    { required: true, message: '请输入用户密码', trigger: 'blur' },
-                  
+                    { required: true, message: '请输入用户密码', trigger: 'blur' }
                 ]
-            }
+            },
+            loading:false
         }
     },
     methods: {
-        
+        submit() {
+            this.$refs.form.validate(async (valid) => {
+                this.login()
+            });
+        },
+        async login() {
+            let timestamp = new Date().getTime();
+
+            let obj = {
+                username: this.pageData.username,
+                passwrod: md5(md5(this.pageData.password).toUpperCase()+timestamp).toUpperCase(),
+                timestamp: timestamp
+            };
+            try{
+                this.loading = true;
+                let res = await this.$model.user.setLogin(obj);
+                if(res.status === 200) {
+                    setSession(config.tokenKey, res.data.token);
+                    setSession(config.userKey, res.data.user);
+                    this.$router.push({
+                        name: 'index'
+                    })
+                    return
+                }
+
+                this.$message({
+                    message: '用户名或密码错误',
+                    type: 'error'
+                });
+
+            }catch (err){
+                this.$message({
+                    message: err.msg,
+                    type: 'error'
+                });
+            }finally {
+                this.loading = false;
+            }
+
+        }
         
     },
     mounted() {
-        this.init();
+
     },
     
 }

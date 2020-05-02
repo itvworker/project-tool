@@ -34,8 +34,7 @@ function foreachJson (jsonObj, arr) {
     return jsonObj
 }
 axios.interceptors.request.use(config => { // 请求前的处理
-    config.headers['access-token'] = store.state.token;
-    config.headers['sourceKey']='mx';
+    config.headers['ping-an-cloud-token'] = store.state.token
     return config
 }, error => {
     return Promise.reject(error)
@@ -49,6 +48,12 @@ axios.interceptors.response.use(async (res) => { // 请求后的处理
     return res
     // return foreachJson(data,arr)
 }, error => {
+    if(error==='Error: Network Error') {
+        return Promise.reject({
+                status: 400,
+                msg: '网络错识'
+            })
+    }
     let errInfo = error.response
 
     // if (!errInfo) {

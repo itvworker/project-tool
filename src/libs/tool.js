@@ -55,6 +55,23 @@ export function setStore (key, msg) {
         msg = JSON.stringify(msg)
     }
     localStorage.setItem(key, msg);
+}
+
+export function getJsonSession (key) {
+    let res = sessionStorage.getItem(key);
+    if (res) {
+        return JSON.parse(res);
+    }
     return ''
 }
 
+export function getSession (key) {
+    return sessionStorage.getItem(key);
+}
+
+export function setSession (key, msg) {
+    if ((typeof msg).toLocaleLowerCase() === 'object') {
+        msg = JSON.stringify(msg)
+    }
+    sessionStorage.setItem(key, msg);
+}

@@ -13,12 +13,11 @@ export default {
     list: [
         {
             id:'213143432423',
-            name: '学校名称',
-            address: '乐从大道',
+            school_name: '学校名称',
+            school_address: '乐从大道',
             number: 10,
             cards: 10,
-            lng:12.48787,
-            lat: 116.15445454
+            gps_latitude_longitude: '22.794611,113.29524'
 
         }
 

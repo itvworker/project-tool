@@ -1,3 +1,4 @@
+import xlsx from 'xlsx';
 export default {
     data() {
         return {
@@ -24,6 +25,22 @@ export default {
             })
             this.pages.current = page;
             this.getList();
+        },
+        clear(e) {
+            e.target.value = ''
+        },
+        readXlsx(e) {
+            const file = e.target.files[0];
+            // eslint-disable-next-line no-undef
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                let workbook = xlsx.read(e.target.result, {type: 'binary'})
+
+                console.log(workbook)
+                this.manageMessage(workbook);
+            };
+            reader.readAsBinaryString(file);
         }
+
     }
 }

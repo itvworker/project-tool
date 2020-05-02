@@ -8,7 +8,7 @@
                         <el-button size="small" icon="el-icon-refresh-left">重置</el-button>
                     </el-col>
                     <el-col :xs="6" :sm="10" :md="12" :lg="14" :xl="14" class="left-group">
-                        <el-button class="btn btn-upload" size="small"  >导入学校<input  @click="clear" type="file" @change="upload" refs="upload"  accept=".xlsx"  /></el-button>
+                         <el-button class="btn btn-upload" size="small"  >导入学校<input  @click="clear" type="file" @change="upload" refs="upload"  accept=".xlsx"  /></el-button>
                          <el-button class="btn"  size="small" >新增学校</el-button>
                     </el-col>
                 </el-row>

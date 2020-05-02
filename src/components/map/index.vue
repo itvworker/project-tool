@@ -28,11 +28,18 @@
 
         <div class="main" ref="main">
         </div>
-        <div class="subtitle">
+
+
+        <div class="subtitle" v-if="type==='add'">
            地点名称：{{message.name}} 地址: {{message.address}} 经纬度: {{message.lat}}, {{message.lng}}
         </div>
-        <div class="group-btn">
+        <div class="subtitle" v-if="type==='latlng'">
+            经纬度: {{message.lat}}, {{message.lng}}
+            <el-button size="small" @click="add" icon="el-icon-plus" type="primary">选择</el-button>
+        </div>
+        <div class="group-btn" v-if="type==='add'">
             <el-button size="small" @click="add" icon="el-icon-plus" type="primary">添加学校</el-button>
+
         </div>
     </div>
 </template>
@@ -42,6 +49,27 @@ import {getJsonStore, setStore } from "@/libs/tool";
 
 export default {
     name: 'vue-map',
+    props:{
+        type: {
+            type: String,
+            default: 'add'
+        },
+        center:{
+            type: String,
+            default: ''
+        }
+    },
+    watch: {
+        type(n,o) {
+
+            if(n!=='add') {
+                this.$nextTick(()=>{
+                    this.moveLatLng(this.center)
+                })
+
+            }
+        }
+    },
     data() {
         return {
             map: '',
@@ -72,10 +100,13 @@ export default {
     },
     methods: {
         send() {
-
-
         },
+
         add() {
+            if (this.type === 'latlng') {
+                this.$emit('latlng', this.message);
+                return;
+            }
             this.$emit('add', this.message)
         },
         async search() {
@@ -90,7 +121,7 @@ export default {
 
                 if(res.status === 0 && res.data.length>0) {
                     this.markers.forEach((item)=>{
-                        debugger
+
                         item.marker.setMap(null);
                     })
 
@@ -113,6 +144,9 @@ export default {
 
 
             }
+        },
+        setContent(msg) {
+            this.map.panTo(new qq.maps.LatLng(item.location.lat, item.location.lng));
         },
         setProvince(id) {
             this.area.city =  this.findArea(id);
@@ -154,6 +188,7 @@ export default {
         },
         // 获取申请流程列表
         async init(lat, lng) {
+
             let cache = getJsonStore('map-school-147');
             if(!cache) {
                 let res = await this.$model.map.getIpGps();
@@ -167,10 +202,15 @@ export default {
                 zoom: 15
             });
 
+
             this.message.address = cache.address?cache.address:`${cache.ad_info.province}${cache.ad_info.city}${cache.ad_info.district}`;
             this.message.lat = cache.location.lat;
             this.message.lng = cache.location.lng;
             this.message.name = cache.title;
+
+            if(this.type!=='add') {
+                this.moveLatLng(this.center);
+            }
             //添加监听事件 
             qq.maps.event.addListener(this.map, 'click', this.clickMap);
             //添加点击标记
@@ -179,6 +219,46 @@ export default {
             qq.maps.event.addListener(this.map, 'center_changed', this.centerMove);
         },
 
+        async moveLatLng(latlng) {
+            latlng = latlng.replace(/\s/ig,'');
+            let latlngArr = latlng.split(',');
+            let center = new qq.maps.LatLng(latlngArr[0], latlngArr[1]);
+
+            if(this.marker) {
+                this.marker.setMap(null)
+            }
+
+            this.markers.forEach((item)=>{
+                item.marker.setMap(null);
+            })
+
+
+
+            let res = await this.$model.map.getAdress({
+                location: latlng
+            })
+            this.marker = new qq.maps.Marker({
+                position: center,
+                map: this.map
+            });
+
+            let obj = {
+                address: res.result.address,
+                title: res.result.address_reference.landmark_l2.title,
+                location: res.result.location
+            }
+            this.message.address = obj.address;
+            this.message.lat = obj.location.lat;
+            this.message.lng = obj.location.lng;
+            this.message.name = obj.title;
+
+            qq.maps.event.addListener(this.marker, 'click', (e)=>{
+                this.clickMarker(e, obj)
+            });
+
+            this.map.panTo(center);
+
+        },
         //点击地图触发的方法
         async clickMap(e) {
             if(this.marker) {
@@ -237,6 +317,7 @@ export default {
         // this.setProvince(province.id);
         // this.selectArea.province = province.id
         // this.selectArea.city = city.id;
+
         this.init()
 
     },
