@@ -1,23 +1,83 @@
 <template lang="html">
     <el-container>
-        <el-header class="list-header">
+        <el-header class="list-header" style="height:100px">
+            <el-row class="list-page-path">
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item>学校管理</el-breadcrumb-item>
+                    <el-breadcrumb-item>学生管理</el-breadcrumb-item>
+                </el-breadcrumb>
+            </el-row>
             <el-row :gutter="10">
-                <el-col :xs="8" :sm="7" :md="6" :lg="5" :xl="5">
-                    <el-input type="text" placeholder="学校名称" v-model="key" size="small"/>
-                </el-col>
-                <el-col :xs="8" :sm="7" :md="6" :lg="5" :xl="5">
+                <el-col :xs="18" :sm="16" :md="18" :lg="18" :xl="20">
+                    <el-select size="small"
+                            v-model="selected.school"
+                            filterable
+                            allow-create
+                            default-first-option
+                            placeholder="选择学校" style="width:120px">
+                        <el-option
+                                :key="0"
+                                label="全部"
+                                :value="0">
+                        </el-option>
+                        <el-option
+                                v-for="item in select.schools"
+                                :key="item.school_id"
+                                :label="item.school_name"
+                                :value="item.school_id">
+                        </el-option>
+                    </el-select>
+
+                    <el-select size="small"
+                               v-model="selected.school"
+                               filterable
+                               allow-create
+                               default-first-option
+                               placeholder="性别" style="width:120px">
+                        <el-option
+                                :key="0"
+                                label="全部"
+                                :value="0">
+                        </el-option>
+                        <el-option
+                                v-for="item in select.schools"
+                                :key="item.school_id"
+                                :label="item.school_name"
+                                :value="item.school_id">
+                        </el-option>
+                    </el-select>
+
+                    <el-select size="small"
+                               v-model="selected.school"
+                               filterable
+                               allow-create
+                               default-first-option
+                               placeholder="选择学校" style="width:120px">
+                        <el-option
+                                :key="0"
+                                label="全部"
+                                :value="0">
+                        </el-option>
+                        <el-option
+                                v-for="item in select.schools"
+                                :key="item.school_id"
+                                :label="item.school_name"
+                                :value="item.school_id">
+                        </el-option>
+                    </el-select>
+                    <el-input type="text" style="width: 200px" placeholder="学校名称" v-model="key" size="small"/>
                     <el-button type="primary" size="small" icon="el-icon-search">搜索</el-button>
                     <el-button size="small" icon="el-icon-refresh-left">重置</el-button>
                 </el-col>
-                <el-col :xs="6" :sm="10" :md="12" :lg="14" :xl="14" class="left-group">
-
+                <el-col :xs="6" :sm="8" :md="6" :lg="6" :xl="4" class="left-group">
                     <el-button class="btn btn-upload" size="small" @click="showStatus.dialog=true">导入学校</el-button>
-                    <el-button class="btn" size="small" @click="showStatus.school=true">新增学校</el-button>
+                    <el-button class="btn" size="small" @click="openAddBox">新增学生</el-button>
                 </el-col>
             </el-row>
-
-
         </el-header>
+
+<!--        列表   -->
         <div class="list">
             <el-table :data="tableData" stripe style="width: 100%">
                 <el-table-column
@@ -60,7 +120,11 @@
                 layout="total, sizes, prev, pager, next, jumper"
                 :total="pages.total"/>
 
-        <el-dialog title="导入学校" :visible.sync="showStatus.dialog" width="600px" :close-on-click-modal="false">
+
+
+
+        <!--       导入   -->
+        <el-dialog title="导入学生" :visible.sync="showStatus.dialog" width="600px" :close-on-click-modal="false">
             <el-row>
                 <div class="subtitle" title="">为提高导入的成功率，请下载使用系统提供模板 <a href="">点击此处下载模版</a></div>
             </el-row>
@@ -76,21 +140,37 @@
             </el-row>
         </el-dialog>
 
-        <el-dialog title="添加学校" :visible.sync="showStatus.school" width="900px" :close-on-click-modal="false">
-            <vuemap @add="openAddBox"/>
-        </el-dialog>
 
-        <el-dialog title="添加学校" :modal="false" :visible.sync="showStatus.edit" width="400px" :close-on-click-modal="false">
-            <el-form :model="schoolForm" :rules="rules" ref="school" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="学校名称" prop="name">
-                    <el-input v-model="schoolForm.name"></el-input>
+        <el-dialog title="添加学生" :modal="false" :visible.sync="showStatus.edit" width="400px" :close-on-click-modal="false">
+            <el-form :model="form" :rules="rules" ref="school" label-width="100px" class="demo-ruleForm">
+                <el-form-item label="学生名称" prop="student_name">
+                    <el-input v-model="form.student_name"  placeholder="请输入"></el-input>
                 </el-form-item>
-                <el-form-item label="学校地址" prop="address">
-                    <el-input v-model="schoolForm.address"></el-input>
+                <el-form-item label="所属学校" prop="school_id">
+                    <el-select  style="width: 100%"
+                               v-model="selected.school_id"
+                               filterable
+                               allow-create
+                               default-first-option
+                               placeholder="请选择" >
+                        <el-option
+                                :key="0"
+                                label="全部"
+                                :value="0">
+                        </el-option>
+                        <el-option
+                                v-for="item in select.schools"
+                                :key="item.school_id"
+                                :label="item.school_name"
+                                :value="item.school_id">
+                        </el-option>
+                    </el-select>
                 </el-form-item>
-
-                <el-form-item label="经纬度" prop="address">
-                    <el-input v-model="schoolForm.latlng"></el-input>
+                <el-form-item label="所属班级" prop="address">
+                    <el-input v-model="form.latlng"></el-input>
+                </el-form-item>
+                <el-form-item label="学生学号" prop="address">
+                    <el-input v-model="form.latlng"></el-input>
                 </el-form-item>
                 <el-form-item class="btn-bar">
                     <el-button class="btn-submit" :loading="loading" type="primary" @click="submitAddSchool">提交</el-button>
@@ -98,6 +178,9 @@
                 </el-form-item>
             </el-form>
         </el-dialog>
+
+
+
 
     </el-container>
 </template>
@@ -107,16 +190,20 @@
     import vuemap from '@/components/map/index'
     import data from './data'
     import page from '@/mixins/page'
+    import addSchool from '@/components/school/add-school'
     export default {
         mixins:[page],
         components:{
-            vuemap
+            vuemap,
+            addSchool
         },
         data() {
             return {
                 key: '',
                 tableData: data.list,
                 showStatus: {
+                    addShcool: true,
+                    student: false,
                     dialog: false, //显示dialog
                     uploading: false,
                     uploadBtnText: '导入数据',
@@ -124,16 +211,53 @@
                     school: false,
                     edit: false
                 },
-                schoolForm:data.list,
+                form:{
+
+                },
                 loading: false,
-                rules: data.rules,
+                rules: data.student,
                 pages:{
                     current: 1
+                },
+                select: {
+                    schools: [
+                        {
+                            school_name: '中心小学',
+                            school_id:1
+                        },
+                        {
+                            school_name: '德胜小学',
+                            school_id:2
+                        },
+                        {
+                            school_name: '顺德小学',
+                            school_id:3
+                        },{
+                            school_name: '贵畔小学',
+                            school_id:4
+                        },{
+                            school_name: '广田小学',
+                            school_id:5
+                        }
+                    ]
+                },
+                selected: {
+                    school: '',
+                    school_calss: ''
+
                 }
+
+
             }
         },
         methods: {
             getList() {
+
+            },
+            getSchool() {
+
+            },
+            selectSchool() {
 
             },
             edit(e, arr) {
@@ -147,14 +271,16 @@
                 }
             },
             openAddBox(e) {
-                this.schoolForm = {
-                    name: e.name||'',
-                    address: e.address||'',
-                    lat: e.lat || '',
-                    lng: e.lng || '',
-                    latlng: e.lat+','+e.lng
-                },
-                    this.showStatus.edit = true;
+                this.form = {
+                    school_id: '',
+                    shocol_class_id: '',
+                    student_name: '',
+                    sutdent_sex: '',
+                    student_card: '',
+                    parent_tel: ''
+                }
+                this.showStatus.edit = true;
+
             },
             calc(obj, pid, arr ) {
                 if(!arr) {
