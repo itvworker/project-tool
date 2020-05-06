@@ -52,21 +52,34 @@ export default {
         },
         async login() {
             let timestamp = new Date().getTime();
-
+            var firstp = md5('ping-an'+this.pageData.password+"cloud").toUpperCase();    
+            var password = md5('ping-an'+firstp + timestamp+"cloud").toUpperCase();
             let obj = {
-                username: this.pageData.username,
-                passwrod: md5(md5(this.pageData.password).toUpperCase()+timestamp).toUpperCase(),
+                loginName: this.pageData.username,
+                password: password,
                 timestamp: timestamp
             };
+            // loveaayou 123456
+            
+
             try{
                 this.loading = true;
                 let res = await this.$model.user.setLogin(obj);
                 if(res.status === 200) {
-                    setSession(config.tokenKey, res.data.token);
-                    setSession(config.userKey, res.data.user);
+                    setSession(config.tokenKey, res.token);
+                    setSession(config.userKey, {
+                        username: this.pageData.username,
+                        role: res.role
+                    });
                     this.$router.push({
                         name: 'index'
                     })
+                    this.$store.commit('SET_TOKEN', res.token)
+                    this.$store.commit('SET_USER', {
+                        username: this.pageData.username,
+                        role: res.role
+                    })
+                    
                     return
                 }
 
@@ -74,8 +87,9 @@ export default {
                     message: '用户名或密码错误',
                     type: 'error'
                 });
-
+               
             }catch (err){
+                
                 this.$message({
                     message: err.msg,
                     type: 'error'

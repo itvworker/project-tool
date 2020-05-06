@@ -9,6 +9,8 @@ import axios from 'axios'
 import QS from 'qs'
 import URL from './url';
 
+
+
 /**
  * 返回请求路径
  * @author ex_chennxw
@@ -27,6 +29,38 @@ function getRequestUrl(params) {
 
 /** ***************************** TODO 根据自己项目需求拼接url参数 ********************************************* */
 // 'https://newimtest.midea.com/mas-api/restful/acWorkingHoursFill/pjts/searchByUser?token=T2344189819503616'
+
+function jsonp (url,data,fn){
+    if(!url)
+        throw new Error('url is necessary')
+    const callback = 'CALLBACK' + Math.random().toString().substr(9,18)
+    // const callback = 'cb_callback'
+    const JSONP = document.createElement('script')
+          JSONP.setAttribute('type','text/javascript')
+
+    const headEle = document.getElementsByTagName('head')[0]
+
+    let ret = '';
+    if(data){
+        if(typeof data === 'string')
+            ret = '&' + data;
+        else if(typeof data === 'object') {
+            for(let key in data)
+                ret += '&' + key + '=' + encodeURIComponent(data[key]);
+        }
+        ret += '&_time=' + Date.now();
+    }
+    JSONP.src = `${url}?callback=${callback}${ret}`;
+
+    window[callback] = function(r){
+      fn && fn(r)
+      headEle.removeChild(JSONP)
+      delete window[callback]
+    }
+
+    headEle.appendChild(JSONP)
+}
+
 
 function request(url, params, option) {
     params = params || {}
@@ -136,11 +170,13 @@ function request(url, params, option) {
      * @param {*}
      */
     const getJsonpData = function (url, data, option) {
-        url += (url.indexOf('?') < 0 ? '?' : '&') + $common.paramJsonp(data)
+       
+        
         return new Promise((resolve, reject) => {
-            jsonp(url, option, (err, data) => {
-                if (!err) {
-                    resolve(data)
+            jsonp(url, data, (err, data) => {
+
+                if (err) {
+                    resolve(err)
                 } else {
                     reject(err)
                 }
@@ -197,7 +233,9 @@ function request(url, params, option) {
                 params
             }
             config = extend(config, reqData)
+           
             return get(config).then(res => res.data)
+           
             break
         case 'DELETE':
             params = QS.stringify(params, {allowDots: true})
