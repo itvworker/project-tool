@@ -35,6 +35,7 @@ function foreachJson (jsonObj, arr) {
 }
 axios.interceptors.request.use(config => { // 请求前的处理
     config.headers['ping-an-cloud-token'] = store.state.token
+   
     return config
 }, error => {
     return Promise.reject(error)

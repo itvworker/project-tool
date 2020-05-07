@@ -6,5 +6,5 @@
     * @version
     */
 export default {
-    "baseUrl": "https://api.itvwork.com"
+    "baseUrl": "http://weiq.0799vip.com:18080/pxcloud"
 }

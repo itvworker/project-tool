@@ -1,5 +1,5 @@
 export default {
-    setLogin:'/api/login',
+    setLogin:'/login',
 
 
 }

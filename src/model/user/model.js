@@ -4,7 +4,7 @@ export default {
     setLogin(params) {
         let url = getRequestUrl(api.setLogin);
         return request(url, params, {
-            method: 'POST'
+            method: 'POST_JSON'
         })
     }
 }
