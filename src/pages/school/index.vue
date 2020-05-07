@@ -11,11 +11,11 @@
             </el-row>
             <el-row :gutter="10">
                 <el-col :xs="8" :sm="7" :md="6" :lg="5" :xl="5">
-                    <el-input type="text" placeholder="学校名称" v-model="key" size="small"/>
+                    <el-input type="text" placeholder="学校名称" @keyup.enter="search"  v-model="key" size="small"/>
                 </el-col>
-                <el-col :xs="8" :sm="7" :md="6" :lg="5" :xl="5">
-                    <el-button type="primary" size="small" icon="el-icon-search">搜索</el-button>
-                    <el-button size="small" icon="el-icon-refresh-left">重置</el-button>
+                <el-col :xs="8" :sm="7" :md="6" :lg="5" :xl="5" >
+                    <el-button type="primary" size="small" icon="el-icon-search" @click="search">搜索</el-button>
+                    <el-button size="small" icon="el-icon-refresh-left" @click="restart">重置</el-button>
                 </el-col>
                 <el-col :xs="6" :sm="10" :md="12" :lg="14" :xl="14" class="left-group">
 
@@ -27,7 +27,7 @@
 
         </el-header>
         <div class="list">
-            <el-table :data="tableData" stripe style="width: 100%"  v-loading="loading"  element-loading-text="拼命加载中" element-loading-background="rgba(0, 0, 0, 0.6)">
+            <el-table :data="list" stripe style="width: 100%"  v-loading="loading"  element-loading-text="拼命加载中" element-loading-background="rgba(0, 0, 0, 0.6)">
                 <el-table-column
                         label="序号"
                         width="120">
@@ -37,8 +37,9 @@
                 </el-table-column>
 
                 <el-table-column prop="school_name" label="学校名称" width="180"/>
+                <el-table-column prop="school_organ" label="机构代码" width="180"/>
                 <el-table-column prop="chool_address" label="地址"/>
-                <el-table-column prop="number" label="学生数量" width="100"/>
+                
                 <el-table-column prop="cards" label="打卡数" width="120">
                 </el-table-column>
                 <el-table-column
@@ -47,7 +48,7 @@
                         width="120">
                     <template slot-scope="scope">
                         <el-button
-                                @click.native.prevent="edit(scope.$index, tableData)"
+                                @click.native.prevent="edit(scope.$index, list)"
                                 type="text"
                                 size="small">
                             编辑
@@ -151,8 +152,7 @@
         },
         data() {
             return {
-                key: '',
-                tableData: data.list,
+               
                 showStatus: {
                     dialog: false, //显示dialog
                     uploading: false,
@@ -175,20 +175,6 @@
                 pages: {
                     current: 1
                 },
-                schoolType:[
-                    {
-                        name: '小学',
-                        value: 1
-                    },
-                    {
-                        name: '初/高中',
-                        value: 2   
-                    },
-                    {
-                        name: '大学',
-                        value: 3
-                    }     
-                ],
                 pges: {
                     pageSize: 12
                 }
@@ -200,17 +186,31 @@
             async getList() {
                 try {
                     this.loading = true;
-                    let res = this.$model.school.list({
-                        pageSize: this.pages.pageSize,
-                        pageIndex: this.pages.pageIndex,
-                        keyword:''
-                    })
                     
-                    for(let i = 0, l = res.length; i< l i++;) {
-                        
+                    let page = this.$route.query.page || 1;
+                    let res = await this.$model.school.list({
+                        pageSize: this.pages.pageSize,
+                        page: page,
+                        keyword: this.$route.query.keyword || ''
+                    })
+                   
+                    this.pages.total = res.count;
+                    
+                    let arr = []
+
+                    if(res.datas) {
+                        for(let i = 0, l = res.datas.length; i < l; i++) {
+                            arr.push(res.datas[i])
+                        }
                     }
+                    this.list = arr;
+
+                    this.loading = false
+
+                    
 
                 } catch (error) {
+                    console.error(error);
                     
                 }
                
@@ -244,6 +244,7 @@
             //打开编辑框
             edit(e, arr) {
                 let item = arr[e];
+                debugger
                 this.schoolForm = JSON.parse(JSON.stringify(item))
                 this.showStatus.edit = true;
             },
@@ -281,14 +282,13 @@
             updateData() {
 
             },
-            async submitAddSchool() {
-                this.$refs.school.validate((valid) => {
+            submitAddSchool() {
+                this.$refs.school.validate(async (valid) => {
                     try {
                         this.loading = true;
-
                         if(this.schoolForm.id) {
-                             let res = awaitthis.$model.school.updateSchool(param);
-                                if(res.status === 200) {
+                             let res = await this.$model.school.updateSchool(this.schoolForm);
+                                if(res===1) {
                                     this.$message({
                                     message: '更新成功',
                                     type: 'success'
@@ -298,9 +298,8 @@
 
 
                         }else{
-
-                            let res = awaitthis.$model.school.addSchool(param);
-                                if(res.status === 200) {
+                            let res = await this.$model.school.addSchool(this.schoolForm);
+                                if(res === 1) {
                                     this.$message({
                                     message: '添加成功',
                                     type: 'success'
@@ -309,10 +308,13 @@
                             }
 
                         }
-
+                        this.loading = false;
+                        this.showStatus.edit = false;
                        
 
                     } catch (err) {
+                        
+                        
                         if(this.schoolForm.id) {
                              this.$message({
                                 message: '更新失败',
@@ -326,7 +328,6 @@
                         }
                        
                     } finally {
-                        this.showStatus.school = false;
                         this.loading = false;
                     }
 
@@ -335,7 +336,7 @@
 
         },
         mounted() {
-
+            this.getList()
         },
 
     }

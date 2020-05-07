@@ -4,7 +4,7 @@ export default {
     list(params) {
         let url = getRequestUrl(api.list);
         return request(url, params, {
-            method: 'POST_FILE'
+            method: 'POST_JSON'
         })
     },
     updateSchool(params) {
@@ -31,6 +31,22 @@ export default {
             method: 'POST_FILE'
         })
     },
-    i
-
+    addGrade(params) {
+        let url = getRequestUrl(api.addGrade);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    updateGrade(params) {
+        let url =  getRequestUrl(api.updateGrade);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    listGrade(params) {
+        let url =  getRequestUrl(api.listGrade);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    }
 }

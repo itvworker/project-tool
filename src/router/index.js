@@ -35,7 +35,7 @@ const router =  new Router({
                 {
                     path: '/school/grade',
                     name: 'school_grade',
-                    component: () => import ('@/pages/school/index'),
+                    component: () => import ('@/pages/school/grade'),
                     meta: {
                         keepAlive: true,
                         title: '班级管理'

@@ -1,10 +1,10 @@
 module.exports = {
     proxy: { //代理
-        '/mas/v5/': {
-            target: 'https://mapsalessit.midea.com',
+        '/pxcloud': {
+            target: 'http://weiq.0799vip.com:18080/',
             changeOrigin: true,
             pathRewrite: {
-                '^mas/v5/': 'https://mapsalessit.midea.com'
+                '^pxcloud': 'http://weiq.0799vip.com:18080'
             }
         },
         '/mas-api/restful': {

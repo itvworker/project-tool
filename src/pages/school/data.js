@@ -33,6 +33,17 @@ export default {
             { required: true, message: '请输入学生学号', trigger: 'blur' }
         ],
     },
+    rlueGrade: {
+        school_id: [
+            { required: true, message: '请选择所属学校', trigger: 'blur' }
+        ],
+        grade_type: [
+            { required: true, message: '请选择请选择年级类型', trigger: 'blur' }
+        ],
+        grade_number: [
+            { required: true, message: '请选择班年级', trigger: 'blur' }
+        ]
+    },
     list: [
         {
             id:'213143432423',
@@ -43,6 +54,101 @@ export default {
             gps_latitude_longitude: '22.794611,113.29524'
         }
     ],
+    gradeType:[
+        {
+            value:0,
+            name:'小学'
+        },
+        {
+            value:1,
+            name:'初中'
+        },
+        {
+            value:2,
+            name:'小学'
+        },{
+            value:3,
+            name:'小学'
+        }
+    ],
+    grades:[
+        [{
+            value:0,
+            name:'学前班'
+        },
+        {
+            value:1,
+            name:'一年级'
+        },
+        {
+            value:2,
+            name:'二年级'
+        },
+        {
+            value:3,
+            name:'三年级'
+        },
+        {
+            value:4,
+            name:'四年级'
+        },
+        {
+            value:5,
+            name:'五年级'
+        },{
+            value:6,
+            name:'六年级'
+        }],
+        [{
+            value:1,
+            name:'初一'
+        },
+        {
+            value:2,
+            name:'初二'
+        },
+        {
+            value:3,
+            name:'初三'
+        }
+        
+        ],
+        [
+            {
+                value:1,
+                name:'高一'
+            },
+            {
+                value:2,
+                name:'高二'
+            },
+            {
+                value:3,
+                name:'高三'
+            }
+        ],
+        [{
+            value:1,
+            name:'大一'
+        },
+        {
+            value:2,
+            name:'大二'
+        },
+        {
+            value:3,
+            name:'大三'
+        },
+        {
+            value:4,
+            name:'大四'
+        },
+        {
+            value:5,
+            name:'大五'
+        }
+        ]
+    ]
 
 
 }
