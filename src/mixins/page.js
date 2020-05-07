@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         handleSizeChange(total) {
-
+                
         },
         handleCurrentChange(page) {
             let name = this.$route.name;

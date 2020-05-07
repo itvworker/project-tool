@@ -7,10 +7,30 @@ export default {
             method: 'POST_FILE'
         })
     },
-    add(params) {
-        let url = getRequestUrl(api.add);
+    updateSchool(params) {
+        let url = getRequestUrl(api.updateSchool);
         return request(url, params, {
-            method: 'POST'
+            method: 'POST_JSON'
+        })    
+    },
+    addSchool(params) {
+        let url = getRequestUrl(api.addSchool);
+        return request(url, params, {
+            method: 'POST_JSON'
         })
-    }
+    },
+    importSchool(params) {
+        let url = getRequestUrl(api.importShcool)
+        return request(url, params, {
+            method: 'POST_FILE'
+        })
+    },
+    importStudent(params) {
+        let url = getRequestUrl(api.importShcool)
+        return request(url, params, {
+            method: 'POST_FILE'
+        })
+    },
+    i
+
 }

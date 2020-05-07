@@ -8,6 +8,12 @@ export default {
         ],
         gps_latitude_longitude: [
             { required: true, message: '请输入经纬度', trigger: 'blur' }
+        ],
+        school_organ: [
+            { required: true, message: '请输入机构代码', trigger: 'blur' }
+        ],
+        school_type: [
+            { required: true, message: '请选择学校类型', trigger: 'blur' }   
         ]
     },
     student: {

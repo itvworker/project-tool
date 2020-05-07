@@ -27,7 +27,7 @@
 
         </el-header>
         <div class="list">
-            <el-table :data="tableData" stripe style="width: 100%">
+            <el-table :data="tableData" stripe style="width: 100%"  v-loading="loading"  element-loading-text="拼命加载中" element-loading-background="rgba(0, 0, 0, 0.6)">
                 <el-table-column
                         label="序号"
                         width="120">
@@ -93,18 +93,39 @@
         <el-dialog :title="schoolForm.id?'编辑学校':'添加学校'" :modal="schoolForm.id?true:false"
                    :visible.sync="showStatus.edit" width="400px" :close-on-click-modal="false">
             <el-form :model="schoolForm" :rules="rules" ref="school" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="学校名称" prop="school_name">
-                    <el-input v-model="schoolForm.school_name"></el-input>
+                <el-form-item label="学校名称" prop="school_name" >
+                    <el-input v-model="schoolForm.school_name" placeholder="请输入学校名称" ></el-input>
                 </el-form-item>
-                <el-form-item label="学校地址" prop="school_address">
+                <el-form-item label="学校类型" prop="school_type">
+                    <el-select size="small"
+                            v-model="schoolForm.school_type"
+                            filterable
+                            allow-create
+                            default-first-option
+                            placeholder="请选择学校类型">
+                        <el-option
+                                v-for="item in schoolType"
+                                :key="item.value"
+                                :label="item.name"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                 <el-form-item label="机构代码" prop="school_organ" >
+                    <el-input v-model="schoolForm.school_organ" placeholder="请输入学校机构码" ></el-input>
+                </el-form-item>
+                 <el-form-item label="学校地址" prop="school_address">
                     <el-input v-model="schoolForm.school_address"></el-input>
                 </el-form-item>
-
+               
                 <el-form-item label="经纬度" prop="gps_latitude_longitude">
                     <el-input v-model="schoolForm.gps_latitude_longitude">
-                        <div slot="suffix" class="btn-open-map el-icon-location-outline" @click="openLatLng"></div>
+                        <div slot="suffix" v-if="schoolForm.id" class="btn-open-map el-icon-location-outline" @click="openLatLng"></div>
                     </el-input>
                 </el-form-item>
+
+                
+
                 <el-form-item class="btn-bar">
                     <el-button class="btn-submit" :loading="loading" type="primary" @click="submitAddSchool">提交
                     </el-button>
@@ -142,19 +163,57 @@
                     typeMap: 'add', //地图类型 add latlng
                     mapCenter: ''
                 },
-                schoolForm: {},
+                schoolForm: {
+                    school_name: '',
+                    school_address: '',
+                    school_type: '',
+                    gps_latitude_longitude: '',
+                    school_organ: ''
+                },
                 loading: false,
                 rules: data.rules,
                 pages: {
                     current: 1
+                },
+                schoolType:[
+                    {
+                        name: '小学',
+                        value: 1
+                    },
+                    {
+                        name: '初/高中',
+                        value: 2   
+                    },
+                    {
+                        name: '大学',
+                        value: 3
+                    }     
+                ],
+                pges: {
+                    pageSize: 12
                 }
 
 
             }
         },
         methods: {
-            getList() {
+            async getList() {
+                try {
+                    this.loading = true;
+                    let res = this.$model.school.list({
+                        pageSize: this.pages.pageSize,
+                        pageIndex: this.pages.pageIndex,
+                        keyword:''
+                    })
+                    
+                    for(let i = 0, l = res.length; i< l i++;) {
+                        
+                    }
 
+                } catch (error) {
+                    
+                }
+               
             },
             editLatLng(obj) {
                 this.schoolForm.gps_latitude_longitude = obj.lat+','+obj.lng;
@@ -174,7 +233,6 @@
                     if(this.$refs.map){
                         this.$refs.map.moveLatLng(this.showStatus.mapCenter)
                     }
-
                 })
 
             },
@@ -193,7 +251,9 @@
                 this.schoolForm = {
                     school_name: e.name || '',
                     school_address: e.address || '',
-                    gps_latitude_longitude: e.lat + ',' + e.lng
+                    gps_latitude_longitude: e.lat + ',' + e.lng,
+                    school_organ: '',
+                    school_type: ''
                 };
                 this.showStatus.edit = true;
 
@@ -217,24 +277,54 @@
                     console.log(2);
                 }
 
+            },
+            updateData() {
 
             },
-
             async submitAddSchool() {
                 this.$refs.school.validate((valid) => {
                     try {
                         this.loading = true;
 
-                        let res = awaitthis.$model.school.add(param);
-                        this.$message({
-                            message: '添加成功',
-                            type: 'success'
-                        });
+                        if(this.schoolForm.id) {
+                             let res = awaitthis.$model.school.updateSchool(param);
+                                if(res.status === 200) {
+                                    this.$message({
+                                    message: '更新成功',
+                                    type: 'success'
+                                });
+                                this.updateData();
+                            }    
+
+
+                        }else{
+
+                            let res = awaitthis.$model.school.addSchool(param);
+                                if(res.status === 200) {
+                                    this.$message({
+                                    message: '添加成功',
+                                    type: 'success'
+                                });
+                                this.updateData();
+                            }
+
+                        }
+
+                       
+
                     } catch (err) {
-                        this.$message({
-                            message: '添加失败',
-                            type: 'warning'
-                        });
+                        if(this.schoolForm.id) {
+                             this.$message({
+                                message: '更新失败',
+                                type: 'warning'
+                            });
+                        }else{
+                             this.$message({
+                                message: '添加失败',
+                                type: 'warning'
+                            });
+                        }
+                       
                     } finally {
                         this.showStatus.school = false;
                         this.loading = false;
