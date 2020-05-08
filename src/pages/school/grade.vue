@@ -73,8 +73,6 @@
                 :page-size="pages.pageSize"
                 layout="total, sizes, prev, pager, next, jumper"
                 :total="pages.total"/>
-
-
                 <el-dialog :title="form.id?'编辑年级':'添加年级'" :modal="true"
                    :visible.sync="showStatus.edit" width="400px" :close-on-click-modal="false">
                     <el-form :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
@@ -109,6 +107,7 @@
                             </el-select>
                         </el-form-item>
 
+
                          <el-form-item label="年级类型" prop="grade_number">
                             <el-select size="small"
                                     v-model="form.grade_number"
@@ -127,16 +126,12 @@
                         </el-form-item>
 
 
+                        <el-form-item class="btn-bar">
+                            <el-button class="btn-submit" :loading="loading" type="primary" @click="submit">提交
+                            </el-button>
+                            <el-button class="btn-cancel" @click="showStatus.edit=false">取消</el-button>
+                        </el-form-item>
 
-                
-
-                
-
-                <el-form-item class="btn-bar">
-                    <el-button class="btn-submit" :loading="loading" type="primary" @click="submit">提交
-                    </el-button>
-                    <el-button class="btn-cancel" @click="showStatus.edit=false">取消</el-button>
-                </el-form-item>
             </el-form>
         </el-dialog>
     
@@ -146,13 +141,14 @@
 import address  from '@/libs/address.json';
 import page from '@/mixins/page';
 import data from './data'
+import base from '@/mixins/page.base'
 export default {
-    mixins:[page],
+    mixins:[page,base],
     data() {
         return {
             map: '',
             key:'',
-            schools: [],
+           
             showStatus: {
                 dialog: false, //显示dialog
                 uploading: false,
@@ -160,7 +156,6 @@ export default {
                 //---------新增学校
                 school: false,
                 edit: false,
-                typeMap: 'add', //地图类型 add latlng
                 mapCenter: ''
             },
             rules:data.rlueGrade,
@@ -176,40 +171,30 @@ export default {
             }
         }
     },
-    watch: {
-        "form.grade_type":function(n,o) {
-            console.log(data.grades);
-            if(typeof n === 'number' ) {
-                this.grades = data.grades[parseInt(n)]
-            }else{
-                this.grades = [];
-            }
-            this.form.grade_number = ''
-        }
-    },
+  
     methods: {
-        async getSchool() {
-            let res = await this.$model.school.list({
-                pageSize: 100000000,
-                page: 1
-            })
-            this.schools = res.datas 
-
-        },
         upload(e) {
             
         },
         updateData() {
 
         },
+        changeGrade(value) {
+            if(typeof value === 'number' ) {
+                this.grades = data.grades[parseInt(value)]
+            }else{
+                this.grades = [];
+            }
+            this.form.grade_number = ''
+        },
         //打开编辑框
         edit(e, arr) {
             let item = arr[e];
-            this.form = JSON.parse(JSON.stringify(item))
+            this.form = JSON.parse(JSON.stringify(item));
+            this.grades = data.grades[parseInt(item.grade_type)]
             this.showStatus.edit = true;
         },
         async getList() {
-          
             try {
                     this.listLoading = true;
                     let page = this.$route.query.page || 1;
@@ -250,7 +235,7 @@ export default {
                 try {
 
                    if(this.form.id) {
-                       let res = await this.$model.school.updateGrade(this.form) 
+                       let res = await this.$model.school.updataGrade(this.form) 
                         if(res===1) {
                             this.$message({
                                 message: '更新成功',

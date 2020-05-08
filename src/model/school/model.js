@@ -7,8 +7,8 @@ export default {
             method: 'POST_JSON'
         })
     },
-    updateSchool(params) {
-        let url = getRequestUrl(api.updateSchool);
+    updataSchool(params) {
+        let url = getRequestUrl(api.);
         return request(url, params, {
             method: 'POST_JSON'
         })    
@@ -37,8 +37,8 @@ export default {
             method: 'POST_JSON'
         })
     },
-    updateGrade(params) {
-        let url =  getRequestUrl(api.updateGrade);
+    updataGrade(params) {
+        let url =  getRequestUrl(api.updataGrade);
         return request(url, params, {
             method: 'POST_JSON'
         })
@@ -48,5 +48,31 @@ export default {
         return request(url, params, {
             method: 'POST_JSON'
         })
-    }
+    },
+    addStudent(params) {
+        let url =  getRequestUrl(api.addStudent);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    updateStudent(params) {
+        let url =  getRequestUrl(api.updataStudent);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    addGuard(params) {
+        let url =  getRequestUrl(api.addGuard);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    updataGuard(params) {
+        let url =  getRequestUrl(api.addGuard);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    
+    
 }

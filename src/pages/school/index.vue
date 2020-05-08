@@ -144,7 +144,7 @@
     import data from './data'
     import page from '@/mixins/page'
     import manageXlxs from './xlsx'
-
+    
     export default {
         mixins: [page],
         components: {
@@ -287,7 +287,7 @@
                     try {
                         this.loading = true;
                         if(this.schoolForm.id) {
-                             let res = await this.$model.school.updateSchool(this.schoolForm);
+                             let res = await this.$model.school.(this.schoolForm);
                                 if(res===1) {
                                     this.$message({
                                     message: '更新成功',
