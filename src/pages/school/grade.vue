@@ -287,5 +287,5 @@ export default {
 
 <style lang="less" scoped>
     @import './less/index.less';
-
+    // open -n /Applications/Google\ Chrome.app --args --disable-web-security  --user-data-dir=/Volumes/mac2/MyChromeDevUserData 
 </style>

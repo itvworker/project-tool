@@ -8,7 +8,7 @@ export default {
         })
     },
     updataSchool(params) {
-        let url = getRequestUrl(api.);
+        let url = getRequestUrl(api.updataSchool);
         return request(url, params, {
             method: 'POST_JSON'
         })    
@@ -61,6 +61,12 @@ export default {
             method: 'POST_JSON'
         })
     },
+    listStudent(params) {
+        let url =  getRequestUrl(api.listStudent);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
     addGuard(params) {
         let url =  getRequestUrl(api.addGuard);
         return request(url, params, {
@@ -73,6 +79,23 @@ export default {
             method: 'POST_JSON'
         })
     },
-    
+    listGuard(params) {
+        let url =  getRequestUrl(api.listGuard);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    listHeadthPaper(params) {
+        let url =  getRequestUrl(api.listHeadthPaper);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    listClock(params) {
+        let url =  getRequestUrl(api.listClock);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    }
     
 }

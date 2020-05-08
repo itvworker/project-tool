@@ -51,18 +51,17 @@
                         {{scope.$index}}
                     </template>
                 </el-table-column>
-                <el-table-column  prop="student_name" label="门卫姓名" width="180" />
-                <el-table-column  prop="student_name" label="门卫电话" width="180" />
+                <el-table-column  prop="guard_name" label="门卫姓名" width="180" />
+                <el-table-column  prop="guard_tel" label="门卫电话" width="180" />
                
-                <el-table-column prop="school_name" label="学生数量" width="100" />
-                <el-table-column prop="cards"  label="打卡数" width="120">
+                
                 <el-table-column
                         fixed="right"
                         label="操作"
                         width="120">
                     <template slot-scope="scope">
                         <el-button
-                                @click.native.prevent="edit(scope.$index, tableData)"
+                                @click.native.prevent="edit(scope.$index, list)"
                                 type="text"
                                 size="small">
                             编辑
@@ -119,10 +118,10 @@
                                 :value="0">
                         </el-option>
                         <el-option
-                                v-for="item in select.schools"
-                                :key="item.school_id"
+                                v-for="item in schools"
+                                :key="item.id"
                                 :label="item.school_name"
-                                :value="item.school_id">
+                                :value="item.id">
                         </el-option>
                     </el-select>
                 </el-form-item>
@@ -188,13 +187,14 @@
                 selected: {
                     school: '',
                     school_calss: ''
-                }
+                },
+                sumbitting: false
 
 
             }
         },
         methods: {
-            getList() {
+            async getList() {
                 try {
                     this.listLoading = true;
                     let page = this.$route.query.page || 1;
@@ -202,7 +202,7 @@
                         pageSize: this.pages.pageSize,
                         page: page,
                         keyword: this.$route.query.keyword || ''
-                    })
+                    });
                     
                     this.pages.total = res.count;
                     let arr = []
@@ -291,7 +291,7 @@
                     try {
 
                         if(this.form.id) {
-                            let res = await this.$model.school.updataStudent(this.form) 
+                            let res = await this.$model.school.updataGuard(this.form) 
                                 if(res===1) {
                                     this.$message({
                                         message: '更新成功',
@@ -301,7 +301,7 @@
                                 this.showStatus.edit = false;
                                 this.updateData();
                         }else{
-                            let res =  await this.$model.school.updataGrade(this.form)
+                            let res =  await this.$model.school.updataGuard(this.form)
                             if(res===1) {
                                 this.$message({
                                     message: '添加成功',
@@ -332,7 +332,7 @@
 
         },
         mounted() {
-
+            this.getList()
         },
 
     }

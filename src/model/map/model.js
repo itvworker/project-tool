@@ -2,7 +2,7 @@ import {getRequestUrl, request} from '../http'
 import api from './api'
 import md5 from 'md5'
 
-const key = 'XWWBZ-RBM33-HSX3N-3VCZF-MMCUE-5WFJF';
+const key = '5NUBZ-AI7CW-3FNRP-O3TTU-D6N43-ZCFWG';
 const mapurl = 'https://apis.map.qq.com';
 const sig = 'zTcNpa3dRwFMdOFBLgq1NP7hAH6dD8Qu'
 
@@ -38,3 +38,4 @@ export default {
         })
     }
 }
+

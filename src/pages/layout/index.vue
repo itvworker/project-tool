@@ -44,6 +44,9 @@
                         <el-menu-item index="/school/index">学校列表</el-menu-item>
                         <el-menu-item index="/school/grade">班级管理</el-menu-item>
                         <el-menu-item index="/school/students">学生管理</el-menu-item>
+                        <el-menu-item index="/school/clock">打卡记录</el-menu-item>
+                        <el-menu-item index="/school/paper">健康日报</el-menu-item>
+                         <el-menu-item index="/school/guard">门卫管理</el-menu-item>
 
                     </el-menu-item-group>
                 </el-submenu>

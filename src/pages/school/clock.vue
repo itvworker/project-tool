@@ -228,7 +228,7 @@
                 try {
                     this.listLoading = true;
                     let page = this.$route.query.page || 1;
-                    let res = await this.$model.school.listStudent({
+                    let res = await this.$model.school.listClock({
                         pageSize: this.pages.pageSize,
                         page: page,
                         keyword: this.$route.query.keyword || ''

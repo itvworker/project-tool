@@ -49,6 +49,33 @@ const router =  new Router({
                         keepAlive: true,
                         title: '学生管理'
                     }
+                },
+                {
+                    path: '/school/clock',
+                    name: 'school_clock',
+                    component: () => import ('@/pages/school/clock'),
+                    meta: {
+                        keepAlive: true,
+                        title: '打卡记录'
+                    }
+                },
+                {
+                    path: '/school/paper',
+                    name: 'school_paper',
+                    component: () => import ('@/pages/school/paper'),
+                    meta: {
+                        keepAlive: true,
+                        title: '健康日报'
+                    }
+                },
+                {
+                    path: '/school/guard',
+                    name: 'school_guard',
+                    component: () => import ('@/pages/school/guard'),
+                    meta: {
+                        keepAlive: true,
+                        title: '门卫管理'
+                    }
                 }
             ]
         },
@@ -60,7 +87,7 @@ const router =  new Router({
             component: () => import ('@/pages/login'),
             meta: {
                 keepAlive: true,
-                title: '物资放行'
+                title: '登录'
             }
         }
     ]

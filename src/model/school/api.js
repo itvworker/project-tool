@@ -9,11 +9,13 @@ export default {
     listGrade: '/school/gradeList',
     addStudent: '/school/addStudent',
     updataStudent: '/school/updataStudent',
-    listStudent: '/school/listStudent',
+    listStudent: '/school/studentList',
     addGuard:  '/school/addCuard',
     updataGuard: '/school/updataGuard',
     listGuard: '/school/guardList',
     addClassTeacher: '/school/addClassTeacher',
     updataClassTeacher: '/school/updataClassTeacher',
-    listClassTeacher: '/school/classTeacherList'
+    listClassTeacher: '/school/classTeacherList',
+    listHeadthPaper:'/clock/selectHealthClock',
+    listClock:'/clock/selectClockLogs'
 }
