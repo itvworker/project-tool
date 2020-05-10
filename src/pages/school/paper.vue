@@ -230,7 +230,7 @@
                 try {
                     this.listLoading = true;
                     let page = this.$route.query.page || 1;
-                    let res = await this.$model.school.listClock({
+                    let res = await this.$model.school.listHeadthPaper({
                         pageSize: this.pages.pageSize,
                         page: page,
                         keyword: this.$route.query.keyword || ''

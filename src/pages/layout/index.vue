@@ -5,7 +5,7 @@
                     logo    
             </div> 
             <el-menu
-                default-active="2"
+                :default-active="active"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
@@ -34,7 +34,7 @@
                         <el-menu-item index="3-3">轮播图</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-
+                
                 <el-submenu index="/school">
                     <template slot="title">
                         <i class="el-icon-location"></i>
@@ -66,9 +66,26 @@
 
 <script>
 export default {
-    methods: {
-        handleOpen() {
+    watch: {
 
+    },
+    data() {
+        return {
+            active: 1
+        
+        }
+    },
+    mounted() {
+        this.calcActive()
+    },
+    methods: {
+        calcActive() {
+            if(this.$route.path.indexOf('school')>-1) {
+                this.active = this.$route.path
+                console.log(this.$route.fullPath);
+            }
+        },
+        handleOpen() {
         },
         handleClose() {
             

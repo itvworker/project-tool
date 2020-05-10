@@ -11,6 +11,13 @@ export default {
             list: [],
             key: '',
             listLoading: false,
+            condition: {
+                beginDate:'',
+                endDate: '',
+                dete:'',
+                keyword:'',
+                school_id: ''
+            },
             schoolType:[
                 {
                     name: '小学',
@@ -24,12 +31,45 @@ export default {
                     name: '大学',
                     value: 3
                 }     
-            ]
+            ],
+            pickerOptions: {
+                shortcuts: [{
+                  text: '最近一周',
+                  onClick(picker) {
+                    const end = new Date();
+                    const start = new Date();
+                    start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                    picker.$emit('pick', [start, end]);
+                  }
+                }, {
+                  text: '最近一个月',
+                  onClick(picker) {
+                    const end = new Date();
+                    const start = new Date();
+                    start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                    picker.$emit('pick', [start, end]);
+                  }
+                }, {
+                  text: '最近三个月',
+                  onClick(picker) {
+                    const end = new Date();
+                    const start = new Date();
+                    start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+                    picker.$emit('pick', [start, end]);
+                  }
+                }]
+              }
 
         }
     },
     
     methods: {
+        initDate(){
+            const end = new Date();
+            const start = new Date();
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+            this.condition.date=[start, end]
+        },
         handleSizeChange(total) {
                 
         },
@@ -88,5 +128,6 @@ export default {
     },
     mounted() {
         this.key = this.$route.query.keyword || ''
+        this.initDate();
     }
 }

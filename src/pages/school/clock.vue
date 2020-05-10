@@ -10,12 +10,25 @@
             </el-row>
             <el-row :gutter="10">
                 <el-col :xs="18" :sm="16" :md="18" :lg="18" :xl="20">
-                    <el-select size="small"
-                            v-model="selected.school_id"
+        
+                       <el-date-picker
+                        v-model="condition.date"
+                        type="daterange"
+                        align="right"
+                        unlink-panels
+                        range-separator="至"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期"
+                        size="small"
+
+                        :picker-options="pickerOptions" />
+                        
+                        <el-select size="small"
+                            v-model="condition.school_id"
                             filterable
                             allow-create
                             default-first-option
-                            placeholder="选择学校" style="width:120px">
+                            placeholder="选择学校"  style="width:120px">
                         <el-option
                                 :key="0"
                                 label="全部"
@@ -28,32 +41,9 @@
                                 :value="item.id">
                         </el-option>
                     </el-select>
+                     <el-input type="text" style="width:200px" placeholder="请输入搜索搜关健字" @keyup.enter="search"  v-model="key" size="small"/>
 
-                    <el-select size="small"
-                               v-model="selected.school"
-                               filterable
-                               allow-create
-                               default-first-option
-                               placeholder="性别" style="width:120px">
-                        <el-option
-                                :key="0"
-                                label="不限"
-                                :value="0">
-                        </el-option>
-                        <el-option
-                                :key="1"
-                                label="男"
-                                :value="1">
-                        </el-option>
-                        <el-option
-                                :key="2"
-                                label="女"
-                                :value="2">
-                        </el-option>
-                    </el-select>
 
-                   
-                    <el-input type="text" style="width: 200px" placeholder="学校名称" v-model="key" size="small"/>
                     <el-button type="primary" size="small" icon="el-icon-search">搜索</el-button>
                     <el-button size="small" icon="el-icon-refresh-left">重置</el-button>
                 </el-col>
@@ -80,6 +70,7 @@
                 <el-table-column  prop="school_name" label="学生性别" width="60" />
                 <el-table-column prop="number" label="学生数量" width="100" />
                 <el-table-column prop="cards"  label="打卡数" width="120" /
+                
                 <el-table-column
                         fixed="right"
                         label="操作"
@@ -105,8 +96,6 @@
                 :page-size="pages.pageSize"
                 layout="total, sizes, prev, pager, next, jumper"
                 :total="pages.total"/>
-
-
 
 
         <!--       导入   -->
@@ -230,6 +219,8 @@
                     let page = this.$route.query.page || 1;
                     let res = await this.$model.school.listClock({
                         pageSize: this.pages.pageSize,
+                        startTime: this.condition.date[0].getTime(),
+                        endTime: this.condition.date[1].getTime() ,
                         page: page,
                         keyword: this.$route.query.keyword || ''
                     })
