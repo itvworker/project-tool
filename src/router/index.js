@@ -76,6 +76,24 @@ const router =  new Router({
                         keepAlive: true,
                         title: '门卫管理'
                     }
+                },
+                {
+                    path: '/school/teacher',
+                    name: 'school_teacher',
+                    component: () => import ('@/pages/school/teacher'),
+                    meta: {
+                        keepAlive: true,
+                        title: '门卫管理'
+                    }
+                },
+                {
+                    path: '/school/class',
+                    name: 'school_class',
+                    component: () => import ('@/pages/school/class'),
+                    meta: {
+                        keepAlive: true,
+                        title: '门卫管理'
+                    }
                 }
             ]
         },

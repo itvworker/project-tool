@@ -1,6 +1,5 @@
 process.env.NODE_ENV = 'production';
 global.mxpart = process.argv.splice(2);
-require('./pro.auto.js')();
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.pro');
 const ora = require('ora');

@@ -1,7 +1,7 @@
 export default {
     list: '/school/schoolList',
-    importShcool: '/dataimport/school',
-    importStuent: '/dataimport/student',
+    importShcool: '/dataImport/school',
+    importStuent: '/dataImport/student',
     addSchool: '/school/addSchool',
     updataSchool: '/school/updataSchool',
     addGrade: '/school/addGrade',
@@ -17,5 +17,9 @@ export default {
     updataClassTeacher: '/school/updataClassTeacher',
     listClassTeacher: '/school/classTeacherList',
     listHeadthPaper:'/clock/selectHealthClock',
-    listClock:'/clock/selectClockLogs'
+    listClock:'/clock/selectClockLogs',
+    listClass: '/school/classList',
+    addClass:'/school/addClass',
+    updateClass: '/school/updataClass',
+    getmyschool: '/school/getmyschool'
 }

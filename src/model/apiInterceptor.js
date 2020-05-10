@@ -6,7 +6,8 @@
  */
 import axios from 'axios'
 import store from '@/store';
-
+import {setSession} from "@/libs/tool";
+import config from '@/config'
 axios.defaults.timeout = 10000;
 
 // http请求拦截器
@@ -44,7 +45,19 @@ axios.interceptors.request.use(config => { // 请求前的处理
 // http响应拦截器
 axios.interceptors.response.use(async (res) => { // 请求后的处理
 
+    if(res.config.data.indexOf('"status":10')>-1) {
+        setSession(config.tokenKey, '');
+        setSession(config.userKey, '');
+        setSession('multiple', '');
+        setSession('one', '');
+        window.location.reload();
+    }
+   
 
+    // setSession(config.tokenKey, ''),
+    // setSession(config.userKey, ''),
+    // setSession('multiple', ''),
+    // setSession('one', ''),
 
     return res
     // return foreachJson(data,arr)

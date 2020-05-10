@@ -96,6 +96,32 @@ export default {
         return request(url, params, {
             method: 'POST_JSON'
         })
+    },
+    listClass(params) {
+        let url =  getRequestUrl(api.listClass);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    addClass(params) {
+        let url =  getRequestUrl(api.addClass);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    updataClass(params) {
+        let url =  getRequestUrl(api.updateClass);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
+    },
+    getMySchool() {
+        let url =  getRequestUrl(api.updateClass);
+        return request(url, params, {
+            method: 'GET'
+        })
+         
     }
+    
     
 }

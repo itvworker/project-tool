@@ -11,7 +11,26 @@
             <el-row :gutter="10">
                 <el-col :xs="18" :sm="16" :md="18" :lg="18" :xl="20">
                     <el-select size="small"
-                            v-model="condition.school_id"
+                            v-model="selected.school_id"
+                            filterable
+                            allow-create
+                            default-first-option
+                            placeholder="选择学校" style="width:120px">
+                        <el-option
+                                :key="0"
+                                label="全部"
+                                :value="0">
+                        </el-option>
+                        
+                        <el-option
+                                v-for="item in schools"
+                                :key="item.id"
+                                :label="item.school_name"
+                                :value="item.id">
+                        </el-option>
+                    </el-select>
+                    <el-select size="small"
+                            v-model="selected.school_id"
                             filterable
                             allow-create
                             default-first-option
@@ -134,11 +153,10 @@
                 </el-form-item>
                 <el-form-item label="所属学校" prop="school_id">
                     <el-select  style="width: 100%"
-                               v-model="one.id"
+                               v-model="selected.school_id"
                                filterable
                                allow-create
                                default-first-option
-                               disabled
                                placeholder="请选择" >
                         <el-option
                                 :key="0"
@@ -146,35 +164,16 @@
                                 :value="0">
                         </el-option>
                         <el-option
-                                v-for="item in multiple"
-                                :key="item.id"
+                                v-for="item in schools"
+                                :key="item.school_id"
                                 :label="item.school_name"
-                                :value="item.id">
+                                :value="item.school_id">
                         </el-option>
                     </el-select>
                 </el-form-item>
-                 <el-form-item label="所属学校" prop="school_id">
-                    <el-select  style="width: 100%"
-                               v-model="one.id"
-                               filterable
-                               allow-create
-                               default-first-option
-                               disabled
-                               placeholder="请选择" >
-                        <el-option
-                                :key="0"
-                                label="全部"
-                                :value="0">
-                        </el-option>
-                        <el-option
-                                v-for="item in multiple"
-                                :key="item.id"
-                                :label="item.school_name"
-                                :value="item.id">
-                        </el-option>
-                    </el-select>
+                 <el-form-item label="学生姓名" prop="student_name">
+                    <el-input v-model="form.latlng"></el-input>
                 </el-form-item>
-                 
                 <el-form-item label="学生学号" prop="student_card">
                     <el-input v-model="form.latlng"></el-input>
                 </el-form-item>
@@ -188,7 +187,6 @@
                     <el-button class="btn-submit" :loading="sumbitting" type="primary" @click="submit">提交</el-button>
                     <el-button class="btn-cancel"  @click="">取消</el-button>
                 </el-form-item>
-               
             </el-form>
         </el-dialog>
 
@@ -200,7 +198,6 @@
     import data from './data'
     import page from '@/mixins/page'
     import base from '@/mixins/page.base'
-    import {mapState} from 'vuex'
     export default {
         mixins:[page, base],
         components:{
@@ -231,7 +228,7 @@
                 },
                 loading: false,
                 rules: data.student,
-               
+                gradeType: data.gradeType,
                 sumbitting: false,
                 pages:{
                     current: 1
@@ -240,49 +237,18 @@
                     school: '',
                     school_id: '',
                     school_calss: ''
-                },
-                greads: []
-                
+                }
 
 
-            }
-        },
-        computed: {
-             ...mapState(['multiple','one']),
-            school_id() {
-                if(this.$route.query.school_id){
-                    return parseInt(this.$route.school_id)
-                } 
-                return '';
-            },
-            school_class_id() {
-                if(this.$route.query.school_class_id){
-                    return parseInt(this.$route.query.school_class_id)
-                }
-                return '';
-            },
-            school_grade_id() {
-                if(this.$route.school_grade_id){
-                    return parseInt(this.$route.query.school_grade_id)
-                }
-                return '';
             }
         },
         methods: {
-            async getGrade() {
-                let res = this.$model.school.listGrade({
-                    school_id: this.one.id
-                })
-            },
             async getList() {
                 try {
                     this.listLoading = true;
                     let page = this.$route.query.page || 1;
                     let res = await this.$model.school.listStudent({
                         pageSize: this.pages.pageSize,
-                        school_class_id:this.school_class_id,
-                        school_id: this.school_id,
-                        school_grade_id: this.school_grade_id,
                         page: page,
                         keyword: this.$route.query.keyword || ''
                     })
@@ -301,9 +267,6 @@
                     
                     this.listLoading= false
                 }
-            },
-            computed() {
-
             },
             
             selectSchool() {

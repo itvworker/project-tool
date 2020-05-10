@@ -65,10 +65,7 @@ export default {
         },
         {
             value:2,
-            name:'小学'
-        },{
-            value:3,
-            name:'小学'
+            name:'高中'
         }
     ],
     grades:[
@@ -126,29 +123,6 @@ export default {
                 value:3,
                 name:'高三'
             }
-        ],
-        [{
-            value:1,
-            name:'大一'
-        },
-        {
-            value:2,
-            name:'大二'
-        },
-        {
-            value:3,
-            name:'大三'
-        },
-        {
-            value:4,
-            name:'大四'
-        },
-        {
-            value:5,
-            name:'大五'
-        }
         ]
     ]
-
-
 }

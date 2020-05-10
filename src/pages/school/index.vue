@@ -1,6 +1,6 @@
 <template lang="html">
     <el-container>
-
+        
         <el-header class="list-header" style="height:100px">
             <el-row class="list-page-path">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -18,7 +18,6 @@
                     <el-button size="small" icon="el-icon-refresh-left" @click="restart">重置</el-button>
                 </el-col>
                 <el-col :xs="6" :sm="10" :md="12" :lg="14" :xl="14" class="left-group">
-
                     <el-button class="btn btn-upload" size="small" @click="showStatus.dialog=true">导入学校</el-button>
                     <el-button class="btn" size="small" @click="openAddSchool">新增学校</el-button>
                 </el-col>
@@ -36,6 +35,7 @@
                     </template>
                 </el-table-column>
 
+                
                 <el-table-column prop="school_name" label="学校名称" width="180"/>
                 <el-table-column prop="school_organ" label="机构代码" width="180"/>
                 <el-table-column prop="chool_address" label="地址"/>
@@ -52,6 +52,12 @@
                                 type="text"
                                 size="small">
                             编辑
+                        </el-button>
+                        <el-button
+                                @click.native.prevent="view(scope.$index, list)"
+                                type="text"
+                                size="small">
+                            查看年级
                         </el-button>
                     </template>
                 </el-table-column>
@@ -76,10 +82,10 @@
                     <span class="word-tips">
                         仅支持xlsx, xls, csv,文件大小≤4M
                     </span>
-                <el-button class="upload-btn" size="medium" icon="el-icon-upload" :loading="showStatus.uploading"
+                <el-button class="upload-btn"  size="medium" icon="el-icon-upload" :loading="showStatus.uploading"
                            type="primary">
                     {{showStatus.uploadBtnText}}
-                    <input type="file" accept=".xlsx, .xls, .csv" @change="readXlsx" @click="clear"></input>
+                    <input type="file" accept=".xlsx, .xls, .csv" @change="upload" @click="clear"></input>
                 </el-button>
             </el-row>
         </el-dialog>
@@ -118,7 +124,7 @@
                  <el-form-item label="学校地址" prop="school_address">
                     <el-input v-model="schoolForm.school_address"></el-input>
                 </el-form-item>
-               
+                    
                 <el-form-item label="经纬度" prop="gps_latitude_longitude">
                     <el-input v-model="schoolForm.gps_latitude_longitude">
                         <div slot="suffix" v-if="schoolForm.id" class="btn-open-map el-icon-location-outline" @click="openLatLng"></div>
@@ -186,14 +192,12 @@
             async getList() {
                 try {
                     this.loading = true;
-                    
                     let page = this.$route.query.page || 1;
                     let res = await this.$model.school.list({
                         pageSize: this.pages.pageSize,
                         page: page,
-                        keyword: this.$route.query.keyword || ''
+                        school_name: this.$route.query.keyword || ''
                     })
-                   
                     this.pages.total = res.count;
                     
                     let arr = []
@@ -204,7 +208,6 @@
                         }
                     }
                     this.list = arr;
-
                     this.loading = false
 
                     
@@ -214,6 +217,16 @@
                     
                 }
                
+            },
+            view(index,list) {
+                console.log(list[index].school_id);
+                this.$router.push({
+                    path: '/school/grade',
+                    query: {
+                        school_id: list[index].id,
+                        school_name: list[index].school_name
+                    }
+                })
             },
             editLatLng(obj) {
                 this.schoolForm.gps_latitude_longitude = obj.lat+','+obj.lng;
@@ -265,7 +278,7 @@
                 this.showStatus.uploadBtnText = '上传中…';
                 this.showStatus.uploading = true;
                 try {
-                    this.$model.school.list(param);
+                    this.$model.school.importSchool(param);
                 } catch (err) {
                     this.$message({
                         message: '添加失败',
@@ -280,7 +293,8 @@
 
             },
             updateData() {
-
+                
+                  
             },
             submitAddSchool() {
                 this.$refs.school.validate(async (valid) => {

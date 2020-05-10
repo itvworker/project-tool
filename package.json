@@ -7,8 +7,7 @@
     "dev": "webpack-dev-server --inspect-brk --config=build/webpack.dev.js",
     "testMx5Door": "node build/build.test.js mx5Door testMx5 door",
     "testMx5Emp": "node build/build.test.js mx5Emp testMx5 emp",
-    "mx5Emp": "node build/build.pro.js mx5Emp mx5 emp",
-    "mx5Door": "node build/build.pro.js mx5Door mx5 door"
+    "build": "node build/build.pro.js"
   },
   "author": "lanjie",
   "license": "ISC",

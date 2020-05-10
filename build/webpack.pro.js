@@ -10,7 +10,7 @@ const merge = require('webpack-merge');
 const webpack=require('webpack');
 const path = require('path');
 
-var baseWepback = require('./webpack.base');
+var baseWepback = require('./webpack.base.pro');
 
 
 
@@ -55,18 +55,7 @@ module.exports = merge(baseWepback,{
         new MiniCssExtractPlugin({
             filename: 'static/css/[id][hash:8].css'
         }),
-        new CleanWebpackPlugin(),
-        new FileManagerPlugin({
-            onEnd: {
-            copy: [
-                        { source: 'CubeModule.json', destination: './dist' }
-                    ],
-            mkdir: ['./zip'],
-            archive: [
-                        { source: './dist', destination: './zip/'+packageName+'.zip' }
-                    ]
-                }
-            })
+        new CleanWebpackPlugin()
 
     ]
 });

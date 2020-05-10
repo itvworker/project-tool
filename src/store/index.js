@@ -11,7 +11,13 @@ export default new Vuex.Store({
     state: {
         lang: 'cn',
         token: getSession(config.tokenKey),
-        user: getJsonSession(config.userKey)
+        user: getJsonSession(config.userKey),
+        multiple: getJsonSession('multiple'),
+        one:getJsonSession('one'),
+        power: {
+            school: true,
+            
+        }
     },
     mutations
 });

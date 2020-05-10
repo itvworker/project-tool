@@ -59,6 +59,7 @@ export function setStore (key, msg) {
 
 export function getJsonSession (key) {
     let res = sessionStorage.getItem(key);
+
     if (res) {
         return JSON.parse(res);
     }

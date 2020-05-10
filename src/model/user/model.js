@@ -6,5 +6,11 @@ export default {
         return request(url, params, {
             method: 'POST_JSON'
         })
+    },
+    resetPwd(params) {
+        let url = getRequestUrl(api.resetPwd);
+        return request(url, params, {
+            method: 'POST_JSON'
+        })
     }
 }

@@ -15,7 +15,6 @@
                             <el-button type="primary" :loading="loading" @click="submit">提交</el-button>
                         </el-form-item>
                     </el-form>
-
                 </div>
             </div>
     </div>
@@ -24,7 +23,10 @@
 import md5 from 'md5';
 import {setSession} from "../../libs/tool";
 import config from '@/config'
+
+
 export default {
+    
     data() {
         return {
             map: '',
@@ -35,7 +37,7 @@ export default {
             rules: {
                 username:[
                     { required: true, message: '请输入用户名', trigger: 'blur' },
-                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                   
                 ],
                 password:[
                     { required: true, message: '请输入用户密码', trigger: 'blur' }
@@ -44,6 +46,7 @@ export default {
             loading:false
         }
     },
+   
     methods: {
         submit() {
             this.$refs.form.validate(async (valid) => {
@@ -59,7 +62,7 @@ export default {
                 password: password,
                 timestamp: timestamp
             };
-            // loveaayou 123456
+
             
 
             try{
@@ -67,19 +70,60 @@ export default {
                 let res = await this.$model.user.setLogin(obj);
                 if(res.status === 200) {
                     setSession(config.tokenKey, res.token);
-                    setSession(config.userKey, {
-                        username: this.pageData.username,
-                        role: res.role
-                    });
-                    this.$router.push({
-                        name: 'index'
-                    })
                     this.$store.commit('SET_TOKEN', res.token)
                     this.$store.commit('SET_USER', {
-                        username: this.pageData.username,
-                        role: res.role
-                    })
+                            username: this.pageData.username,
+                            admin_type: res.admin_type,
+                        })
                     
+                    let power = {
+                        school: true
+                    }
+                    if(res.admin_type==0){
+                        this.$router.push({
+                            name: 'index'
+                        })
+                        setSession(config.userKey, {
+                            username: this.pageData.username,
+                            admin_type: res.admin_type
+                        });
+
+                        
+
+                        
+                        return  
+                    }
+
+                    if(res.admin_type==1){
+                        
+
+                        let result = await this.$model.school.list({
+                            pageSize: 100000000,
+                            page: 1
+                        })
+                        
+                        setSession('multiple', result.datas);
+                        setSession('one', result.datas[0]);
+                        
+                        this.$store.commit('SET_NODE', {
+                            multiple: result.datas,
+                            one: result.datas[0]
+                        })
+                      
+
+                         this.$router.push({
+                            path:'/school/grade'
+                        }) 
+                    }
+
+                    setSession(config.userKey, {
+                        username: this.pageData.username,
+                        admin_type: res.admin_type,
+                        power: power
+                        
+                    });
+                    
+                                            
                     return
                 }
 
@@ -89,6 +133,7 @@ export default {
                 });
                
             }catch (err){
+                
                 
                 this.$message({
                     message: err.msg,
