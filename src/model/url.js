@@ -6,7 +6,7 @@
     * @version
     */
 export default {
-    // "baseUrl": "http://weiq.0799vip.com:18080/pxcloud"
+    "baseUrl": "http://weiq.0799vip.com:18080/pxcloud"
 
-    "baseUrl": "https://pinganyun.miheit.com:18080/pxcloud"
+    // "baseUrl": "https://pinganyun.miheit.com:18080/pxcloud"
 }

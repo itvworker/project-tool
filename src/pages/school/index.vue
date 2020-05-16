@@ -301,7 +301,7 @@
                     try {
                         this.loading = true;
                         if(this.schoolForm.id) {
-                             let res = await this.$model.school.updataSchool(this.schoolForm);
+                            let res = await this.$model.school.updataSchool(this.schoolForm);
                                 if(res===1) {
                                     this.$message({
                                     message: '更新成功',

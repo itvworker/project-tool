@@ -94,9 +94,6 @@ export default {
                         return  
                     }
 
-                    if(res.admin_type==1){
-                        
-
                         let result = await this.$model.school.list({
                             pageSize: 100000000,
                             page: 1
@@ -111,16 +108,14 @@ export default {
                         })
                       
 
-                         this.$router.push({
+                        this.$router.push({
                             path:'/school/grade'
                         }) 
-                    }
-
+                   
                     setSession(config.userKey, {
                         username: this.pageData.username,
                         admin_type: res.admin_type,
                         power: power
-                        
                     });
                     
                                             
