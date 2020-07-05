@@ -149,6 +149,8 @@ export default {
           this.isMove = false;
           switch (this.screenType) {
               case 'progress':
+                e.preventDefault();
+                e.stopPropagation();
 
                if(this.x < 0 && Math.abs(this.x)>=this.sensitivity) {
                    this.x = -this.groupWidth;
