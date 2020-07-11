@@ -1,5 +1,10 @@
 import render from '../libs/render'
+import { slideHeight } from '../libs/height'
+import { timers } from 'jquery';
+
 var dom;
+var wdom;
+var hdom;
 export default {
     data() {
         return {
@@ -15,65 +20,101 @@ export default {
             isMove: false,
             screenType: '',
             calendarX: 0,
+            weekX:0,
             isAni: false, //是否启动过度动画
-			endStatus: 1,
+			endStatus: 1, //0为上周或上一周，1为显示周或显示月，2为下一周或下一月
 			aniStatus: false, //否动画状态还没完成，如没完成时，滑动将无效化
-            startTime: 0,
-            calendarStatus: 1
+            startTime: 0, //屏幕手指接触时间
+            calendarStatus: 0 //0为星期滑动，1为月滑动
         }
     },
     mounted() {
         dom = render(this.$refs.slide);
-    },
-    watch: {
-        calendarX(n,o) {
-            this.$refs.slide.str
-            let dom = this.$refs.slide;
-            dom.style.transform = `translateX(${n}px)`
-        }
+        wdom = render(this.$refs.week);
+        hdom = slideHeight(this.$refs.calendar);
     },
     methods: {
         aniamteend() {
             this.isAni = false;
-            this.getNowDate()
+            if(this.calendarStatus===1) {
+                this.getNowDate()
+            }
+           
 
             if(this.endStatus===2) {
-                this.prevMonth = this.nowMonth;
-                this.nowMonth = this.nextMonth;
-                
-                //计算下一个月的数组
-                let _year = this.year;
-                let _month = this.month;
-                
-                if(_month=== 12){
-                    _month = 1
-                    _year++
+                if(this.calendarStatus===0) {
+                    this.prevWeek = this.nowWeek;
+                    this.nowWeek = this.nextWeek;
+                    this.currentValue = this.nowWeek[this.currentIndexWeek].time
+                    this.selected(this.currentIndexWeek, this.nowWeek[this.currentIndexWeek])
+                    let oneday = 3600 * 24 *1000;
+                    let ntampTime = new Date(this.nowWeek[6].msg).getTime() + oneday;
+                    let nrevdate = new Date(ntampTime);
+                    let _nyear = nrevdate.getFullYear(); //获取年份
+                    let _nmonth = nrevdate.getMonth()+1
+                    let _nday = nrevdate.getDate()
+                    let _ndayWeek = nrevdate.getDay();
+                    this.nextWeek = this.calcWeek(_nyear, _nmonth, _nday, _ndayWeek)
+                    
+
+
                 }else{
-                   _month++
-                }
-                this.nextMonth = this.calcMonth(_year,_month)
+                    this.prevMonth = this.nowMonth;
+                    this.nowMonth = this.nextMonth;
+                    
+                    //计算下一个月的数组
+                    let _year = this.year;
+                    let _month = this.month;
+                    if(_month=== 12){
+                        _month = 1
+                        _year++
+                    }else{
+                    _month++
+                    }
+                    this.nextMonth = this.calcMonth(_year,_month)
+                    }
+                
             }
 
             if(this.endStatus===0) {
-                this.nextMonth = this.nowMonth;
-                this.nowMonth = this.prevMonth;   
-				//计算上一个月的数组
-				//计算下一个月的数组
-                let _year = this.year;
-                let _month = this.month;
-                
-                if(_month=== 1){
-                    _month = 12
-                    _year--
+                if(this.calendarStatus===0) {
+                    this.nextWeek = this.nowWeek;
+                    this.nowWeek = this.prevWeek; 
+                    this.currentValue = this.nowWeek[this.currentIndexWeek].time 
+                    this.selected(this.currentIndexWeek, this.nowWeek[this.currentIndexWeek])
+                    let oneday = 3600 * 24 *1000;
+                    let ptampTime = new Date(this.nowWeek[0].msg).getTime() - oneday;
+                    let prevdate = new Date(ptampTime);
+                    let _pyear = prevdate.getFullYear(); //获取年份
+                    let _pmonth = prevdate.getMonth()+1
+                    let _pday = prevdate.getDate()
+                    let _pdayWeek = prevdate.getDay();
+                    this.prevWeek = this.calcWeek(_pyear, _pmonth, _pday, _pdayWeek)
+                   
+                    
+                    
                 }else{
-                   _month--
+                    this.nextMonth = this.nowMonth;
+                    this.nowMonth = this.prevMonth;   
+                    //计算上一个月的数组
+                    let _year = this.year;
+                    let _month = this.month;
+                    
+                    if(_month=== 1){
+                        _month = 12
+                        _year--
+                    }else{
+                    _month--
+                    }
+                    this.prevMonth = this.calcMonth(_year,_month)
                 }
-                this.prevMonth = this.calcMonth(_year,_month)
+                
                
             }
             this.$nextTick(()=>{
                 this.x = -this.elWidth; 
                 this.calendarX = -this.elWidth;
+                this.weekX = -this.elWidth
                 
             })
             
@@ -118,20 +159,16 @@ export default {
             if (obj.type > 0 && !this.isMove) {
   
               if (obj.type === 1 || obj.type === 2) {
-                if (x > this.screenWidth / 2) {
-                  // this.screenType = 'sound';
-                } else {
-                  // this.screenType = 'light';
-                 // this.screenType = 'progress'
-  
-                }
+                  this.screenType = "vertical"
+                  this.y = this.slideHeight;
+                
               } else {
                 this.screenType = 'progress'
               }
               this.isMove = true;
             }
   
-            if(this.screenType === 'progress') {
+            if(this.screenType) {
                 e.preventDefault();
                 e.stopPropagation();
             }
@@ -139,19 +176,60 @@ export default {
             if (obj.type > 0 && this.isMove) {
               //   e.preventDefault();
                
-  
+              this.moveX = x;
+              this.moveY = y; 
               switch (this.screenType) {
-                case 'sound':
-                  // this.setSound(obj)
-                  break;
-                case 'light':
-                  // this.setLight(obj)
+                case 'vertical':
+                    this.y += obj.angy;
+                    
+                    if(this.y<=this.rowHeight) {
+                        this.y = this.rowHeight;
+                        this.calendarStatus=0
+                        
+                    }
+                    if(this.y>=this.elHeight) {
+                        this.y = this.elHeight;
+                        this.calendarStatus=1
+                    }
+                    let index = this.y/this.rowHeight;
+                    let row = 6-this.rows
+                    if(index<=row) {
+                        this.showTop = true;
+                    }else{
+                        this.showTop = false;
+                    }
+
+                    if(this.y<=this.rowHeight) {
+                        this.showTop = true;
+                        
+                    }
+                    if(this.y>=this.elHeight) {
+                        this.showTop = false;
+                    }
+
+                   
+
+
+                    
+                    
+
+
+
+                    
+                    
+                    
+                    
+                    hdom(this.y)
                   break;
                 case 'progress':
-                      this.moveX = x;
-                      this.moveY = y;
+                      
                       this.x+=obj.angx;
-                      dom(-this.x, 0, 1)
+                      if(this.calendarStatus===0) {
+                        wdom(-this.x, 0, 1)
+                      }else{
+                        dom(-this.x, 0, 1)
+                      }
+                      
                     
                       
                      
@@ -174,6 +252,16 @@ export default {
 			this.screenType = '';
 			let self = e.targetTouches;
             switch (screenType) {
+                case 'vertical':
+                    if(this.y<=this.rowHeight) {
+                        this.slideHeight = this.rowHeight;
+                    }
+                    if(this.y>=this.elHeight) {
+                        this.slideHeight = this.elHeight;
+                    
+                    }
+                    
+                    break;
                 case 'progress':
                     e.preventDefault();
                     e.stopPropagation();
@@ -186,21 +274,39 @@ export default {
 					let isfast = Math.abs(dis)>30 && now-this.startTime <300 //是否快速滑过
                     if( (isfast && dis>0) || x >= -this.elWidth*(2/3)) {
                         this.x = 0
-                        this.calendarX = 0;
+                        
+                        if(this.calendarStatus===0) {
+                            this.weekX = 0;
+                        }else{
+                            this.calendarX = 0;
+                        }
                         this.endStatus = 0
                         return
                     }
                     
                     if((isfast && dis<0) || x <= -this.elWidth - this.elWidth/3) {
                         this.x = -this.elWidth*2;
-                        this.calendarX = -this.elWidth*2;
+                        
+
+                        if(this.calendarStatus===0) {
+                            this.weekX =  -this.elWidth*2;
+                        }else{
+                            this.calendarX = -this.elWidth*2;
+                        }
                         this.endStatus = 2
                         return
                     }
 					this.endStatus = 1
                     this.x = -this.elWidth;
-                    this.calendarX = -this.elWidth;
-                    dom(this.elWidth, 0 , 1)
+                   
+                    if(this.calendarStatus===0) {
+                        this.weekX =  -this.elWidth;
+                        wdom(this.elWidth, 0 , 1)
+                    }else{
+                        this.calendarX = -this.elWidth;
+                        dom(this.elWidth, 0 , 1)
+                    }
+                    
                 
                 default:
             }

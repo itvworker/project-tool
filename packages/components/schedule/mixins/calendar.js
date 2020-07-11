@@ -1,4 +1,5 @@
 import render from '../libs/render'
+import { timers } from 'jquery';
 var dom;
 
 
@@ -25,6 +26,65 @@ export default {
         }
     },
     methods: {
+        //计算下个月是否存在同一天
+        calcNextSameDay(year, month, day) {
+            if(month===12) {
+                return new Date().getIime(year+1+'/1/'+day)
+            }
+
+            let isLeapYear = year%4===0;//是否为润年
+            month++;
+            let days = this.monthDaysArr[month-1];
+            if(isLeapYear &&month===2) {
+               days = 29;
+            }
+            
+            if(day>=days) {
+                day = days;
+            }
+            return new Date().getIime(year+'/'+month+'/'+day)
+        },
+
+        //计算上一个月是否存在同一天
+        calcNextSameDay(year, month, day) {
+            if(month===1) {
+                return new Date().getIime(year-1+'/12/'+day)
+            }
+
+            let isLeapYear = year%4===0;//是否为润年
+            month--;
+            let days = this.monthDaysArr[month-1];
+            if(isLeapYear &&month===2) {
+               days = 29;
+            }
+            
+            if(day>=days) {
+                day = days;
+            }
+            return new Date().getIime(year+'/'+month+'/'+day)
+        },
+
+        //查找索引
+        findWeekIndex(time) {
+            let i = 0;
+            for(let i = 0, l = this.nowWeek.length; i < l; i++) {
+                if(this.nowWeek[i].time===time) {
+                    this.currentIndexWeek = i;
+                    break;
+                }
+            }
+        },
+
+        findWeekRow(time) {
+            let i = 0;
+            for(let i = 0, l = this.nowMonth.length; i < l; i++) {
+                if(this.nowMonth[i].time===time) {
+                    this.rows = parseInt(i/7);
+                    break;
+                }
+            }
+        },
+        
         getNowDate() {
             let month = this.month;
             if(this.endStatus === 0) {
@@ -44,32 +104,19 @@ export default {
             } 
 
         },
+        /**
+         * 
+         * @param {number} year 年
+         * @param {number} month 月
+         * @param {number} day 日
+         * @param {number} dayWeek 星期几0-6
+         */
         calcWeek(year, month, day, dayWeek) {
-            let nowTime = new Date(year+'/'+month+'/'+day).getTime();
             let ondays = 3600*24*1000
-            
-            let prevTime = nowTime;
+            let nowTime = new Date(year+'/'+month+'/'+day).getTime() - dayWeek * ondays;
             let arr = []
-            for(let i = 6-dayWeek; i >= 0; i-- ) {
-                let date = new Date(prevTime);
-                let _year = date.getFullYear(); //获取年份
-                let _month = date.getMonth()+1
-                let _day = date.getDate()
-                let _dayWeek = date.getDay()
-                arr.unshift({
-                    day: _day,
-                    week: _dayWeek,
-                    year: _year,
-                    month: _month,
-                    msg: _year+'/'+_month+'/'+_day,
-                    id: this.getId(),
-                    type: 'week'
-                })
-                prevTime = prevTime - ondays
-            }
-            let nextTime = nowTime+ ondays
-            for(let i = dayWeek+1; i <= 6; i++ ) {
-                let date = new Date(nextTime);
+            for(let i = 0; i <= 6; i++ ) {
+                let date = new Date(nowTime);
                 let _year = date.getFullYear(); //获取年份
                 let _month = date.getMonth()+1
                 let _day = date.getDate()
@@ -80,18 +127,13 @@ export default {
                     year: _year,
                     month: _month,
                     msg: _year+'/'+_month+'/'+_day,
+                    time: new Date(_year+'/'+_month+'/'+_day).getTime(),
                     id: this.getId(),
                     type: 'week'
                 })
-                nextTime = nextTime + ondays
+                nowTime = nowTime + ondays
             }
-
-
-            console.log(arr);
-            
-
             return arr
-
         },
         getId() {
             let a = Math.random()*1000000000;
@@ -100,6 +142,7 @@ export default {
             return parseInt(a+b+c)
             
         },
+
         calcMonth(year,month) {
             let date = new Date(`${year}/${month}/1`); //获取1号的Date
             let isLeapYear = year%4===0;//是否为润年
@@ -117,6 +160,7 @@ export default {
                     year: year,
                     month: month,
                     msg: year+'/'+month+'/'+i,
+                    time:new Date(year+'/'+month+'/'+i).getTime(),
                     id: this.getId(),
                     type: 'now'
                 })
@@ -124,7 +168,10 @@ export default {
                
             }
             prev = prev.concat(now)
-            let last = this.calcNextMonth(year,month,dayWeek,42-prev.length)
+
+            let newday= prev[prev.length-1]
+            
+            let last = this.calcNextMonth(newday.year,newday.month,newday.dayWeek,42-prev.length)
             return prev.concat(last)
         },
         //计算下一天星期几
@@ -161,6 +208,7 @@ export default {
                     day: lastDay,
                     msg: _year+'/'+_month+'/'+lastDay,
                     id: this.getId(),
+                    time: new Date(_year+'/'+_month+'/'+lastDay).getTime(),
                     type: 'prev'
                 })
                 lastDay--
@@ -176,7 +224,7 @@ export default {
         calcNextMonth(year, month, dayWeek, num){
             if(num===0) return []
             let _year = year
-            let _month = month;
+            let _month = month+1;
             let _dayWeek = this.calcNextWeek(dayWeek)
             let arr = []
             if(month===12) { //如果是星期日直接返回空数组
@@ -190,6 +238,7 @@ export default {
                     year: _year,
                     month: _month,
                     msg: _year+'/'+_month+'/'+i,
+                    time:new Date(_year+'/'+_month+'/'+i).getTime(),
                     id: this.getId(),
                     type: 'next'
                 })
