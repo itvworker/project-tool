@@ -85,7 +85,6 @@ export default {
                         item: this.nowMonth[i]
                     }
                 }
-                
             }
         },
 
@@ -196,7 +195,8 @@ export default {
 
             let newday= prev[prev.length-1]
             
-            let last = this.calcNextMonth(newday.year,newday.month,newday.dayWeek,42-prev.length)
+           
+            let last = this.calcNextMonth(newday.year,newday.month,newday.week,42-prev.length)
             return prev.concat(last)
         },
         //计算下一天星期几
@@ -249,7 +249,7 @@ export default {
             let arr = []
             if(month===12) { //如果是星期日直接返回空数组
                 _month =1
-                _year = year-1
+                _year = year+1
             }
             for(let i = 1; i <= num; i++) {
                 arr.push({
