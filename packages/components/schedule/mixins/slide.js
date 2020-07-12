@@ -1,6 +1,6 @@
 import render from '../libs/render'
 import { slideHeight } from '../libs/height'
-import { timers } from 'jquery';
+
 
 var dom;
 var wdom;
@@ -9,23 +9,23 @@ export default {
     data() {
         return {
             isTouch: false,
-            startX: 0,
-            startY: 0,
+            startX: 0, //touchstart x
+            startY: 0, //touchstart y
             moveX: 0,
             moveY: 0,
             move: 0,
             end:0,
-            x:0,
-            y:0,
+            x:0, //dom元素x位移
+            y:0, //dom元素的高度
             isMove: false,
             screenType: '',
             calendarX: 0,
             weekX:0,
-            isAni: false, //是否启动过度动画
 			endStatus: 1, //0为上周或上一周，1为显示周或显示月，2为下一周或下一月
 			aniStatus: false, //否动画状态还没完成，如没完成时，滑动将无效化
             startTime: 0, //屏幕手指接触时间
-            calendarStatus: 0 //0为星期滑动，1为月滑动
+            calendarStatus: 0, //0为星期滑动，1为月滑动
+            isClickChange: false,//是否为点击切换上一个月,或下一个月
         }
     },
     mounted() {
@@ -58,20 +58,34 @@ export default {
                     
 
 
-                }else{
-                    this.prevMonth = this.nowMonth;
-                    this.nowMonth = this.nextMonth;
-                    
-                    //计算下一个月的数组
-                    let _year = this.year;
-                    let _month = this.month;
-                    if(_month=== 12){
-                        _month = 1
-                        _year++
-                    }else{
-                    _month++
-                    }
-                    this.nextMonth = this.calcMonth(_year,_month)
+                } else {
+                        this.prevMonth = this.nowMonth;
+                        this.nowMonth = this.nextMonth;
+                        
+                        //计算下一个月的数组
+                        let _year = this.year;
+                        let _month = this.month;
+                        if (_month=== 12){
+                            _month = 1
+                            _year++
+                        } else{ 
+                            _month++
+                        }
+                        this.nextMonth = this.calcMonth(_year,_month);
+
+                        if(this.isClickChange) {
+                            let obj = this.findMonthIndex(this.currentValue);
+                            this.selectDay(obj.index, obj.item)
+                        }
+
+                        if(!this.isClickChange) {
+                            let time = this.calcNextSameDay();
+                            let obj = this.findMonthIndex(time);
+                            this.selectDay(obj.index, obj.item);
+                        }
+                        
+                        this.isClickChange = false;
+                        
                     }
                 
             }
@@ -106,7 +120,20 @@ export default {
                     }else{
                     _month--
                     }
-                    this.prevMonth = this.calcMonth(_year,_month)
+                    this.prevMonth = this.calcMonth(_year,_month);
+
+                    if(this.isClickChange) {
+                        let obj = this.findMonthIndex(this.currentValue);
+                        this.selectDay(obj.index, obj.item)
+                    }
+
+                    if(!this.isClickChange) {
+                        let time = this.calcPrevSameDay();
+                        let obj = this.findMonthIndex(time);
+                        this.selectDay(obj.index, obj.item)
+                    }
+                    this.isClickChange = false;
+                    
                 }
                 
                
@@ -191,33 +218,8 @@ export default {
                         this.y = this.elHeight;
                         this.calendarStatus=1
                     }
-                    let index = this.y/this.rowHeight;
-                    let row = 6-this.rows
-                    if(index<=row) {
-                        this.showTop = true;
-                    }else{
-                        this.showTop = false;
-                    }
+                    this.setShowTop();
 
-                    if(this.y<=this.rowHeight) {
-                        this.showTop = true;
-                        
-                    }
-                    if(this.y>=this.elHeight) {
-                        this.showTop = false;
-                    }
-
-                   
-
-
-                    
-                    
-
-
-
-                    
-                    
-                    
                     
                     hdom(this.y)
                   break;
@@ -255,12 +257,18 @@ export default {
                 case 'vertical':
                     if(this.y<=this.rowHeight) {
                         this.slideHeight = this.rowHeight;
+                        return
                     }
                     if(this.y>=this.elHeight) {
                         this.slideHeight = this.elHeight;
-                    
+                        return
                     }
-                    
+                    this.aniStatus = true;
+                    if(this.y > this.rowHeight*3) {
+                        window.requestAnimationFrame(this.aniUnfold);
+                        return
+                    }
+                    window.requestAnimationFrame(this.aniShrink);
                     break;
                 case 'progress':
                     e.preventDefault();
@@ -340,8 +348,60 @@ export default {
               return data;
           },
           //获得角度
+          
           getAngle(angx, angy) {
               return Math.atan2(angy, angx) * 180 / Math.PI;
           },
+          setShowTop() {
+            let index = this.y/this.rowHeight;
+            let row = 6-this.rows
+            if(index<=row) {
+                this.showTop = true;
+            }else{
+                this.showTop = false;
+            }
+
+            if(this.y<=this.rowHeight) {
+                this.showTop = true;
+                
+            }
+            if(this.y>=this.elHeight) {
+                this.showTop = false;
+            }
+          },
+          aniUnfold() {
+              this.y += this.step;
+              if(this.y>=this.elHeight) {
+                  this.aniStatus = false
+                  hdom(this.y);
+                  this.showTop = false;
+                  this.calendarStatus = 1;
+                  this.slideHeight = this.y;
+                  this.setShowTop()
+                  return
+              }
+              
+              hdom(this.y);
+              this.setShowTop()
+              window.requestAnimationFrame(this.aniUnfold);
+             
+                
+          },
+
+          aniShrink() {
+            this.y -= this.step;
+            if(this.y<=this.rowHeight) {
+                this.aniStatus = false
+                this.y = this.rowHeight;
+                this.slideHeight = this.y;
+                hdom(this.y);
+                this.setShowTop()
+                return
+            }
+            hdom(this.y);
+            this.setShowTop()
+            window.requestAnimationFrame(this.aniShrink);
+        }
+          
     }
 }

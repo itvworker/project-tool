@@ -33,6 +33,8 @@ export default {
                 this.elHeight = this.$refs.slide.clientHeight;
                 this.rowHeight =  this.elHeight /6
                 this.slideHeight = this.rowHeight;
+                this.step = parseInt(this.rowHeight*5/20)
+                
             })
         },
 

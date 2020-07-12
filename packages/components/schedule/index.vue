@@ -43,8 +43,9 @@
                 </div>
             </div>
         </div>
-       
-        
+        <div class="icon-bar">
+            <img :src="icon" :class="{'rotate180': calendarStatus===1}" />
+        </div>
     </div>
 </template>
 <script>
@@ -52,6 +53,9 @@ import slide from './mixins/slide.js'
 import init from './mixins/init.js'
 import calendar from './mixins/calendar.js'
 import {formatDate} from './libs/too'
+import {svgXml} from '../../libs/tool'
+let icon = "data:image/svg+xml,%3csvg t='1594552144112'  viewBox='0 0 1024 1024' version='1.1' xmlns='http:%2f%2fwww.w3.org%2f2000%2fsvg' width='200' height='200'%3e%3cpath d='M18.773 361.813l476.16 474.453c8.533 8.533 23.893 8.533 34.133 0l476.16-476.16c18.773-18.773 18.773-49.493 0-66.56-18.773-18.773-49.493-18.773-66.56 0L520.533 711.679c-5.12 5.12-11.947 5.12-17.067 0L87.039 295.252c-18.773-18.773-49.493-18.773-66.56 0-20.48 17.067-20.48 47.787-1.707 66.56z' fill='iconColor' %3e%3c%2fpath%3e%3c%2fsvg%3e";
+
 export default {
     name: "slide-calendar",
     mixins: [slide, init, calendar],
@@ -64,10 +68,16 @@ export default {
         weekText:{
             type: Array,
             default:()=>['日','一', '二', '三', '四', '五', '六']
-        }
+        },
+        iconColor: {
+            type: String,
+            default: 'rgba(200,200,200,1)'
+        },
     },
     computed: {
-        
+        icon() {
+            return icon.replace(/iconColor/ig, this.iconColor);
+        },
     },
     watch: {
         value(n,o) {
@@ -93,6 +103,7 @@ export default {
             currentValue: new Date(formatDate(this.value,"Y/M/D")).getTime(),
             currentIndexWeek: 0,
             rows:0,
+            isAni: false,
             showTop: true
             
         }
@@ -110,10 +121,20 @@ export default {
         selectDay(index,item) {
             switch (item.type) {
                 case 'prev':
-                    
+                    this.isClickChange = true;
+                    this.isAni = true;
+                    this.aniStatus = true;
+                    this.calendarX = 0;
+                    this.endStatus = 0;
+                    this.currentValue = item.time
                     break;
                 case 'next':
-                    
+                    this.isClickChange = true;
+                    this.isAni = true;
+                    this.aniStatus = true;
+                    this.calendarX = -2*this.elWidth;
+                    this.endStatus = 2;
+                    this.currentValue = item.time
                     break;
                 default:
                     this.currentValue = item.time;

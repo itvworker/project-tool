@@ -27,9 +27,15 @@ export default {
     },
     methods: {
         //计算下个月是否存在同一天
-        calcNextSameDay(year, month, day) {
+        calcNextSameDay(value) {
+            value = value || this.currentValue;
+            let date = new Date(value);
+            let year = date.getFullYear(); //获取年份
+            let month = date.getMonth()+1
+            let day = date.getDate()
+
             if(month===12) {
-                return new Date().getIime(year+1+'/1/'+day)
+                return new Date(year+1+'/1/'+day).getTime()
             }
 
             let isLeapYear = year%4===0;//是否为润年
@@ -38,17 +44,22 @@ export default {
             if(isLeapYear &&month===2) {
                days = 29;
             }
-            
             if(day>=days) {
                 day = days;
             }
-            return new Date().getIime(year+'/'+month+'/'+day)
+            return new Date(year+'/'+month+'/'+day).getTime()
         },
 
         //计算上一个月是否存在同一天
-        calcNextSameDay(year, month, day) {
+        calcPrevSameDay(value) {
+            value = value || this.currentValue;
+            let date = new Date(value);
+            let year = date.getFullYear(); //获取年份
+            let month = date.getMonth()+1
+            let day = date.getDate()
+
             if(month===1) {
-                return new Date().getIime(year-1+'/12/'+day)
+                return new Date(year-1+'/12/'+day).getTime()
             }
 
             let isLeapYear = year%4===0;//是否为润年
@@ -61,7 +72,21 @@ export default {
             if(day>=days) {
                 day = days;
             }
-            return new Date().getIime(year+'/'+month+'/'+day)
+
+           
+            return new Date(year+'/'+month+'/'+day).getTime()
+        },
+        findMonthIndex(value) {
+            value = value || this.currentValue;
+            for(let i = 0,l = this.nowMonth.length; i < l; i++) {
+                if(this.nowMonth[i].time === value) {
+                    return {
+                        index: i,
+                        item: this.nowMonth[i]
+                    }
+                }
+                
+            }
         },
 
         //查找索引
@@ -214,11 +239,6 @@ export default {
                 lastDay--
             }
             return arr;
-
-
-            
-
-            
         },
         //计算下个月填充所有内容
         calcNextMonth(year, month, dayWeek, num){
