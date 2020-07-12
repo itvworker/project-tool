@@ -394,6 +394,7 @@ export default {
                 this.aniStatus = false
                 this.y = this.rowHeight;
                 this.slideHeight = this.y;
+                this.calendarStatus = 0
                 hdom(this.y);
                 this.setShowTop()
                 return
