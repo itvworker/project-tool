@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-    name: "slideItem",
+    name: "slide-item",
     props: {
         sensitivity: {
             type: Number,
@@ -58,12 +58,14 @@ export default {
             this.groupWidth = this.$refs.btns.clientWidth;
         },
         send(value) {
-            this.$refs.slide.style.transform = `translateX(0px)`;
-            this.x = 0;
-            this.$emit("btn", value);
+            if (this.$refs.slide) {
+                this.$refs.slide.style.transform = `translateX(0px)`;
+                this.x = 0;
+                this.$emit("btn", value);
+            }
         },
         restore() {
-            if (Math.abs(this.x) === this.groupWidth) {
+            if (Math.abs(this.x) === this.groupWidth && this.$refs.slide) {
                 this.$refs.slide.style.transform = `translateX(0px)`;
                 this.x = 0;
             }
@@ -111,34 +113,31 @@ export default {
             }
 
             if (obj.type > 0 && this.isMove) {
-                //   e.preventDefault();
-                console.log(obj);
-
                 switch (this.screenType) {
-                    case "sound":
-                        // this.setSound(obj)
-                        break;
-                    case "light":
-                        // this.setLight(obj)
-                        break;
-                    case "progress":
-                        this.moveX = x;
-                        this.moveY = y;
-                        this.x += obj.angx;
-                        if (this.x < 0 && Math.abs(this.x) > this.groupWidth) {
-                            this.$refs.slide.style.transform = `translateX(${-this
-                                .groupWidth}px)`;
-                            return;
-                        }
+                case "sound":
+                    // this.setSound(obj)
+                    break;
+                case "light":
+                    // this.setLight(obj)
+                    break;
+                case "progress":
+                    this.moveX = x;
+                    this.moveY = y;
+                    this.x += obj.angx;
+                    if (this.x < 0 && Math.abs(this.x) > this.groupWidth) {
+                        this.$refs.slide.style.transform = `translateX(${-this
+                            .groupWidth}px)`;
+                        return;
+                    }
 
-                        if (this.x > 0) {
-                            this.$refs.slide.style.transform = `translateX(0px)`;
-                            return;
-                        }
+                    if (this.x > 0) {
+                        this.$refs.slide.style.transform = `translateX(0px)`;
+                        return;
+                    }
 
-                        this.$refs.slide.style.transform = `translateX(${this.x}px)`;
+                    this.$refs.slide.style.transform = `translateX(${this.x}px)`;
 
-                        break;
+                    break;
                 }
             }
         },
@@ -148,18 +147,17 @@ export default {
             this.isTouch = false;
             this.isMove = false;
             switch (this.screenType) {
-                case "progress":
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    if (this.x < 0 && Math.abs(this.x) >= this.sensitivity) {
-                        this.x = -this.groupWidth;
-                        this.$refs.slide.style.transform = `translateX(${this.x}px)`;
-                    } else {
-                        this.$refs.slide.style.transform = `translateX(0px)`;
-                        this.x = 0;
-                    }
-                default:
+            case "progress":
+                e.preventDefault();
+                e.stopPropagation();
+                if (this.x < 0 && Math.abs(this.x) >= this.sensitivity) {
+                    this.x = -this.groupWidth;
+                    this.$refs.slide.style.transform = `translateX(${this.x}px)`;
+                } else {
+                    this.$refs.slide.style.transform = `translateX(0px)`;
+                    this.x = 0;
+                }
+            default:
             }
             this.screenType = "";
         },
@@ -212,18 +210,18 @@ export default {
     }
     > .slide-bar-group-btn {
         position: absolute;
-        right: 0ipx;
+        right: 0;
         height: 100%;
-        top: 0ipx;
-        bottom: 0ipx;
+        top: 0;
+        bottom: 0;
         display: flex;
         > .btn {
             height: 100%;
             display: flex;
             align-items: center;
-            padding-left: 11ipx;
-            padding-right: 11ipx;
-            font-size: 14ipx;
+            padding-left: 11rpx;
+            padding-right: 11rpx;
+            font-size: 14rpx;
         }
     }
 }
