@@ -115,7 +115,26 @@ export default [
             keepAlive: false,
             title: 'scroller'
         }
-    }
+    },
+    {
+        path: '/demo/slide-calendar',
+        name: 'itv_slide-calendar',
+        component: () => import ('@/components/slide-calendar/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'scroller'
+        }
+    },
+    {
+        path: '/demo/schedule',
+        name: 'itv_slide-calendar',
+        component: () => import ('@/components/schedule/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'schedule'
+        }
+    },
+    
     // {
     //     path: '/demo/form',
     //     name: 'itv_popup',
