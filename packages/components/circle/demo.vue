@@ -74,12 +74,10 @@ export default {
             let bIndex = begin / 1.5;
             let eIndex = end / 1.5;
 
-            let arr = res.slice(eIndex, res.length - 1);
+            // let arr = res.slice(eIndex, res.length - 1);
 
-            arr = arr.concat(res.slice(0, bIndex));
-
-            console.log(arr);
-
+            // arr = arr.concat(res.slice(0, bIndex));
+            let arr = res.slice(0, 80);
             arr.forEach((item, index) => {
                 if (index === 0) {
                     this.path = `M ${item.x} ${item.y} `;

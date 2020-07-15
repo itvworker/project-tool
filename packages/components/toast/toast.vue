@@ -17,19 +17,19 @@
 </template>
 
 <script>
-import icons from './icon.js'
+import icons from "./icon.js";
 export default {
     props: {
         transition: String,
-        itvclass: 'itv-center',
-        position: 'middle',
-        type: 'text',
-        text:'默认内容',
+        itvclass: "itv-center",
+        position: "middle",
+        type: "text",
+        text: "默认内容",
         iconColor: {
             type: String,
-            default: 'rgba(255,255,255,1)'
+            default: "rgba(255,255,255,1)"
         },
-        showBg:{
+        showBg: {
             type: Boolean,
             default: false
         },
@@ -39,67 +39,61 @@ export default {
         }
     },
     data() {
-        return{
+        return {
             show: false
-        }
+        };
     },
     computed: {
         icon() {
-            if(this.type!=='text' && icons[this.type]){
-                return icons[this.type].replace(/iconColor/ig, this.iconColor);
+            if (this.type !== "text" && icons[this.type]) {
+                return icons[this.type].replace(/iconColor/gi, this.iconColor);
             }
-            return '';
+            return "";
         },
         currentTransition() {
-            if(this.transition) {
-                return this.transition
+            if (this.transition) {
+                return this.transition;
             }
-            if (this.position === 'top') {
-              return 'itv-slide-from-top'
+            if (this.position === "top") {
+                return "itv-slide-from-top";
             }
-            if (this.position === 'bottom') {
-              return 'itv-slide-from-bottom'
+            if (this.position === "bottom") {
+                return "itv-slide-from-bottom";
             }
-            return 'itv-fade'
+            return "itv-fade";
         },
-        toastClass () {
-          return {
-            'itvui-toast_forbidden': this.type === 'warn',
-            'itvui-toast_cancel': this.type === 'cancel',
-            'itvui-toast_success': this.type === 'success',
-            'itvui-toast_text': this.type === 'text',
-            'itv-toast-top': this.position === 'top',
-            'itv-toast-bottom': this.position === 'bottom',
-            'itv-toast-middle': this.position === 'middle'
-          }
+        toastClass() {
+            return {
+                "itvui-toast_forbidden": this.type === "warn",
+                "itvui-toast_cancel": this.type === "cancel",
+                "itvui-toast_success": this.type === "success",
+                "itvui-toast_text": this.type === "text",
+                "itv-toast-top": this.position === "top",
+                "itv-toast-bottom": this.position === "bottom",
+                "itv-toast-middle": this.position === "middle"
+            };
         }
     },
     watch: {
-      text() {
-
-      },
-      show (val) {
-        if (val) {
-
-
-          this.$emit('input', true)
-          this.$emit('show')
-
-          clearTimeout(this.timeout)
-          this.timeout = setTimeout(() => {
-            this.show = false
-            this.showBg = false
-            this.$emit('input', false)
-            this.$emit('hide')
-          }, this.time)
-        }
-      },
-      value (val) {
-          console.log(val);
-        this.show = val
+        show(val) {
+            if (val) {
+                this.$emit("input", true);
+                this.$emit("show");
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(() => {
+                    this.show = false;
+                    this.showBg = false;
+                    this.$emit("input", false);
+                    this.$emit("hide");
+                }, this.time);
+            }
+        },
+        value(val) {
+            console.log(val);
+            this.show = val;
         }
     }
-}
+};
 </script>
 
 <style lang="less" scoped>
@@ -111,23 +105,22 @@ export default {
     left: 0px;
     z-index: 99;
 }
-.icon{
+.icon {
     width: 48ipx;
     height: 48ipx;
     margin-bottom: 10ipx;
-
 }
-p{
+p {
     padding: 0px;
     margin: 0px;
 }
-.itv-toast{
+.itv-toast {
     transform: translateX(-50%);
     left: 50%;
-    margin-left: 0!important;
+    margin-left: 0 !important;
     position: fixed;
     border-radius: 8ipx;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 0ipx 15ipx;
     color: #fff;
     min-width: 80ipx;
@@ -137,33 +130,33 @@ p{
     line-height: 22ipx;
     z-index: 100;
     padding: 15ipx;
-
 }
 .itv-toast.itv-toast-top {
-  top: 60ipx;
+    top: 60ipx;
 }
 .itv-toast.itv-toast-bottom {
-  top: auto;
-  bottom: 60ipx;
-  transform: translateX(-50%);
+    top: auto;
+    bottom: 60ipx;
+    transform: translateX(-50%);
 }
 .itv-toast.itv-toast-middle {
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
-.itv-slide-from-top-enter, .itv-slide-from-top-leave-active {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-100%)!important;
+.itv-slide-from-top-enter,
+.itv-slide-from-top-leave-active {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%) !important;
 }
-.itv-slide-from-bottom-enter, .itv-slide-from-bottom-leave-active {
-  opacity: 0;
-  transform: translateX(-50%) translateY(100%)!important;
+.itv-slide-from-bottom-enter,
+.itv-slide-from-bottom-leave-active {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%) !important;
 }
 .itv-slide-from-top-enter-active,
 .itv-slide-from-top-leave-active,
 .itv-slide-from-bottom-enter-active,
 .itv-slide-from-bottom-leave-active {
-  transition: all 400ms cubic-bezier(.36,.66,.04,1);
+    transition: all 400ms cubic-bezier(0.36, 0.66, 0.04, 1);
 }
-
 </style>
