@@ -1,19 +1,47 @@
 <template>
-    <itv-container class="page-slideout">
-        <itv-header>Circle</itv-header>
-        <itv-main>
-            <touch-circle />
-        </itv-main>
-    </itv-container>
+
+    <div class="circle-box">
+        <svg viewBox="0 0 100 100">
+            <path
+                fill="none"
+                stroke="#aaa"
+                stroke-width="12"
+                stroke-linecap="round"
+                :d="bgpath"
+            ></path>
+            <path
+                fill="none"
+                stroke="green"
+                stroke-width="12"
+                stroke-linecap="round"
+                :d="path"
+            ></path>
+            <image
+                :x="ax"
+                style="border-radius:8"
+                :y="ay"
+                @touchstart="touchstart($event,0)"
+                @touchmove="touchmove($event,0)"
+                width="16"
+                height="16"
+                xlink:href="./imgs/apoint.jpeg"
+            />
+            <image
+                :x="bx"
+                :y="by"
+                @touchstart="touchstart($event,1)"
+                @touchmove="touchmove($event,1)"
+                width="16"
+                height="16"
+                xlink:href="./imgs/bpoint.jpeg"
+            />
+        </svg>
+    </div>
 
 </template>
 
 <script>
-import touchCircle from "./index.vue";
 export default {
-    components: {
-        touchCircle
-    },
     data() {
         return {
             show: false,
@@ -22,7 +50,11 @@ export default {
             ax: 0,
             ay: 0,
             bx: 0,
-            by: 0
+            by: 0,
+            center: {
+                x: 0,
+                y: 0
+            }
         };
     },
     computed: {
@@ -47,8 +79,13 @@ export default {
         }
     },
     methods: {
-        touchstart(e) {
-            console.log(e);
+        touchstart(e, type) {
+            let top = this.$el.offsetTop;
+            let left = this.$el.offsetLeft;
+            let width = this.$el.clientWidth;
+        },
+        touchmove(e, type) {
+            let top = this.$el.offsetTop;
         },
         init() {
             this.arr.forEach((item, index) => {
