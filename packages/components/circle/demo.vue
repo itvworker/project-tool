@@ -18,7 +18,8 @@
                     stroke-linecap="round"
                     :d="path"
                 ></path>
-
+                <image :x="ax" style="border-radius:8" :y="ay"  @touchstart="touchstart"  width="16" height="16" xlink:href="./imgs/apoint.jpeg"/>
+                <image :x="bx" :y="by" @touchstart="touchstart"  width="16" height="16" xlink:href="./imgs/bpoint.jpeg"/>
             </svg>
         </itv-main>
     </itv-container>
@@ -31,7 +32,13 @@ export default {
         return {
             show: false,
             path: "",
-            bgpath: ""
+            bgpath: "",
+            ax:0,
+            ay:0,
+            bx:0,
+            by:0,
+
+        
         };
     },
     computed: {
@@ -56,6 +63,9 @@ export default {
         }
     },
     methods: {
+        touchstart(e) {
+            console.log(e);
+        },
         init() {
             this.arr.forEach((item, index) => {
                 if (index === 0) {
@@ -66,15 +76,56 @@ export default {
                     this.bgpath += `${item.x} ${item.y} `;
                 }
             });
-
-            this.progress(50, 20, 0);
+            
+            this.progress(90, 360, 1);
+        
         },
-        progress(begin, end, type) {
+        /**
+         * 先把移动的两个点分为a,b点
+         * point1 为移动点
+         * point2 第二个点
+         */
+        progress(point1, point2, type ) {
             let res = JSON.parse(JSON.stringify(this.arr));
-            let bIndex = begin / 1.5;
-            let eIndex = end / 1.5;
+            let bIndex = point1 / 1.5;
+            let eIndex = point2 / 1.5;
+            
+            let arr = [];
+            if(type === 0 ) {
 
+                this.ax = res[bIndex].x-8;
+                this.ax = res[bIndex].y-8;
+                this.bx = res[eIndex].x-8
+                this.by = res[eIndex].y-8
+                if(point1 > point2) {
+                    arr = res.slice(bIndex, res.length-1)
+                    arr = arr.concat(res.slice(0, eIndex))
+                }
+
+                if(point2 > point1) {
+                    arr = res.slice(bIndex, eIndex)
+                }
+            }else{
+                this.bx = res[bIndex].x-8;
+                this.by = res[bIndex].y-8;
+                this.ax = res[eIndex].x-8
+                this.ay = res[eIndex].y-8
+                if(point1 > point2) {
+                    arr = res.slice( eIndex,bIndex)
+                }
+
+<<<<<<< HEAD
             // let arr = res.slice(eIndex, res.length - 1);
+=======
+                if(point2 > point1) {
+                    arr = res.slice(eIndex, res.length-1);
+                    arr = arr.concat(res.slice(0,bIndex))
+                }
+            }
+
+
+           
+>>>>>>> 3a2dcd1a811be8e98807bf5a8d276d90253857d4
 
             // arr = arr.concat(res.slice(0, bIndex));
             let arr = res.slice(0, 80);
