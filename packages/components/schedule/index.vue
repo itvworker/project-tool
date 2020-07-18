@@ -182,6 +182,7 @@ export default {
             this.month = item.month;
             this.currentIndexWeek = index;
             this.findWeekRow(item.time);
+            
         },
         selectDay(index, item) {
             switch (item.type) {

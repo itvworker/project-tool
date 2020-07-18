@@ -2,7 +2,7 @@
     <itv-container class="page-slideout">
         <itv-header>Circle</itv-header>
         <itv-main>
-            <touch-circle />
+            <touch-circle :strokeWidth="10" :radius="45" />
         </itv-main>
     </itv-container>
 
@@ -22,7 +22,9 @@ export default {
             ax: 0,
             ay: 0,
             bx: 0,
-            by: 0
+            by: 0,
+            adeg:0,
+            bdeg: 0
         };
     },
     computed: {
@@ -62,6 +64,8 @@ export default {
             });
 
             this.progress(90, 360, 1);
+            
+        
         },
         /**
          * 先把移动的两个点分为a,b点
@@ -69,6 +73,13 @@ export default {
          * point2 第二个点
          */
         progress(point1, point2, type) {
+            if(this.type === 1 ) {
+                this.bdeg = point1;
+                this.adeg = point2;
+            }else{
+                this.bdeg = point2;
+                this.adeg = point1;
+            }
             let res = JSON.parse(JSON.stringify(this.arr));
             let bIndex = point1 / 1.5;
             let eIndex = point2 / 1.5;
