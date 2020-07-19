@@ -7,6 +7,7 @@
             @touchstart="touchstart"
             @touchmove="touchmove"
             @touchend="touchend"
+           
         >
             <slot />
         </div>

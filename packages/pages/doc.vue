@@ -1,7 +1,8 @@
 <template lang="html">
     <itv-container class="doc-page">
+        
         <div v-html="doc"></div>
-        <div class="phone-show" v-show="false" >
+        <div class="phone-show"  >
             <iframe :src="url"></iframe>
         </div>
 

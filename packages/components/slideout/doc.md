@@ -1,6 +1,6 @@
-# Cliper
+# slideout
 
-Cliper是一个可以自定义截图方式的软件
+slideout 是一个可以左滑动的按组件
 
 ## 安装
 ----
@@ -11,21 +11,25 @@ $#div.class=doc-tab_doc-contet.id=page
     $#/div
     $#div.class=doc-tab-content
 $#div.class=doc-tab-item
-```
+```javascript
 // 在入口处引入
-import { slideout, slideitem, slidebutton } from 'vux '
-import ItvCliper from 'itv/packages/cliper/index'
-Vue.use(tvCliper)
+import { slideout, slideitem, slidebutton } from "itv"
+
+Vue.use(slideout)
+Vue.use(slideitem)
+Vue.use(slidebutton)
 
 ```
 $#/div
 $#div.class=doc-tab-item
-```
+```javascript
 
-import ItvCliper from 'itv/packages/cliper/index'
+import { slideout, slideitem, slidebutton } from "itv"
 export default {
   components: {
-    ItvCliper
+    slideout, 
+    slideitem, 
+    slidebutton
   }
 }
 

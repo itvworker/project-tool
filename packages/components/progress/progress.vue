@@ -8,23 +8,22 @@
             stroke="rgba(145, 156, 163, 1)"
             stroke-width="10" fill-opacity="0"
             ></path>
-        <path d="M 50,50 m 0,-45
-        a 45,45 0 1 1 0,90
-        a 45,45 0 1 1 0,-90"
-        stroke-linecap="round"
-        stroke="rgba(255, 255, 255, 1)"
-        stroke-width="10" fill-opacity="0"
-        style="stroke-dasharray: 298.451px, 298.451px;  transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease 0s;"
-        :style="{'stroke-dashoffset': percent+'px'}"
-        ></path>
+
+            <path d="M 50,50 m 0,-45
+            a 45,45 0 1 1 0,90
+            a 45,45 0 1 1 0,-90"
+            stroke-linecap="round"
+            stroke="rgba(255, 255, 255, 1)"
+            stroke-width="10" fill-opacity="0"
+            style="stroke-dasharray: 298.451px, 298.451px;  transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease 0s;"
+            :style="{'stroke-dashoffset': percent+'px'}"
+            ></path>
         </svg>
         <span class="item" v-if="value===false">{{tips}}</span>
         <span class="item" v-else>{{value}}%</span>
     </div>
 </template>
-<!--
-https://www.jianshu.com/p/c819ae16d29b
- -->
+<!-- https://www.jianshu.com/p/c819ae16d29b -->
 <script>
 export default {
     name: "vue-progress",
