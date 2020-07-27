@@ -57,15 +57,6 @@ module.exports = {
                         loader: 'css-loader',
                     },
                     {
-                        loader: 'units-loader',
-                        options: {
-                            unit: 'rem',
-                            divisor: 37.5,
-                            accuracy: 6,
-                            raw: 'ipx'
-                        }
-                    },
-                    {
                         loader: 'postcss-loader'
                     },
                     {
