@@ -143,14 +143,14 @@ export default [
             title: 'circle',
         },
     },
+    {
+        path: '/demo/banner',
+        name: 'itv_banner',
+        component: () => import('@/components/banner/demo.vue'),
+        meta: {
+            keepAlive: false,
+            title: 'circle',
+        },
+    },
 
-    // {
-    //     path: '/demo/form',
-    //     name: 'itv_popup',
-    //     component: () => import ('@/components/form/demo.vue'),
-    //     meta: {
-    //         keepAlive: false,
-    //         title: 'scroller'
-    //     }
-    // }
 ]

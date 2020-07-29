@@ -146,8 +146,6 @@ export default {
                 this.moveY = this.startY
                 this.isTouch = true
             }
-            this.forBackTime = this.currentTime
-            this.start++
         },
         touchmove(e) {
             if (this.aniStatus) {
@@ -188,7 +186,6 @@ export default {
                 switch (this.screenType) {
                     case 'vertical':
                         this.y += obj.angy
-
                         if (this.y <= this.rowHeight) {
                             this.y = this.rowHeight
                             this.calendarStatus = 0

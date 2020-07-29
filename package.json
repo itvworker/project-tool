@@ -77,7 +77,8 @@
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "postcss-u2u": "^1.0.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
@@ -88,7 +89,6 @@
     "imports-loader": "^0.8.0",
     "jquery": "^3.5.1",
     "lib-flexible": "^0.3.2",
-    "postcss-u2u": "^1.0.0",
     "qs": "^6.9.1",
     "swiper": "^5.3.6",
     "vue": "^2.6.11",
