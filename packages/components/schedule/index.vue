@@ -28,7 +28,7 @@
                 v-show="showTop"
                 ref="week"
                 :style="{ transform: 'translateX('+this.weekX+'px)'}"
-                :class="{animating: isAni}"
+                :class="{animating: isAni, 'slow-action':isMove}"
                 @transitionend="aniamteend"
             >
                 <div class="week-item">
@@ -68,7 +68,7 @@
             <div
                 class="calendar"
                 ref="slide"
-                :class="{animating: isAni}"
+                :class="{animating: isAni, 'slow-action':isMove}"
                 @transitionend="aniamteend"
                 :style="{transform: 'translateX('+this.calendarX+'px)'}"
             >
@@ -182,7 +182,6 @@ export default {
             this.month = item.month;
             this.currentIndexWeek = index;
             this.findWeekRow(item.time);
-            
         },
         selectDay(index, item) {
             switch (item.type) {
