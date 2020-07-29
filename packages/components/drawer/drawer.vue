@@ -1,7 +1,7 @@
 <template>
     <div class="itv-ui-box">
         <div class="itv-drawer-content" :class="{'itv-drawer-touch': isMove, 'itv-drawer-learn': !isMove, }" ref="content">
-
+                
         </div>
         <transition  name="fade">
             <div class="itv-ui-bg" v-show="bg" @click="close"></div>
