@@ -1,15 +1,19 @@
 <template>
     <div class='itv-banner' @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" @touchcancel="touchend" >
         <div class="itv-banner-touch" @transitionend="aniamteend" :style="position"  ref="box" :class="['itv-banner-flex-'+direction, {'itv-banner-animating':isAnimating} ]" >
-             <slot></slot>
+            <div class="itv-banner-item" v-if="number >=2 && loop === true" v-html="lastOne"></div>    
+            <slot></slot>
+            <div class="itv-banner-item" v-if="number >=2 && loop === true" v-html="firstOne"></div>    
         </div> 
     </div>
 </template>
 <script>
 import render  from  '../../libs/render'
 import getDirection from '../../libs/touch'
+import judge from './mixins/judge'
 let dom;
 export default {
+    mixins:[judge],
     props: {
         //是否自动播放
         autoplay: {
@@ -50,8 +54,12 @@ export default {
             elWidth:'',
             nowIndex: 0,
             coordinate: 0,
-            isMove: false,//是否在滑动
-            number: 0 //字元素张数
+            isMove: 0,// 0为初始状态，1允许滑动，2不允许滑动
+            number: 0, //字元素张数
+            maxX:0,
+            lastOne:'', //循环是复制后一张
+            firstOne: '',//循环是复制第一张
+            
         }
     },
     computed: {
@@ -67,7 +75,8 @@ export default {
     },
     methods: {
         aniamteend() {
-
+            this.isAnimating = false;
+           
         },
         touchstart(e) {
             console.log('start----------');
@@ -75,7 +84,7 @@ export default {
             if (this.isAnimating) return
             this.touchstartTime= new Date().getTime()
             let self = e.targetTouches
-            console.log(self.length);
+          
            
             if (self.length <= 1) {
                 this.startX = self[0].pageX
@@ -99,36 +108,41 @@ export default {
             let obj = getDirection(this.moveX, this.moveY, x, y)
 
         
-            if(this.direction === 'row' && obj.type > 2 && !this.isMove) {
+            if(obj.type > 2 && this.isMove === 0) {
                 this.screenType = 'progress'
-                this.isMove = true
+                if(this.direction === 'row') {
+                    this.isMove = 1
+                }else{
+                    this.isMove = 2
+                }
+                
             }
 
-            if(this.direction === 'cloume' && obj.type >= 1 && obj.type <= 2 && !this.isMove) {
+            if(obj.type >= 1 && obj.type <= 2 && this.isMove === 0) {
                 this.screenType = 'vertical'
                 this.isMove = true
+                if(this.direction === 'colume') {
+                    this.isMove = 1
+                }else{
+                    this.isMove = 2
+                }
             }
 
            
-            if (this.screenType) {
+            if (this.isMove===1) {
                 e.preventDefault()
                 e.stopPropagation()
             }
 
-            if (obj.type > 0 && this.isMove) {
+            if (obj.type > 0 && this.isMove===1) {
                 //   e.preventDefault();
                 
                 this.moveX = x
                 this.moveY = y
-                //是否滑动到小值
-                let isMin = this.number >1 && !this.loop && this.coordinate > 0 && obj.angx > 0;
-                let isMinone  = this.number<=1 && this.coordinate > 0 && obj.angx > 0; 
-                //是否滑动到大值
-                let isMax = this.number >1 && !this.loop && this.coordinate < -this.number*this.elWidth && obj.angx<0;;
-                let isMaxone  = this.number<=1 && this.coordinate < -this.number*this.elWidth && obj.angx<0; 
+            
                 
-                console.log(this.coordinate);
-                console.log(isMin);
+                console.log(`pos:${this.coordinate}, x:${obj.angx}`);
+                
 
                 switch (this.screenType) {
                     case 'vertical':
@@ -136,11 +150,10 @@ export default {
                         break
                     case 'progress':
                         
-                       
-                        if(isMin||isMax || isMinone || isMax) {
+                        if(this.isMoveMax(obj.angx)) {
                             this.coordinate += obj.angx*0.4;
                         }else{
-                            this.coordinate += obj.angx;
+                            this.coordinate += obj.angx*0.8;
                         }   
                         
                         dom(-this.coordinate,0,1)
@@ -150,13 +163,13 @@ export default {
             }
         },
         touchend(e) {
-            if (this.isMove) {
+            if (this.isMove===1) {
                 e.preventDefault()
                 e.stopPropagation()
             }
 
             this.isTouch = false
-            this.isMove = false
+            this.isMove = 0
             let screenType = this.screenType
             this.screenType = ''
             let self = e.targetTouches
@@ -167,12 +180,33 @@ export default {
                 case 'progress':
                     e.preventDefault()
                     e.stopPropagation()
-
                     let now = new Date().getTime()
                     let dis = this.moveX - this.startX
                     let isfast = Math.abs(dis) > 30 && now - this.startTime < 300 //是否快速滑过
-                    
+                    let isChangePos = Math.abs(this.coordinate)%this.elWidth; //是否有移动
+
+                    //滑动到最小值
+                    if(this.coordinate>=0 && isChangePos) {
+                        this.isAnimating = true
+                        this.coordinate = 0;
+                        dom(this.coordinate, 0, 1)
+                        this.$emit('first')
+                        return
+                    }
+
+                     //滑动到最大值
+                    if(this.coordinate <= -this.maxX && isChangePos) {
+                        this.isAnimating = true
+                        this.coordinate = -this.maxX ;
+                        dom(this.coordinate, 0, 1)
+                        this.$emit('last')
+                        return
+                    }
+
+      
                 
+
+
                     
                     
                     // this.nowIndex++
@@ -194,19 +228,37 @@ export default {
             
         },
         initNumber() {
-            this.number = this.$children.length
+            let number = 0;
+            this.$children.forEach(item=>{
+                if(item.name === 'itv-banner-item') {
+                    number++ 
+                }
+            })
+            this.number = number
+            
+        },
+        calcMax() {
+            if(this.number>=2 &&  this.loop) {
+                this.maxX = (this.number+2)*this.elWidth
+                return
+            } 
+
+            this.maxX = this.number*this.elWidth
+           
         },
         init() {
             dom = render(this.$refs.box)
             this.setElWidth()
             this.setElHeight()
             this.initNumber()
+            this.calcMax()
         }
     },
     
     mounted() {
        
         this.init()
+        console.log(this.$children);
     }
 }
 </script>
