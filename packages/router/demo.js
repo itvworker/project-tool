@@ -144,9 +144,9 @@ export default [
         },
     },
     {
-        path: '/demo/banner',
-        name: 'itv_banner',
-        component: () => import('@/components/banner/demo.vue'),
+        path: '/demo/swiper',
+        name: 'itv_swiper',
+        component: () => import('@/components/swiper/demo.vue'),
         meta: {
             keepAlive: false,
             title: 'circle',

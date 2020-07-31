@@ -1,5 +1,5 @@
 <template>
-    <div class="itv-banner-item">
+    <div class="itv-swpier-item">
         <slot></slot>
     </div>
 </template>
@@ -7,7 +7,7 @@
 export default {
     data() {
         return {
-            name: 'itv-banner-item'
+            name: 'itv-swpier-item'
         }
     }
 }
