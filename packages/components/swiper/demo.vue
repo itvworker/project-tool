@@ -1,6 +1,6 @@
 <template>
     <itv-container>
-        <itv-header>Banner</itv-header>
+        <itv-header>itv-swiper</itv-header>
         <itv-main>
 
             <h2>横向</h2>
@@ -25,7 +25,7 @@
                 </div>
             </banner>
             <h2>纵向</h2>
-            <banner  direction="column" :loop="false" class="itv-swpier-height">
+            <banner  direction="column" :loop="false" v-model="columnIndex" class="itv-swpier-height">
                 <banner-item>
                     <div class="demo-banner banner-1">1</div>
                 </banner-item>
@@ -46,7 +46,7 @@
 
 <script>
 import banner from './index.vue'
-import bannerItem from '../banner-item/index.vue'
+import bannerItem from '../swiper-item/index.vue'
 export default {
     components: {
         banner,
@@ -54,7 +54,8 @@ export default {
     },
     data() {
         return {
-            rowIndex:0
+            rowIndex:2,
+            columnIndex: 2
         };
     },
     methods: {
@@ -75,8 +76,8 @@ export default {
 </script>
 
 <style lang="less" >
-@import './banner.less';
-@import '../banner-item/banner-item.less';
+@import './swiper.less';
+@import '../swiper-item/swiper-item.less';
 
 </style>
 <style lang="less" scoped>

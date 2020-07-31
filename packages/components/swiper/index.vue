@@ -30,11 +30,6 @@ export default {
             type: String,
             default: 'row'
         },
-        index: {
-            type: Number,
-            default: 0
-        },
-        
     },
     data() {
         return  {
@@ -104,15 +99,16 @@ export default {
             }
             this.$emit('change', this.nowIndex)
             this.$emit('input', this.nowIndex)
+            
            
         },
         touchstart(e) {
-          
+            
             //判断动画是否在进行中, 进行中禁止滑动
             if (this.isAnimating) return
             this.touchstartTime= new Date().getTime()
             let self = e.targetTouches
-          
+            this.$emit('touchstart')
 
             if (self.length <= 1) {
                 this.startX = self[0].pageX
@@ -188,6 +184,7 @@ export default {
             }
         },
         touchend(e) {
+            this.$emit('touchend')
             if (this.isMove===1) {
                 e.preventDefault()
                 e.stopPropagation()
@@ -271,7 +268,7 @@ export default {
             this.$children.forEach(item=>{
                 if(item.name === 'itv-swpier-item') {
                     number++
-                    this.children.push(item.$el.innerHTML)
+                    this.children.push(item)
                 }
             })
             this.number = number
@@ -289,18 +286,21 @@ export default {
                 this.intialIndex = 1
                 this.intialLastIndex = this.number
                 this.nowIndex = this.value + 1
-                this.coordinate = this.elSize
+                this.coordinate = this.nowIndex*this.elSize
                 this.setPostion()
                 return
             } 
             this.intialIndex = 0
+            this.nowIndex = this.value;
+            this.coordinate = this.nowIndex*this.elSize
+            this.setPostion()
             this.intialLastIndex = this.number-1;
             
         },
         clone() {
             if(this.number>=2 &&  this.loop) {
-                this.firstOne = this.children[0]
-                this.lastOne = this.children[this.children.length-1] 
+                this.firstOne = this.children[0].$el.innerHTML
+                this.lastOne = this.children[this.children.length-1].$el.innerHTML 
                 return
             } 
         }, 
@@ -345,9 +345,7 @@ export default {
     },
     
     mounted() {
-       
         this.init()
-        console.log(this.$children);
         window.addEventListener('resize', this.resize)
     }
 }

@@ -10,8 +10,6 @@ import '@/layout'
 import '@/components/index.js'
 import '@/assets/css/index.less';
 
-
-
 // resources: [resolve('packages/assets/css/animate.less'), resolve('packages/assets/css/page.less'), resolve('packages/assets/css/theme.less')]
 
 
