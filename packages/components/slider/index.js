@@ -1,8 +1,7 @@
-import Slider from './slider.vue';
+import Slider from './slider.vue'
 
+Slider.install = function (Vue) {
+    Vue.component('ItvSlider', Slider)
+}
 
-Slider.install = function(Vue) {
-  Vue.component('ItvSlider', Slider);
-};
-
-export default Slider;
+export default Slider

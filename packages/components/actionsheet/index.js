@@ -1,29 +1,29 @@
 import PluginComponent from './index.vue'
-import { mergeOptions } from '@/libs/merge'
+import merge from '../../libs/merge'
 
 let $vm
 
 const plugin = {
-    install(vue, options = {}) {
+    install (vue, options = {}) {
         const Component = vue.extend(PluginComponent)
 
         if (!$vm) {
             $vm = new Component({
                 el: document.createElement('div'),
                 propsData: {
-                    title: '',
-                },
+                    title: ''
+                }
             })
             document.body.appendChild($vm.$el)
         }
 
         const opts = {
-            show(options) {
+            show (options) {
                 $vm.title = ''
                 $vm.codetype = ''
                 $vm.params = []
                 if (typeof options === 'object') {
-                    mergeOptions($vm, options)
+                    merge($vm, options)
                 }
 
                 $vm.$off('hide')
@@ -43,16 +43,19 @@ const plugin = {
                 })
                 $vm.value = true
             },
-            hide() {
+            hide () {
                 $vm.value = false
             },
-            isVisible() {
+            isVisible () {
                 return $vm.value
-            },
+            }
         }
 
-        vue.prototype.$actionsheet = opts
-    },
+        if (!vue.prototype.$itv) {
+            vue.prototype.$itv = {}
+        }
+        vue.$itv.
+    }
 }
 
 export default plugin

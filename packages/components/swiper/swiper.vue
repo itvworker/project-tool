@@ -195,13 +195,16 @@ export default {
             let screenType = this.screenType
             this.screenType = ''
             let self = e.targetTouches
-            switch (screenType) {
-                case 'vertical':
-                case 'progress':
+            if (screenType) {
                     e.preventDefault()
                     e.stopPropagation()
                     let now = new Date().getTime()
                     let dis = this.moveX - this.startX
+                    if(this.direction === 'column') {
+                        dis = this.moveY - this.startY
+                    }
+                    
+                    
                     let isfast = Math.abs(dis) > 50 && now - this.touchstartTime < 300 //是否快速滑过
                     let isChangePos = Math.abs(this.coordinate)%this.elSize; //是否有移动
                    
@@ -245,7 +248,6 @@ export default {
                 
                     this.coordinate = this.nowIndex * this.elSize;
                     this.setPostion()
-                default:
             }
         },
         //设置父元素的高度

@@ -19,19 +19,15 @@ export default {
             }
             
             while(parentNode.nodeName.toLowerCase()!=='html') {
-          
                 if(parentNode.className ==='slide-bar-content') {
                     this.send();
                     return; 
                 }
                 if(parentNode.className.split(' ')[0] ==='slide-bar') {
-                    
                     return; 
                 }
                 parentNode = parentNode.parentNode;
-                  
             }
-        
             this.send()
         },
         send() {

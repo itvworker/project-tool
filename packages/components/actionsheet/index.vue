@@ -24,11 +24,7 @@ export default {
     props: {
         items: {
             type: Array,
-            default: () => [
-                {
-                    text: "菜单一"
-                }
-            ]
+            default: () => []
         },
         zIndex: {
             type: Number,

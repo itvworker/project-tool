@@ -4,12 +4,13 @@ import elevator from './elevator/doc.md'
 import slider from './slider/doc.md'
 import picker from './picker/doc.md'
 import slideout from './slideout/doc.md'
-
-export default{
+import swiper from './swiper/doc.md'
+export default {
     toast,
     cliper,
     elevator,
     slider,
     picker,
-    slideout
+    slideout,
+    swiper
 }
