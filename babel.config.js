@@ -2,7 +2,6 @@ module.exports = {
     presets: [
         [
             '@babel/preset-env',
-            // "@babel/preset-typescript",
             {
                 modules: false,
                 useBuiltIns: 'entry',
@@ -12,6 +11,7 @@ module.exports = {
                 },
             },
         ],
+        "@babel/typescript"
     ],
     plugins: [
         "@vue/babel-plugin-jsx",
