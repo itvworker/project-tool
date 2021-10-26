@@ -4,7 +4,6 @@ export default function itv() {
     return {
         name: 'itv', // this name will show up in warnings and errors
         resolveId ( source, importer ) {
-          console.log(importer);
           return source;
         },
         resolveDynamicImport(str) {

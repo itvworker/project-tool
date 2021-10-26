@@ -1,6 +1,6 @@
 
 import { defineComponent } from 'vue'
-import Calendar from '@/components/calendar.tsx'
+import Calendar from '@/components/calendar'
 export default defineComponent({
     components:{
         Calendar
@@ -11,7 +11,7 @@ export default defineComponent({
     },
     
     methods:{
-        setDay(item) {
+        setDay(item: any) {
             return (
                 <div class="active">{item.name}</div>
             )

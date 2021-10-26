@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
-import App from './App.tsx'
-import routers from './router/index.tsx';
+import App from './App'
+import routers from './router/index';
+
+import './registerServiceWorker'
 const app = createApp(App)
 
 
