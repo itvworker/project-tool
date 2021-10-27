@@ -1,4 +1,5 @@
-const path = require('path');
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 module.exports = {
     pages: {
         index: {
@@ -8,6 +9,13 @@ module.exports = {
             title:"项目脚手架",
             chunks: ['chunk-vendors', 'chunk-common', 'index']
         }
-    }
+    },
+    configureWebpack: {
+        plugins: [
+            Components({
+                resolvers: [ElementPlusResolver()],
+            })
+        ]
+      }
 }
 

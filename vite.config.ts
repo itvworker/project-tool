@@ -1,9 +1,15 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import itv from './vite/itv-plugin'
 import path from 'path';
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export default defineConfig({
-  plugins: [vue(), itv()],
+  plugins: [
+    vue(), 
+    Components({
+      resolvers: [ElementPlusResolver()],
+    })
+  ],
   esbuild: {
     jsxFactory: 'h',
     jsxFragment: 'Fragment',
