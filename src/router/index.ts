@@ -8,7 +8,7 @@ const routes:Array<RouteRecordRaw> = [
     { 
         path: '/login', 
         component: () => import('@/views/login')
-    },
+    }
 ]
 
 const router = createRouter({

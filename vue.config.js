@@ -3,7 +3,7 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 module.exports = {
     pages: {
         index: {
-            entry:"src/main.ts",
+            entry:"src/main.js",
             template: 'public/index.dev.html',
             file:"index.html",
             title:"项目脚手架",

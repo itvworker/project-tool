@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import App from './App'
+import App from './App';
+import "./App.less";
 import routers from './router/index';
 import Componets from '@/components/index'
 import i18n from './langs';
