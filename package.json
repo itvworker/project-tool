@@ -75,6 +75,7 @@
         "postcss-u2u": "^1.0.0",
         "postcss-url": "^10.1.3",
         "prettier": "^2.2.1",
+        "sass": "^1.45.2",
         "ts-loader": "^9.2.6",
         "typescript": "^4.4.4",
         "unplugin-vue-components": "^0.16.0",
