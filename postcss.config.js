@@ -1,7 +1,7 @@
 module.exports = {
-    // parser: 'postcss-preset-env',
-    'plugins': {
+    plugins: {
         'postcss-import': {},
         'postcss-u2u': {}
     }
 }
+

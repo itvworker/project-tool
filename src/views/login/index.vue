@@ -1,5 +1,5 @@
 <template>
-    <ElContainer  
+    <ElContainer
             class="el-login-root"
         >
             <div class="el-login-box">
@@ -10,7 +10,7 @@
                     <ElFormItem
                         prop="username"
                     >
-                        <ElInput  
+                        <ElInput
                         v-model="loginData.username"
                         :placeholder="t('pleaseInput')"
                             />
@@ -19,7 +19,7 @@
                     <ElFormItem
                         prop="pwd"
                     >
-                        <ElInput  
+                        <ElInput
                         v-model="loginData.pwd"
                         :placeholder="t('pleaseInput')"
                         type="password"
@@ -36,35 +36,33 @@
 </template>
 <script lang="ts" setup>
 import { ElButton, ElContainer, ElForm, ElFormItem, ElInput, ElLink } from 'element-plus'
-import {  reactive, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n';
-const {t} = useI18n();
-        // 登录字段
-const loginData:any = reactive({
+import { reactive, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+// 登录字段
+const loginData = reactive({
     username: '',
     pwd: ''
 })
 // 规则
-const rules:any = {
+const rules = {
     username: [{
         required: true,
         message: '请输入登录帐号',
         trigger: 'blur'
     }],
-    pwd:[{
+    pwd: [{
         required: true,
         message: '请输入密码',
         trigger: 'blur'
     }]
 }
 
-        
 // 渲染后加载
-onMounted(()=>{
-    console.log('mounted');
+onMounted(() => {
+    console.log('mounted')
 })
-        
 </script>
 <style lang="less" scoped>
-@import './index.less';
+@import './index.scss';
 </style>

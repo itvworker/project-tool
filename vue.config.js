@@ -1,8 +1,7 @@
-const Components = require('unplugin-vue-components/webpack')
-const AutoImport = require('unplugin-auto-import/webpack')
-const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+const Components = require('unplugin-vue-components/webpack');
+const AutoImport = require('unplugin-auto-import/webpack');
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
 const path = require('path');
-
 
 module.exports = {
     pages: {
@@ -17,20 +16,17 @@ module.exports = {
     configureWebpack: {
         plugins: [
             AutoImport({
-                resolvers: [ElementPlusResolver()],
+                resolvers: [ElementPlusResolver()]
             }),
             Components({
-                resolvers: [ElementPlusResolver()],
-            }),
+                resolvers: [ElementPlusResolver()]
+            })
         ],
         resolve: {
             extensions: ['.js', '.vue', '.json', '.tsx', '.ts'],
             alias: {
-                // vue$: 'vue/dist/vue.esm.js',
-                vue: 'vue/dist/vue.esm-browser.js',
                 '@': path.resolve(__dirname, 'src')
-            },
-        },
-      }
+            }
+        }
+    }
 }
-

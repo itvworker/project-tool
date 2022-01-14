@@ -1,3 +1,3 @@
 export default {
-    pleaseInput:"请输入"
+    pleaseInput: '请输入'
 }
