@@ -1,18 +1,11 @@
 <template>
-    <el-container class="root-box">
-        <layout-menu />
-        <el-container>
-            <el-header>Header</el-header>
-            <el-main>Main</el-main>
-            <el-footer>Footer</el-footer>
-        </el-container>
-    </el-container>
+    home
 </template>
 <script lang="ts" setup>
-import { ElHeader, ElMain, ElFooter, ElContainer} from 'element-plus'
-import LayoutMenu from '@/layouts/menu/index.vue'
+import * as echarts from 'echarts/core';
 
 </script>
 <style lang="scss" scoped>
+
 @import './index.scss';
 </style>

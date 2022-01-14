@@ -9,7 +9,10 @@
                 :collapse="isCollapse"
                 @open="handleOpen"
                 @close="handleClose"
-                default-active="0"
+                background-color="#304156"
+                text-color="#bfcbd9"
+                active-text-color="#fff"
+                :default-active="0"
             >
                 <el-children v-for="(item, index) in items" :key="index"  :index="index+''" :item="item" />
             </el-menu>
@@ -19,16 +22,16 @@
 <script lang="ts" setup>
 import { ElAside, ElMenu, ElScrollbar } from 'element-plus'
 import ElChildren from './el-children.vue'
-import data from './data';
+import data from './data'
 import { ref } from 'vue'
-const isCollapse = ref(false);
-const items = ref(data);
-const handleClose = (value: string)=>{
-    console.log(value);
+const isCollapse = ref(false)
+const items = ref(data)
+const handleClose = (value: string) => {
+    console.log(value)
 }
 
 const handleOpen = (value: string) => {
-     console.log(value);
+    console.log(value)
 }
 </script>
 <style lang="scss" scoped>
