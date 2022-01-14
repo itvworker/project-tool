@@ -12,7 +12,6 @@
 <script lang="ts" setup>
 import { ElHeader, ElMain, ElFooter, ElContainer } from 'element-plus'
 import LayoutMenu from '@/layouts/menu/index.vue'
-
 </script>
 <style lang="scss" scoped>
 @import './index.scss';

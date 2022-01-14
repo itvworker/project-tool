@@ -12,7 +12,7 @@
                 background-color="#304156"
                 text-color="#bfcbd9"
                 active-text-color="#fff"
-                :default-active="0"
+                default-active="0"
             >
                 <el-children v-for="(item, index) in items" :key="index"  :index="index+''" :item="item" />
             </el-menu>

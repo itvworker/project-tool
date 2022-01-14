@@ -5,7 +5,7 @@ import './App.less'
 import routers from './router/index'
 import i18n from './langs'
 import './registerServiceWorker'
-import '@/assets/css/index.less'
+import '@/assets/css/index.scss'
 const app = createApp(App)
 
 Componets(app)

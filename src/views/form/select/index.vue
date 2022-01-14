@@ -1,0 +1,8 @@
+<template>
+    <div class="box">
+        
+    </div>
+</template>
+<script lang="ts" setup>
+
+</script>

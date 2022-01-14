@@ -13,11 +13,14 @@
     </el-sub-menu>
     <!-- 如果是链接  -->
     <router-link  :to="item.path"  v-if="item.type==='link'">
-        <el-menu-item :index="index" > {{item.label}}</el-menu-item>
+        <el-menu-item :index="index" >
+            <el-icon :class="item.icon" v-if="item.icon"></el-icon>
+            {{item.label}}
+        </el-menu-item>
     </router-link>
 </template>
 <script lang="ts" setup>
-import { ElSubMenu, ElMenuItem } from 'element-plus'
+import { ElSubMenu, ElMenuItem, ElIcon } from 'element-plus'
 import { defineProps } from 'vue'
 
 interface Item {

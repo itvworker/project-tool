@@ -9,6 +9,10 @@ const routes:Array<RouteRecordRaw> = [
             {
                 path: '/index',
                 component: () => import('@/views/index/index.vue')
+            },
+            {
+                path: '/form/select',
+                component: () => import('@/views/form/select/index.vue')
             }
         ]
     },

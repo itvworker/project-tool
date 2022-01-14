@@ -2,8 +2,25 @@ export default [
     {
         type: 'link',
         label: '首页',
-        icon: '',
+        icon: 'icon-home',
         path: '/index'
+    },
+    {
+        type: 'menu',
+        label: '表单组件',
+        icon: '',
+        children: [
+            {
+                type: 'link',
+                label: '选择类组件',
+                path: '/form/select'
+            },
+            {
+                type: 'link',
+                label: '角色管理',
+                path: '/sytem/role'
+            }
+        ]
     },
     {
         type: 'menu',
