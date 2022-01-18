@@ -15,7 +15,9 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'indent':['error', 4],
-    'eol-last': 'off'
+    'eol-last': 'off',
+    '@typescript-eslint/no-explicit-any':'off',
+    '@typescript-eslint/explicit-module-boundary-types':'off'
   },
   overrides: [
     {
