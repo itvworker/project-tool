@@ -8,13 +8,13 @@
                 {{item}}
             </div>
         </div>
-        <div class="it-calendar-content" @mousedown="onMousedown($event)" @mousemove="onMousemove" >
+        <it-mouse-select class="it-calendar-content" >
             <calendar-item v-for="(item, index) in months" :index="index"  :key="index" :item="item" @click.native="onSelectDate(index, item)" >
                 <template v-if="$slots.default" #default="data">
                     <slot v-bind="data"></slot>
                 </template>
             </calendar-item>
-        </div>
+        </it-mouse-select>
     </div>
 </template>
 <script lang="ts" setup>
@@ -24,6 +24,7 @@ import { outCalendar } from './lib/calendar'
 import { formatDateMonent } from '../../../util'
 import { getClassDom, getMouseRelative } from './lib/dom'
 import CalendarItem from './calendar-item';
+import ItMouseSelect from '../../mouse-select/src'
 // 月份所处的每一天
 export interface Props {
     maxDate?: string, // 最大日期 精确到天
@@ -73,81 +74,4 @@ function onSelectDate (index:number, item:Calendars) {
     }
 }
 
-/** 选择框 start ========================== */
-let isDown = false // 鼠标左健是否按下
-let itDom:HTMLElement // it-calendar-content 元素
-let maskDom:HTMLElement // 选择背景元素
-let startX:number // 鼠标左健点击开始点
-let startY:number // 鼠标左健点击开始点
-let isMove = false //  鼠标是否在移动
-function onMousedown (e:MouseEvent):void {
-    switch (e.button) {
-    case 0:
-        onMouseLeftButton(e)
-        break
-
-    default:
-        break
-    }
-}
-/**
- * 点击鼠标左健
- */
-function onMouseLeftButton (e:MouseEvent) {
-    if (!itDom) {
-        itDom = getClassDom(e.target, 'it-calendar-content')
-    }
-    const pos: Position = getMouseRelative(itDom, e)
-    startX = pos.x
-    startY = pos.y
-
-    if (!maskDom) {
-        maskDom = document.createElement('div')
-        maskDom.className = 'it-calendar-select-mask'
-        maskDom.style.left = pos.x + 'px'
-        maskDom.style.top = pos.y + 'px'
-    }
-
-    isDown = true
-}
-
-function onMousemove (e:MouseEvent) {
-    const pos: Position = getMouseRelative(itDom, e)
-    if ((Math.abs(pos.x - startX) > 4 || Math.abs(pos.x - startY) > 4) && !isMove && isDown) {
-        isMove = true
-        itDom.appendChild(maskDom)
-    }
-    if (!isDown || !isMove) {
-        return
-    }
-
-    if (startX > pos.x) {
-        maskDom.style.right = itDom.clientWidth - startX + 'px'
-        maskDom.style.left = ''
-    } else {
-        maskDom.style.left = startX + 'px'
-        maskDom.style.right = ''
-    }
-
-    if (startY > pos.y) {
-        maskDom.style.bottom = itDom.clientHeight - startY + 'px'
-        maskDom.style.top = ''
-    } else {
-        maskDom.style.top = startY + 'px'
-        maskDom.style.bottom = ''
-    }
-
-    maskDom.style.width = Math.abs(pos.x - startX) + 'px'
-    maskDom.style.height = Math.abs(pos.y - startY) + 'px'
-}
-
-document.addEventListener('mouseup', () => {
-    isDown = false
-    isMove = false
-    if (maskDom) {
-        itDom.removeChild(maskDom)
-    }
-})
-
-/** 选择框 end =============================== */
 </script>
