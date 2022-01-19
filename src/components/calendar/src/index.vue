@@ -19,10 +19,9 @@
 </template>
 <script lang="ts" setup>
 import { withDefaults, defineProps, ref } from 'vue'
-import { Calendars, Position, Section } from './lib/type'
+import { Calendars } from './lib/type'
 import { outCalendar } from './lib/calendar'
 import { formatDateMonent } from '../../../util'
-import { getClassDom, getMouseRelative } from './lib/dom'
 import CalendarItem from './calendar-item';
 import ItMouseSelect from '../../mouse-select/src'
 // 月份所处的每一天
@@ -69,7 +68,8 @@ function onSelectDate (index:number, item:Calendars) {
             month: item.month,
             minDate: props.minDate,
             maxDate: props.maxDate,
-            disabled: props.disabled
+            disabled: props.disabled,
+            startWeek: 1
         })
     }
 }

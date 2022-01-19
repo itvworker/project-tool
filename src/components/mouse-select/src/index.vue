@@ -4,7 +4,22 @@
     </div>
 </template>
 <script lang="ts" setup >
+import { withDefaults, defineProps } from 'vue'
 import { getMouseRelative, getClassDom } from '../../../util/dom'
+
+// 月份所处的每一天
+export interface Props {
+    disabled?: boolean,
+    borderColor: string, // 'rgba(64, 158, 255, 1)'
+    maskBgColor: string // 'rgba(64, 158, 255, 0.2)'
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    disabled: false,
+    borderColor: 'rgba(64, 158, 255, 0.6)', // 'rgba(64, 158, 255, 1)'
+    maskBgColor: 'rgba(64, 158, 255, 0.2)' // 'rgba(64, 158, 255, 0.2)'
+})
+
 let isDown = false // 鼠标左健是否按下
 let itDom:HTMLElement // it-calendar-content 元素
 let maskDom:HTMLElement // 选择背景元素
@@ -44,8 +59,8 @@ function onMouseLeftButton (e:MouseEvent) {
         maskDom.style.left = pos.x + 'px'
         maskDom.style.top = pos.y + 'px'
         maskDom.style.position = 'absolute'
-        maskDom.style.backgroundColor = 'rgba(0,0,0,0.5)'
-        maskDom.style.border = '#000 solid 1px'
+        maskDom.style.backgroundColor = props.maskBgColor
+        maskDom.style.border = `${props.borderColor} solid 1px`
     }
 
     isDown = true
