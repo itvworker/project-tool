@@ -1,12 +1,9 @@
 <template>
     <el-container class="root-box">
-        <layout-menu />
-        <el-container>
-            <el-header>Header</el-header>
-            <el-main>
-                 <router-view />
-            </el-main>
-        </el-container>
+        <el-header><layout-menu /></el-header>
+        <el-main>
+            <router-view />
+        </el-main>
     </el-container>
 </template>
 <script lang="ts" setup>

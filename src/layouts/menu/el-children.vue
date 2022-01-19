@@ -12,12 +12,9 @@
         </template>
     </el-sub-menu>
     <!-- 如果是链接  -->
-    <router-link  :to="item.path"  v-if="item.type==='link'">
-        <el-menu-item :index="index" >
-            <el-icon :class="item.icon" v-if="item.icon"></el-icon>
-            {{item.label}}
-        </el-menu-item>
-    </router-link>
+    <el-menu-item class="el-menu-item-link" :index="index"  v-if="item.type==='link'">
+        <router-link class="link-route"  :to="item.path"  >{{item.label}}</router-link>
+    </el-menu-item>
 </template>
 <script lang="ts" setup>
 import { ElSubMenu, ElMenuItem, ElIcon } from 'element-plus'

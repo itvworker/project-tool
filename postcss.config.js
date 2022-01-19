@@ -4,4 +4,3 @@ module.exports = {
         'postcss-u2u': {}
     }
 }
-

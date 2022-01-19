@@ -11,14 +11,30 @@ const routes:Array<RouteRecordRaw> = [
                 component: () => import('@/views/index/index.vue')
             },
             {
-                path: '/form/select',
-                component: () => import('@/views/form/select/index.vue')
+                path: '/about',
+                component: () => import('@/views/about/index.vue')
+            },
+            {
+                path: '/pc',
+                component: () => import('@/views/pc/index.vue')
+            },
+            {
+                path: '/mobile',
+                component: () => import('@/views/mobile/index.vue')
             }
         ]
     },
     {
-        path: '/login',
-        component: () => import('@/views/login/index.vue')
+        path: '/demo',
+        component: () => import('@/views/demo/index.vue')
+    },
+    {
+        path: '/demo/swiper-mini',
+        component: () => import('@/mobile/swiper-mini/demo/index.vue')
+    },
+    {
+        path: '/demo/scroller',
+        component: () => import('@/mobile/scroller/demo/index.vue')
     }
 ]
 

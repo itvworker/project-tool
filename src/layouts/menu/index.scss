@@ -1,24 +1,23 @@
-.layout-left{
-    display: flex;
-    flex-direction: column;
-    background-color: #304156;
-    .el-scrollbar{
-        flex: 1;
-        ::deep .el-scrollbar__view {
-            min-height: 100%;
-        }
+.meunt-left {
+    flex: 1;
+    >.logo{
+        font-size: 22px;
+        color: #409eff;
+        display: flex;
+        height: 100%;
+        align-items: center;
     }
 }
-
-.el-menu-vertical:not(.el-menu-collapse) {
-    width: 200px;
-    min-height: 100%;
-    height: 100%;
+.link-route{
+    display: block;
+    width: 100%;
 }
-.logo{
-    height: 56px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.el-meun-bar {
+    :deep .el-menu-item-link{
+        padding: 0 !important;
+    }
+    :deep .link-route {
+        padding: 0 20px;
+        height: 100%;
+    }
 }
