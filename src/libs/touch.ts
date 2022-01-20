@@ -7,7 +7,7 @@
  * @param show 是否开启
  * @returns
  */
-export default function (startx:number, starty:number, endx: number, endy: number, show?:boolean) {
+export default function (startx:number, starty:number, endx: number, endy: number, show?:boolean):any {
     const angx = endx - startx
     const angy = endy - starty
     let result = 0

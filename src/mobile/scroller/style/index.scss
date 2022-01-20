@@ -4,13 +4,13 @@
     height: 100%;
     overflow: hidden;
 
-    >.it-scroller-content {
+    .it-scroller-content {
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
-        .it-scroll-touch {
+        .it-scroller-touch {
             position: relative;
             width: fit-content;
             min-width: 100%;
@@ -20,30 +20,45 @@
                 top: 0;
                 transform: translateY(-100%);
                 .spinner-holder{
-                    height: 60pt;
+                    height: 60ipx;
                     text-align: center;
                     -webkit-font-smoothing: antialiased;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    padding-top: 10pt;
+                    padding-top: 10ipx;
                     .arrow {
-                        width: 20ipx;
-                        height: 20ipx;
-                        margin: 8pt auto 0;
+                        width: 26ipx;
+                        height: 26ipx;
+                        margin: 8ipx auto 0;
                          transition: transform .2s linear;
+                         flex: 0 0 auto;
                         &.active{
                             transform: rotate(-180deg);
                         }
                     }
                     .spinner{
-                        width: 26pt;
-                        height: 26pt;
+                        width: 30ipx;
+                        height: 30ipx;
+                        flex: 0 0 auto;
                     }
                     .text{
-                        line-height: 26pt;
+                        line-height: 40ipx;
                     }
+                }
+            }
+
+            .it-scroller-more{
+                display: flex;
+                height: 50ipx;
+                align-items: center;
+                justify-content: center;
+                font-size: 14ipx;
+                color: #999;
+                .it-scroller-more-icon{
+                    width: 24ipx;
+                    margin-right: 10ipx;
                 }
             }
         } 
