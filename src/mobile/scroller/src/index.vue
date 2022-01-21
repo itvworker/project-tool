@@ -1,5 +1,6 @@
 <template>
     <div class="it-scroller" ref="el" @touchstart="onTouchstart"  @touchmove="onTouchmove" @touchend="onTouchend">
+        <slot name="outer"></slot>
         <div class="it-scroller-content">
             <div class="it-scroller-touch" ref="elScroller"> 
                 <div class="pull-top" v-if="pullDown" ref="elPull">
@@ -39,7 +40,7 @@
 <script lang="ts" setup>
 import Arrow from './components/Arrow.vue'
 import Spinner from './components/Spinner.vue'
-import { withDefaults, defineProps, ref, onMounted, defineEmits, nextTick, defineExpose} from 'vue'
+import { withDefaults, defineProps, ref, onMounted, defineEmits, nextTick, defineExpose, provide} from 'vue'
 import render from '../../../libs/render';
 import getDirection from '../../../libs/touch';
 const props = withDefaults(defineProps<{
@@ -150,8 +151,11 @@ defineExpose({
     refresh,
     infinite,
     setPosition,
-    getPosition
+    getPosition,
+    scrollTo
 })
+
+
 
 const emit = defineEmits(['scroll', 'infinite', 'stop', 'refresh']) // 注册事件
 const el = ref() // 父el
@@ -185,6 +189,15 @@ let isTouch = true;
 let startX = 0;
 let startY = 0;
 const touchMoveList:{x: number, y: number,time: number}[] = [];
+let testKey = false;
+
+const evelators:any = {};
+const fixeds: any = {};
+provide('evelatorChildren', evelators);
+provide('scrollY', scrollY)
+provide('fixeds', fixeds);
+provide('scrollX', scrollX)
+
 onMounted(()=>{
     scrollRender = render(elScroller.value);
     calcMax();
@@ -269,8 +282,8 @@ const stopStep:number = 2
 function scrollTo(_x:number, _y:number, _value:number=1) {
     scrollToX = _x;
     scrollToY = _y;
-    let _dx = scrollX - x;
-    let _dy = scrollY - y;
+    let _dx = scrollX - _x;
+    let _dy = scrollY - _y;
     stepY = _dy > 0? calcStep(_dy):-calcStep(_dy)
     stepX = _dx > 0? calcStep(_dx):-calcStep(_dx)
     stepX*= _value
@@ -306,7 +319,6 @@ function step() {
     let _scrollX = scrollX - stepX
     let _scrollY = scrollY - stepY
     
-
     //当快要滚动到指定点的Y轴时
     let arriveY = scrollToY!==null && ((stepY < 0 && _scrollY > scrollToY) || (stepY > 0 && _scrollY < scrollToY)) 
     if(arriveY &&  scrollToY!==null) {
@@ -325,7 +337,7 @@ function step() {
     }
 
     //当是指定滚动到某一点时
-    if(stepY > 0 && scrollToY!==null &&_scrollY < scrollToY) {
+    if(stepY > 0 && scrollToY!==null && _scrollY < scrollToY ) {
         stepY = 0;
         _scrollY = scrollToY;
         scrollToY = null;
@@ -382,7 +394,6 @@ function step() {
     }   
     if(props.pattern === 'auto' && direction === 'vertcial') {
         stepX = 0;
-        
     }
 
     scrollX = _scrollX;
@@ -569,6 +580,12 @@ function animate(speed:{x:number, y:number}) {
 const text = ref<string>('')
 const status = ref<number|null>(null)
 function changeScrollY() {
+    Object.keys(evelators).forEach(item => {
+        evelators[item]?.scroller(scrollY)
+    });
+    Object.keys(fixeds).forEach(item => {
+        fixeds[item](scrollX, scrollY)
+    });
     if(isTriggerPullDown.value) {
         text.value = props.refreshText;
         return
@@ -759,7 +776,7 @@ function onTouchend (e:TouchEvent) {
             scrollTo(0, scrollY, 1.5)
             return
         } 
-
+    
         if(scrollX > maxX) {
             scrollTo(maxX, scrollY, 1.5)
             return
@@ -775,24 +792,22 @@ function onTouchend (e:TouchEvent) {
                 if(!isTriggerPullDown.value && scrollY < pullDownPoint) {
                     isTriggerPullDown.value = true
                     emit('refresh');
-                    scrollTo(scrollX, pullDownPoint, 1.5)
+                    scrollTo(scrollX, pullDownPoint, 2)
                     return
                 }
 
                 if(scrollY < pullDownPoint) {
-                    scrollTo(scrollX, pullDownPoint, 1.5);
+                    scrollTo(scrollX, pullDownPoint, 2);
                     return
                 }
-                
-                
             }
-            
-            scrollTo(scrollX, 0 ,1.5)
+            scrollTo(scrollX, 0 ,2)
             return
         } 
 
         if(scrollY > maxY) {
-            scrollTo(scrollX, maxY, 1.5)
+            testKey = true;
+            scrollTo(scrollX, maxY, 2)
             return
         } 
     }

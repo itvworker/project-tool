@@ -35,6 +35,14 @@ const routes:Array<RouteRecordRaw> = [
     {
         path: '/demo/scroller',
         component: () => import('@/mobile/scroller/demo/index.vue')
+    },
+    {
+        path: '/demo/scroller/evelator',
+        component: () => import('@/mobile/scroller/demo/evelator.vue')
+    },
+    {
+        path: '/demo/scroller/produce',
+        component: () => import('@/mobile/scroller/demo/produce.vue')
     }
 ]
 
