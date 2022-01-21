@@ -43,6 +43,7 @@ function init(scrollY?:number) {
 
 const parent:any = inject('evelatorChildren');
 const initY:any = inject('scrollY');
+const setPosition:any = inject('setPosition')
 const emit = defineEmits(['show']) // 注册事件
 let id = (Math.random()*100000).toFixed(0)+ (Math.random()*100000).toFixed(0)
 parent[id] = {
@@ -68,6 +69,9 @@ function scroller(scrollY:number) {
     }
 }
 
+function scrollItem() {
+    setPosition(0, top)
+}
 onMounted(()=>{
     init(initY);
 })
@@ -78,7 +82,9 @@ onBeforeUnmount(()=>{
 })
 
 defineExpose({
-    init: init
+    init: init,
+    scrollItem: scrollItem,
+    top: top
 })
 
 </script>

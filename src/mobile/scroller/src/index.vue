@@ -4,9 +4,8 @@
         <div class="it-scroller-content">
             <div class="it-scroller-touch" ref="elScroller"> 
                 <div class="pull-top" v-if="pullDown" ref="elPull">
-                    <slot name='pull'>
+                    <slot name='pull' :status="status" :refresh="isTriggerPullDown">
                         <div class="spinner-holder">
-                            
                             <arrow
                                 class="arrow"
                                 :class="{'active': status}"
@@ -27,12 +26,13 @@
                 <div class="itv-scroller-msg">
                     <slot/>
                 </div>
-
-                <div class="it-scroller-more" ref="more" v-show='isMore && moreStatus!=="loadingStop"'>
-                    <spinner v-show="moreStatus !== 'none'" class="it-scroller-more-icon" :style="{fill: refreshLayerColor, stroke: refreshLayerColor}" />
-                    <span v-show="moreStatus === 'none'">{{noDataText}}</span>
-                    <span v-show="moreStatus !== 'none'">{{loadingText}}</span>
-                </div>
+                <slot name="more" :status="moreStatus">
+                    <div class="it-scroller-more" ref="more" v-show='isMore && moreStatus!=="loadingStop"'>
+                        <spinner v-show="moreStatus !== 'none'" class="it-scroller-more-icon" :style="{fill: refreshLayerColor, stroke: refreshLayerColor}" />
+                        <span v-show="moreStatus === 'none'">{{noDataText}}</span>
+                        <span v-show="moreStatus !== 'none'">{{loadingText}}</span>
+                    </div>
+                </slot>
             </div>
         </div>
     </div>
@@ -197,6 +197,8 @@ provide('evelatorChildren', evelators);
 provide('scrollY', scrollY)
 provide('fixeds', fixeds);
 provide('scrollX', scrollX)
+provide('scrollTo', scrollTo)
+provide('setPosition', setPosition)
 
 onMounted(()=>{
     scrollRender = render(elScroller.value);

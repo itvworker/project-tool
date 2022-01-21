@@ -14,6 +14,11 @@
                 外卖列表
                 <i class="icon-arrow rotate"></i>
             </div>
+
+            <div class="link-item" @click="toPage('/demo/scroller/list')">
+                下新刷新
+                <i class="icon-arrow rotate"></i>
+            </div>
         </div>
     </div>
 </template>
@@ -31,6 +36,7 @@ const lists = ref<Item[]>([]);
 const scroller = ref();
 const router = useRouter()
 const route = useRoute()
+
 function init() {
     for(let i = 0; i < 100; i++) {
         list.value.push({
