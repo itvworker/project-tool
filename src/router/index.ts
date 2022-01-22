@@ -47,7 +47,16 @@ const routes:Array<RouteRecordRaw> = [
     {
         path: '/demo/scroller/list',
         component: () => import('@/mobile/scroller/demo/list.vue')
+    },
+    {
+        path: '/demo/scroller/horizontal',
+        component: () => import('@/mobile/scroller/demo/horizontal.vue')
+    },
+    {
+        path: '/demo/scroller/freedom',
+        component: () => import('@/mobile/scroller/demo/freedom.vue')
     }
+    
 ]
 
 export default createRouter({

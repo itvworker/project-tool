@@ -66,9 +66,11 @@ function init() {
 
 function onSend(value: string | number) {
     currentMeun.value = value;
+    
 }
 
 function onScrollTo(index:number) {
+    page.refs.scroller.refresh();
     page.refs.evelator[index].scrollItem()
 }
 

@@ -534,6 +534,13 @@ function calcMoveSpeed() {
     if(_x <-props.maxSpeed) {
         _x = -props.maxSpeed
     }
+
+    if (props.pattern === 'horizontal') {
+        _y = 0
+    }
+    if (props.pattern === 'vertical') {
+        _x = 0
+    }
     return {
         x: _x,
         y: _y

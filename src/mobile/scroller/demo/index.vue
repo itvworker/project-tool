@@ -19,6 +19,16 @@
                 下新刷新
                 <i class="icon-arrow rotate"></i>
             </div>
+            <div class="link-item" @click="toPage('/demo/scroller/horizontal')">
+                横向滚动
+                <i class="icon-arrow rotate"></i>
+            </div>
+            <div class="link-item" @click="toPage('/demo/scroller/freedom')">
+                自由滚动
+                <i class="icon-arrow rotate"></i>
+            </div>
+
+            
         </div>
     </div>
 </template>
