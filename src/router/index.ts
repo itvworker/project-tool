@@ -24,6 +24,8 @@ const routes:Array<RouteRecordRaw> = [
             }
         ]
     },
+
+    
     {
         path: '/demo',
         component: () => import('@/views/demo/index.vue')
@@ -32,6 +34,8 @@ const routes:Array<RouteRecordRaw> = [
         path: '/demo/swiper-mini',
         component: () => import('@/mobile/swiper-mini/demo/index.vue')
     },
+
+
     {
         path: '/demo/scroller',
         component: () => import('@/mobile/scroller/demo/index.vue')
