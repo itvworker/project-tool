@@ -1,9 +1,9 @@
 <template>
-    <div class='it-swpier' :style="{'height': swiperHeight+'px'}" @resize="resize" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" @touchcancel="touchend" >
-        <div class="it-swpier-touch" @transitionend="aniamteend"   ref="box" :class="['it-swpier-flex-'+direction, {'it-swpier-animating':isAnimating, 'it-move-anmiating':isMove===1} ]" >
-            <div class="it-swpier-item" v-if="number >=2 && loop === true" v-html="lastOne"></div>    
+    <div ref="el" class='it-swiper-mini' :style="{'height': swiperHeight+'px'}" @resize="resize" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" @touchcancel="touchend" >
+        <div class="it-swiper-mini-touch" @transitionend="aniamteend"   ref="box" :class="['it-swiper-mini-flex-'+direction, {'it-swiper-mini-animating':isAnimating, 'it-move-anmiating':isMove===1} ]" >
+            <div class="it-swiper-mini-item last-one" v-if="items.length >=2 && loop === true" v-html="lastOne"></div>    
             <slot></slot>
-            <div class="it-swpier-item" v-if="number >=2 && loop === true" v-html="firstOne"></div>    
+            <div class="it-swiper-mini-item first-one" v-if="items.length >=2 && loop === true" v-html="firstOne"></div>    
         </div> 
         <slot name="dot"></slot>
     </div>
@@ -11,23 +11,24 @@
 <script lang="ts" setup>
 import render  from  '../../../libs/render'
 import getDirection from '../../../libs/touch'
-import { withDefaults, defineProps, watch, ref, onMounted, defineEmits, nextTick, defineExpose, provide} from 'vue'
+import { withDefaults, defineProps, watch, ComponentInternalInstance, ref, getCurrentInstance, onMounted, defineEmits, nextTick, defineExpose, provide, VNode} from 'vue'
+import { TimeoutHandle } from 'element-plus/es/utils/types'
 interface Props {
-    value: number
+    modelValue?: number
     //是否循环
-    loop: boolean,
+    loop?: boolean,
     //row为横向，column为纵向
-    direction: string,
-    bounce: boolean,
+    direction?: string,
+    bounce?: boolean,
     /**
      * 向下或向右滑动是否弹，此属只在0-max,最大张数间有数，例如有1234这个属性只在23中有效
      */
-    beginBounce: boolean,
-    swiperHeight: number | null,
+    beginBounce?: boolean,
+    swiperHeight?: number | null,
     /**
      * 向上或向左滑动是否弹，此属只在0-max,最大张数间有数，例如有1234这个属性只在23中有效
      */
-    endBounce: boolean
+    endBounce?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     value: 0,
@@ -50,12 +51,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 
 
-let isAnimating = false //动画是否在进行中，
+let isAnimating = ref<boolean>(false) //动画是否在进行中，
 let touchstartTime = 0 //touchstart开始的时间戳 
 let startX = 0 //touchstart的开始接触点
-let startY: 0 //touchstart的开始接触点
-let moveX: 0 //touch记录上次手指接触点
-let moveY: 0 //touch记录上次手指接触点
+let startY = 0 //touchstart的开始接触点
+let moveX = 0 //touch记录上次手指接触点
+let moveY = 0 //touch记录上次手指接触点
 let isTouch = false //手指是否接触了屏幕
 let elSize = 0 //元素的高或宽
 let nowIndex = 0 //当有滚动的张数
@@ -63,26 +64,46 @@ let intialIncex=0 //初始化是第一张的索引
 let intialLastIndex= 0 //初始化是后一张的索引
 let coordinate= 0 //滑动值
 let initialCoordinate= 0//上一次的位置
-let isMove= 0// 0为初始状态，1允许滑动，2不允许滑动
+let isMove= ref<number>(0)// 0为初始状态，1允许滑动，2不允许滑动
 let number= 0 //子元素张数
 let moveMax=0 //滑动的最大值
-let lastOne=''  //循环是复制后一张
-let firstOne= '' //循环是复制第一张
-let children = []
-let dom=''
+let lastOne = ref<string>()  //循环是复制后一张
+let firstOne= ref<string>() //循环是复制第一张
+let children = ref<ComponentInternalInstance[]>([]);
+let dom:(left: number, top: number, zoom: number)=>void;
+let items = ref<ComponentInternalInstance[]>([]);
 let winWidth = ref<number>(window.innerWidth) 
 let elPositon:any = {}
+const currentPage:any = getCurrentInstance()
+const emit = defineEmits(['update:modelValue', 'change', 'stop', 'refresh']) // 注册事件
+let screenType: string;
+let timeout:TimeoutHandle;
 
-const emit = defineEmits(['input', 'change', 'stop', 'refresh']) // 注册事件
+function changeItem() {
+    clearTimeout(timeout)
+    timeout = setTimeout(()=>{
+        items.value = children.value.sort((a:ComponentInternalInstance, b:ComponentInternalInstance)=>{
+            let start:any = a.refs.el;
+            let end:any = b.refs.el
+            if (props.direction === 'row') {
+            }
+            return start.offsetTop - end.offsetTop
+        })
+        init()
+    })
+}
 
+provide('children', children);
+provide('changeItem', changeItem)
 watch(winWidth, (n, o)=>{
     nextTick(()=>{
-        esize()
+        resize()
     })
 })
-watch(props.value, (n:number, o:number)=>{
+watch(()=>props.modelValue, (n:number, o:number) => {
+    
     let _coordinate = n*elSize;
-    if(props.isLoop) {
+    if(isLoop()) {
         _coordinate = ( n + 1)*elSize;
     }
 
@@ -90,374 +111,347 @@ watch(props.value, (n:number, o:number)=>{
         return
     }
     
+   
     scrollTo(n, true);
 })
 
+
+
+function thirdOne():number {
+    return parseInt((elSize/3).toString())
+}
+//是否满足循环需求
+function isLoop() {
+    return number > 2 && props.loop 
+}
+//现在所处大小
+function nowPosition() :number {
+    return nowIndex*elSize
+}
+    
+
+//判断是否为尽到滑动还要向尽头滑
+function isMoveMax(value:number):boolean {
+    if(coordinate<0 && value>0) return true
+    if(coordinate>moveMax && value<0) return true 
+    return false
+}
+//滑动后是切换到下张，还是上一张,
+function isSpeedDir() {
+    let remain = coordinate - nowIndex * elSize;
+    if(remain > 0 && remain > thirdOne()) {
+        return 'next' //下一张
+    }
+    if(remain < 0 && Math.abs(remain) > thirdOne()) {
+        return 'prev' //上一张
+    }
+    return 'now' //不变当前张
+}
+            
+
 //滚动到第几张,带动画
 function scrollTo(_value:number, _isAnimate: boolean) {
+    
     if(_value < 0 || _value >= number) return
-    isAnimating = !!_isAnimate;
+    isAnimating.value = !!_isAnimate;
     nextTick(()=>{
-        if(props.isLoop) {
+       
+        if(isLoop()) {
             nowIndex = _value + 1
-            return
         }else {
             nowIndex = _value;
         }
         coordinate = nowIndex*elSize;
+       
         setPostion();
-        emit('input', _value)
+        emit('update:modelValue', _value)
         emit('change', _value)
     })
     
 }
 
 function aniamteend() {
-    isAnimating = false;
-    if(props.isLoop && nowIndex === 0) {
+    isAnimating.value = false;
+    if(isLoop() && nowIndex === 0) {
         coordinate = number*elSize
         nowIndex = number
     }
 
-    if(props.isLoop && nowIndex > number) {
+    if(isLoop() && nowIndex > number) {
         coordinate = elSize
         nowIndex = 1;
         
     }
 
-    if(props.isLoop) {
+    if(isLoop()) {
         emit('change', nowIndex-1)
-        emit('input', nowIndex-1)
+        emit('update:modelValue', nowIndex-1)
         setPostion()
         return
     }
     
     emit('change', nowIndex)
-    emit('input', nowIndex)
+    emit('update:modelValue', nowIndex)
     
 }
 
 
-function clone() {
-    if(props.loop === false || this.$children.length <= 1) return
-}
+
 //设置box的高或宽
 function setElSize() {
-    if(this.direction==='row'){
-        elSize =  this.$el.clientWidth;
+    if(props.direction==='row'){
+        elSize =  currentPage.refs.el.clientWidth;
         return
     }
-    elSize =  this.$el.clientHeight;
-    this.elPositon = this.$el.getBoundingClientRect()
+    elSize = currentPage.refs.el.clientHeight;
+    elPositon = currentPage.refs.el.getBoundingClientRect()
     
 }
 //初始box的数量
 function initNumber() {
-    let number = 0;
-    this.children = []
-    this.$children.forEach(item=>{
-        if(item.name === 'it-swpier-item') {
-            number++
-            this.children.push(item)
-        }
-    })
-    this.number = number
+    number = items.value.length
 }
 //计算
 function calcMax() {
-    if(this.number>=2 &&  props.loop) {
-        this.moveMax = (this.number+1)*elSize
+    if(number>=2 &&  props.loop) {
+        moveMax = (number+1)*elSize
         return
     } 
-    this.moveMax = (this.number-1)*elSize
+    moveMax = (number-1)*elSize
 }
 //初始化位置，索引
 function initCoordinate() {
-    if(this.number>=2 &&  props.loop) {
-        this.intialIndex = 1
-        this.intialLastIndex = this.number
-        this.nowIndex = this.value + 1
-        this.coordinate = this.nowIndex*elSize
-        this.setPostion()
+    if(number>=2 &&  props.loop) {
+        intialIncex = 1
+        intialLastIndex = number
+        nowIndex = props.modelValue + 1
+     
+        coordinate = nowIndex*elSize
+        setPostion()
         return
     } 
-    this.intialIndex = 0
-    this.nowIndex = this.value;
-    this.coordinate = this.nowIndex*elSize
-    this.setPostion()
-    this.intialLastIndex = this.number-1;
+    intialIncex = 0
+    nowIndex = props.modelValue;
+    coordinate = nowIndex*elSize
+    setPostion()
+    intialLastIndex = number-1;
     
 }
 function clone() {
-    if(this.number>=2 &&  props.loop) {
-        this.firstOne = this.children[0].$el.innerHTML
-        this.lastOne = this.children[this.children.length-1].$el.innerHTML 
+    
+    if(number>=2 &&  props.loop) {
+        firstOne.value = items.value[0].refs.el.innerHTML
+        lastOne.value = items.value[items.value.length-1].refs.el.innerHTML
         return
     } 
 }
 function init() {
-    this.dom = render(this.$refs.box)
-    this.setElSize()
-    this.setElHeight()
-    this.initNumber()
-    this.calcMax()
-    this.initCoordinate();
-    this.clone();
+    dom = render(currentPage.refs.box);
+    setElSize()
+    initNumber()
+    calcMax()
+    clone()
+    initCoordinate();
+    isAnimating.value = false
+   
 }
 function resize() {
-    this.setElSize()
-    this.calcMax();
-    this.coordinate = this.nowIndex*elSize;
-    this.setPostion();
+    setElSize()
+    calcMax();
+    coordinate = nowIndex*elSize;
+    setPostion();
 
 }
 
 function setPostion() {
-    if(this.direction === 'row'){
-        this.dom(this.coordinate, 0 , 1)
+    if(props.direction === 'row'){
+        dom(coordinate, 0 , 1)
         return
     }
-    this.dom(0, this.coordinate, 1)
+    dom(0, coordinate, 1)
 }
 
 
-function touchstart(e) {
+function touchstart(e:TouchEvent) {
     
     //判断动画是否在进行中, 进行中禁止滑动
-    if (this.isAnimating) return
-    this.elPositon = this.$el.getBoundingClientRect()
-    this.isAnimating = false;
-    this.touchstartTime= new Date().getTime()
-    let self = e.targetTouches
-    this.$emit('touchstart')
-
+    if (isAnimating.value) {
+        aniamteend();
+    }
+    elPositon = currentPage.refs.el.getBoundingClientRect()
+    isAnimating.value = false;
+    touchstartTime= new Date().getTime()
+    let _self = e.targetTouches
     if (self.length <= 1) {
-        this.startX = self[0].pageX
-        this.startY = self[0].pageY
-        this.moveX = this.startX
-        this.moveY = this.startY
-        this.isTouch = true
+        startX = _self[0].pageX
+        startY = _self[0].pageY
+        moveX = startX
+        moveY = startY
+        isTouch = true
     }
 }
 
-function touchmove(e) {
-    if (!this.isTouch) {
+function touchmove(e:TouchEvent) {
+    if (!isTouch) {
         return false
     }
     
-    let self = e.targetTouches
-    let x = self[0].pageX
-    let y = self[0].pageY
+    let _self = e.targetTouches
+    let _x = _self[0].pageX
+    let _y = _self[0].pageY
     e.preventDefault()
-    let positon = this.elPositon
-    if(x < positon.left || x > positon.right ||  y < positon.top ||  y > positon.bottom) {
-        this.touchend(e)
+    let _positon = elPositon
+    if(_x < _positon.left || _x > _positon.right ||  _y < _positon.top ||  _y > _positon.bottom) {
+        console.log(_x, _positon.left, _positon.right);
+        touchend(e)
         return
     }
         
-    let obj = getDirection(this.moveX, this.moveY, x, y, this.screenType)
+    let obj = getDirection(moveX, moveY, _x, _y, !!screenType)
     
     
-    if(obj.type > 2 && this.isMove === 0) {
-        this.screenType = 'progress'
-        if(this.direction === 'row') {
-            this.isMove = 1
+    if(obj.type > 2 && isMove.value === 0) {
+        screenType = 'progress'
+        if(props.direction === 'row') {
+            isMove.value = 1
         }else{
-            this.isMove = 2
+            isMove.value = 2
         }
     }
 
-    if(obj.type >= 1 && obj.type <= 2 && this.isMove === 0) {
-        this.screenType = 'vertical'
-        this.isMove = true
-        if(this.direction === 'column') {
-            this.isMove = 1
+    if(obj.type >= 1 && obj.type <= 2 && isMove.value === 0) {
+        screenType = 'vertical'
+        if(props.direction === 'column') {
+            isMove.value = 1
         }else{
-            this.isMove = 2
+            isMove.value = 2
         }
     }
 
     
-    if (this.isMove===1) {
+    if (isMove.value===1) {
         e.preventDefault()
         // e.stopPropagation()
     }
 
-    if (obj.type > 0 && this.isMove===1) {
+    if (obj.type > 0 && isMove.value===1) {
         //   e.preventDefault();
         
-        this.moveX = x
-        this.moveY = y
+        moveX = _x
+        moveY = _y
     
-        switch (this.screenType) {
+        switch (screenType) {
             case 'vertical':
-                if(this.isMoveMax(obj.angy)) {
-                    let post = this.coordinate - obj.angy*0.4;
-                    this.coordinate = post
-                    
+                if(isMoveMax(obj.angy)) {
+                    let post = coordinate - obj.angy*0.4;
+                    coordinate = post
                 }else{
-                    
-                    if((this.beginBounce && obj.type === 2 && this.coordinate < this.nowPosition)||(this.endBounce && obj.type === 1 && this.coordinate > this.nowPosition)) {
-                        this.coordinate -= obj.angy*0.4;
+                    if((props.beginBounce && obj.type === 2 && coordinate < nowPosition())
+                    ||(props.endBounce && obj.type === 1 && coordinate > nowPosition())) {
+                        coordinate -= obj.angy*0.4;
                     }else{
-                        this.coordinate -= obj.angy;
+                        coordinate -= obj.angy;
                     }
-                    
                 }
-                
-                    
-
                 break
             case 'progress':
                 
                 
-                if(this.isMoveMax(obj.angx)) {
-                
-                    // this.coordinate -= obj.angx*0.4;
-                        let post = this.coordinate - obj.angx*0.4;
-                    this.coordinate = post
+                if(isMoveMax(obj.angx)) {
+                    let post = coordinate - obj.angx*0.4;
+                    coordinate = post
                 }else{
                     
-                    // this.coordinate -= obj.angx;
-                    
-                    if((this.beginBounce && obj.type === 4 && this.coordinate < this.nowPosition)||(this.endBounce && obj.type === 3 && this.coordinate > this.nowPosition)) {
-                        this.coordinate -= obj.angx*0.4;
+                    if((props.beginBounce && obj.type === 4 && coordinate < nowPosition())
+                    ||(props.endBounce && obj.type === 3 && coordinate > nowPosition())) {
+                        coordinate -= obj.angx*0.4;
                     }else{
-                        this.coordinate -= obj.angx;
+                        coordinate -= obj.angx;
                     }
                 }   
                 break
         }
 
-        if(!this.bounce) {
-            if(this.coordinate<=0) {
-                this.coordinate = 0;
+        if(!props.bounce) {
+            if(coordinate <= 0) {
+                coordinate = 0;
             }
-            if(this.coordinate >= this.moveMax) {
-                this.coordinate = this.moveMax;
-            }
-
-            if(this.coordinate > this.moveMax || this.coordinate<=0) {
-                
+            if(coordinate >= moveMax) {
+                coordinate = moveMax;
             }
         }
-        this.setPostion()
+        setPostion()
     }
 }
-function touchend(e) {
-    this.$emit('touchend')
-    this.isTouch = false
-    this.isMove = 0
-    let screenType = this.screenType
-    this.screenType = ''
+function touchend(e:TouchEvent) {
+   
+    isTouch = false
+    isMove.value = 0
+    let _screenType = screenType
+    screenType = ''
     let self = e.targetTouches
-    if (screenType) {
+    if (_screenType) {
             
-            let now = new Date().getTime()
-            let dis = this.moveX - this.startX
-            if(this.direction === 'column') {
-                dis = this.moveY - this.startY
+            let _now = new Date().getTime()
+            let _dis = moveX - startX
+            if(props.direction === 'column') {
+                _dis = moveY - startY
             }
             
             
-            let isfast = Math.abs(dis) > 20 && now - this.touchstartTime < 300 //是否快速滑过
-            let isChangePos = Math.abs(this.coordinate)%elSize; //是否有移动
+            let _isfast = Math.abs(_dis) > 20 && _now - touchstartTime < 300 //是否快速滑过
+            let _isChangePos = Math.abs(coordinate)%elSize; //是否有移动
             
-            if(isChangePos){
-                this.isAnimating = true
+            if(_isChangePos){
+                isAnimating.value= true
             } 
 
             //滑动到最小值
-            if(this.coordinate<=0) {
-                this.coordinate = 0;
-                this.nowIndex = 0
-                this.setPostion()
-                this.$emit('first') 
+            if(coordinate<=0) {
+                coordinate = 0;
+                nowIndex = 0
+                setPostion()
                 return
             }
                 
                 //滑动到最大值
-            if(this.coordinate >= this.moveMax) {
-                this.coordinate = this.moveMax;
-                this.setPostion()
-                this.$emit('last') 
+            if(coordinate >= moveMax) {
+                coordinate = moveMax;
+                setPostion()
                 return
             }
             //快速滑过
                 
                 
-            if((isfast && dis<-20) || this.isSpeedDir()==='next') {
-                if(!this.endBounce) {
-                    this.nowIndex++;
+            if((_isfast && _dis<-20) || isSpeedDir()==='next') {
+                if(!props.endBounce) {
+                    nowIndex++;
                 }
-                
-                this.coordinate = this.nowIndex*elSize;
-                this.setPostion() 
+                coordinate = nowIndex*elSize;
+                setPostion() 
                 return    
             }
 
-            if((isfast && dis>20)||this.isSpeedDir()==='prev') {
-                if(!this.beginBounce) {
-                    this.nowIndex--;
+            if((_isfast && _dis>20)||isSpeedDir()==='prev') {
+                if(!props.beginBounce) {
+                    nowIndex--;
                 }
-                
-                this.coordinate = this.nowIndex*elSize
-                this.setPostion()     
+                coordinate = nowIndex*elSize
+                setPostion()     
                 return
             }
         
-            this.coordinate = this.nowIndex * elSize;
-            this.setPostion()
+            coordinate = nowIndex * elSize;
+            setPostion()
     }
 }
        
+onMounted(()=>{
+    window.addEventListener('resize', ()=>{
+        winWidth.value = window.innerWidth
+    })  
+})
 
-init()
-window.addEventListener('resize', ()=>{
-    this.winWidth = window.innerWidth
-})       
-export default {
-    name: "it-swiper",
-  
-   
-   
-    watch: {
-         winWidth() {
-            this.$nextTick(()=>{
-                 this.resize();
-            })
-           
-        },
-        value(n, old) {
-            let coordinate = n*elSize;
-            if(props.isLoop) {
-                coordinate = ( n + 1)*elSize;
-            }
+     
 
-            if(coordinate === this.coordinate) {
-                return
-            }
-           
-            this.scrollTo(n, true);
-            
-        }
-    },
-    computed: {
-        oneSize() {
-            
-        }
-    },
-    methods: {
-        
-    },
-    
-    mounted() {
-        
-
-    }
-}
 </script>
-<style lang="less" scoped>
-@import '../../assets/css/it-theme.less';
-@import 'it-swiper.less';
-</style>

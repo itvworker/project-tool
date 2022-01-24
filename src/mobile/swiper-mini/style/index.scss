@@ -1,15 +1,15 @@
-.it-swpier{
+.it-swiper-mini{
     overflow: hidden;
     width: 100%;
     position: relative;
 }
-.it-swpier-flex-column{
+.it-swiper-mini-flex-column{
     flex-direction: column;
     position: relative;
     display: flex;
     width: 100%;
     height: 100%;
-    :deep .it-swpier-item{
+    .it-swiper-mini-item{
         flex: 1;
         height: 100%;
         width: 100%;
@@ -17,18 +17,17 @@
     }
 }
 
-.itv-swpier-flex-row{
+.it-swiper-mini-flex-row{
     display: flex;
     width: 100%;
     height: 100%;
-    :deep .its-swpier-item{
+    .it-swiper-mini-item{
         width: 100%;
         flex:  0 0 auto;
     }
-    
 }
 
-.itv-swpier-animating{
+.it-swiper-mini-animating{
     transition: all 200ms ease 0s;
 }
 
