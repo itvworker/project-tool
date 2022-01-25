@@ -15,7 +15,6 @@
                         {{item.title}}
                     </div>
                 </div>
-                
                  <!-- <template #more="{status}">
                     {{status}}
                 </template> -->
@@ -24,62 +23,51 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, getCurrentInstance } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
+import { ref, onMounted, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import ItScroller from '../src/index.vue'
-import ItScrollerEvelator from '../src/scroller-evelator/index.vue'
-import ItScrollerFixed from '../src/scroller-fixed/index.vue'
 import '../style/index.scss'
 interface Item {
     title: string
 }
-'infinite', 'stop', 'refresh'
 
-const list = ref<Item[]>([]);
-const evelator = ref();
-const currentMeun = ref<number>(0)
+const list = ref<Item[]>([])
 const router = useRouter()
-const route = useRoute()
-const page = getCurrentInstance();
-let num = 0;
-function init() {
-    for(let i = 0; i < 30; i++) {
+const page = getCurrentInstance()
+let num = 0
+function init () {
+    for (let i = 0; i < 30; i++) {
         list.value.push({
-            title: '奶茶'+num
+            title: `奶茶${num}`
         })
         num++
     }
 }
 
-
-function onInfinite() {
-    setTimeout(()=>{
+function onInfinite () {
+    setTimeout(() => {
         init()
-        if(num>100) {
-            page.refs.scroller.infinite(true);
-        }else{
-            page.refs.scroller.infinite(false);
+        if (num > 100) {
+            page.refs.scroller.infinite(true)
+        } else {
+            page.refs.scroller.infinite(false)
         }
-        
-    },1000)
-  
+    }, 1000)
 }
 
-function onRefresh(index:number) {
-    num = 0;
-    
-    setTimeout(()=>{
-        list.value = [];
+function onRefresh () {
+    num = 0
+    setTimeout(() => {
+        list.value = []
         init()
         page.refs.scroller.refresh()
-        page.refs.scroller.infinite(false);
-    },1000)
+        page.refs.scroller.infinite(false)
+    }, 1000)
 }
 
 init()
-onMounted(()=>{
-    console.log(page);
-    
+onMounted(() => {
+    console.log(page)
 })
 
 </script>

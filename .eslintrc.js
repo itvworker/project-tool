@@ -42,7 +42,7 @@ module.exports = {
      '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
      '@typescript-eslint/consistent-type-imports': [
        'error',
-      { disallowTypeAnnotations: false },
+      { disallowTypeAnnotations: false }],
   },
   overrides: [
     {

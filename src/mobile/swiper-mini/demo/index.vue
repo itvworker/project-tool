@@ -10,13 +10,13 @@
                 <it-swiper-mini-item v-for="(item, index) in list" :key="index">
                     <div class="demo-banner" :class="item.className">{{index}}</div>
                 </it-swiper-mini-item>
-               
+
                 <template #dot>
                     <div class="dot-bar">
                         <div class="dot" v-for="(item, index) in list" :key="index" :class="{'active': rowIndex===index}" @click="change(index)">1</div>
                     </div>
                 </template>
-                
+
             </it-swiper-mini>
 
             <h2>坚向</h2>
@@ -24,20 +24,19 @@
                 <it-swiper-mini-item v-for="(item, index) in list" :key="index">
                     <div class="demo-banner" :class="item.className">{{index}}</div>
                 </it-swiper-mini-item>
-               
+
                 <template #dot>
                     <div class="dot-bar">
                         <div class="dot" v-for="(item, index) in list" :key="index" :class="{'active': rowIndex===index}" @click="change(index)">1</div>
                     </div>
                 </template>
-                
+
             </it-swiper-mini>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
+import { ref } from 'vue'
 import ItSwiperMini from '../src/index.vue'
 import ItSwiperMiniItem from '../src/swiper-mini-item/index.vue'
 import '../style/index.scss'
@@ -46,33 +45,29 @@ interface Item {
     className: string
 }
 
-
-const router = useRouter()
-const route = useRoute()
 const rowIndex = ref(2)
-const columnIndex = ref(2)
 const list = ref<Item[]>([])
 
-function init(index: number) {
+function init (index: number) {
     list.value = []
-    for(let i = 0; i < index; i++) {
-        let className = 'banner-1'
-        if(i%2 != 0) {
-            className = 'banner-2'
+    for (let i = 0; i < index; i++) {
+        let classNames = 'banner-1'
+        if (i % 2 !== 0) {
+            classNames = 'banner-2'
         }
         list.value.push({
-            name:"banner"+i,
-            className: className
+            name: `banner${i}`,
+            className: classNames
         })
     }
 }
-function row(e:TouchEvent) {
-    console.log(e);
+function row (e:TouchEvent) {
+    console.log(e)
 }
-function change(index:number) {
-    rowIndex.value = index;
+function change (index:number) {
+    rowIndex.value = index
 }
-init(6);
+init(6)
 
 </script>
 <style lang="scss" scoped>
@@ -91,18 +86,16 @@ init(6);
 
 .banner-1{
     background-color: #eee;
-    
 }
 .banner-2{
     background-color: #ddd;
-   
 }
 .banner-2,.banner-1 {
       height: 200px;
     align-items: center;
     justify-content: center;
     display: flex;
-    font-size: 100ipx;   
+    font-size: 100ipx;
 }
 .itv-swpier-height {
     height:200ipx;
@@ -134,6 +127,5 @@ init(6);
             color: #fff;
         }
     }
-    
 }
 </style>

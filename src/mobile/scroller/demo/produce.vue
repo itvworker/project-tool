@@ -6,17 +6,14 @@
         </div>
         <div class="demo-main">
             <it-scroller ref="scroller" class="left">
-               
                 <div class="item-btn" @click="onScrollTo(index)" :class="{'active': currentMeun === index}" v-for="(item, index) in list" :key="index" :id="index" @show="onSend" >
                     {{item.title}}
                 </div>
             </it-scroller>
             <it-scroller ref="scroller" class="right">
-               
                 <it-scroller-evelator ref="evelator" v-for="(item, index) in list" :key="index" :id="index" @show="onSend" >
                     <template #header>
                         <div class="header-domo">{{item.title}} {{index}}</div>
-                       
                     </template>
                      <div class="item-demo" v-for="(t, i) in item.children" :key="i">
                         {{t.name}}
@@ -27,57 +24,50 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, getCurrentInstance } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
+import { ref, onMounted, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import ItScroller from '../src/index.vue'
 import ItScrollerEvelator from '../src/scroller-evelator/index.vue'
-import ItScrollerFixed from '../src/scroller-fixed/index.vue'
 import '../style/index.scss'
-interface Item {
-    title: string,
-    children: Children[]
-}
+
 interface Children {
     name: string,
     time: string | number
 }
+interface Item {
+    title: string,
+    children: Children[]
+}
 
-const list = ref<Item[]>([]);
-const evelator = ref();
+const list = ref<Item[]>([])
+const evelator = ref()
 const currentMeun = ref<number>(0)
 const router = useRouter()
-const route = useRoute()
-const page = getCurrentInstance();
-function init() {
-    for(let i = 0; i < 30; i++) {
-        let children:Children[] = []
-        for(let a = 0; a < 20; a++) {
+const page = getCurrentInstance()
+function init () {
+    for (let i = 0; i < 30; i++) {
+        const children:Children[] = []
+        for (let a = 0; a < 20; a++) {
             children.push({
-                name: '新联'+i+a,
+                name: `新联${i}${a}`,
                 time: new Date().getTime()
             })
         }
         list.value.push({
-            title: '奶茶'+i,
-            children: children
+            title: `奶茶${i}`,
+            children
         })
     }
 }
 
-function onSend(value: string | number) {
-    currentMeun.value = value;
-    
-}
-
-function onScrollTo(index:number) {
-    page.refs.scroller.refresh();
+function onScrollTo (index:number) {
+    page.refs.scroller.refresh()
     page.refs.evelator[index].scrollItem()
 }
 
 init()
-onMounted(()=>{
-    console.log(page);
-    
+onMounted(() => {
+    console.log(page)
 })
 
 </script>

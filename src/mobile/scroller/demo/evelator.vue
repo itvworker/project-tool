@@ -6,11 +6,9 @@
         </div>
         <div class="demo-main">
             <it-scroller ref="scroller">
-               
                 <it-scroller-evelator v-for="(item, index) in list" :key="index" :id="index" @show="onSend" >
                     <template #header>
                         <div class="header-domo">{{item.title}} {{index}}</div>
-                       
                     </template>
                      <div class="item-demo" v-for="(t, i) in item.children" :key="i">
                         {{t.name}}
@@ -21,45 +19,42 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import ItScroller from '../src/index.vue'
 import ItScrollerEvelator from '../src/scroller-evelator/index.vue'
-import ItScrollerFixed from '../src/scroller-fixed/index.vue'
 import '../style/index.scss'
-interface Item {
-    title: string,
-    children: Children[]
-}
+
 interface Children {
     name: string,
     time: string | number
 }
+interface Item {
+    title: string,
+    children: Children[]
+}
 
-const list = ref<Item[]>([]);
+const list = ref<Item[]>([])
 const router = useRouter()
-const route = useRoute()
-function init() {
-    for(let i = 0; i < 10; i++) {
-        let children:Children[] = []
-        for(let a = 0; a < 20; a++) {
+function init () {
+    for (let i = 0; i < 30; i++) {
+        const children:Children[] = []
+        for (let a = 0; a < 20; a++) {
             children.push({
-                name: '新联'+i+a,
+                name: `新联${i}${a}`,
                 time: new Date().getTime()
             })
         }
         list.value.push({
-            title: '奶茶'+i,
-            children: children
+            title: `奶茶${i}`,
+            children
         })
     }
 }
 
-function onSend(value: string | number) {
-    console.log(value);
-    
+function onSend (value: string | number) {
+    console.log(value)
 }
-
 
 init()
 

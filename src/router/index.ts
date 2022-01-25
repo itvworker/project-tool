@@ -1,4 +1,5 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 const routes:Array<RouteRecordRaw> = [
     {
@@ -25,42 +26,49 @@ const routes:Array<RouteRecordRaw> = [
         ]
     },
 
-    
     {
         path: '/demo',
-        component: () => import('@/views/demo/index.vue')
-    },
-    {
-        path: '/demo/swiper-mini',
-        component: () => import('@/mobile/swiper-mini/demo/index.vue')
-    },
-
-
-    {
-        path: '/demo/scroller',
-        component: () => import('@/mobile/scroller/demo/index.vue')
-    },
-    {
-        path: '/demo/scroller/evelator',
-        component: () => import('@/mobile/scroller/demo/evelator.vue')
-    },
-    {
-        path: '/demo/scroller/produce',
-        component: () => import('@/mobile/scroller/demo/produce.vue')
-    },
-    {
-        path: '/demo/scroller/list',
-        component: () => import('@/mobile/scroller/demo/list.vue')
-    },
-    {
-        path: '/demo/scroller/horizontal',
-        component: () => import('@/mobile/scroller/demo/horizontal.vue')
-    },
-    {
-        path: '/demo/scroller/freedom',
-        component: () => import('@/mobile/scroller/demo/freedom.vue')
+        component: () => import('@/App.vue'),
+        redirect: '/demo/index',
+        children: [
+            {
+                path: '/demo/index',
+                component: () => import('@/view/demo/index.vue')
+            },
+            {
+                path: '/demo/swiper-mini',
+                component: () => import('@/mobile/swiper-mini/demo/index.vue')
+            },
+            {
+                path: '/demo/scroller',
+                component: () => import('@/mobile/scroller/demo/index.vue')
+            },
+            {
+                path: '/demo/scroller-evelator',
+                component: () => import('@/mobile/scroller/demo/evelator.vue')
+            },
+            {
+                path: '/demo/scroller-produce',
+                component: () => import('@/mobile/scroller/demo/produce.vue')
+            },
+            {
+                path: '/demo/scroller-list',
+                component: () => import('@/mobile/scroller/demo/list.vue')
+            },
+            {
+                path: '/demo/scroller-horizontal',
+                component: () => import('@/mobile/scroller/demo/horizontal.vue')
+            },
+            {
+                path: '/demo/scroller-freedom',
+                component: () => import('@/mobile/scroller/demo/freedom.vue')
+            },
+            {
+                path: '/demo/scale',
+                component: () => import('@/mobile/scale/demo/index.vue')
+            }
+        ]
     }
-    
 ]
 
 export default createRouter({

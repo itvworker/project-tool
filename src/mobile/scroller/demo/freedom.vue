@@ -5,7 +5,7 @@
             自由滚动
         </div>
         <div class="demo-main">
-            <it-scroller ref="scroller" @infinite="onInfinite" @refresh="onRefresh"  pattern="freedom">
+            <it-scroller ref="scroller" pattern="freedom">
                 <div class="scroller-content">
                圆饼状的全天候魂导侦察机掠过海面缓缓行进，远处，已经可以见到白皑皑的雪线。
 
@@ -90,7 +90,7 @@
 -----------------------------
 
 斗罗4正式开启，今天，也是我们斗罗系列的十周年纪念日，谢谢大家十年以来相濡以沫的支持与喜爱，小唐一定努力写出一个让大家满意的斗罗4.终极斗罗，开始上演。爱你们。也请你们继续爱着你们的斗罗吧。每天两更，这是今天的第一更，晚上还有。
-           
+
            天斗星作为第一颗被人类发现并且移民成功的行政星，距今已经有数千年的历史了。这颗星球大约有原本斗罗星二分之一大，星球表面有百分之五十四被海洋覆盖，其中百分之四十为淡水海，另外百分之六十才是盐水海。
 
 星球表面本来是没有生物的，是人类到来之后，凭借着科技的力量对于整个星球表面进行开发。
@@ -190,64 +190,14 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, getCurrentInstance } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
+import { ref, onMounted, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import ItScroller from '../src/index.vue'
-import ItScrollerEvelator from '../src/scroller-evelator/index.vue'
-import ItScrollerFixed from '../src/scroller-fixed/index.vue'
 import '../style/index.scss'
 interface Item {
     title: string
 }
-
-
-const list = ref<Item[]>([]);
-const evelator = ref();
-const currentMeun = ref<number>(0)
 const router = useRouter()
-const route = useRoute()
-const page = getCurrentInstance();
-let num = 0;
-function init() {
-    for(let i = 0; i < 30; i++) {
-        list.value.push({
-            title: '奶茶'+num
-        })
-        num++
-    }
-}
-
-
-function onInfinite() {
-    setTimeout(()=>{
-        init()
-        if(num>100) {
-            page.refs.scroller.infinite(true);
-        }else{
-            page.refs.scroller.infinite(false);
-        }
-        
-    },1000)
-  
-}
-
-function onRefresh(index:number) {
-    num = 0;
-    
-    setTimeout(()=>{
-        list.value = [];
-        init()
-        page.refs.scroller.refresh()
-        page.refs.scroller.infinite(false);
-    },1000)
-}
-
-init()
-onMounted(()=>{
-    console.log(page);
-    
-})
-
 </script>
 <style lang="scss" scoped>
 .demo-main {

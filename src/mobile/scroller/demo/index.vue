@@ -5,7 +5,6 @@
             scroller
         </div>
         <div class="demo-main">
-            
             <div class="link-item" @click="toPage('/demo/scroller/evelator')">
                 电梯
                 <i class="icon-arrow rotate"></i>
@@ -28,70 +27,63 @@
                 <i class="icon-arrow rotate"></i>
             </div>
 
-            
         </div>
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import '../style/index.scss'
 interface Item {
     name: string,
     time: number
 }
 
-const list = ref<Item[]>([]);
-const lists = ref<Item[]>([]);
-const scroller = ref();
+const list = ref<Item[]>([])
+const lists = ref<Item[]>([])
+const scroller = ref()
 const router = useRouter()
-const route = useRoute()
 
-function init() {
-    for(let i = 0; i < 100; i++) {
+function init () {
+    for (let i = 0; i < 100; i++) {
         list.value.push({
-            name: '新联'+i,
+            name: `新联${i}`,
             time: new Date().getTime()
         })
     }
 
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
         lists.value.push({
-            name: 'elevator'+i,
+            name: `elevator${i}`,
             time: new Date().getTime()
         })
     }
 }
 
-function onSend(value: string | number) {
-    console.log(value);
-    
-}
-onMounted(()=>{
-    console.log(scroller);
-    
+onMounted(() => {
+    console.log(scroller)
 })
-function onScroll(value:any) {
-    
+function onScroll (value:any) {
+    console.log(value)
 }
 
-function toPage(path:string) {
+function toPage (path:string) {
     router.push({
-        path: path
+        path
     })
 }
 
-function onRefresh() {
-    setTimeout(()=>{
-        scroller.value.refresh();
-        scroller.value.infinite(false);
-    },2000) 
+function onRefresh () {
+    setTimeout(() => {
+        scroller.value.refresh()
+        scroller.value.infinite(false)
+    }, 2000)
 }
 
-function onInfinite() { 
-    setTimeout(()=>{
+function onInfinite () {
+    setTimeout(() => {
         scroller.value.infinite(false)
-    },2000) 
+    }, 2000)
 }
 init()
 

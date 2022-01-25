@@ -10,81 +10,75 @@
 </template>
 
 <script lang="ts" setup>
-import render from '../../../../libs/render';
-import { ref, onMounted, getCurrentInstance, inject, onBeforeUnmount, defineExpose } from 'vue'
+import render from '../../../../libs/render'
+import { ref, onMounted, withDefaults, defineProps, defineEmits, inject, onBeforeUnmount, defineExpose } from 'vue'
 const el = ref()
-let top = 0;
-let height = 0;
-let header:(left: number, top: number, zoom: number)=>void;
-let headerHeight = 0;
-let maxY = 0;
-let y = 0;
-const page = getCurrentInstance();
-
-export interface Props {
+let top = 0
+let height = 0
+let header:(left: number, top: number, zoom: number)=>void
+let headerHeight = 0
+let maxY = 0
+let y = 0
+interface Props {
     id?: number | string, // 最大日期 精确到天
 }
-let renderScroller:(left: number, top: number, zoom: number)=>void;
+
 const props = withDefaults(defineProps<Props>(), {
     id: 0
 })
 
-function init(scrollY?:number) {
-    top = el.value.offsetTop;
-    height = el.value.clientHeight;
-    header = render(el.value.children[0]);
-    headerHeight = el.value.children[0].clientHeight;
-    maxY = height - headerHeight;
-    if(scrollY) {
+function init (scrollY?:number) {
+    top = el.value.offsetTop
+    height = el.value.clientHeight
+    header = render(el.value.children[0])
+    headerHeight = el.value.children[0].clientHeight
+    maxY = height - headerHeight
+    if (scrollY) {
         scroller(scrollY)
     }
 }
 
-
-const parent:any = inject('evelatorChildren');
-const initY:any = inject('scrollY');
+const parent:any = inject('evelatorChildren')
+const initY:any = inject('scrollY')
 const setPosition:any = inject('setPosition')
 const emit = defineEmits(['show']) // 注册事件
-let id = (Math.random()*100000).toFixed(0)+ (Math.random()*100000).toFixed(0)
+const id = (Math.random() * 100000).toFixed(0) + (Math.random() * 100000).toFixed(0)
 parent[id] = {
-    scroller: scroller,
-    init: init
+    scroller,
+    init
 }
-function scroller(scrollY:number) {
-    
-    if(scrollY > top ) {
-        let _y =scrollY-top;
-        if(_y>maxY) {
+function scroller (scrollY:number) {
+    if (scrollY > top) {
+        let _y = scrollY - top
+        if (_y > maxY) {
             _y = maxY
         }
         y = _y
-        header(0,-y,1)
-    }else{
+        header(0, -y, 1)
+    } else {
         y = 0
-        header(0,-y,1)
+        header(0, -y, 1)
     }
-    if(scrollY >= top && top+height > scrollY) {
-        
+    if (scrollY >= top && top + height > scrollY) {
         emit('show', props.id)
     }
 }
 
-function scrollItem() {
+function scrollItem () {
     setPosition(0, top)
 }
-onMounted(()=>{
-    init(initY);
+onMounted(() => {
+    init(initY)
 })
 
-
-onBeforeUnmount(()=>{
+onBeforeUnmount(() => {
     delete parent[id]
 })
 
 defineExpose({
-    init: init,
-    scrollItem: scrollItem,
-    top: top
+    init,
+    scrollItem,
+    top
 })
 
 </script>

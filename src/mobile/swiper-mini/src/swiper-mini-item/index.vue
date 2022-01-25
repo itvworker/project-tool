@@ -4,16 +4,15 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { withDefaults, defineProps,  inject,  defineExpose, ComponentInternalInstance, getCurrentInstance, onMounted} from 'vue'
+import { withDefaults, defineProps, inject, getCurrentInstance } from 'vue'
 interface Props {
     swiperHeight?: number |null
 }
-const app = null;
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
     swiperHeight: null
 })
-const parent:any = inject('children');
+const parent:any = inject('children')
 const changeItem:any = inject('changeItem')
-parent.value.push(getCurrentInstance());
-changeItem();
+parent.value.push(getCurrentInstance())
+changeItem()
 </script>

@@ -35,6 +35,7 @@ export default {
     server: {
         fs: {
             strict: false
-        }
+        },
+        host: '0.0.0.0'
     }
 }
