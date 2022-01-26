@@ -44,28 +44,32 @@ const routes:Array<RouteRecordRaw> = [
                 component: () => import('@/mobile/scroller/demo/index.vue')
             },
             {
-                path: '/demo/scroller-evelator',
+                path: '/demo/scroller/evelator',
                 component: () => import('@/mobile/scroller/demo/evelator.vue')
             },
             {
-                path: '/demo/scroller-produce',
+                path: '/demo/scroller/produce',
                 component: () => import('@/mobile/scroller/demo/produce.vue')
             },
             {
-                path: '/demo/scroller-list',
+                path: '/demo/scroller/list',
                 component: () => import('@/mobile/scroller/demo/list.vue')
             },
             {
-                path: '/demo/scroller-horizontal',
+                path: '/demo/scroller/horizontal',
                 component: () => import('@/mobile/scroller/demo/horizontal.vue')
             },
             {
-                path: '/demo/scroller-freedom',
+                path: '/demo/scroller/freedom',
                 component: () => import('@/mobile/scroller/demo/freedom.vue')
             },
             {
                 path: '/demo/scale',
                 component: () => import('@/mobile/scale/demo/index.vue')
+            },
+            {
+                path: '/demo/images-preview',
+                component: () => import('@/mobile/images-preview/demo/index.vue')
             }
         ]
     }

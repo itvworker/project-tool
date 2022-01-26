@@ -28,16 +28,16 @@ export default function (content: HTMLElement) {
 
     if (helperElem.style[perspectiveProperty] !== 'undefind') {
         return function (left:number, top:number, zoom:number) {
-            content.style[transformProperty] = `translate3d(-${left}px, -${top}px,0) scale(${zoom})`
+            content.style[transformProperty] = `translate3d(${-left}px, ${-top}px,0) scale(${zoom})`
         }
     } else if (helperElem.style[transformProperty] !== 'undefind') {
         return function (left:number, top:number, zoom:number) {
-            content.style[transformProperty] = `translate3d(-${left}px, -${top}px,0) scale(${zoom})`
+            content.style[transformProperty] = `translate3d(${-left}px, ${-top}px,0) scale(${zoom})`
         }
     } else {
         return function (left:number, top:number, zoom:number) {
-            content.style.marginLeft = left ? `-${left / zoom}px` : ''
-            content.style.marginTop = top ? `-${top / zoom}px` + 'px' : ''
+            content.style.marginLeft = left ? `${-left / zoom}px` : ''
+            content.style.marginTop = top ? `${-top / zoom}px` + 'px' : ''
         }
     }
 }

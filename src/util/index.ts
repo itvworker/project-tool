@@ -11,7 +11,7 @@ export function formatDateMonent (arg:string | number = '', format = 'yyyy-MM-dd
             arg = parseInt(arg)
         }
         if (arg.toString().length === 7 && arg.toString().indexOf('/') === 4) {
-            arg = arg + '/01'
+            arg = `${arg}/01`
         }
     }
     let now:Date
@@ -33,16 +33,16 @@ export function formatDateMonent (arg:string | number = '', format = 'yyyy-MM-dd
     }
     const year = now.getFullYear()
     let month:string|number = now.getMonth() + 1
-    month = month >= 10 ? month : '0' + month
+    month = month >= 10 ? month : `0${month}`
     let date:string|number = now.getDate()
-    date = date >= 10 ? date : '0' + date
+    date = date >= 10 ? date : `0${date}`
     let hour:string|number = now.getHours()
-    hour = hour >= 10 ? hour : '0' + hour
+    hour = hour >= 10 ? hour : `0${hour}`
     let minute:string|number = now.getMinutes()
 
-    minute = minute >= 10 ? minute : '0' + minute
+    minute = minute >= 10 ? minute : `0${minute}`
     let second:string|number = now.getSeconds()
-    second = second >= 10 ? second : '0' + second
+    second = second >= 10 ? second : `0${second}`
     return format
         .replace('yyyy', year.toString())
         .replace('MM', month.toString())

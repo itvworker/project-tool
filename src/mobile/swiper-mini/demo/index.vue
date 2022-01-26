@@ -18,6 +18,19 @@
                 </template>
 
             </it-swiper-mini>
+            <h2>横向</h2>
+            <it-swiper-mini :loop="false" @change="row" v-model="rowIndex">
+                <it-swiper-mini-item v-for="(item, index) in list" :key="index">
+                    <div class="demo-banner" :class="item.className">{{index}}</div>
+                </it-swiper-mini-item>
+
+                <template #dot>
+                    <div class="dot-bar">
+                        <div class="dot" v-for="(item, index) in list" :key="index" :class="{'active': rowIndex===index}" @click="change(index)">1</div>
+                    </div>
+                </template>
+
+            </it-swiper-mini>
 
             <h2>坚向</h2>
             <it-swiper-mini :loop="true" @change="row" v-model="rowIndex" direction="column" class="itv-swpier-height">

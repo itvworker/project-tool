@@ -35,68 +35,8 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute  } from 'vue-router'
 import ItScale from '../src/index.vue'
 import '../style/index.scss'
-interface Item {
-    name: string,
-    time: number
-}
-
-const list = ref<Item[]>([]);
-const lists = ref<Item[]>([]);
-const scroller = ref();
-const router = useRouter()
-const route = useRoute()
-
-function init() {
-    for(let i = 0; i < 100; i++) {
-        list.value.push({
-            name: '新联'+i,
-            time: new Date().getTime()
-        })
-    }
-
-    for(let i = 0; i < 10; i++) {
-        lists.value.push({
-            name: 'elevator'+i,
-            time: new Date().getTime()
-        })
-    }
-}
-
-function onSend(value: string | number) {
-    console.log(value);
-    
-}
-onMounted(()=>{
-    console.log(scroller);
-    
-})
-function onScroll(value:any) {
-    
-}
-
-function toPage(path:string) {
-    router.push({
-        path: path
-    })
-}
-
-function onRefresh() {
-    setTimeout(()=>{
-        scroller.value.refresh();
-        scroller.value.infinite(false);
-    },2000) 
-}
-
-function onInfinite() { 
-    setTimeout(()=>{
-        scroller.value.infinite(false)
-    },2000) 
-}
-init()
 
 </script>
 <style lang="scss" scoped>
