@@ -156,7 +156,6 @@ function nowPosition (): number {
 
 // 判断是否为尽到滑动还要向尽头滑
 function isMoveMax (value: number): boolean {
-
     if (coordinate < 0 && value > 0) return true
     if (coordinate > moveMax && value < 0) return true
     return false
@@ -272,7 +271,6 @@ function resize () {
 
 function setPostion () {
     if (props.direction === 'row') {
-        console.log(coordinate)
         dom(coordinate, 0, 1)
         return
     }
@@ -308,22 +306,12 @@ function touchmove (e: TouchEvent) {
     const _y = _self[0].pageY
     e.preventDefault()
     const _positon = elPositon
-    if (
-        _x < _positon.left ||
-        _x > _positon.right ||
-        _y < _positon.top ||
-        _y > _positon.bottom
-    ) {
-        console.log(_x, _positon.left, _positon.right)
+    if (_x < _positon.left || _x > _positon.right || _y < _positon.top || _y > _positon.bottom) {
         touchend(e)
         return
     }
 
-    const obj = getDirection(moveX, moveY, _x, _y, !!screenType)
-    console.log(screenType)
-    if ((Math.abs(obj.angy) < 2 || Math.abs(obj.angx) < 2) && !screenType) {
-        return
-    }
+    const obj = getDirection(moveX, moveY, _x, _y, !screenType)
     if (obj.type > 2 && isMove.value === 0) {
         screenType = 'progress'
         if (props.direction === 'row') {
@@ -349,10 +337,8 @@ function touchmove (e: TouchEvent) {
 
     if (obj.type > 0 && isMove.value === 1) {
         //   e.preventDefault();
-
         moveX = _x
         moveY = _y
-
         switch (screenType) {
         case 'vertical':
             if (isMoveMax(obj.angy)) {

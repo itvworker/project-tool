@@ -185,7 +185,6 @@ function setScale (touches1:Touch, touches2:Touch) {
 function setTranslate (touches:Touch) {
     const _x = touches.clientX
     const _y = touches.clientY
-
     if (moveX) {
         translateX += _x - moveX
         if (translateX >= maxLeft) {
