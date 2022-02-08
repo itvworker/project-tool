@@ -44,16 +44,15 @@ import {
     getCurrentInstance,
     onMounted,
     defineEmits,
-    nextTick,
-    provide
+    nextTick
 } from 'vue'
-import { mutable } from 'element-plus/es/utils/props'
 
 interface Item {
     src: string,
     width?: number,
     height?: number,
-    loaded?: boolean
+    loaded?: boolean,
+    img?:HTMLElement
 }
 interface Props {
     modelValue: number
@@ -145,6 +144,20 @@ watch(winWidth, () => {
     })
 })
 
+watch(() => props.modelValue, () => {
+    scale = 1
+    translateX = 0
+    translateY = 0
+    props.images.forEach(item => {
+        if (item.img) {
+            item.img.style.webkitTransform = 'translate3d(0px,0px, 0px) scale(1)'
+            item.img.style.transform = 'translate3d(0px,0px, 0px) scale(1)'
+        }
+    })
+    calcImage()
+    calcMaxTouch()
+})
+
 watch(() => props.modelValue, (n: any) => {
     let _coordinate = n * elSize
     if (isLoop()) {
@@ -202,6 +215,8 @@ function scrollTo (_value: number, _isAnimate: boolean) {
         setPostion()
         emit('update:modelValue', _value)
         emit('change', _value)
+        calcMaxTouch()
+        calcImage()
     })
 }
 
@@ -231,11 +246,7 @@ function aniamteend () {
 
 // 设置box的高或宽
 function setElSize () {
-    if (props.direction === 'row') {
-        elSize = app.refs.el.clientWidth
-        return
-    }
-    elSize = app.refs.el.clientHeight
+    elSize = app.refs.el.clientWidth
     elPositon = app.refs.el.getBoundingClientRect()
 }
 
@@ -282,11 +293,7 @@ function resize () {
 }
 
 function setPostion () {
-    if (props.direction === 'row') {
-        dom(coordinate, 0, 1)
-        return
-    }
-    dom(0, coordinate, 1)
+    dom(coordinate, 0, 1)
 }
 
 // 相册放大图片移动图片-------------------------------------------
@@ -302,8 +309,8 @@ function calcImage () {
     const _isGetWidth = item.width > item.height // 是否图片的宽度比高度大
     const el:any = app.refs.el
     const children = app.refs.children
-    domWidth = children[props.modelValue].offsetWidth
-    domHeight = children[props.modelValue].offsetHeight
+    domWidth = children[props.modelValue].children[0].offsetWidth
+    domHeight = children[props.modelValue].children[0].offsetHeight
     boxHeight = el.offsetHeight
     boxWidth = el.offsetWidth
     if (_isGetWidth) {
@@ -317,7 +324,6 @@ function calcImage () {
 function calcMaxTouch () {
     const currentWidth = scale * domWidth
     const currentHeight = scale * domHeight
-    debugger
     // 如果当前宽度小于0时
     if (currentWidth <= boxWidth) {
         maxLeft = 0
@@ -335,10 +341,12 @@ function calcMaxTouch () {
         const remain = (currentHeight - boxHeight) / 2
         maxTop = remain
         maxBottom = -remain
+        console.log(maxTop, maxBottom)
     }
 }
 
 function setTransform () {
+    console.log(translateX, translateY)
     const dom = app.refs.img[props.modelValue]
     dom.style.webkitTransform = `translate3d(${translateX}px,${translateY}px, 0px) scale(${scale})`
     dom.style.transform = `translate3d(${translateX}px,${translateY}px, 0px) scale(${scale})`
@@ -374,7 +382,28 @@ function onLoadImage (item: Item, img:any) {
     if (!item.height) {
         item.height = img.naturalHeight
     }
+    item.img = img
     calcImage()
+}
+
+// 移动的状态
+function moveStatus (type: number) {
+    const _coordinate = nowIndex * elSize
+    if (scale > minMultiple && type === 4 && coordinate < _coordinate && translateX === maxRight) {
+        coordinate = _coordinate
+        return 1 // 放大时,并向左滑动时反回1
+    }
+
+    if (scale > minMultiple && type === 3 && coordinate > _coordinate && translateX === maxLeft) {
+        coordinate = _coordinate
+        return 2 // 放大时,并向左滑动时反回1
+    }
+
+    if (scale > minMultiple && translateX < maxLeft && translateX > maxRight && type >= 1) {
+        coordinate = _coordinate
+        return 3
+    }
+    return 0
 }
 
 // 双击放或缩小图片
@@ -441,72 +470,33 @@ function touchmove (e: TouchEvent) {
         return
     }
 
-    const obj = getDirection(moveX, moveY, _x, _y, !screenType)
+    const obj = getDirection(moveX, moveY, _x, _y, !!isMove.value)
 
-    if (scale > minMultiple && translateX < maxLeft && translateX > maxRight) {
+    if (obj.type >= 1 && isMove.value === 0) {
+        isMove.value = 1
+    }
+    if (moveStatus(obj.type) >= 1) {
         setTranslate(e.touches[0])
         setTransform()
+        moveX = _self[0].pageX
+        moveY = _self[0].pageY
         return
     }
 
-    if (obj.type > 2 && isMove.value === 0) {
-        screenType = 'progress'
-        if (props.direction === 'row') {
-            isMove.value = 1
-        } else {
-            isMove.value = 2
-        }
-    }
-
-    if (obj.type >= 1 && obj.type <= 2 && isMove.value === 0) {
-        screenType = 'vertical'
-        if (props.direction === 'column') {
-            isMove.value = 1
-        } else {
-            isMove.value = 2
-        }
-    }
-
     if (isMove.value === 1) {
-        e.preventDefault()
-    }
-
-    if (obj.type > 0 && isMove.value === 1) {
         moveX = _x
         moveY = _y
-        switch (screenType) {
-        case 'vertical':
-            if (isMoveMax(obj.angy)) {
-                const post = coordinate - obj.angy * 0.4
-                coordinate = post
+        e.preventDefault()
+        if (isMoveMax(obj.angx)) {
+            coordinate = coordinate - obj.angx * 0.4
+        } else {
+            if ((props.beginBounce && obj.type === 4 && coordinate < nowPosition()) ||
+            (props.endBounce && obj.type === 3 && coordinate > nowPosition())
+            ) {
+                coordinate -= obj.angx * 0.4
             } else {
-                if (
-                    (props.beginBounce &&
-                            obj.type === 2 &&
-                            coordinate < nowPosition()) ||
-                        (props.endBounce &&
-                            obj.type === 1 &&
-                            coordinate > nowPosition())
-                ) {
-                    coordinate -= obj.angy * 0.4
-                } else {
-                    coordinate -= obj.angy
-                }
+                coordinate -= obj.angx
             }
-            break
-        case 'progress':
-            if (isMoveMax(obj.angx)) {
-                coordinate = coordinate - obj.angx * 0.4
-            } else {
-                if ((props.beginBounce && obj.type === 4 && coordinate < nowPosition()) ||
-                (props.endBounce && obj.type === 3 && coordinate > nowPosition())
-                ) {
-                    coordinate -= obj.angx * 0.4
-                } else {
-                    coordinate -= obj.angx
-                }
-            }
-            break
         }
 
         if (!props.bounce) {
@@ -559,17 +549,11 @@ function touchend (e: TouchEvent) {
     }
 
     isTouch = false
-    isMove.value = 0
-    const _screenType = screenType
-    screenType = ''
-    if (_screenType) {
+    if (isMove.value === 1) {
+        isMove.value = 0
         const _now = new Date().getTime()
-        let _dis = moveX - startX
-        if (props.direction === 'column') {
-            _dis = moveY - startY
-        }
-
-        const _isfast = Math.abs(_dis) > 20 && _now - touchstartTime < 300 // 是否快速滑过
+        const _dis = moveX - startX
+        const _isfast = Math.abs(_dis) > 30 && _now - touchstartTime < 300 && scale === minMultiple // 是否快速滑过
         const _isChangePos = Math.abs(coordinate) % elSize // 是否有移动
 
         if (_isChangePos) {
@@ -593,23 +577,18 @@ function touchend (e: TouchEvent) {
         // 快速滑过
 
         if ((_isfast && _dis < -20) || isSpeedDir() === 'next') {
-            if (!props.endBounce) {
-                nowIndex++
-            }
+            nowIndex++
             coordinate = nowIndex * elSize
             setPostion()
             return
         }
 
         if ((_isfast && _dis > 20) || isSpeedDir() === 'prev') {
-            if (!props.beginBounce) {
-                nowIndex--
-            }
+            nowIndex--
             coordinate = nowIndex * elSize
             setPostion()
             return
         }
-
         coordinate = nowIndex * elSize
         setPostion()
     }

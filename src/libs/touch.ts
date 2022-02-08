@@ -10,25 +10,29 @@
 export default function (startx:number, starty:number, endx: number, endy: number, show?:boolean):any {
     const angx = endx - startx
     const angy = endy - starty
-    let result = 0
+    let type = 0
     // 如果滑动距离太短
     if (Math.abs(angx) < 1.5 && Math.abs(angy) < 1.5 && !show) {
-        return result
+        return {
+            type,
+            angx,
+            angy
+        }
     }
     const angle = getAngle(angx, angy)
     if (angle >= -135 && angle <= -45) {
-        result = 1
+        type = 1
     } else if (angle > 45 && angle < 135) {
-        result = 2
+        type = 2
     } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
-        result = 3
+        type = 3
     } else if (angle >= -45 && angle <= 45) {
-        result = 4
+        type = 4
     }
     return {
-        type: result,
-        angx: angx,
-        angy: angy
+        type,
+        angx,
+        angy
     }
 }
 

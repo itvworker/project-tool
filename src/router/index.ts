@@ -25,7 +25,6 @@ const routes:Array<RouteRecordRaw> = [
             }
         ]
     },
-
     {
         path: '/demo',
         component: () => import('@/App.vue'),
