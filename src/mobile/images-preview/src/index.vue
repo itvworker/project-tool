@@ -277,6 +277,26 @@ function clone () {
         lastOne.value = app.refs.children[props.images.length - 1].innerHTML
     }
 }
+function setScale (touches1:Touch, touches2:Touch) {
+    const _x = Math.abs(touches1.clientX - touches2.clientX)
+    const _y = Math.abs(touches1.clientY - touches2.clientY)
+    const _s = Math.sqrt(_x * _x + _y * _y)
+    const dom = app.refs.img[props.modelValue]
+    if (distance) {
+        let _scale = scale + (_s - distance) * scale / dom.clientWidth
+        if (_scale >= maxMultiple) {
+            _scale = maxMultiple
+        }
+        if (_scale <= minMultiple) {
+            _scale = minMultiple
+        }
+        scale = _scale
+    }
+    distance = _s
+    calcImage()
+    calcMaxTouch()
+    setTransform()
+}
 function init () {
     dom = render(app.refs.box)
     setElSize()
@@ -346,7 +366,6 @@ function calcMaxTouch () {
 }
 
 function setTransform () {
-    console.log(translateX, translateY)
     const dom = app.refs.img[props.modelValue]
     dom.style.webkitTransform = `translate3d(${translateX}px,${translateY}px, 0px) scale(${scale})`
     dom.style.transform = `translate3d(${translateX}px,${translateY}px, 0px) scale(${scale})`
@@ -389,19 +408,22 @@ function onLoadImage (item: Item, img:any) {
 // 移动的状态
 function moveStatus (type: number) {
     const _coordinate = nowIndex * elSize
-    if (scale > minMultiple && type === 4 && coordinate < _coordinate && translateX === maxRight) {
+    if (scale > minMultiple && type === 4 && coordinate <= _coordinate && translateX === maxRight) {
         coordinate = _coordinate
-        return 1 // 放大时,并向左滑动时反回1
+        return 1 // 放大时,并向左滑动时反回
     }
 
-    if (scale > minMultiple && type === 3 && coordinate > _coordinate && translateX === maxLeft) {
+    if (scale > minMultiple && type === 3 && coordinate >= _coordinate && translateX === maxLeft) {
         coordinate = _coordinate
-        return 2 // 放大时,并向左滑动时反回1
+        return 2 // 放大时,并向左滑动时反回
     }
 
-    if (scale > minMultiple && translateX < maxLeft && translateX > maxRight && type >= 1) {
-        coordinate = _coordinate
+    if (scale > minMultiple && translateX < maxLeft && translateX > maxRight) {
         return 3
+    }
+
+    if (scale > minMultiple && (type === 1 || type === 2) && coordinate === _coordinate) {
+        return 4
     }
     return 0
 }
@@ -457,9 +479,10 @@ function touchstart (e: TouchEvent) {
 }
 
 function touchmove (e: TouchEvent) {
-    if (!isTouch || props.disabled || e.touches.length > 1) {
+    if (!isTouch || props.disabled) {
         return false
     }
+    e.preventDefault()
     const _self = e.targetTouches
     const _x = _self[0].pageX
     const _y = _self[0].pageY
@@ -469,24 +492,28 @@ function touchmove (e: TouchEvent) {
         touchend(e)
         return
     }
+    if (e.touches.length > 1) {
+        setScale(e.touches[0], e.touches[1])
+        return
+    }
 
     const obj = getDirection(moveX, moveY, _x, _y, !!isMove.value)
 
-    if (obj.type >= 1 && isMove.value === 0) {
-        isMove.value = 1
-    }
     if (moveStatus(obj.type) >= 1) {
         setTranslate(e.touches[0])
         setTransform()
+        setPostion()
         moveX = _self[0].pageX
         moveY = _self[0].pageY
         return
     }
 
+    if (obj.type >= 1 && isMove.value === 0) {
+        isMove.value = 1
+    }
     if (isMove.value === 1) {
         moveX = _x
         moveY = _y
-        e.preventDefault()
         if (isMoveMax(obj.angx)) {
             coordinate = coordinate - obj.angx * 0.4
         } else {
@@ -498,7 +525,6 @@ function touchmove (e: TouchEvent) {
                 coordinate -= obj.angx
             }
         }
-
         if (!props.bounce) {
             if (coordinate <= 0) {
                 coordinate = 0
@@ -507,6 +533,7 @@ function touchmove (e: TouchEvent) {
                 coordinate = moveMax
             }
         }
+        moveStatus(obj.type)
         emit('touchmove', e)
         setPostion()
     }
@@ -553,7 +580,7 @@ function touchend (e: TouchEvent) {
         isMove.value = 0
         const _now = new Date().getTime()
         const _dis = moveX - startX
-        const _isfast = Math.abs(_dis) > 30 && _now - touchstartTime < 300 && scale === minMultiple // 是否快速滑过
+        const _isfast = Math.abs(_dis) > 50 && _now - touchstartTime < 200 && scale === minMultiple // 是否快速滑过
         const _isChangePos = Math.abs(coordinate) % elSize // 是否有移动
 
         if (_isChangePos) {

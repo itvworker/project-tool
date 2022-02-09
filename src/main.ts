@@ -6,9 +6,9 @@ import routers from './router/index'
 import i18n from './langs'
 import './registerServiceWorker'
 import '@/assets/css/index.scss'
-// import vconsole from 'vconsole'
+import vconsole from 'vconsole'
 import '@/libs/forbid'
-// new vconsole()
+new vconsole()
 const app = createApp(App)
 
 Componets(app)
