@@ -69,6 +69,10 @@ const routes:Array<RouteRecordRaw> = [
             {
                 path: '/demo/images-preview',
                 component: () => import('@/mobile/images-preview/demo/index.vue')
+            },
+            {
+                path: '/demo/picker',
+                component: () => import('@/mobile/picker/demo/index.vue')
             }
         ]
     }

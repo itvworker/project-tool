@@ -43,7 +43,6 @@ import {
     onMounted,
     defineEmits,
     nextTick,
-    defineExpose,
     provide
 } from 'vue'
 interface Props {
