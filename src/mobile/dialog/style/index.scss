@@ -1,0 +1,221 @@
+.it-model-bg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.it-dialog-fade-enter-active {
+    animation: modal-fade-in 0.3s;
+}
+  
+.it-dialog-fade-leave-active {
+animation: modal-fade-out 0.5s
+}
+
+@keyframes dialog-fade-in {
+0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+}
+100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+}
+  
+@keyframes dialog-fade-out {
+0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+}
+}
+
+
+.it-dialog-center{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+    transform: translate3d(-50%, -50%,0) scale(1);
+    transition: all 300ms;
+    z-index: 201;
+}
+
+.it-dialog-center-enter-active {
+    animation: it-dialog-center-in 0.5s;
+}
+  
+.it-dialog-center-leave-active {
+    animation: it-dialog-center-out 0.5s
+}
+
+@keyframes it-dialog-center-in {
+    0% {
+        transform: translate3d(-50%, -50%,0) scale(0.85);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(-50%, -50%,0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes it-dialog-center-out {
+    0% {
+        transform: translate3d(-50%, -50%, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(-50%, -50%, 0) scale(0.85);
+        opacity: 0;
+    }
+}
+
+
+.it-dialog-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translate3d(0,0,0)
+}
+
+.it-dialog-left-enter-active {
+    animation: it-dialog-left-in 0.3s;
+}
+  
+.it-dialog-left-leave-active {
+    animation: it-dialog-left-out 0.3s
+}
+
+@keyframes it-dialog-left-in {
+    0% {
+        transform: translate3d(-100%,0,0)
+    }
+    100% {
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes it-dialog-left-out {
+    0% {
+        transform: translate3d(0,0,0)
+    }
+    100% {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+
+.it-dialog-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translate3d(0,0,0)
+}
+
+.it-dialog-right-enter-active {
+    animation: it-dialog-right-in 0.3s;
+}
+  
+.it-dialog-right-leave-active {
+    animation: it-dialog-right-out 0.3s
+}
+
+@keyframes it-dialog-right-in {
+    0% {
+        transform: translate3d(100%,0,0)
+    }
+    100% {
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes it-dialog-right-out {
+    0% {
+        transform: translate3d(0,0,0)
+    }
+    100% {
+        transform: translate3d(100%,0,0)
+    }
+}
+
+
+
+.it-dialog-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translate3d(0,0,0)
+}
+
+.it-dialog-top-enter-active {
+    animation: it-dialog-top-in 0.3s;
+}
+  
+.it-dialog-top-leave-active {
+    animation: it-dialog-top-out 0.3s
+}
+
+@keyframes it-dialog-top-in {
+    0% {
+        transform: translate3d(0,-100%,0)
+    }
+    100% {
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes it-dialog-top-out {
+    0% {
+        transform: translate3d(0,0,0)
+    }
+    100% {
+        transform: translate3d(0, -100%, 0)
+    }
+}
+
+
+.it-dialog-bottom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate3d(0,0,0)
+}
+
+.it-dialog-bottom-enter-active {
+    animation: it-dialog-bottom-in 0.3s;
+}
+  
+.it-dialog-bottom-leave-active {
+    animation: it-dialog-bottom-out 0.3s
+}
+
+@keyframes it-dialog-bottom-in {
+    0% {
+        transform: translate3d(0,100%,0)
+    }
+    100% {
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes it-dialog-bottom-out {
+    0% {
+        transform: translate3d(0,0,0)
+    }
+    100% {
+        transform: translate3d(0, 100%, 0)
+    }
+}

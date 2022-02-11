@@ -113,20 +113,6 @@ init()
     line-height: 0;
     position:absolute;
 }
-.link-item {
-    position: relative;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    padding-left: 16px;
-    font-size: 14px;
-    border-bottom:#eee solid 1px;
-    .rotate {
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%) rotate(180deg);
-    }
-}
+
 
 </style>

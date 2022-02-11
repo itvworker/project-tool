@@ -27,18 +27,19 @@
 </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, defineExpose, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted } from 'vue'
+import { defineProps, defineEmits, defineExpose, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
 
 interface SlotItem {
-    label: string,
+    label?: string,
     value: number | string,
     disabled?: boolean,
-    type?: number | string
+    type?: number | string,
+    data?: any
 }
 
 interface Props {
-    listData: SlotItem[],
-    defaultValue: string | number,
+    listData: SlotItem[] | string[] | number[],
+    defaultValue?: string | number,
     keyIndex?: number,
     isUpdate?: boolean,
     lastChange?: boolean,
@@ -50,7 +51,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    listData: () => [],
     keyIndex: 0,
     isUpdate: false,
     lastChange: false,
@@ -287,11 +287,18 @@ function touchEnd (event: TouchEvent) {
     }
     isTouch = false
 }
-onMounted(() => {
+
+function init () {
     const dom:HTMLElement = app?.refs.height as HTMLElement
     lineSpacing.value = Math.round(dom.clientHeight) // 每一行的高度
     nextTick(() => {
         modifyStatus(true)
     })
+}
+watch(() => props.isUpdate, () => {
+    init()
+})
+onMounted(() => {
+    init()
 })
 </script>
