@@ -1,7 +1,7 @@
 <template>
   <div class="it-picker-list" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"  @touchcancel="touchEnd">
-    <div class="it-picker-content" :class="['it-picker-row'+rows]"    ref="height" @transitionEnd="transitionEnd"  @webkitTransitionEnd="transitionEnd" >
-        <div class="it-picker-list-panel"  ref="list">
+    <div class="it-picker-content" :class="['it-picker-row'+rows]"    ref="height" >
+        <div class="it-picker-list-panel"  ref="list"  @transitionend="transitionEnd"  @webkitTransitionEnd="transitionEnd">
             <div class="it-picker-item" :style="{height: lineSpacing+'px'}" :class="{'hide-opacity': !isLoopScroll,'picker-forbid': typeof item === 'object' && item.disabled }" v-for="(item,index) in listData"
                 :key="index+'up'"
                 v-html="output(item)"
@@ -27,7 +27,7 @@
 </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, defineExpose, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
+import { defineProps, defineEmits, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
 
 interface SlotItem {
     label?: string,
@@ -78,7 +78,6 @@ let transformY = 0
 let scrollDistance = 0
 let moveArr:{y:number, timestamp: number}[] = []
 const lineSpacing = ref<number>(0)
-let rotation = 24
 let currIndex = 1
 const maxLast = computed(() => (props.listData.length - 3) * lineSpacing.value)
 const minLast = computed(() => (props.listData.length - 1) * lineSpacing.value + (props.listData.length - 3) * lineSpacing.value)
@@ -208,18 +207,18 @@ function transitionEnd () {
 function setChooseValue () {
     if (isTouch) return
     const index = Math.round(-transformY / lineSpacing.value)
+    if (!props.listData[index]) return
     emit('chooseItem', props.listData[index], props.keyIndex, index)
 }
 
-function modifyStatus (type: boolean, defaultValue?: number | string) {
+function modifyStatus (type?: boolean, defaultValue?: number | string) {
     const dom:HTMLElement = app?.refs.height as HTMLElement
     lineSpacing.value = dom.clientHeight
     defaultValue = defaultValue || props.defaultValue
     if (typeof defaultValue === 'number') {
         defaultValue = defaultValue.toString()
     }
-    const index = listIndexs.value.indexOf(defaultValue)
-    currIndex = index === -1 ? 1 : (index + 1)
+    const index = listIndexs.value.indexOf(<string>defaultValue)
     const move = index === -1 ? 0 : (index * lineSpacing.value)
     transformY = -move
     type && setChooseValue()
@@ -289,16 +288,31 @@ function touchEnd (event: TouchEvent) {
 }
 
 function init () {
-    const dom:HTMLElement = app?.refs.height as HTMLElement
-    lineSpacing.value = Math.round(dom.clientHeight) // 每一行的高度
+    
+    
+ 
     nextTick(() => {
-        modifyStatus(true)
+        setTimeout(()=>{
+            const dom:HTMLElement = app?.refs.height as HTMLElement
+            lineSpacing.value = Math.round(dom.clientHeight) // 每一行的高度
+            modifyStatus(true)
+        })
+        
     })
 }
 watch(() => props.isUpdate, () => {
     init()
 })
+
+watch(() => props.listData, (n, o) => {
+    const lineIndex = Math.abs(Math.floor(scrollDistance / lineSpacing.value))
+    const index = Math.min(n.length - 1, lineIndex)
+    scrollDistance = -index * lineSpacing.value
+    transformY = scrollDistance
+    modifyStatus(true)
+})
 onMounted(() => {
     init()
 })
+
 </script>

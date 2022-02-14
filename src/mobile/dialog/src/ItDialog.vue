@@ -2,9 +2,6 @@
     <div class="it-model" ref="el">
         <transition
         name="it-dialog-fade"
-        @after-enter="afterEnter"
-        @after-leave="afterLeave"
-        @before-leave="beforeLeave"
         v-show="modelValue"
         >
         <div class="it-model-bg" :style="{'z-index':zIndex, 'background-color':bgColor}" @click.stop="emit('update:modelValue', false)">
@@ -12,7 +9,11 @@
         </div>
         </transition>
 
-        <transition :name="`it-dialog-${dir}`" v-show="modelValue">
+        <transition
+            @after-enter="afterEnter"
+            @after-leave="afterLeave"
+            @before-leave="beforeLeave"
+         :name="`it-dialog-${dir}`" v-show="modelValue">
             <div :class="`it-dialog-${dir}`"  :style="{'z-index':zIndex+1}">
                 <slot></slot>
             </div>

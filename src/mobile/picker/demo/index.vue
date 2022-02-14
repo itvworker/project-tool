@@ -5,42 +5,24 @@
             Picker
         </div>
         <div class="demo-main">
-            <div class="link-item" @click="open">
+            <div class="link-item" @click="open1">
                 打开picker
                 <i class="icon-arrow rotate"></i>
             </div>
 
-            <div class="link-item" @click="open1">
-                打开pickers
+            <div class="link-item" @click="open2">
+                方法
                 <i class="icon-arrow rotate"></i>
             </div>
-            <it-dialog v-model="visible" dir="bottom">
-                <div class="picker-item">
-                    <picker-slot
-                    :default-value="4"
-                    :is-update="visible"
-                    :list-data="listData"
-                    @chooseItem="chooseItem"
-                    :key="0"
-                    :key-index="0"
-                    :lastChange="lastChange"
-                    :isLoop="true"
-                    :output="output"
-                ></picker-slot>
-                </div>
-            </it-dialog>
-            <it-picker v-model="visible1" :items="pickers"></it-picker>
+            <it-picker v-model="visible1" :items="pickers" @chooseItem="chooseItem" @selected="onSelected"></it-picker>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
-import PickerSlot from '../src/picker-slot.vue'
-import ItDialog from '@/mobile/dialog/src/ItDialog.vue';
-import ItPicker from '../src/picker.vue'
-import '@/mobile/dialog/style/index.scss'
-import '../style/picker-slot.scss'
-import '../style/picker.scss'
+import ItPicker from '../src/Picker.vue'
+import '../style/Picker.scss'
 import { ref } from 'vue'
+import picker from '../src/Picker'
 const visible = ref<boolean>(false)
 const listData = [
     {
@@ -104,12 +86,47 @@ const days = [
     }
 ]
 
+const minutes = [
+    {
+        label: '1时',
+        value: 1
+    },
+    {
+        label: '2时',
+        value: 2
+    },
+    {
+        label: '3时',
+        value: 3
+    },
+    {
+        label: '4时',
+        value: 4
+    },
+    {
+        label: '5时',
+        value: 5
+    },
+    {
+        label: '6时',
+        value: 6
+    },
+    {
+        label: '7时',
+        value: 7
+    }
+]
 
 const isUpdate = true
 const lastChange = true
-
-function chooseItem () {
-    console.log('-----')
+const visible1 = ref<boolean>(false)
+const pickers = ref<any[]>([listData, days])
+const pickers2 = ref<any[]>([listData, minutes])
+function chooseItem (list:any, keyIndex: number) {
+    console.log(list);
+    if (list.value === 3) {
+        pickers.value[1] = minutes
+    }
 }
 function output (item: any) {
     return item.label+'webs---'
@@ -119,10 +136,19 @@ function open () {
     visible.value = true;
 }
 
-const visible1 = ref<boolean>(false)
-const pickers = [listData, days]
-function open1() {
+
+function open1 () {
     visible1.value = true
+}
+
+function open2 () {
+    picker({
+        items: pickers2.value
+    })
+}
+
+function onSelected (value: any) {
+    console.log(value);
 }
 </script>
 <style lang="scss" scoped>

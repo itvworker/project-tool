@@ -36,47 +36,51 @@ const routes:Array<RouteRecordRaw> = [
             },
             {
                 path: '/demo/swiper-mini',
-                component: () => import('@/mobile/swiper-mini/demo/index.vue')
+                component: () => import('@/mobile/SwiperMinn/demo/index.vue')
             },
             {
                 path: '/demo/scroller',
-                component: () => import('@/mobile/scroller/demo/index.vue')
+                component: () => import('@/mobile/Scroller/demo/index.vue')
             },
             {
                 path: '/demo/scroller/evelator',
-                component: () => import('@/mobile/scroller/demo/evelator.vue')
+                component: () => import('@/mobile/Scroller/demo/evelator.vue')
             },
             {
                 path: '/demo/scroller/produce',
-                component: () => import('@/mobile/scroller/demo/produce.vue')
+                component: () => import('@/mobile/Scroller/demo/produce.vue')
             },
             {
                 path: '/demo/scroller/list',
-                component: () => import('@/mobile/scroller/demo/list.vue')
+                component: () => import('@/mobile/Scroller/demo/list.vue')
             },
             {
                 path: '/demo/scroller/horizontal',
-                component: () => import('@/mobile/scroller/demo/horizontal.vue')
+                component: () => import('@/mobile/Scroller/demo/horizontal.vue')
             },
             {
                 path: '/demo/scroller/freedom',
-                component: () => import('@/mobile/scroller/demo/freedom.vue')
+                component: () => import('@/mobile/Scroller/demo/freedom.vue')
             },
             {
                 path: '/demo/scale',
-                component: () => import('@/mobile/scale/demo/index.vue')
+                component: () => import('@/mobile/Scale/demo/index.vue')
             },
             {
                 path: '/demo/images-preview',
-                component: () => import('@/mobile/images-preview/demo/index.vue')
+                component: () => import('@/mobile/ImagesPreview/demo/index.vue')
             },
             {
                 path: '/demo/picker',
-                component: () => import('@/mobile/picker/demo/index.vue')
+                component: () => import('@/mobile/Picker/demo/index.vue')
             },
             {
                 path: '/demo/dialog',
-                component: () => import('@/mobile/dialog/demo/index.vue')
+                component: () => import('@/mobile/Dialog/demo/index.vue')
+            },
+            {
+                path: '/demo/picker-time',
+                component: () => import('@/mobile/PickerTime/demo/index.vue')
             }
         ]
     }
