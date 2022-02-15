@@ -3,8 +3,9 @@
  * @param {String,Number} arg 时戳或日期字符串
  * @param {String} format 格式化的时间 Y：年 M:月 D:日 h：时 m:分 s:秒
  */
-export function formatDateMonent (arg:string | number = '', format = 'yyyy-MM-dd hh:mm', timezone?:number):string {
+export function formatDateMonent (arg:string | number | Date = '', format = 'yyyy-MM-dd hh:mm', timezone?:number):string {
     // console.log(typeof arg.toString());
+    let now:Date
     if (typeof arg === 'string') {
         arg = arg.replace(/-/ig, '/')
         if (arg.indexOf('/') < 0 && arg) {
@@ -14,7 +15,10 @@ export function formatDateMonent (arg:string | number = '', format = 'yyyy-MM-dd
             arg = `${arg}/01`
         }
     }
-    let now:Date
+
+    if (typeof arg === 'object') {
+        arg = arg.getTime()
+    }
     if (!arg) {
         now = new Date()
     } else {
@@ -29,7 +33,7 @@ export function formatDateMonent (arg:string | number = '', format = 'yyyy-MM-dd
             timezone = timezone < 0 ? (12 - timezone) : timezone
         }
         const zonetime = now.getTime() + offset // 转换成0时区时间
-        now = new Date(zonetime + (timezone * 3600000));
+        now = new Date(zonetime + (timezone * 3600000))
     }
     const year = now.getFullYear()
     let month:string|number = now.getMonth() + 1

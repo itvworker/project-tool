@@ -1,29 +1,31 @@
 <template>
     <it-dialog v-model="value" :mask="mask" dir="bottom" @closed="emit('closed')"  @opened="emit('opened')">
         <div class="it-picker-title" >
-            <div class="it-left-btn" @click="onCancel">取消</div>
+            <div class="it-left-btn" @click.stop="onCancel">取消</div>
             <div class="it-picker-title-text">
                 请选择内容
             </div>
-            <div class="it-right-btn" @click="onSelected">确定</div>
+            <div class="it-right-btn" @click.stop="onSelected">确定</div>
         </div>
         <div class="picker-item">
             <picker-slot
             v-for="(item, index) in items"
             :is-update="value"
-            :default-value="defaultValue[index]"
+            :defaultValue="defaultValue[index]"
             :list-data="item"
             @chooseItem="chooseItem"
             :key="index"
             :key-index="index"
             :isLoop="true"
             :output="output"
+            ref="el"
         ></picker-slot>
         </div>
     </it-dialog>
 </template>
 <script lang="ts" setup>
-import { withDefaults, defineProps, defineEmits, ref, watch, onMounted, getCurrentInstance} from 'vue'
+import { withDefaults, defineProps, defineEmits, ref, watch, defineExpose, getCurrentInstance} from 'vue'
+import type { ComponentPublicInstance } from 'vue'
 import PickerSlot from './PickerSlot.vue'
 import ItDialog from '../../Dialog/src/ItDialog.vue'
 import type { PickerProps, SlotItem } from './type'
@@ -52,7 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['update:modelValue', 'chooseItem', 'selected', 'close', 'open', 'opened', 'closed'])
 const value = ref<boolean>(false)
 const app = getCurrentInstance()
-
+let pickerSolt:ComponentPublicInstance[] = []
 let selected:any[] = []
 
 watch(() => props.modelValue, (n) => {
@@ -80,4 +82,14 @@ function onSelected (e: Touch) {
     emit('close')
 }
 
+function init () {
+    pickerSolt = app?.refs.el as ComponentPublicInstance[]
+
+    pickerSolt.forEach((item:ComponentPublicInstance) => {
+        item.init()
+    })
+}
+defineExpose({
+    init
+})
 </script>

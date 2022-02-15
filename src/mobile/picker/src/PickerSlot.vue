@@ -27,7 +27,8 @@
 </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, defineEmits, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
+import { TimeoutHandle } from 'element-plus/es/utils/types'
+import { defineProps, defineEmits, defineExpose, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
 
 interface SlotItem {
     label?: string,
@@ -93,7 +94,7 @@ const listIndexs = computed(() => {
 
 const app = getCurrentInstance()
 const emit = defineEmits(['chooseItem'])
-
+let timeout: TimeoutHandle;
 function setMove (move:number, type?:string, time?:number) {
     transformY = move + transformY
     if (type === 'end') { // 手指结束滑动走这里
@@ -218,7 +219,7 @@ function modifyStatus (type?: boolean, defaultValue?: number | string) {
     if (typeof defaultValue === 'number') {
         defaultValue = defaultValue.toString()
     }
-    const index = listIndexs.value.indexOf(<string>defaultValue)
+    const index = listIndexs.value.indexOf(defaultValue as string)
     const move = index === -1 ? 0 : (index * lineSpacing.value)
     transformY = -move
     type && setChooseValue()
@@ -288,16 +289,12 @@ function touchEnd (event: TouchEvent) {
 }
 
 function init () {
-    
-    
- 
     nextTick(() => {
-        setTimeout(()=>{
+        setTimeout(() => {
             const dom:HTMLElement = app?.refs.height as HTMLElement
             lineSpacing.value = Math.round(dom.clientHeight) // 每一行的高度
             modifyStatus(true)
         })
-        
     })
 }
 watch(() => props.isUpdate, () => {
@@ -311,8 +308,11 @@ watch(() => props.listData, (n, o) => {
     transformY = scrollDistance
     modifyStatus(true)
 })
+
+watch(() => props.defaultValue, (n) => {
+    init()
+})
 onMounted(() => {
     init()
 })
-
 </script>

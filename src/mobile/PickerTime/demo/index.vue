@@ -24,10 +24,10 @@
     </div>
 </template>
 <script lang="ts" setup>
-import ItPickerTime from '../src/ItPickerTime.vue'
-import '../style/ItPickerTime.scss'
+import ItPickerTime from '../src/PickerTime.vue'
+import '../style/PickerTime.scss'
 import { ref, vShow } from 'vue'
-const visible = ref<boolean>()
+const visible = ref<boolean>(false)
 function open () {
     visible.value = true
 }

@@ -17,6 +17,7 @@ export interface PickerProps{
     onSelected?: (value?:SlotItem[] | string[] | number[])=>void
 }
 
+export type PickerItems = (SlotItem[] | string[] | number[])[]
 export type PickerOptions = Omit<PickerProps, 'id'>
 export type PickerParams = Partial<PickerOptions> | string | VNode
 export interface PickerHandle {
