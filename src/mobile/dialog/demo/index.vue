@@ -37,8 +37,8 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import ItDialog from '../src/ItDialog.vue'
-import '../style/ItDialog.scss'
+import ItDialog from '../src/Dialog.vue'
+import '../style/Dialog.scss'
 
 const visible = ref<boolean>(false)
 const dir = ref<string>('left')

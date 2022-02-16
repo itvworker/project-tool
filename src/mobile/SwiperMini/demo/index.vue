@@ -50,9 +50,9 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import ItSwiperMini from '../src/index.vue'
-import ItSwiperMiniItem from '../src/swiper-mini-item/index.vue'
-import '../style/index.scss'
+import ItSwiperMini from '../src/SwiperMini.vue'
+import ItSwiperMiniItem from '../src/SwiperMiniItem'
+import '../style/SwiperMini.scss'
 interface Item {
     name: string,
     className: string

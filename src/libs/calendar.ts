@@ -1,7 +1,6 @@
-import { OutCalendar, Calendars } from './type'
 const monthDays: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-interface Calendars {
+export declare interface Calendars {
     year: number,
     month: number,
     day: number,
@@ -12,12 +11,12 @@ interface Calendars {
     week: number
 }
 
-interface OutCalendar {
+export declare interface OutCalendar {
     year: number,
     month: number,
-    minDate: string,
-    maxDate: string,
-    disabled: (value?:string)=>boolean,
+    minDate?: string,
+    maxDate?: string,
+    disabled?: (value?:string) => boolean,
     endType?: string,
     startWeek?: number
 }
@@ -35,6 +34,7 @@ export function getWeek (value: string): number {
  */
 export function outCalendar (value: OutCalendar): Calendars[] {
     const arr: Calendars[] = []
+    const disabled = value.disabled || function () { return true }
     const date:Date = new Date(`${value.year}/${value.month}/1`) // 获取1号的Date
     const isLeapYear = value.year % 4 === 0 // 是否为润年
     let days = monthDays[value.month - 1]
@@ -43,7 +43,7 @@ export function outCalendar (value: OutCalendar): Calendars[] {
     if (isLeapYear && value.month === 2) {
         days = 29
     }
-    let prev = getPrevMonth(value.year, value.month, dayWeek, value.startWeek, value.disabled)
+    let prev = getPrevMonth(value.year, value.month, dayWeek, value.startWeek, disabled)
     const now:Calendars[] = []
     for (let i = 1; i <= days; i++) {
         const item: Calendars = {
@@ -51,8 +51,8 @@ export function outCalendar (value: OutCalendar): Calendars[] {
             month: value.month,
             day: i,
             week: dayWeek,
-            ymd: value.year + '-' + value.month + '-' + i,
-            disabled: value.disabled(value.year + '-' + value.month + '-' + i),
+            ymd: `${value.year}-${value.month}-${i}`,
+            disabled: disabled(`${value.year}-${value.month}-${i}`),
             timeNode: 'last',
             type: 'current'
         }
@@ -73,7 +73,6 @@ export function outCalendar (value: OutCalendar): Calendars[] {
     }
     const last = calcNextMonth(newday.year, newday.month, newday.week, lastNum, value.disabled)
     return prev.concat(last)
-    return arr
 }
 
 /**

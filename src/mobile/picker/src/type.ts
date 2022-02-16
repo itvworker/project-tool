@@ -1,6 +1,6 @@
-import type { VNode, ExtractPropTypes, Component } from 'vue'
+import type { VNode } from 'vue'
 
-export interface SlotItem {
+export interface PickerSlotItem {
     label?: string,
     value: number | string,
     disabled?: boolean,
@@ -13,11 +13,11 @@ export interface PickerProps{
     mask?: boolean,
     defaultValue?: string[] | number [],
     output?: (item: any) => string,
-    items?: (SlotItem[] | string[] | number[])[],
-    onSelected?: (value?:SlotItem[] | string[] | number[])=>void
+    items?: (PickerSlotItem [] | string[] | number[])[],
+    onSelected?: (value?:PickerSlotItem[] | string[] | number[])=>void
 }
 
-export type PickerItems = (SlotItem[] | string[] | number[])[]
+export type PickerItems = (PickerSlotItem[] | string[] | number[])[]
 export type PickerOptions = Omit<PickerProps, 'id'>
 export type PickerParams = Partial<PickerOptions> | string | VNode
 export interface PickerHandle {
@@ -25,7 +25,7 @@ export interface PickerHandle {
 }
 export type PickerFn = (options?: PickerParams) => void
 
-export type PickerSelectedFn = (opt: SlotItem[] | string[] | number[]) => void
+export type PickerSelectedFn = (opt: PickerSlotItem[] | string[] | number[]) => void
 
 export interface Picker extends PickerFn {
     onSelected: PickerSelectedFn

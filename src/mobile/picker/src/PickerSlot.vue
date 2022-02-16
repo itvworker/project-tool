@@ -27,7 +27,7 @@
 </div>
 </template>
 <script lang="ts" setup>
-import { TimeoutHandle } from 'element-plus/es/utils/types'
+
 import { defineProps, defineEmits, defineExpose, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
 
 interface SlotItem {
@@ -44,7 +44,7 @@ interface Props {
     keyIndex?: number,
     isUpdate?: boolean,
     lastChange?: boolean,
-    isLoop?: boolean,
+    loop?: boolean,
     rows?: number,
     pickerIndex?: number | null,
     clearMask?: boolean,
@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<Props>(), {
     keyIndex: 0,
     isUpdate: false,
     lastChange: false,
-    isLoop: false,
+    loop: false,
     rows: 5,
     pickerIndex: null,
     clearMask: false,
@@ -82,7 +82,7 @@ const lineSpacing = ref<number>(0)
 let currIndex = 1
 const maxLast = computed(() => (props.listData.length - 3) * lineSpacing.value)
 const minLast = computed(() => (props.listData.length - 1) * lineSpacing.value + (props.listData.length - 3) * lineSpacing.value)
-const isLoopScroll = computed(() => props.isLoop && props.listData.length >= Math.floor(props.rows / 2) + 1)
+const isLoopScroll = computed(() => props.loop && props.listData.length >= Math.floor(props.rows / 2) + 1)
 const listIndexs = computed(() => {
     return props.listData.map((item) => {
         if (typeof item === 'object') {
@@ -94,7 +94,6 @@ const listIndexs = computed(() => {
 
 const app = getCurrentInstance()
 const emit = defineEmits(['chooseItem'])
-let timeout: TimeoutHandle;
 function setMove (move:number, type?:string, time?:number) {
     transformY = move + transformY
     if (type === 'end') { // 手指结束滑动走这里
@@ -289,12 +288,10 @@ function touchEnd (event: TouchEvent) {
 }
 
 function init () {
-    nextTick(() => {
-        setTimeout(() => {
-            const dom:HTMLElement = app?.refs.height as HTMLElement
-            lineSpacing.value = Math.round(dom.clientHeight) // 每一行的高度
-            modifyStatus(true)
-        })
+    setTimeout(() => {
+        const dom:HTMLElement = app?.refs.height as HTMLElement
+        lineSpacing.value = Math.round(dom.clientHeight) // 每一行的高度
+        modifyStatus(true)
     })
 }
 watch(() => props.isUpdate, () => {
@@ -310,9 +307,13 @@ watch(() => props.listData, (n, o) => {
 })
 
 watch(() => props.defaultValue, (n) => {
-    init()
+    modifyStatus()
 })
 onMounted(() => {
     init()
+})
+
+defineExpose({
+    modifyStatus
 })
 </script>

@@ -36,7 +36,7 @@ const routes:Array<RouteRecordRaw> = [
             },
             {
                 path: '/demo/swiper-mini',
-                component: () => import('@/mobile/SwiperMinn/demo/index.vue')
+                component: () => import('@/mobile/SwiperMini/demo/index.vue')
             },
             {
                 path: '/demo/scroller',
@@ -81,6 +81,10 @@ const routes:Array<RouteRecordRaw> = [
             {
                 path: '/demo/picker-time',
                 component: () => import('@/mobile/PickerTime/demo/index.vue')
+            },
+            {
+                path: '/demo/calendar-time',
+                component: () => import('@/mobile/CalendarTime/demo/index.vue')
             }
         ]
     }
