@@ -43,6 +43,7 @@ import {
     onMounted,
     defineEmits,
     nextTick,
+    defineExpose,
     provide
 } from 'vue'
 interface Props {
@@ -61,7 +62,8 @@ interface Props {
      * 向上或向左滑动是否弹，此属只在0-max,最大张数间有数，例如有1234这个属性只在23中有效
      */
     endBounce?: boolean,
-    disabled?:boolean
+    disabled?:boolean,
+    isUpdate?:boolean
 }
 const props = withDefaults(defineProps<Props>(), {
     value: 0,
@@ -79,7 +81,8 @@ const props = withDefaults(defineProps<Props>(), {
      * 向上或向左滑动是否弹，此属只在0-max,最大张数间有数，例如有1234这个属性只在23中有效
      */
     endBounce: false,
-    disabled: false
+    disabled: false,
+    isUpdate: false
 })
 
 const isAnimating = ref<boolean>(false) // 动画是否在进行中，
@@ -103,7 +106,7 @@ const items = ref<ComponentInternalInstance[]>([])
 const winWidth = ref<number>(window.innerWidth)
 let elPositon: any = {}
 const currentPage: any = getCurrentInstance()
-const emit = defineEmits(['update:modelValue', 'change', 'touchmove', 'touchend', 'stop', 'refresh']) // 注册事件
+const emit = defineEmits(['update:modelValue', 'change', 'touchmove', 'touchend', 'stop', 'refresh', 'first', 'last']) // 注册事件
 let screenType: string
 let timeout: any
 
@@ -141,6 +144,12 @@ watch(() => props.modelValue, (n: any) => {
     scrollTo(n, true)
 })
 
+watch(() => props.isUpdate, () => {
+    nextTick(() => {
+        init()
+    })
+})
+
 function thirdOne (): number {
     return parseInt((elSize / 3).toString())
 }
@@ -174,7 +183,7 @@ function isSpeedDir () {
 // 滚动到第几张,带动画
 function scrollTo (_value: number, _isAnimate: boolean) {
     if (_value < 0 || _value >= number) return
-    isAnimating.value = !!_isAnimate
+    isAnimating.value = _isAnimate
     nextTick(() => {
         if (isLoop()) {
             nowIndex = _value + 1
@@ -185,7 +194,9 @@ function scrollTo (_value: number, _isAnimate: boolean) {
 
         setPostion()
         emit('update:modelValue', _value)
-        emit('change', _value)
+        if (!isAnimating.value) {
+            emit('change', _value)
+        }
     })
 }
 
@@ -277,6 +288,8 @@ function setPostion () {
 }
 
 function touchstart (e: TouchEvent) {
+    console.log('touchstart');
+    
     if (props.disabled) return
     // 判断动画是否在进行中, 进行中禁止滑动
     if (isAnimating.value) {
@@ -296,10 +309,10 @@ function touchstart (e: TouchEvent) {
 }
 
 function touchmove (e: TouchEvent) {
+    console.log('touchmove')
     if (!isTouch || props.disabled || e.touches.length > 1) {
         return false
     }
-
     const _self = e.targetTouches
     const _x = _self[0].pageX
     const _y = _self[0].pageY
@@ -386,6 +399,7 @@ function touchmove (e: TouchEvent) {
     }
 }
 function touchend (e: TouchEvent) {
+    console.log('touchend')
     if (props.disabled) return
     emit('touchend', e)
     isTouch = false
@@ -411,6 +425,7 @@ function touchend (e: TouchEvent) {
             coordinate = 0
             nowIndex = 0
             setPostion()
+            emit('first')
             return
         }
 
@@ -418,6 +433,7 @@ function touchend (e: TouchEvent) {
         if (coordinate >= moveMax) {
             coordinate = moveMax
             setPostion()
+            emit('last')
             return
         }
         // 快速滑过
@@ -449,5 +465,9 @@ onMounted(() => {
     window.addEventListener('resize', () => {
         winWidth.value = window.innerWidth
     })
+})
+
+defineExpose({
+    scrollTo
 })
 </script>

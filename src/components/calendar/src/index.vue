@@ -19,7 +19,7 @@
 </template>
 <script lang="ts" setup>
 import { withDefaults, defineProps, ref } from 'vue'
-import { Calendars } from './lib/type'
+import type { Calendars } from './lib/type'
 import { outCalendar } from './lib/calendar'
 import { formatDateMonent } from '../../../util'
 import CalendarItem from './calendar-item'

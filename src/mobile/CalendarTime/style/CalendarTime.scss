@@ -1,8 +1,5 @@
 @import '../../Dialog/style/Dialog.scss';
 @import '../../SwiperMini/style/SwiperMini.scss';
-
-
-
 .it-calendar-time{
     display: flex;
     flex-direction: column;
@@ -219,7 +216,7 @@
       position: relative;
       z-index: 10;
         height: 44ipx;
-        width: 100/7%;
+        width: 14.285714%;
         text-align: center;
         line-height: 0;
         display: flex;
@@ -248,7 +245,7 @@
         }
         
         &.next-month,&.prev-month{
-          opacity: 0;
+          color: #999;
         } 
       } 
     }

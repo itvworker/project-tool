@@ -33,8 +33,7 @@ export function getWeek (value: string): number {
  * @param value 当前月份
  */
 export function outCalendar (value: OutCalendar): Calendars[] {
-    const arr: Calendars[] = []
-    const disabled = value.disabled || function () { return true }
+    const disabled = value.disabled || function () { return false }
     const date:Date = new Date(`${value.year}/${value.month}/1`) // 获取1号的Date
     const isLeapYear = value.year % 4 === 0 // 是否为润年
     let days = monthDays[value.month - 1]
@@ -51,8 +50,8 @@ export function outCalendar (value: OutCalendar): Calendars[] {
             month: value.month,
             day: i,
             week: dayWeek,
-            ymd: `${value.year}-${value.month}-${i}`,
-            disabled: disabled(`${value.year}-${value.month}-${i}`),
+            ymd: `${value.year}-${fixedZero(value.month)}-${fixedZero(i)}`,
+            disabled: disabled(`${value.year}-${fixedZero(value.month)}-${fixedZero(i)}`),
             timeNode: 'last',
             type: 'current'
         }
@@ -71,7 +70,7 @@ export function outCalendar (value: OutCalendar): Calendars[] {
     if (value.endType === null) {
         lastNum = 0
     }
-    const last = calcNextMonth(newday.year, newday.month, newday.week, lastNum, value.disabled)
+    const last = calcNextMonth(newday.year, newday.month, newday.week, lastNum, disabled)
     return prev.concat(last)
 }
 
@@ -101,8 +100,8 @@ export function calcNextMonth (year:number, month:number, dayWeek:number, num:nu
             month: _month,
             day: i,
             week: _dayWeek,
-            ymd: _year + '-' + _month + '-' + i,
-            disabled: disabled(_year + '-' + _month + '-' + i),
+            ymd: `${_year}-${fixedZero(_month)}-${fixedZero(i)}`,
+            disabled: disabled(`${_year}-${fixedZero(_month)}-${fixedZero(i)}`),
             timeNode: 'last',
             type: 'next'
         }
@@ -157,9 +156,9 @@ export function getPrevMonth (year:number, month:number, dayWeek:number, beginOr
             year: _year,
             month: _month,
             day: lastDay,
-            week: week,
-            ymd: _year + '-' + _month + '-' + lastDay,
-            disabled: disabled(_year + '-' + _month + '-' + lastDay),
+            week,
+            ymd: `${_year}-${fixedZero(_month)}-${fixedZero(lastDay)}`,
+            disabled: disabled(`${_year}-${fixedZero(_month)}-${fixedZero(lastDay)}`),
             timeNode: 'last',
             type: 'prev'
         }
@@ -167,4 +166,7 @@ export function getPrevMonth (year:number, month:number, dayWeek:number, beginOr
         lastDay--
     }
     return arr
+}
+function fixedZero (i:number | string) {
+    return i >= 10 ? i : `0${i}`
 }

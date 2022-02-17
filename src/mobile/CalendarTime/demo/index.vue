@@ -10,7 +10,11 @@
                 <i class="icon-arrow rotate"></i>
             </div>
 
-            <it-calendar-time v-model="visible"/>
+            <it-calendar-time v-model="visible" :start-week="1" default-value="2022-10-10 00:00">
+                <template #day="scope">
+                   <div class="active">{{scope.item.day}} {{scope.current}} </div>
+                </template>
+            </it-calendar-time>
         </div>
     </div>
 </template>
