@@ -1,5 +1,5 @@
 <template>
-    <it-dialog v-model="visible" :dir="closeAminate" :hideOnClick="hideOnClick">>
+    <it-dialog v-model="visible" :dir="closeAminate"  @closed="onClosed">
         <div class="it-calendar-time">
             <div class="it-calendar-time-top" v-if="type==='calendar-time'">
                 <div class="date" :class="{'active':dataType === 0}" @click="changeTab(0)">{{currentValue }}</div>
@@ -52,21 +52,23 @@
                     </it-swiper-mini-item>
                 </it-swiper-mini>
                 <div class="it-picker-slot-box" :class="{'it-calendar-only-time': type==='time'}" v-if="type==='calendar-time'|| type==='time'">
-                    
+                    <it-picker-slot :is-update="visible" :key-index="index" @chooseItem="chooseItem" :rows="7" :default-value="index===0? currentHour: currentMin" v-for="(item, index) in times" :key="index" :listData="item" />
                 </div>
             </div>
         </div>
+        <slot name="views" v-bind="{item:{day: 0}, selected: 'string'}"></slot>
     </it-dialog>
 </template>
 <script lang="ts" setup>
-import { defineEmits, ref, defineProps, withDefaults, watch, getCurrentInstance, computed} from 'vue'
+import { defineEmits, ref, defineProps, withDefaults, watch, getCurrentInstance, computed, onMounted } from 'vue'
 import type { VNodeChild } from 'vue'
 import ItDialog from '../../Dialog/src/Dialog.vue'
 import ItSwiperMini from '../../SwiperMini/src/SwiperMini.vue'
 import ItSwiperMiniItem from '../../SwiperMini/src/SwiperMiniItem.vue'
+import itPickerSlot from '../../Picker/src/PickerSlot.vue'
 import type { SwiperMiniComponent } from '../../SwiperMini/src/SwiperMini'
 import type { Calendars, OutCalendar } from '../../../libs/calendar'
-import type { PickerSlotComponent } from '../../Picker/src/Picker'
+import type { PickerSlotComponent, PickerSlotItem } from '../../Picker/src/Picker'
 import { outCalendar } from '../../../libs/calendar'
 import { formatDateMonent } from '../../../util'
 const props = withDefaults(defineProps<{
@@ -85,6 +87,7 @@ const props = withDefaults(defineProps<{
     hideOnClick?: boolean,
     startWeek?: number,
     closeAminate?: string
+    minStep?:number
 }>(), {
     modelValue: false,
     defaultValue: formatDateMonent(new Date(), 'yyyy-MM-dd hh:mm'),
@@ -100,9 +103,11 @@ const props = withDefaults(defineProps<{
     isVisible: false,
     hideOnClick: true,
     startWeek: 0,
-    closeAminate: 'bottom'
+    closeAminate: 'bottom',
+    minStep: 1
 })
-const emit = defineEmits(['update:modelValue', 'confirm', 'hide'])
+const emit = defineEmits(['update:modelValue', 'confirm', 'closed'])
+
 const visible = ref<boolean>(false)
 const dataType = ref<number>(0)
 const currentValue = ref<string>(formatDateMonent(new Date(), 'yyyy-MM-dd'))
@@ -112,6 +117,7 @@ let currentDay = 0
 let currentYear: string | number = 0
 let currentMonth: string | number = 0
 const app = getCurrentInstance()
+const times = ref<PickerSlotItem[][]>([[], []])
 const weekTextArr = computed(() => {
     if (props.startWeek === 0) {
         return props.weekText
@@ -123,13 +129,13 @@ const weekTextArr = computed(() => {
 
 watch(() => props.modelValue, (n) => {
     visible.value = n
-    if (n) {
-        outCalendarItems()
-    }
 })
 
 watch(visible, (n) => {
     emit('update:modelValue', n)
+    if (n) {
+        outCalendarItems()
+    }
 })
 watch(() => props.type, (n) => {
     if (n === 'time') {
@@ -151,6 +157,10 @@ watch(() => props.defaultValue, (n) => {
     }
 })
 
+function onClosed () {
+    changeTab(0)
+    emit('closed')
+}
 function changeTab (index: number) {
     if (index === dataType.value) {
         return
@@ -168,7 +178,7 @@ function confrimSelect () {
     } else {
         emit('confirm', `${currentValue.value} ${currentHour.value}:${currentMin.value}`)
     }
-    emit('hide')
+    emit('update:modelValue', false)
 }
 
 const calendarItems = ref<Calendars[][]>([[], [], []])
@@ -239,8 +249,97 @@ function outCalendarItems (index?: number | string) {
     calendarItems.value[0] = outCalendar({ year: parseInt(lastMonth[0]), startWeek: props.startWeek, month: parseInt(lastMonth[1]) })
     calendarItems.value[1] = outCalendar({ year: parseInt(currentYear), startWeek: props.startWeek, month: parseInt(currentMonth) })
     calendarItems.value[2] = outCalendar({ year: parseInt(nextMonth[0]), startWeek: props.startWeek, month: parseInt(nextMonth[1]) })
+    outTime()
 }
 
+function becomeObj (i: number, type: string): PickerSlotItem {
+    const value = i >= 10 ? i.toString() : `0${i}`
+    const obj: PickerSlotItem = {
+        value,
+        label: value,
+        disabled: false,
+        type
+    }
+    return obj
+}
+
+function outTime () {
+    outHour()
+    outMin()
+}
+function outHour () {
+    const item:PickerSlotItem[] = []
+    // 是否等于开始年月日
+    const isEqualStart = currentHour.value === props.minDate?.split(' ')[0]
+    // 是否等结束年月日
+    const isEqualEnd = currentHour.value === props.maxDate?.split(' ')[0]
+    // 是否开始时间等结束时间
+    const isEqualStartEnd = props.minDate?.split(' ')[0] === props.maxDate?.split(' ')[0]
+    const startHour = parseInt(props.minDate.split(' ')[1].split(':')[0])
+    const endHour = parseInt(props.maxDate.split(' ')[1].split(':')[0])
+    if (isEqualStart && isEqualStartEnd) {
+        for (let i = startHour; i <= endHour; i++) {
+            item.push(becomeObj(i, 'hour'))
+        }
+    }
+
+    if (isEqualStart && !isEqualStartEnd) {
+        for (let i = startHour; i <= 23; i++) {
+            item.push(becomeObj(i, 'hour'))
+        }
+    }
+
+    if (isEqualEnd && !isEqualStartEnd) {
+        for (let i = 0; i <= endHour; i++) {
+            item.push(becomeObj(i, 'hour'))
+        }
+    }
+
+    if (!isEqualStart && !isEqualEnd && !isEqualStartEnd) {
+        for (let i = 0; i <= 23; i++) {
+            item.push(becomeObj(i, 'hour'))
+        }
+    }
+
+    times.value[0] = item
+}
+
+function outMin () {
+    const item:PickerSlotItem[] = []
+    const startHour = props.minDate.split(' ')[1].split(':')
+    const endHour = props.maxDate.split(' ')[1].split(':')
+    const isEqualStart = currentHour.value === props.minDate?.split(' ')[0] && currentHour.value === startHour[0]
+    // 是否等结束年月日
+    const isEqualEnd = currentHour.value === props.maxDate?.split(' ')[0] && currentHour.value === endHour[0]
+    // 是否开始时间等结束时间
+    const isEqualStartEnd = props.minDate?.split(' ')[0] === props.maxDate?.split(' ')[0] && startHour[0] === endHour[0]
+
+    if (isEqualStart && isEqualStartEnd) {
+        for (let i = parseInt(startHour[1]); i <= parseInt(endHour[1]); i += props.minStep) {
+            item.push(becomeObj(i, 'min'))
+        }
+    }
+
+    if (isEqualStart && !isEqualStartEnd) {
+        for (let i = parseInt(startHour[1]); i <= 59; i += props.minStep) {
+            item.push(becomeObj(i, 'min'))
+        }
+    }
+
+    if (isEqualEnd && !isEqualStartEnd) {
+        for (let i = 0; i <= parseInt(endHour[1]); i += props.minStep) {
+            item.push(becomeObj(i, 'min'))
+        }
+    }
+
+    if (!isEqualStart && !isEqualEnd && !isEqualStartEnd) {
+        for (let i = 0; i <= 59; i += props.minStep) {
+            item.push(becomeObj(i, 'min'))
+        }
+    }
+
+    times.value[1] = item
+}
 function onSelectDay (index:number, item: Calendars) {
     if (index !== 1) return
     if (item.disabled) return
@@ -260,4 +359,23 @@ function change (index: number) {
     outCalendarItems(index);
     (app?.refs.swiper as SwiperMiniComponent).scrollTo(1, false)
 }
+
+function chooseItem (item: PickerSlotItem, index:number) {
+    if (index === 0) {
+        currentHour.value = item.value.toString()
+    }
+
+    if (index === 1) {
+        currentMin.value = item.value.toString()
+    }
+}
+interface Views {
+    [key: string] : any
+}
+onMounted(() => {
+    if (app?.vnode.children) {
+        (app.vnode.children as Views).views = app?.slots.day
+    }
+})
+
 </script>

@@ -44,7 +44,7 @@ import ItPickerTime from '../src/PickerTime.vue'
 import pickerTime from '../src/PickerTime.method'
 import '../style/PickerTime.scss'
 import { ref, vShow } from 'vue'
-const visible = ref<boolean>(false) 
+const visible = ref<boolean>(false)
 const visible1 = ref<boolean>(false)
 const visible2 = ref<boolean>(false)
 const visible3 = ref<boolean>(false)
@@ -71,7 +71,6 @@ function selected (value: string) {
 
 function fnSelected () {
     pickerTime({
-        format: 'yyyy-MM-dd',
         defaultValue: defaultValueFn.value,
         onSelected (value:string) {
             defaultValueFn.value = value
