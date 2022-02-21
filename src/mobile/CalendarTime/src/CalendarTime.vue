@@ -369,7 +369,5 @@ function chooseItem (item: PickerSlotItem, index:number) {
         currentMin.value = item.value.toString()
     }
 }
-interface Views {
-    [key: string] : any
-}
+
 </script>
