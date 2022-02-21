@@ -16,10 +16,13 @@
             @chooseItem="chooseItem"
             :key="index"
             :key-index="index"
-            :isLoop="true"
-            :output="output"
+            :loop="true"
             ref="el"
-        ></picker-slot>
+        >
+        <template #default="scope">
+             <slot v-bind="scope"/>
+        </template>
+        </picker-slot>
         </div>
     </it-dialog>
 </template>

@@ -14,7 +14,11 @@
                 方法
                 <i class="icon-arrow rotate"></i>
             </div>
-            <it-picker v-model="visible1" :items="pickers" @chooseItem="chooseItem" @selected="onSelected"></it-picker>
+            <it-picker v-model="visible1" :items="pickers" @chooseItem="chooseItem" @selected="onSelected">
+                <template #default="scope">
+                    {{scope.value}}
+                </template>
+            </it-picker>
         </div>
     </div>
 </template>
@@ -22,7 +26,7 @@
 import ItPicker from '../src/Picker.vue'
 import '../style/Picker.scss'
 import { ref } from 'vue'
-import picker from '../src/Picker'
+import picker from '../src/Picker.method'
 const visible = ref<boolean>(false)
 const listData = [
     {

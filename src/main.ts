@@ -15,4 +15,3 @@ Componets(app)
 app.use(routers)
 app.use(i18n)
 app.mount('#app')
-

@@ -259,8 +259,8 @@ function initCoordinate () {
 }
 function clone () {
     if (number >= 2 && props.loop) {
-        firstOne.value = items.value[0].refs.el.innerHTML
-        lastOne.value = items.value[items.value.length - 1].refs.el.innerHTML
+        firstOne.value = (items.value[0].refs.el as HTMLElement).innerHTML
+        lastOne.value = (items.value[items.value.length - 1].refs.el as HTMLElement).innerHTML
     }
 }
 function init () {
@@ -288,8 +288,6 @@ function setPostion () {
 }
 
 function touchstart (e: TouchEvent) {
-    console.log('touchstart');
-    
     if (props.disabled) return
     // 判断动画是否在进行中, 进行中禁止滑动
     if (isAnimating.value) {

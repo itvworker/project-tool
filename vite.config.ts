@@ -7,23 +7,23 @@ export default {
     plugins: [
         vue(),
         AutoImport({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [ElementPlusResolver()]
         }),
         Components({
-            resolvers: [ElementPlusResolver()],
-        }),
+            resolvers: [ElementPlusResolver()]
+        })
     ],
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: `@use "~/element/index.scss" as *;`,
-            },
-        },
+                additionalData: '@use "~/element/index.scss" as *;'
+            }
+        }
     },
     esbuild: {
         jsxFactory: 'h',
         jsxFragment: 'Fragment',
-        jsxInject: `import { h, Fragment } from 'vue'`
+        jsxInject: 'import { h, Fragment } from "vue"'
     },
     resolve: {
         alias: {

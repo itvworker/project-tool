@@ -3,22 +3,35 @@
     <div class="it-picker-content" :class="['it-picker-row'+rows]"    ref="height" >
         <div class="it-picker-list-panel"  ref="list"  @transitionend="transitionEnd"  @webkitTransitionEnd="transitionEnd">
             <div class="it-picker-item" :style="{height: lineSpacing+'px'}" :class="{'hide-opacity': !isLoopScroll,'picker-forbid': typeof item === 'object' && item.disabled }" v-for="(item,index) in listData"
-                :key="index+'up'"
-                v-html="output(item)"
-                >
+                :key="index+'up'">
+                <slot v-bind="item">
+                    {{output(item)}}
+                </slot>
             </div>
             <div class="it-picker-item" :style="{height: lineSpacing+'px'}" :class="{'hide-opacity': !isLoopScroll, 'picker-forbid': typeof item === 'object' && item.disabled}" v-for="(item,index) in listData"
                 :key="index+'up1'"
-                v-html="output(item)"
-                ></div>
+                >
+                <slot  v-bind="item">
+                    {{output(item)}}
+                </slot>
+                </div>
             <div class="it-picker-item" :class="{'picker-forbid': typeof item === 'object' && item.disabled}" :style="{height: lineSpacing+'px'}"  v-for="(item,index) in listData"
-                :key="index"  v-html="output(item)" >
+                :key="index"  >
+                <slot v-bind="item">
+                    {{output(item)}}
+                </slot>
             </div>
             <div class="it-picker-item" :style="{height: lineSpacing+'px'}" :class="{'hide-opacity': !isLoopScroll, 'picker-forbid': typeof item === 'object' && item.disabled}"  v-for="(item,index) in listData"
-                :key="index+'next'">{{output(item)}}
+                :key="index+'next'">
+                <slot v-bind="item">
+                    {{output(item)}}
+                </slot>
             </div>
             <div class="it-picker-item" :style="{height: lineSpacing+'px'}" :class="{'hide-opacity': !isLoopScroll, 'picker-forbid': typeof item === 'object' && item.disabled}"  v-for="(item,index) in listData"
-                :key="index+'next2'">{{output(item)}}
+                :key="index+'next2'">
+                <slot  v-bind="item">
+                    {{output(item)}}
+                </slot>
             </div>
         </div>
     </div>
@@ -28,7 +41,7 @@
 </template>
 <script lang="ts" setup>
 
-import { defineProps, defineEmits, defineExpose, nextTick, computed, ref, withDefaults, getCurrentInstance, onMounted, watch } from 'vue'
+import { defineProps, defineEmits, defineExpose, computed, ref, withDefaults, getCurrentInstance, onBeforeMount, onMounted, watch } from 'vue'
 
 interface SlotItem {
     label?: string,
@@ -309,9 +322,10 @@ watch(() => props.listData, (n, o) => {
 watch(() => props.defaultValue, (n) => {
     modifyStatus()
 })
-onMounted(() => {
-    init()
-})
+
+interface Views {
+    [key: string] : any
+}
 
 defineExpose({
     modifyStatus

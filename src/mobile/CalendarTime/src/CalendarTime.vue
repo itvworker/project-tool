@@ -60,7 +60,7 @@
     </it-dialog>
 </template>
 <script lang="ts" setup>
-import { defineEmits, ref, defineProps, withDefaults, watch, getCurrentInstance, computed, onMounted } from 'vue'
+import { defineEmits, ref, defineProps, withDefaults, watch, getCurrentInstance, computed, onMounted, VNode, onUpdated } from 'vue'
 import type { VNodeChild } from 'vue'
 import ItDialog from '../../Dialog/src/Dialog.vue'
 import ItSwiperMini from '../../SwiperMini/src/SwiperMini.vue'
@@ -372,10 +372,4 @@ function chooseItem (item: PickerSlotItem, index:number) {
 interface Views {
     [key: string] : any
 }
-onMounted(() => {
-    if (app?.vnode.children) {
-        (app.vnode.children as Views).views = app?.slots.day
-    }
-})
-
 </script>
