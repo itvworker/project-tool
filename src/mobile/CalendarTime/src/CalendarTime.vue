@@ -60,7 +60,7 @@
     </it-dialog>
 </template>
 <script lang="ts" setup>
-import { defineEmits, ref, defineProps, withDefaults, watch, getCurrentInstance, computed, onMounted, VNode, onUpdated } from 'vue'
+import { defineEmits, ref, defineProps, withDefaults, watch, getCurrentInstance, computed } from 'vue'
 import type { VNodeChild } from 'vue'
 import ItDialog from '../../Dialog/src/Dialog.vue'
 import ItSwiperMini from '../../SwiperMini/src/SwiperMini.vue'
