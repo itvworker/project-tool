@@ -2,6 +2,7 @@
  * 格式化时间
  * @param {String,Number} arg 时戳或日期字符串
  * @param {String} format 格式化的时间 Y：年 M:月 D:日 h：时 m:分 s:秒
+ * @param {Number} timezone 时区，比哪东八区+8  西八区为-8
  */
 export function formatDateMonent (arg:string | number | Date = '', format = 'yyyy-MM-dd hh:mm', timezone?:number):string {
     // console.log(typeof arg.toString());
@@ -27,11 +28,11 @@ export function formatDateMonent (arg:string | number | Date = '', format = 'yyy
     // 如果有传时区的话，按时区时间来格式化
     if (typeof timezone !== 'undefined') {
         const offset = now.getTimezoneOffset() * 60000
-        if (offset >= 0) {
-            timezone = timezone < 0 ? (-12 - timezone) : timezone
-        } else {
-            timezone = timezone < 0 ? (12 - timezone) : timezone
-        }
+        // if (offset >= 0) {
+        //     timezone = timezone < 0 ? (-12 - timezone) : timezone
+        // } else {
+        //     timezone = timezone < 0 ? (12 - timezone) : timezone
+        // }
         const zonetime = now.getTime() + offset // 转换成0时区时间
         now = new Date(zonetime + (timezone * 3600000))
     }

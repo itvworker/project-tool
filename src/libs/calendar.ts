@@ -17,7 +17,7 @@ export declare interface OutCalendar {
     minDate?: string,
     maxDate?: string,
     disabled?: (value?:string) => boolean,
-    endType?: string,
+    endType?: string, // current 时输出当前月， 不填充上下一而,  end时，补充上一个月，以及下一个月到当前最后一行的数，即后面有空的格就补充
     startWeek?: number
 }
 
@@ -42,7 +42,6 @@ export function outCalendar (value: OutCalendar): Calendars[] {
     if (isLeapYear && value.month === 2) {
         days = 29
     }
-    let prev = getPrevMonth(value.year, value.month, dayWeek, value.startWeek, disabled)
     const now:Calendars[] = []
     for (let i = 1; i <= days; i++) {
         const item: Calendars = {
@@ -58,9 +57,12 @@ export function outCalendar (value: OutCalendar): Calendars[] {
         now.push(item)
         dayWeek = calcNextWeek(dayWeek)
     }
+    if (value.endType === 'current') {
+        return now
+    }
 
+    let prev = getPrevMonth(value.year, value.month, dayWeek, value.startWeek, disabled)
     prev = prev.concat(now)
-
     const newday = prev[prev.length - 1]
     let lastNum = 42 - prev.length
     if (value.endType === 'end') {
