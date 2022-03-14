@@ -17,9 +17,9 @@
       "jest"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"],
+      "@vue/*": ["src/vue3.0/packages/*/src"],
+      "vue": ["src/vue3.0/packages/vue/src"]
     },
     "lib": [
       "esnext",

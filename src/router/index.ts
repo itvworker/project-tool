@@ -32,7 +32,7 @@ const routes:Array<RouteRecordRaw> = [
         children: [
             {
                 path: '/demo/index',
-                component: () => import('@/view/demo/index.vue')
+                component: () => import('@/views/demo/index.vue')
             },
             {
                 path: '/demo/swiper-mini',

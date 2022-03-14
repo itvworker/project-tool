@@ -13,6 +13,7 @@ module.exports = {
             chunks: ['chunk-vendors', 'chunk-common', 'index']
         }
     },
+   
     configureWebpack: {
         plugins: [
             AutoImport({
@@ -25,7 +26,9 @@ module.exports = {
         resolve: {
             extensions: ['.js', '.vue', '.json', '.tsx', '.ts'],
             alias: {
-                '@': path.resolve(__dirname, 'src')
+                '@': path.resolve(__dirname, 'src'),
+                "@vue/*": path.resolve(__dirname, "src/vue3.0/packages/*/src"),
+                "vue": path.resolve(__dirname, "src/vue3.0/packages/vue/src")
             }
         }
     }
