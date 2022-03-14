@@ -1,0 +1,285 @@
+@import '../../Dialog/style/Dialog.scss';
+@import '../../SwiperMini/style/SwiperMini.scss';
+@import '../../Picker/style/PickerSlot.scss';
+.it-calendar-time{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff; // #efefef;
+    padding-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+    padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */  
+    .it-picker-list-mark {
+      width: 14ipx;
+      flex:0 0 auto;
+    }
+    .it-picker-mark{
+      background: #fff;
+      line-height: 44ipx;
+      font-size: 14ipx;
+    }
+    .it-calendar-top {
+        height: 44ipx;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        &::after {
+          border-bottom: #ddd solid 1px;
+          content: ' ';
+          display: block;
+          font-size: 0px;
+          left: 0;
+          right: 0;
+          position: absolute;
+          bottom: 1px;
+          transform: scaleY(0.5) translateY(20%);
+          
+          
+        }
+        font-size: 16ipx;
+        .title {
+          line-height: 44ipx;
+          height: 44ipx;
+        }
+        text-align: center;
+  
+        .it-calendar-cancel-btn{
+          position: absolute;
+          left: 0;
+          height: 100%;
+          top: 0;
+          line-height: 44ipx;
+          padding-left: 15ipx;
+          color:#999;
+        }
+        .it-calendar-sure-btn{
+          position: absolute;
+          right: 0;
+          height: 100%;
+          top: 0;
+          line-height: 44ipx;
+          padding-right: 15ipx;
+          color: #409EFF;
+          
+        }
+    }
+    >.it-calendar-time-top{
+        background-color: #fff;// #fff;
+        display: flex;
+        height: 44ipx;
+        padding-left: 15ipx;
+        padding-right: 16ipx;
+        line-height: 44ipx;
+        font-size: 16ipx;
+        border-bottom: #ddd solid 1px;
+        position: relative;
+        .date{
+          margin-right: 10ipx;
+          padding: 0 10ipx;
+        }
+        .time{
+          padding: 0 10ipx;
+        }
+        .btn-confirm{
+          position: absolute;
+          right: 0;
+          padding-right: 15ipx;
+          padding-right: 15ipx;
+        }
+        .active {
+           color: #409EFF;
+           position: relative;
+           &::after {
+             content: ' ';
+             border-bottom: #409EFF solid 2px;
+             left: 0;
+             right:0;
+             bottom: 0;
+             position: absolute;
+           }
+  
+        }
+        
+    }
+  
+    .week-bar{
+      display: flex;
+      position: absolute;
+      width: 100%;
+      top: 0px;
+      height: 30ipx;
+      border-bottom: #ddd solid 1.5px;
+      z-index: 10;
+      
+      .week-item{
+        flex: 1;
+        text-align: center;
+        background-color: #fff;
+        margin-top:1px;
+        height: 30ipx;
+        line-height: 30ipx;
+      }
+    }
+  
+    .it-calendar-time-change{
+      display: flex;
+      flex-direction: row;
+      transform: translateX(0);
+      transition: transform ease .2s;
+      position: relative;
+      background-color: #fff;
+      
+    }
+  
+    .it-select-time {
+      transform: translateX(-100%);
+    }
+  }
+  .it-picker-slot-box{
+    width: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    height: 308ipx;
+    background-color: #fff;
+    .it-calendar-picker{
+       :deep .it-picker-content{
+         overflow: visible;
+       }
+    }
+    &.it-calendar-only-time {
+      height: 44*5ipx;
+    }
+   
+  }
+  .it-swpier-calendar-time {
+    height:284ipx;
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 30ipx;
+   
+    box-sizing: border-box;
+    overflow: hidden;
+    &.it-calendar-only-time {
+        height: 44*5ipx;
+        margin-top: 0ipx;
+    }
+    .it-swpier-calendar{
+      height: 284ipx;
+      display: flex;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      padding-top: 10ipx;
+      padding-bottom: 10ipx;
+      position: relative;
+      background-color: #fff;
+      .month-number{
+          position: absolute;
+          
+          z-index: 1;
+          color: #409EFF;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+         
+          opacity: 0.1;
+          white-space: nowrap;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: normal;
+          .year{
+            font-size: 32ipx;
+            position: absolute;
+            left: 50%;
+            top: 20ipx;
+            transform: translateX(-50%);
+            font-family: PingFangSC-Light, PingFang SC, Arial, Helvetica, sans-serif;
+          }
+          .month{
+            font-size: 160ipx;
+            font-family: PingFangSC-Light, PingFang SC, Arial, Helvetica, sans-serif;
+          }
+  
+      }
+      .year-month{
+        width: 100%;
+        text-align: center;
+        background-color: #f1f1f1;
+        line-height: 30ipx;
+        font-size: 14ipx;
+        height: 30ipx;
+        color: #666;
+        display: none;
+      }
+      .day-item{
+      position: relative;
+      z-index: 10;
+        height: 44ipx;
+        width: 14.285714%;
+        text-align: center;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .active{
+          width: 30ipx;
+          height: 30ipx;
+          border-radius: 50%;
+          line-height: 30ipx;
+          font-size: 14ipx;
+        }
+  
+        &.day-active{
+          .active{
+            background-color: #409EFF;
+            color: #fff;
+          }
+        }
+        &.forbid {
+          color: #999;
+          .active{
+            background-color: rgba(0, 0, 0, 0);
+            color: #999;
+          }
+        }
+        
+        &.next-month,&.prev-month{
+          color: #999;
+        } 
+      } 
+    }
+  }
+  
+  
+  .it-picker-list{
+    width: 20ipx;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    .it-picker-indicator{
+      position: absolute;
+      top: 88ipx;
+      width: 100%;
+      height: 44ipx;
+     
+      z-index: 3; 
+      box-sizing: border-box;
+      line-height: 0px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.04);
+      
+      &.it-picker-row5{
+          top: 88ipx;
+      }
+      &.it-picker-row7{
+          top: 132ipx;
+      }
+    }
+  
+  }

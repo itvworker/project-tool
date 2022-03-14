@@ -1,0 +1,23 @@
+.meunt-left {
+    flex: 1;
+    >.logo{
+        font-size: 22px;
+        color: #409eff;
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+}
+.link-route{
+    display: block;
+    width: 100%;
+}
+.el-meun-bar {
+    :deep .el-menu-item-link{
+        padding: 0 !important;
+    }
+    :deep .link-route {
+        padding: 0 20px;
+        height: 100%;
+    }
+}

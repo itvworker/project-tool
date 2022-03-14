@@ -1,0 +1,47 @@
+.demo-root-box {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    >.demo-title-bar {
+        height: 44px;
+        border-bottom: #eee solid 1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        >.icon-arrow {
+            position: absolute;
+            left: 0;
+            padding-left: 16px;
+        }
+    }
+    >.demo-main {
+        flex: 1;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+.link-item {
+    position: relative;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    font-size: 14px;
+    border-bottom:#eee solid 1px;
+    .rotate {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%) rotate(180deg);
+    }
+    .link-item-text {
+        position: absolute;
+        right: 40px;
+    }
+}

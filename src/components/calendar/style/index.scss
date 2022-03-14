@@ -1,0 +1,61 @@
+
+.it-calendar-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .it-calendar-weektext {
+        display: flex;
+        border-top: #ddd solid 1px;
+        .it-calendar-weektext-item {
+            width: 14.2857142857%;
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    }
+    .it-calendar-content {
+        display: flex;
+        flex-wrap: wrap;
+        border: #ddd solid 1px;
+        border-top-width: 0;
+        position: relative;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Chrome/Safari/Opera */
+        -khtml-user-select: none;
+        /* Konqueror */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        .it-calendar-item {
+            width: 14.2857142857%;
+            flex: 0 0 auto;
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top: #ddd solid 1px;
+            border-left: #ddd solid 1px;
+            min-height: 80px;
+            font-size: 18px;
+            cursor: pointer;
+            &:nth-child(7n-6) {
+                border-left-width: 0;
+            }
+            &:hover{
+                background-color: #f2f8fe;
+            }
+            &.it-calendar-not-current {
+                color: #aaa;
+            }
+        }
+        .it-calendar-select-mask {
+            position: absolute;
+            background-color: rgba(0,0,0,0.2);
+        }
+    }
+    
+}

@@ -1,0 +1,36 @@
+.it-swiper-mini{
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.it-swiper-mini-flex-column{
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .it-swiper-mini-item{
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        flex: 0 0 auto;
+    }
+}
+
+.it-swiper-mini-flex-row{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .it-swiper-mini-item{
+        width: 100%;
+        flex:  0 0 auto;
+    }
+}
+
+.it-swiper-mini-animating{
+    transition: all 200ms ease 0s;
+}
+
+.itv-move-anmiating{
+    transition: all 0ms ease 0s;
+}

@@ -1,0 +1,45 @@
+@import './PickerSlot.scss';
+@import '../../Dialog/style/Dialog.scss';
+.picker-item {
+    height: 44*5ipx;
+    background-color: #fff;
+    display: flex;
+}
+
+.it-picker-title {
+    background-color: #fff;
+    height: 44ipx;
+    position: relative;
+    &::after {
+        content: ' ';
+        border-bottom: #ddd solid 1px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    .it-left-btn, .it-right-btn {
+        position: absolute;
+        font-size: 16ipx;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .it-left-btn {
+        left: 0px;
+        padding-left: 16ipx;
+        top: 0;
+    }
+
+    .it-right-btn {
+        right: 0px;
+        top: 0;
+        padding-right: 16ipx;
+    }
+    .it-picker-title-text {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14ipx;
+    }
+}

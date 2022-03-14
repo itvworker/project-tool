@@ -1,0 +1,32 @@
+
+.el-login-root {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: url('~@/assets/imgs/login_bg.jpeg') no-repeat 100% 100%;
+}
+.el-login-box {
+    width: 40%;
+    min-width: 300px;
+    max-width: 360px;
+    height: 250px;
+    // background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2) url('~@/assets/imgs/login_bg.jpeg') no-repeat fixed top;
+    background-size: 100% 100%;
+    // opacity: 0.5;
+}
+.el-login-btn{
+    width: 100%;
+}
+.login-link-bar{
+    text-align: right;
+    margin-bottom: 10px;
+    .link{
+        font-size: 12px;
+    }
+}

@@ -1,4 +1,5 @@
 .DS_Store
+<<<<<<< HEAD
 node_modules/
 dist/
 npm-debug.log*
@@ -9,6 +10,26 @@ yarn-error.log*
 tests/**/coverage/
 tests/e2e/reports
 selenium-debug.log
+=======
+node_modules
+/dist
+/src/vue3.0/**
+/tests/e2e/reports/
+selenium-debug.log
+chromedriver.log
+geckodriver.log
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+>>>>>>> it
 
 # Editor directories and files
 .idea
@@ -17,7 +38,11 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+<<<<<<< HEAD
 *.local
 
 package-lock.json
 yarn.lock
+=======
+*.sw?
+>>>>>>> it
